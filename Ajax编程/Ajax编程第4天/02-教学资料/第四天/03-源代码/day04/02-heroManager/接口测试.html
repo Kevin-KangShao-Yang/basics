@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ <script src="./lib/js/jquery-1.12.4.js"></script>
+    <script>
+        /*
+          接口文档1 ： 查询所有英雄详情
+          * 请求地址:http://127.0.0.1:4399/hero/all
+          * 请求方法：get
+          * 请求参数：无
+          */
+      $.ajax({
+      url:'http://127.0.0.1:4399/hero/all',
+      type:'get',
+      dataType:'json',
+      data:'',
+      success: function(data){
+        console.log('--------获取所有英雄---------'); 
+        console.log(data);  // ***** 成功  *********
+        
+        chaxunID()
+      }
+      });
+      /*    
+        接口文档2 ： 查询单个英雄详情
+          - 请求地址: http://127.0.0.1:4399/hero/id
+          - 请求方法：get
+          - 请求参数：id: 英雄id
+          - 返回数据 ：
+        */
+       function chaxunID(){
+          $.ajax({
+           url: 'http://127.0.0.1:4399/hero/id',
+           type: 'get',
+           dataType: 'json',
+           data: 'id=11',
+           success: function (data) {
+             
+             console.log('查询id为 1 的英雄');
+             console.log(data);  // ***** 成功  *********
+             delate()
+           }
+         }); 
+
+       }
+      
+        //接口文档3 ：删除英雄
+        //请求地址: http://127.0.0.1:4399/hero/delete
+        //请求方法：get
+        //请求参数：id: 英雄id
+        //返回数据 ：
+     function delate(){
+         $.ajax({
+         url: 'http://127.0.0.1:4399/hero/delete',
+         type: 'get',
+         dataType: 'json',
+         data: 'id=11',
+         success: function (data) {
+           console.log('删除id为 1 的英雄');
+           console.log(data); // ***** 失败  ************
+         }
+       }); 
+     }
+       /* 接口文档4 ： 修改英雄
+      - 请求地址: http://127.0.0.1:4399/hero/update
+      - 请求方法：post
+      - 请求参数：id: 英雄id, name : 名字 ， slikk：技能 ， icon：图像
+      - 返回数据 ： 202 状态码表示修改成功 */
+
+      /* 接口文档5:  增加英雄
+        - 请求地址: http://127.0.0.1:4399/hero/add
+        - 请求方法：post
+        - 请求参数：name: 名字 ， slikk：技能 ， icon：图像
+        - 返回数据 ： 状态码201表示添加成功 */
+    </script>
+</body>
+</html>

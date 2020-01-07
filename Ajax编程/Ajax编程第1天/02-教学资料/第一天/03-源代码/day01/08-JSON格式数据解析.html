@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.JSON是数据格式，本质是一个字符串
+            * 作用： 解决跨平台数据传输问题。以后服务器返回的数据都是json格式
+
+        2.JSON特点
+            * 属性名和属性值 `一定` 要是双引号
+            * 如果属性值是数字或者布尔类型，双引号可以省略
+
+        3.JSON与js互转
+            * JSON -> JS :   JSON.parse(json对象)
+            * JS -> JSON :   JSON.stringify(js对象)
+        */
+
+        //1.对象必须要以 {} 包裹
+        var jsonStr = '{"name":"张三","age":"18"}';
+        console.log(jsonStr);
+        console.log(JSON.parse(jsonStr));
+
+        //2.数组必须要以[]包裹
+        var jsonArr = '["坤哥","我","爱你","一万年"]';
+        console.log(jsonArr);
+        console.log(JSON.parse(jsonArr));
+
+        //3.负责json ： 数组和对象互相嵌套
+        var personData = '{"name":"盖伦","title":"德玛西亚之力","age":"18","friend":["赵信","皇子","凯特琳"]}';
+        console.log(JSON.parse(personData));
+
+
+        var heros = '[{"name":"盖伦","age":"18","gfs":["白石老师","苍老师"]},{"name":"赵信","age":18,"gfs":["班长","坤哥"]}]'
+        console.log(JSON.parse(heros));
+
+        console.log(JSON.parse('{"title":"德玛西亚之力","name":"盖伦","bg":"http://ossweb-img.qq.com/images/lol/web201310/skin/big86000.jpg","icon":"http://ossweb-img.qq.com/images/lol/web201310/skin/small86000.jpg","story":"在瓦洛兰大陆，虽然人们对德玛西亚的军纪存在争议，但是相同点是所有人都尊敬它。平民和士兵都严格遵守着“零容忍”的准则。这意味着在战斗中徳玛西亚军队永远不会找借口托辞、逃跑、或者投降。至高的军队领袖们强力地执行着这些原则。盖伦——拥有“德玛西亚之力”头衔的英勇勇士，就是军队的模范。成千上万的英雄在德玛西亚和诺克萨斯（德玛西亚的敌对阵营）战场上浴血奋战，战死沙场。在军旗下，盖伦遇到了旗鼓相当的对手——刀锋女王卡特琳娜。那些参与战争且幸存下来的士兵们认为，盖伦和卡特琳娜的对战不像是在打斗，而像跳舞。盖伦是德玛西亚军队的骄傲，是无畏先锋军团的领袖。生平第一次气喘吁吁地从战场归来，尽管有人认为他并非因为实力悬殊才输掉战斗。那时候流言甚嚣尘上。此后，盖伦会抓住每次和刀锋女王切磋的机会来证明自己。作为德玛西亚的道德模范，盖伦从不理会这些传言，因为他知道别人是无法理解他的。对真正的勇士而言，寻找一个旗鼓相当的对手是他的动力。如此美丽、与众不同的对手证明了他存在的价值。盖伦的前线战略——“杀敌的最好方法就是连他身边的人一起砍翻。”"}'));
+        
+        
+
+        //4.JS对象转JSON
+        var obj = {
+            name:'张三',
+            age:18
+        };
+
+        console.log(JSON.stringify(obj));
+        
+        
+        
+        
+    </script>
+</body>
+</html>

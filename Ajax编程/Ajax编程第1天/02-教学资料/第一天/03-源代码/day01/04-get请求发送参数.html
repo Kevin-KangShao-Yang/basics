@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./libs/jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        
+        英雄外号查询
+            根据英雄 姓名 查询英雄的 外号
+            请求地址：https://autumnfish.cn/api/hero/simple
+            示例：https://autumnfish.cn/api/hero/simple?name=提莫
+            请求方法：get
+            请求参数：name
+            参数名	参数说明	备注
+            name	英雄名	不能为空,直接跟在 url 后，格式 name=xxx
+                响应内容：英雄的外号
+         */
+
+        //(1)创建小黄人对象
+        var xhr = new XMLHttpRequest();
+        //(2)设置请求方法与路径
+        /* get请求发送参数直接在url后面拼接（注意参数之间不要加空格）
+                拼接格式：  url?key=value 
+        */
+        xhr.open('get','https://autumnfish.cn/api/hero/simple?name=赵信');
+        //(3)发送请求
+        xhr.send();
+        //(4)注册响应回调
+        xhr.onload = function(){
+            $(document.body).text(xhr.responseText);
+        };
+        
+        
+    </script>
+</body>
+</html>

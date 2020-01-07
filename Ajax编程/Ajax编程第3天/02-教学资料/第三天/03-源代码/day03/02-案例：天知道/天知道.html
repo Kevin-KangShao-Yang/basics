@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>天知道</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/iconfont.css" />
+  <link rel="stylesheet" href="css/main2.css" />
+  <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+  <style>
+    .tem .iconfont {
+      font-size: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="search_form">
+      <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+      <div class="form_group">
+        <input type="text" class="input_txt" placeholder="请输入查询的天气" />
+        <button class="input_sub">搜 索</button>
+      </div>
+      <div class="hotkey">
+        <a href="javascript:;">北京</a><a href="javascript:;">上海</a><a href="javascript:;">广州</a><a
+          href="javascript:;">深圳</a>
+      </div>
+    </div>
+    <ul class="weather_list">
+
+      <script id="weather" type="text/html">
+        {{ each  data.forecast}} 
+        <li>
+          <div class="info_type">
+            <!-- 小雨 -->
+            {{ if $value.type.indexOf('小雨') != -1 }}
+            <span class="iconfont">&#xe932;</span>
+            <!-- 雨 -->
+            {{ else if $value.type.indexOf('雨') != -1 }}
+            <span class="iconfont">&#xe931;</span>
+            <!-- 晴 -->
+            {{ else if $value.type.indexOf('晴') != -1 }}
+            <span class="iconfont">&#xe933;</span>
+            <!-- 雨夹雪 -->
+            {{ else if $value.type.indexOf('雨夹雪') != -1 }}
+            <span class="iconfont">&#xe934;</span>
+            <!-- 阴 -->
+            {{ else if $value.type.indexOf('阴') != -1 }}
+            <span class="iconfont">&#xe92d;</span>
+            <!-- 风 -->
+            {{ else if $value.type.indexOf('风') != -1 }}
+            <span class="iconfont">&#xeb8c;</span>
+            <!-- 雪 -->
+            {{ else if $value.type.indexOf('雪') != -1 }}
+            <span class="iconfont">&#xeb87;</span>
+            <!-- 多云 -->
+            {{ else if $value.type.indexOf('多云') != -1 }}
+            <span class="iconfont">&#xeb79;</span>
+            <!-- 雷 -->
+            {{ else if $value.type.indexOf('雷') != -1 }}
+            <span class="iconfont">&#xeb77;</span>
+            <!-- 冰雹 -->
+            {{ else if $value.type.indexOf('冰雹') != -1 }}
+            <span class="iconfont">&#xeb76;</span>
+            <!-- 雾霾 -->
+            {{ else if $value.type.indexOf('雾霾') != -1 }}
+            <span class="iconfont">&#xeb75;</span>
+            {{/if }}
+          </div>
+          <div class="info_temp">{{ $value.high.split(' ')[0] }}<b>{{ $value.high.split(' ')[1] }}</b><br>{{ $value.low.split(' ')[0] }} {{ $value.low.split(' ')[1] }}</div>
+          <div class="info_date"><b>{{ data.city }}</b><span>{{ data.forecast[$index].date }}</span></div>
+        </li>
+        {{ /each }}
+      </script>
+    </ul>
+  </div>
+
+  <!-- 导入jQ -->
+  <script src="./js/jquery-1.12.4.min.js"></script>
+
+  <!-- 导入模板引擎 -->
+  <script src="./js/template-web.js"></script>
+  <script>
+
+    /*
+    接口文档 ： 获取 json 格式的天气
+    请求地址：http://wthrcdn.etouch.cn/weather_mini
+      示例：http://wthrcdn.etouch.cn/weather_mini?city=深圳
+    请求方法：get
+    请求参数：city
+      参数名 参数说明  备注
+      City  查询的城市名  不能为空，不能写错
+    */
+
+
+    /*思路分析
+   1.搜索城市
+   2.热门城市列表
+   3.loading加载动画
+   4.页面一加载默认请求第一个热门城市天气
+   */
+
+    /*1.搜索城市 
+    1.1 给input_sub按钮注册点击事件
+    1.2 获取input_txt的文本
+    1.3 ajax发送请求
+    1.4 数据响应之后 模板引擎 渲染页面
+    */
+
+    /*loading加载效果 （css3无限动画  | gif动图）
+    1.点击按钮，发送ajax之前，设置loading动画（添加类名loading）
+    2.响应数据之后，取消loading动画（移除类名loading）
+    */
+    //1.1 给input_sub按钮注册点击事件
+    $('.input_sub').click(function () {
+
+      //一：点击按钮，加载loading动画
+      $(this).addClass('loading');
+
+      //1.2 获取input_txt的文本
+      var city = $('.input_txt').val();
+      //1.3 ajax发送请求
+      $.ajax({
+        url: 'http://wthrcdn.etouch.cn/weather_mini',
+        type: 'get',
+        dataType: 'json',
+        data: {
+          city: city
+        },
+        success: function (backData) {
+          //1.4 数据响应之后 模板引擎 渲染页面
+          console.log(backData);
+          //一般可以开启1s动画，让用户看1s的加载动画
+          setTimeout(function () {
+            //解析模板
+            var htmlStr = template('weather', backData);
+            //渲染解析好的模板
+            $('.weather_list').html(htmlStr);
+            //二：响应数据之后，取消loading动画
+            $('.input_sub').removeClass('loading');
+          }, 500);
+        }
+      });
+
+    });
+
+    /*3.热门城市列表 
+    1.点击热门城市列表
+    2.将输入框文字变成当前点击的文字
+    3.ajax发送请求
+    4.响应之后模板引擎渲染数据
+    */
+    //1.点击热门城市列表
+    $('.hotkey>a').click(function () {
+      var city = $(this).text();
+      //2.将输入框文字变成当前点击的文字
+      $('.input_txt').val(city);
+      //3.主动触发点击搜索按钮事件
+      $('.input_sub').trigger('click');
+
+    });
+
+
+    /* 4.页面一加载：默认请求第一个热门城市 */
+    $('.hotkey>a').eq(0).trigger('click');
+
+
+
+
+    // 5.按回车键获取天气
+    $('.input_txt').keydown(function (e) {
+      if (e.keyCode == 13) {
+          //一：点击按钮，加载loading动画
+          $('.input_sub').trigger('click');
+        }
+    })
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 小雨 -->
+<span class="iconfont">&#xe932;</span>
+<!-- 雨 -->
+<span class="iconfont">&#xe931;</span>
+<!-- 晴 -->
+<span class="iconfont">&#xe933;</span>
+<!-- 雨夹雪 -->
+<span class="iconfont">&#xe934;</span>
+<!-- 阴 -->
+<span class="iconfont">&#xe92d;</span>
+<!-- 风 -->
+<span class="iconfont">&#xeb8c;</span>
+<!-- 雪 -->
+<span class="iconfont">&#xeb87;</span>
+<!-- 多云 -->
+<span class="iconfont">&#xeb79;</span>
+<!-- 雷 -->
+<span class="iconfont">&#xeb77;</span>
+<!-- 冰雹 -->
+<span class="iconfont">&#xeb76;</span>
+<!-- 雾霾 -->
+<span class="iconfont">&#xeb75;</span>

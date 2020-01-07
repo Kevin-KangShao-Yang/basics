@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        input {
+            border: 4px solid gray;
+            padding: 10px;
+            font-size: 25px;
+            background-color: skyblue;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .items {
+            width: 1000px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .title {
+            background-color: hotpink;
+            text-align: center;
+            color: white;
+            padding-bottom: 5px;
+        }
+
+        .item {
+            width: 300px;
+            height: 200px;
+            border: 1px solid skyblue;
+            border-radius: 5px;
+            text-align: left;
+            margin: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="要看几条笑话呀" class="getJoke" />
+    <div class="items">
+        <div class="item">
+            <div class="title">^_^</div>
+            哥们问我：娶老婆最重要看什么？
+            我：看她爸藏了多少私房钱！
+            哥们：多又如何，少又如何？
+            我：很少或者没有，意味着她妈找私房钱有绝技，肯定会传给女儿。所以不能娶！
+            哥们：有道理！
+        </div>
+    </div>
+
+    <!-- 写模板 -->
+    <script id="sb" type="text/html">
+        {{ each jokes}}
+        <div class="item">
+                <div class="title">^_^</div> 
+                {{ $value }}
+        </div>
+        {{ /each }}
+    </script>
+
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+    <script src="./libs/template-web.js"></script>
+    <script>
+        /* 
+        随机获取笑话的接口
+            请求地址：https://autumnfish.cn/api/joke/list
+            请求方法：get
+            请求参数：num
+        */
+
+        /*思路分析
+        1.给输入框注册键盘按下事件（enter：13）
+        2.获取输入框文字
+        3.ajax发送请求
+        4.数据响应之后使用模板引擎渲染页面 
+        */
+
+        //1.给输入框注册键盘按下事件（enter：13）
+        $('.getJoke').keydown(function (e) {
+            if (e.keyCode == 13) {
+                //2.获取输入框文字
+                var num = $(this).val();
+                //3.ajax发送请求
+                //(1).实例化ajax对象
+                var xhr = new XMLHttpRequest();
+                //(2).设置请求方法和地址
+                //get请求的数据直接添加在url的后面 格式是 url?key=value
+                xhr.open('get', 'https://autumnfish.cn/api/joke/list?num=' + num);
+                //(3).发送请求
+                xhr.send();
+                //(4).注册回调函数
+                xhr.onload = function () {
+                     //4.数据响应之后使用模板引擎渲染页面
+                    console.log(xhr.responseText);
+                    //4.1 json转js
+                    var obj = JSON.parse(xhr.responseText);
+                    console.log(obj);
+                    //4.2 模板引擎渲染字符串
+                    var htmlStr = template('sb',obj);
+                    console.log(htmlStr);
+                    //4.3 显示渲染好的数据
+                    $('.items').html(htmlStr);
+                };
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

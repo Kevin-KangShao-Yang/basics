@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+    <!-- 1.导包 -->
+    <script src="./libs/template-web.js"></script>
+</head>
+
+<body>
+    <h2>天气查查查--</h2>
+    <input type="text" placeholder="请输入查询的城市" class="search" />
+    <!-- 2.写模板 -->
+    <script id="weather" type="text/html">
+        <p class="suggest">{{ ganmao }}</p>
+        <ul class="weather">
+            {{ each forecast}}
+            <li>
+                <span>{{ $value.date }}</span>---
+                <span>{{ $value.high }}</span>---
+                <span>{{ $value.low }}</span>---
+                <span>{{ $value.type }}</span>
+            </li>
+            {{ /each }}
+        </ul>
+    </script>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+    * 请求地址：http://wthrcdn.etouch.cn/weather_mini
+    * 请求方法：get
+    * 请求参数：city
+    * 示例： http://wthrcdn.etouch.cn/weather_mini?city=深圳
+
+     */
+
+    /* 思路分析
+    1.给输入框注册键盘按下（监听enter ： 13）
+    2.获取输入框文本
+    3.ajax发送请求
+    4.数据响应返回之后渲染页面
+     */
+
+    //1.给输入框注册键盘按下（监听enter ： 13）
+    $('.search').keydown(function (e) {
+        if (e.keyCode == 13) {
+            // 2.获取输入框文本
+            var city = $(this).val();
+            // 3.ajax发送请求
+            //(1).实例化ajax对象
+            var xhr = new XMLHttpRequest();
+            //(2).设置请求方法和地址
+            //get请求的数据直接添加在url的后面 格式是 url?key=value
+            xhr.open('get', 'http://wthrcdn.etouch.cn/weather_mini?city=' + city);
+            //(3).发送请求
+            xhr.send();
+            //(4).注册回调函数
+            xhr.onload = function () {
+                // 4.数据响应返回之后渲染页面
+                console.log(xhr.responseText);
+                //json格式转js对象
+                var obj = JSON.parse(xhr.responseText);
+                console.log(obj);
+                //渲染页面  
+                var htmlStr = template('weather', obj.data);
+
+                $(document.body).append(htmlStr);// jq会自动帮我们生成jq对象$(htmlStr)
+            };
+
+        };
+
+    });
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://192.168.15.223:80">点我啊</a>
+    <button id="btn">点我啊</button>
+    <script>
+        /* 
+        浏览器访问服务器的几种方式
+            1.直接在浏览器输入网址url
+            2.使用a标签href
+            3.使用window.location.href
+         */
+
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            window.location.href = 'http://www.jd.com';
+        };
+
+    </script>
+</body>
+</html>

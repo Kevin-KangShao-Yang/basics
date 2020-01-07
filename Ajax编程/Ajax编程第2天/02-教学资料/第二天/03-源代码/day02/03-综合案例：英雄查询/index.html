@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- bootstrap -->
+  <script src="./libs/js/jquery-1.12.4.js"></script>
+  <script src="./libs/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="./libs/css/bootstrap.min.css">
+  <script src="./libs/js/template-web.js"></script>
+
+  <style>
+    /* 使用bootstrap之后，如果想要修改自己的样式。只需要使用选择器覆盖即可 */
+    h4 {
+      color: red
+    }
+
+    .sb{
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1.导航条 -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">克鲁赛德战记</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control heroName" placeholder="请输入信息">
+          </div>
+          <button type="submit" class="btn btn-default search">查询</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <!-- 2.版心内容 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" src="http://p0.qhimg.com/dr/72__/t016f2baa3729884891.png" alt="...">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading hero-name">英雄名字</h4>
+            英雄技能
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 写模板 -->
+  <script id="heros" type="text/html">
+    {{ each list }}
+    <div class="col-lg-3 sb">
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" src="{{ $value.icon }}" alt="...">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading hero-name">{{ $value.name }}</h4>
+            {{ $value.skill }}
+          </div>
+        </div>
+      </div>
+    {{ /each }}
+  </script>
+
+  <script>
+    /*
+    查询英雄的 详细信息
+      请求地址：https://autumnfish.cn/api/cq
+      请求方法：get
+      请求参数：query
+      参数名	参数说明	备注
+      query	英雄名	可以为空，为空获取所有数据
+    */
+
+    /*需求分析 
+    1.给搜索按钮注册点击事件
+    2.获取输入框内容
+    3.ajax发送请求
+    4.响应之后 使用模板引擎渲染技术
+    */
+
+    //1.给搜索按钮注册点击事件
+    $('.search').click(function (e) {
+      /* type为submit的表单，会自动发送get请求，会导致页面跳转行为
+      一般使用ajax技术，需要阻止submit的默认行为
+      */
+      e.preventDefault();
+
+      //2.获取输入框内容
+      var heroName = $('.heroName').val();
+      //3.ajax发送请求
+      //(1).实例化ajax对象
+      var xhr = new XMLHttpRequest();
+      //(2).设置请求方法和地址
+      //get请求的数据直接添加在url的后面 格式是 url?key=value
+      xhr.open('get', 'https://autumnfish.cn/api/cq?query=' + heroName);
+      //(3).发送请求
+      xhr.send();
+      //(4).注册回调函数
+      xhr.onload = function () {
+        console.log(xhr.responseText);
+        //4.响应之后 使用模板引擎渲染技术
+        //4.1 json->js
+        var obj = JSON.parse(xhr.responseText);
+        console.log(obj);
+
+        //4.2 解析模板
+        var htmlStr = template('heros',obj)
+        //4.3 解析好的数据渲染到页面
+        $('.row').html(htmlStr);
+      };
+
+
+    });
+
+  </script>
+</body>
+
+</html>

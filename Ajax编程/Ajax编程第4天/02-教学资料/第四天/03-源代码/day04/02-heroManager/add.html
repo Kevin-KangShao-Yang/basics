@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>添加英雄</title>
+  <!-- 导包 -->
+  <script src="./lib/js/jquery-1.12.4.js"></script>
+  <script src="./lib/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
+  <script src="./lib/js/template-web.js"></script>
+  <style>
+    .wrap {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/bg03.jpg') center bottom no-repeat;
+      overflow: auto;
+    }
+
+    .navbar-brand {
+      padding: 10px 15px;
+    }
+
+    .page-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .file-input {
+      outline: none;
+      display: inline-block;
+      margin-top: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-horizontal {
+      margin-top: 10px;
+    }
+
+    .logout {
+      font-weight: 900;
+      font-size: 20px;
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    .logout:hover {
+      text-decoration: none;
+      color: yellowgreen;
+    }
+
+    .preview {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <nav class="navbar  navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mymenu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="images/logo.png"></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+              <div class="row">
+                <div class="col-md-6 page-title">新增英雄</div>
+                <div class="col-md-6 text-right">当前位置：首页 &gt; 新增英雄</div>
+              </div>
+            </div>
+            <div class="panel-body">
+
+              <form id="form" action="http://www.baidu.com" method="" class="form-horizontal"
+                enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="heroName" class="col-sm-2 control-label">姓名</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="heroName" name="name" placeholder="请输入姓名" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="skillName" class="col-sm-2 control-label">技能</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="skillName" name="skill" placeholder="请输入技能" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="heroIcon" class="col-sm-2 control-label">头像</label>
+                  <div class="col-sm-10">
+                    <!-- img仅仅是用来显示图片的,真正用来选择头像文件的还是input标签 -->
+                    <input type="file" class="file-input" id="heroIcon" name="icon" />
+                    <img src="" class="preview" alt="" style="height: 100px;" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success btn-add">
+                      新 增
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    //入口函数
+    $(function () {
+      /* 1.文件预览 布局思路 ： input：type  img
+      1.1 给type为file的表单元素注册onchange事件
+        * 只要用户选择了文件就会触发
+      */
+      $('#heroIcon').change(function (e) {
+        console.log('用户选择了文件');
+        //注意点：这个files属性不是jq的，而是DOM原生的语法
+        // console.log($(this).files);
+        console.log(this.files);//文件数组
+        //1.2 获取用户选择的图片
+        var file = this.files[0];
+        //1.3 将文件转为src路径
+        var url = URL.createObjectURL(file);
+        console.log(url);
+        //1.4 将url路径赋值给img标签的src
+        $(this).next().attr('src', url);
+      });
+
+
+      /* 
+      
+      * 请求地址:http://127.0.0.1:4399/hero/add
+        * 请求方法：post
+        * 请求参数：name : 名字 ， skill：技能 ， icon：图像
+        * 返回数据 ： 状态码201表示添加成功
+
+      */
+      /*2.文件上传 (点击新增按钮提交表单数据) 
+      2.1 阻止表单默认提交事件 
+      2.2 创建FromData对象
+      2.3 ajax上传 (需要额外设置两个属性)
+        content-type :false
+        processData :false
+      2.3 响应之后 跳转首页
+      */
+
+      //   $('.btn-add').click(function (e) {
+      //     //1 阻止默认跳转事件
+      //     e.preventDefault();
+      //     //2.创建FormData对象 ： 参数是from表单DOM元素
+      //     /* 底层会自动将form中的每一个input中的 name属性和value属性拼接成
+      //     参数 name=value   formData 会 将 表单中 所有包含 name属性的 表单元素 的数据 组成 一个 数据包（ urlencode , form-data）
+      //     */
+      //     var fd = new FormData($('#form')[0]);
+      //     //3.使用 jquery ajax 异步提交表单数据
+      //     $.ajax({
+      //       url:'http://127.0.0.1:4399/hero/add',
+      //       type:'post',
+      //       dataType:'json',
+      //       data:fd,
+      //       /* 
+      //       这个属性是jq独有的属性 ： jq会自动将对象序列化成 key=value&key=value这种格式
+      //       而文件是不能序列化的，设置成false就是取消序列化
+      //       */
+      //       processData:false,   // 设置 ajax 方法 不要 用 key=value 来对数据编码
+      //       /*默认情况下，jq会自动设置post请求头为 application/x-www-form-urlencoded
+      //       上传文件，需要设置成  multipart/form-data. 设置成contentType:false
+      //       作用就是取消jq默认设置
+      //        */ 
+      //       contentType:false,   // true ->urlencode格式提交数据 ， false -> form-data格式提交数据
+      //       success: function(backData){
+      //           console.log(backData);
+      //           if(backData.code == 201){
+      //             alert('增加成功');
+      //             //跳转首页
+      //             window.location.href = './index.html';
+      //           }; 
+      //       }
+      //     });
+      //   });
+
+      // });
+      
+
+      /* 
+      (1)给type类型为submit元素注册点击事件 ： 创建FromData对象就需要查找表单元素
+      (2)给表单元素 注册 submit事件， 
+        a. 这个事件与（1）一致，也是点击type为submit的元素会触发
+        b. 这个事件中的this就是表单自身，可以不用查找表单元素直接创建FromData对象
+      
+      */
+      $('#form').on('submit', function (e) {
+        //禁用表单默认提交事件
+        e.preventDefault();
+        $.ajax({
+          url: 'http://127.0.0.1:4399/hero/add',
+          type: 'post',
+          dataType: 'json',
+          data: new FormData(this),
+          contentType: false,
+          processData: false,
+          success: function (data) {
+            if(data.code == 201){
+              location.href = './index.html';
+            }
+          }
+        });
+      });
+    });
+
+  </script>
+</body>
+
+</html>

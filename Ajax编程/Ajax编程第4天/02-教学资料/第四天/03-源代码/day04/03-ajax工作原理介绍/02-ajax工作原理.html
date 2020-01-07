@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        HTTP协议工作原理  ： 规定浏览器与服务器数据交互格式
+            规定 浏览器 ： 请求报文
+                请求行 ： 地址
+                请求头 ： 数据格式
+                请求体 ： 参数
+            规定 浏览器 ： 响应报文
+                响应行 ： 状态码 
+                响应头 ： 数据格式
+                响应体 ： 服务器响应数据
+        */
+
+
+        //(1).实例化ajax对象
+        var xhr = new XMLHttpRequest();
+        //(2).设置请求方法和地址
+        xhr.open('post', 'https://autumnfish.cn/api/user/register');
+        //(3).设置请求头（post请求才需要设置）
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        //(4).发送请求 ： 参数格式  'key=value' 
+        xhr.send('username=baojiankun');
+        //(5).注册回调函数
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+        };     
+    </script>
+</body>
+
+</html>

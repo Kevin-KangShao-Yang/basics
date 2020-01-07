@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./libs/jquery-1.12.4.js"></script>
+    <script>
+        /* 接口文档
+        请求地址：http://wthrcdn.etouch.cn/WeatherApi
+        请求方法：get
+        请求参数：city
+        示例： http://wthrcdn.etouch.cn/WeatherApi?city=深圳
+        返回数据格式： XML格式数据
+        */
+
+        /* 
+            XML数据格式
+                1.XML格式数据无法使用JSON.parse()来解析
+                2.jq方法可以解析XML ：  $('选择器',XML格式数据).text()
+         */
+
+        //(1).实例化ajax对象
+        var xhr = new XMLHttpRequest();
+        //(2).设置请求方法和地址
+        //get请求的数据直接添加在url的后面 格式是 url?key=value
+        xhr.open('get', 'http://wthrcdn.etouch.cn/WeatherApi?city=深圳');
+        //(3).发送请求
+        xhr.send();
+        //(4).注册回调函数
+        xhr.onload = function() {
+            console.log(xhr.responseText)
+
+           // console.log(JSON.parse(xhr.responseText));
+
+           console.log($('city',xhr.responseText).text());//XML 
+           console.log($('wendu',xhr.responseText).text());//XML 
+           
+            
+        };
+    </script>
+</body>
+</html>

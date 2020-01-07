@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .name {
+            color: deepskyblue;
+        }
+
+        .title {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>英雄查询</h1>
+    <input type="text" placeholder="请输入查询的名字" class="hero" />
+    <input type="button" value="英雄查询" class="search" />
+    <h2><span class="name"></span>---<span class="title"></span></h2>
+</body>
+
+</html>
+<script src="./libs/jquery-1.12.4.min.js"></script>
+
+<script>
+    /*
+      - 请求地址：https://autumnfish.cn/api/hero/simple
+      - 请求方法：get
+      - 请求参数：name
+      - 响应内容：英雄外号
+    */
+
+    /* 
+    思路分析 ： 
+        1.给按钮注册点击事件
+        2.获取输入框文本
+        3.ajax发送请求
+        4.设置span标签文本
+    */
+
+    //1.给按钮注册点击事件
+    $('.search').on('click',function(){
+        //2.获取输入框文本
+        var name = $('.hero').val();
+        console.log(name);
+        //3.ajax发送请求
+        //(1).实例化ajax对象
+        var xhr = new XMLHttpRequest();
+        //(2).设置请求方法和地址
+        //get请求的数据直接添加在url的后面 格式是 url?key=value
+        xhr.open('get', 'https://autumnfish.cn/api/hero/simple?name=' + name);
+        //(3).发送请求
+        xhr.send();
+        //(4).注册回调函数
+        xhr.onload = function() {
+            console.log(xhr.responseText)
+             //4.设置span标签文本
+             $('.title').text(name + '-----' + xhr.responseText);
+        };
+       
+    });
+    
+</script>
+</body>
+
+</html>

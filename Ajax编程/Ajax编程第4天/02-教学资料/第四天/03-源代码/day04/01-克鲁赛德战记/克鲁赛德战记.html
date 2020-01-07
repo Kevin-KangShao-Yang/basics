@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/index.css" />
+
+</head>
+
+<body>
+  <img src="./img/header.png" alt="" class="header" />
+  <div class="cq-wrap">
+    <!-- 导航 -->
+    <div class="nav">
+      <ul>
+        <li><img src="./img/sword.png" alt="" /><span>剑士</span></li>
+        <li><img src="./img/knight.png" alt="" /> <span>骑士</span></li>
+        <li><img src="./img/Archer.png" alt="" /> <span>弓手</span></li>
+        <li><img src="./img/hunter.png" alt="" /> <span>猎人</span></li>
+        <li><img src="./img/magic.png" alt="" /> <span>法师</span></li>
+        <li><img src="./img/flamen.png" alt="" /> <span>祭司</span></li>
+      </ul>
+    </div>
+    <!-- table -->
+    <table class="cq-list">
+      <thead>
+        <th>勇士</th>
+        <th>技能</th>
+        <th>武器</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img class="icon" src="http://p6.qhimg.com/dr/72__/t01b8063ea608652431.png" alt="" />
+            <span>
+              涅斯军长官尤莉娅
+            </span>
+          </td>
+          <td>
+            <img class="skill" src="http://p9.qhimg.com/dr/52__/t01087d8e61575ab25d.png" alt="" />
+            注射!
+          </td>
+          <td>
+            <img class="weapon" src="http://p6.qhimg.com/dr/45__/t0178ac936dcb72650f.png" alt="" />
+            疫苗-G
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 遮罩层 -->
+  <div class="cover" style="display: none">
+    <img class="loading" src="./img/loading01.gif" alt="" />
+  </div>
+
+
+  <script src="./js/jquery-1.12.4.min.js"></script>
+  <!-- 模板引擎 -->
+  <script src="./js/template-web.js"></script>
+
+  <!-- 英雄信息模板 -->
+  <script id="heroInfo" type="text/html">
+    {{ each data.heros }}
+    <tr>
+        <td>
+          <img class="icon" src="{{ $value.heroIcon }}" alt="">
+          <span>
+            {{ $value.heroName }}
+          </span>
+        </td>
+        <td>
+          <img class="skill" src="{{ $value.skillIcon }}" alt="">
+          {{ $value.skillName }}
+        </td>
+        <td>
+          <img class="weapon" src="{{ $value.weaponIcon }}" alt="">
+          {{ $value.weaponName }}
+        </td>
+      </tr>
+      {{ /each }}
+  </script>
+
+  <script>
+    /*需求分析 
+    1.页面一加载显示body背景图（网上下载的）
+    2.tab栏切换
+      2.1 点击每一个职业按钮
+      2.2 排他思想修改样式
+      2.3 ajax发送请求
+      2.4 响应返回之后 模板引擎 渲染页面
+      2.5 页面加载默认点击第一个
+
+    3.点击头像显示技能动图
+
+    4.点击遮罩层.cover隐藏动图
+    */
+
+    //1.页面一加载显示body背景图（网上下载的）
+    //由于网站被封杀，手动模拟ajax返回值
+    var obj = {
+      ImgUrl: "http://img.badapple.top/东方Project/八坂神奈子/img (11).jpg",
+      // Color: "175,133,124"
+    };
+
+    /* 注意点：如果后台返回的url图片有空格（无法识别），则应该使用字符串包起来 */
+    $(document.body).css('backgroundImage', 'url(' + "'" + obj.ImgUrl + "'" + ')');
+
+
+    /* 
+    查询英雄的 详细信息
+      请求地址：https://autumnfish.cn/api/cq/category
+      请求方法：get
+      请求参数：type
+    */
+
+    //2.1 点击每一个职业按钮
+    $('.nav li').click(function () {
+      //2.2 排他思想修改样式
+      $(this).addClass('active').siblings().removeClass('active');
+      console.log($(this));//点击的li元素
+      console.log($(this).children('span').text());//
+      //2.3 ajax发送请求
+      $.ajax({
+        url: 'https://autumnfish.cn/api/cq/category',
+        type: 'get',
+        dataType: 'json',
+        data: {
+          type: $(this).children('span').text()
+        },
+        success: function (backData) {
+          console.log(backData);
+          //2.4 响应返回之后 模板引擎 渲染页面
+          var htmlStr = template('heroInfo', backData);
+          $('.cq-list>tbody').html(htmlStr);
+        }
+      });
+    });
+
+    //2.5 页面加载默认点击第一个(主动触发第一个li的事件)
+    $('.nav li:eq(0)').trigger('click');
+
+
+    //3.点击头像显示技能动图
+    /* 
+
+    查询英雄的 详细信息
+      请求地址：https://autumnfish.cn/api/cq/gif
+      请求方法：get
+      请求参数：name
+
+    3.1 给每一个图像注册点击事件
+      *** 图像是根据ajax请求动态生成的，所以需要注册动态事件（ajax中非常常见） ***
+    3.2 显示loading加载框 （显示cover盒子）
+    3.3 ajax发送请求
+    3.4 响应之后，将服务器返回的技能gif替换 cover中的默认loading图片
+    */
+    //3.1 给每一个图像注册点击事件
+    $(document.body).on('click', '.icon', function () {
+      console.log($(this));//点击的img
+      console.log($(this).next().text());//英雄名字 
+      //3.2 显示loading加载框 （显示cover盒子）
+      $('.cover').show();
+      //3.3 ajax发送请求
+      $.ajax({
+        url: 'https://autumnfish.cn/api/cq/gif',
+        type: 'get',
+        dataType: 'json',
+        data: {
+          name: $(this).next().text().trim()
+        },
+        success: function (backData) {
+          console.log(backData);
+          //3.4 响应之后，将服务器返回的技能gif替换 cover中的默认loading图片
+          $('.cover>img').attr('src', backData.data.skillGif);
+        }
+      });
+
+    });
+
+    /* 
+    //4.点击遮罩层.cover隐藏动图
+    */
+    $('.cover').click(function () {
+      $(this).fadeOut(function(){
+        //动画结束之后，偷偷的将img的gif替换成默认的loading动图
+        $(this).children('img').attr('src','./img/loading01.gif');
+      });
+    });
+
+    
+
+  </script>
+</body>
+
+</html>

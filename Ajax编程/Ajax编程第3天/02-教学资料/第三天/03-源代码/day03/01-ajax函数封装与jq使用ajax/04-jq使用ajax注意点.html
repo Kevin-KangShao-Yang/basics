@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./libs/jquery-1.12.4.js"></script>
+    <script>
+        //JQ使用ajax注意点
+
+        $.ajax({
+            url: 'http://wthrcdn.etouch.cn/weather_mini',
+            type: 'get',
+            data: {
+                city: '深圳'
+            },
+            //(1)有的接口会返回一个字符串
+            //(2)有的接口会返回JSON
+            //(3) dataType:'json' ,会自动检测服务器返回的数据是什么格式。如果是json，会自动帮你转成js对象
+            dataType:'json',
+            success: function (backData) {
+                console.log(backData);
+                //如果服务器返回的是json，需要手动转成js对象
+            //    var obj =  JSON.parse(backData);
+            //    console.log(obj);
+            }
+        });
+        
+    </script>
+</body>
+
+</html>

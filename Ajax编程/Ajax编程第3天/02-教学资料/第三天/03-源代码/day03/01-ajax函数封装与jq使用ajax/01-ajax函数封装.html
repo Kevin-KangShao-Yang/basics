@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="get">get请求测试</button>
+    <button id="post">post请求测试</button>
+    <button id="ajax">ajax请求测试</button>
+
+    <script>
+        /*函数 ： 存储代码，实现代码复用
+        1.代码多个地方执行
+        2.独立的小功能（浏览器与服务器交互） 
+         */
+
+        /* 
+        1.get测试接口：
+            - 请求地址：https://autumnfish.cn/api/cq
+            - 请求方法：get
+            - 请求参数：query
+        
+        2.post测试接口
+            - 请求地址：https://autumnfish.cn/api/user/register
+            - 请求方法：post
+            - 请求参数：username
+         */
+
+        /* 闭包实现沙箱模式 */
+        (function (w) {
+            /**
+            * @description:ajax发送get请求
+            * @param {type} ：url:请求地址
+            * @param {type} data:请求参数
+            * @param {type} fn:响应回调
+            * @return: 
+            */
+            function get(url, data, fn) {
+                //(1).实例化ajax对象
+                var xhr = new XMLHttpRequest();
+                //(2).设置请求方法和地址
+                //get请求的数据直接添加在url的后面 格式是 url?key=value
+                xhr.open('get', url + '?' + data);
+                //(3).发送请求
+                xhr.send();
+                //(4).注册回调函数
+                xhr.onload = function () {
+                    fn(xhr.responseText);
+                };
+            };
+
+            /**
+            * @description:ajax发送post请求
+            * @param {type} ：url:请求地址
+            * @param {type} data:请求参数
+            * @param {type} fn:响应回调
+            * @return: 
+            */
+            function post(url, data, fn) {
+                //(1).实例化ajax对象
+                var xhr = new XMLHttpRequest();
+                //(2).设置请求方法和地址
+                xhr.open('post', url);
+                //(3).设置请求头（post请求才需要设置）
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                //(4).发送请求 ： 参数格式  'key=value' 
+                xhr.send(data);
+                //(5).注册回调函数
+                xhr.onload = function () {
+                    fn(xhr.responseText);
+                };
+            };
+
+            /**
+            * @description: ajax请求封装
+            * @param {type} 参数对象  url:路径 data：参数 success：响应回调 method：请求方法
+            * @return: 
+            */
+            function ajax(obj) {
+                console.log(obj);
+                //(1).实例化ajax对象
+                var xhr = new XMLHttpRequest();
+                if (obj.method == 'get') {
+                    //(2).设置请求方法和地址
+                    xhr.open('get', obj.url + '?' + obj.data);
+                    //(3).发送请求 ： 参数格式  'key=value' 
+                    xhr.send();
+                } else {
+                    //(2).设置请求方法和地址
+                    xhr.open('post', obj.url);
+                    //(3).设置请求头（post请求才需要设置）
+                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    //(4).发送请求 ： 参数格式  'key=value' 
+                    xhr.send(obj.data);
+                }
+                //(5).注册回调函数
+                xhr.onload = function () {
+                    console.log(xhr.responseText);
+                    success(xhr.responseText);
+                };
+            };
+
+            var hm = {
+                get: get,
+                post: post,
+                ajax: ajax
+            };
+
+            //暴露接口
+            w.hm = hm;
+        })(window);
+
+
+        //get请求封装
+        document.getElementById('get').onclick = function () {
+            hm.get('https://autumnfish.cn/api/cq', 'query=剑士', function (backData) {
+                console.log('11111');
+                console.log(backData);
+
+            });
+        };
+
+        //post请求函数封装
+        document.getElementById('post').onclick = function () {
+            hm.post('https://autumnfish.cn/api/user/register', 'username=9527001', function (backData) {
+                console.log(backData);
+            });
+        };
+
+        //ajax请求函数封装
+        document.getElementById('ajax').onclick = function () {
+            // hm.ajax({
+            //     url: 'https://autumnfish.cn/api/cq',
+            //     method: 'get',
+            //     data: 'query=剑士',
+            //     success: function (backData) {
+            //         console.log(backData);
+
+            //     },
+            // });
+
+            hm.ajax({
+                url: 'https://autumnfish.cn/api/user/register',
+                method: 'post',
+                data: 'username=95270012',
+                success: function (backData) {
+                    console.log(backData);
+
+                },
+            });
+        };
+
+
+
+        /*函数三个知识点 
+        1.声明函数  function(){}
+        2.调用语法  函数名()
+        3.函数工作流程
+            a.传参
+            b.执行函数体代码
+            c.返回值
+        */
+    </script>
+</body>
+
+</html>

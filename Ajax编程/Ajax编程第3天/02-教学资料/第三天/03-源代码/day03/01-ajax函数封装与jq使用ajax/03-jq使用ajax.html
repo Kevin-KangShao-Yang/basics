@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="get方法" class="get" />
+    <input type="button" value="post方法" class="post" />
+    <input type="button" value="ajax方法" class="ajax" />
+
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+
+    <script>
+        /* 
+          1.get测试接口：
+              - 请求地址：https://autumnfish.cn/api/cq
+              - 请求方法：get
+              - 请求参数：query
+          
+          2.* 请求地址：http://www.tuling123.com/openapi/api
+        * 请求方法：post
+        * 请求参数：key,info
+        * key的备选值
+            * 2162602fd87240a8b7bba7431ffd379b
+            * a618e456f0744066840ceafb6a249d9d
+            * 7b1cf467c0394dd5b3e49f32663f8b29
+            * 9fbb98effab142c9bb324f804be542ba
+            * d7c82ebd8b304abeacc73b366e42b9ed  (氪金了)
+           */
+        //1.get请求
+        $('.get').click(function () {
+            //参数可以是字符串
+            // $.get('https://autumnfish.cn/api/cq','query=剑士',function(backData){
+            //     console.log(backData);
+            // });
+
+            //参数还可以是对象
+            $.get('https://autumnfish.cn/api/cq',
+                {
+                    query: '剑士'
+                },
+                function (backData) {
+                    console.log(backData);
+                });
+        });
+
+        //2.post请求
+        $('.post').click(function () {
+            $.post('http://www.tuling123.com/openapi/api',
+                {
+                    key: 'd7c82ebd8b304abeacc73b366e42b9ed',
+                    info: '我真的爱你们'
+                },
+                function (backData) {
+                    console.log(backData);
+
+                });
+        });
+
+        //3.ajax ： 最常用
+        $('.ajax').click(function () {
+            $.ajax({
+                url: 'http://www.tuling123.com/openapi/api',
+                type: 'post',
+                data: {
+                    key: 'd7c82ebd8b304abeacc73b366e42b9ed',
+                    info: '我没有激情了'
+                },
+                success:function(backData){
+                    console.log(backData);
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://autumnfish.cn/api/joke">a标签</a>
+    <button id="btn">ajax</button>
+    <div id="box"></div>
+    <script>
+
+        /* 
+        1.ajax技术 ：在不刷新网页的情况下向服务器请求数据
+        2.XMLHTTPRequest : http请求对象，负责实现ajax技术（小黄人）
+            （1）创建XMLHttpRequest对象
+                * 小黄人，相当于黄袍加身的跑腿外卖小哥哥
+            （2）设置请求
+                 * 告诉小黄人服务器地址
+            （3）发送请求
+                * 小黄人出发去指定地址取外卖（数据）
+                * 2G网速：走路去的
+                * 3G网速：骑膜拜去的
+                * WIFI : 骑电动车去的
+                * 4G   ： 骑小牛牌电动车去的
+            （4）注册回调函数
+                * 小黄人把取回的外卖送到你家门口
+        
+         */
+        document.getElementById('btn').onclick = function () {
+            //(1)创建XMLHTTPRequest小黄人对象
+            var xhr = new XMLHttpRequest();
+            //(2)设置请方法和地址
+            xhr.open('get', 'https://autumnfish.cn/api/joke');
+            //(3)发送请求
+            xhr.send();
+            //(4)注册响应回调
+            /* 
+            这个函数不是立即执行，而是等到服务器响应数据才会执行
+            PS：执行的快慢取决于你的网速
+             */
+            xhr.onload = function () {
+                console.log(xhr.responseText);
+                document.getElementById('box').innerText = xhr.responseText;
+            };
+        };
+
+        
+    </script>
+</body>
+
+</html>

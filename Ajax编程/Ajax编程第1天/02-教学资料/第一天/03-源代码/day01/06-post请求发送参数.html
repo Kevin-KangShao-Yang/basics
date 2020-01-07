@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        .info {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>用户注册</h2>
+    <input type="text" placeholder="请输入注册的用户名" class="username" />
+    <span class="info"></span>
+    <br />
+    <input type="button" value="注册" class="submit" />
+
+    <script src="./libs/jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        注册用户
+            请求地址：https://autumnfish.cn/api/user/register
+            请求方法：post
+            请求参数：username
+            参数名	参数说明	备注
+            username	用户名	不能为空,通过 send 方法传递，格式为 key=value
+            xhr.send('username=xxx')
+        */    
+
+        /* 
+        思路分析
+            1.给按钮注册点击事件
+            2.获取输入框文本
+            3.ajax发送请求
+            4.数据响应返回之后显示到info中
+        */
+    
+    /* 
+    本小节主要知识点：get与post区别 ,传参方式不同
+        get  ：
+            参数直接在url后面拼接：  格式 ： url?key=value
+                * 安全性不高
+        post ：
+            (1)必须要设置请求头(固定格式，强烈建议复制粘贴)
+                xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+            (2)参数需要在send()中拼接     (不要问号,安全性高)
+                格式 : 'key=value'
+    
+    */
+    //1.给按钮注册点击事件
+    $('.submit').on('click',function(){
+        //2.获取输入框文本
+        var username = $('.username').val();
+        //3.ajax发送请求
+        //(1).实例化ajax对象
+        var xhr = new XMLHttpRequest();
+        //(2).设置请求方法和地址
+        xhr.open('post', 'https://autumnfish.cn/api/user/register');
+        //(3)设置请求头（只有post才需要，固定格式）
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        //(4).发送请求
+        xhr.send('username=' + username);
+        //(5).注册回调函数
+        xhr.onload = function() {
+            console.log(xhr.responseText);
+            //4.数据响应返回之后显示到info中
+            $('.info').text(xhr.responseText);
+        };
+    });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./libs/jquery-1.12.4.js"></script>
+    <!-- 1.导包 -->
+    <script src="./libs/template-web.js"></script>
+
+</head>
+
+<body>
+    <!-- 2.写模板语法
+        id:必须要设置
+        type属性必须要设置 ： text/html
+    -->
+    <script id="weather" type="text/html">
+        <!-- （1）取值语法 -->
+    <p> {{ city }} </p>
+    <p> {{ ganmao }} </p>
+    <p> {{ yesterday.date }} </p>
+
+    <!-- (2)分支语法 -->
+    {{ if wendu >= 25 }}
+    <p>哇呜，今天好热啊，难道是因为妹子穿的很漂亮吗</p>
+    {{ else }}
+    <p>哇呜，今天好冷啊，难道是因为昨晚刚刚考试吗</p>
+    {{ /if }}
+
+    <ul>
+        <!-- (3)循环语法 -->
+        {{each forecast}}
+            <li>
+                <span>{{ $index }}</span>----
+                <span>{{ $value.date }}</span>----
+                <span>{{ $value.high }}</span>----
+                <span>{{ $value.low }}</span>----
+                <span>{{ $value.type }}</span>
+            </li>
+        {{/each}}
+    </ul>
+
+
+    </script>
+
+    <script>
+        var jsonStr = '{"data":{"yesterday":{"date":"28日星期三","high":"高温 34℃","fx":"无持续风向","low":"低温 27℃","fl":"<![CDATA[<3级]]>","type":"晴"},"city":"深圳","forecast":[{"date":"29日星期四","high":"高温 32℃","fengli":"<![CDATA[<3级]]>","low":"低温 25℃","fengxiang":"无持续风向","type":"阵雨"},{"date":"30日星期五","high":"高温 31℃","fengli":"<![CDATA[3-4级]]>","low":"低温 26℃","fengxiang":"东风","type":"暴雨"},{"date":"31日星期六","high":"高温 30℃","fengli":"<![CDATA[4-5级]]>","low":"低温 25℃","fengxiang":"东南风","type":"大到暴雨"},{"date":"1日星期天","high":"高温 30℃","fengli":"<![CDATA[4-5级]]>","low":"低温 25℃","fengxiang":"西南风","type":"暴雨"},{"date":"2日星期一","high":"高温 30℃","fengli":"<![CDATA[<3级]]>","low":"低温 26℃","fengxiang":"无持续风向","type":"阵雨"}],"ganmao":"各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。","wendu":"20"},"status":1000,"desc":"OK"}';
+        var obj = JSON.parse(jsonStr);
+        console.log(obj);
+
+        /* 3.调用官方API
+        第一个参数： 模板id
+        第二个参数： 要渲染的数据
+        */
+        var htmlStr = template('weather', obj.data);
+
+        /* 4.解析好的字符串渲染页面 */
+        $(document.body).html(htmlStr);
+
+    </script>
+</body>
+
+</html>

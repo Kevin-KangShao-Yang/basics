@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /* 
+        接口文档2
+
+        * 请求地址：http://www.tuling123.com/openapi/api
+        * 请求方法：post
+        * 请求参数：key,info
+        * key的备选值
+            * 2162602fd87240a8b7bba7431ffd379b
+            * a618e456f0744066840ceafb6a249d9d
+            * 7b1cf467c0394dd5b3e49f32663f8b29
+            * 9fbb98effab142c9bb324f804be542ba
+            * d7c82ebd8b304abeacc73b366e42b9ed  (氪金了)
+        */
+
+
+        /* 
+        1.ajax参数传递：
+            url?key1=value1&key2=value2
+            get与post传参写法都是一致，只是位置不同而已
+        */
+
+        //(1).实例化ajax对象
+        var xhr = new XMLHttpRequest();
+        //(2).设置请求方法和地址
+        xhr.open('post', 'http://www.tuling123.com/openapi/api');
+        //(3).设置请求头（post请求才需要设置）
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        //(4).发送请求 ： 参数格式  'key=value' 
+        xhr.send('key=d7c82ebd8b304abeacc73b366e42b9ed&info=我就是小朋友');
+        //(5).注册回调函数
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./libs/jquery-1.12.4.js"></script>
+    <!-- 1.导入文件template-web -->
+    <script src="./libs/template-web.js"></script>
+</head>
+<body>
+    <!-- 2.写模板
+            a.一定要设置id(后面用到)
+            b.一定要设置type,一般设置为text/html
+    -->
+    <script id="tpl" type="text/html">
+        <p> {{ city }} </p>
+        <p> {{ ganmao }}</p>
+    </script>
+
+    <script>
+        var jsonStr = '{"data":{"yesterday":{"date":"28日星期三","high":"高温 34℃","fx":"无持续风向","low":"低温 27℃","fl":"<![CDATA[<3级]]>","type":"晴"},"city":"深圳","forecast":[{"date":"29日星期四","high":"高温 32℃","fengli":"<![CDATA[<3级]]>","low":"低温 25℃","fengxiang":"无持续风向","type":"阵雨"},{"date":"30日星期五","high":"高温 31℃","fengli":"<![CDATA[3-4级]]>","low":"低温 26℃","fengxiang":"东风","type":"暴雨"},{"date":"31日星期六","high":"高温 30℃","fengli":"<![CDATA[4-5级]]>","low":"低温 25℃","fengxiang":"东南风","type":"大到暴雨"},{"date":"1日星期天","high":"高温 30℃","fengli":"<![CDATA[4-5级]]>","low":"低温 25℃","fengxiang":"西南风","type":"暴雨"},{"date":"2日星期一","high":"高温 30℃","fengli":"<![CDATA[<3级]]>","low":"低温 26℃","fengxiang":"无持续风向","type":"阵雨"}],"ganmao":"各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。","wendu":"29"},"status":1000,"desc":"OK"}';
+        var obj = JSON.parse(jsonStr);
+        console.log(obj);
+
+        /* 3.调用模板引擎的官方api */
+        // 第一个参数：模板id名 第二个参数：渲染的数据
+        var htmlStr =  template('tpl', obj.data);
+        console.log(htmlStr);
+
+        //4.将解析好的模板字符串渲染到页面
+        $(document.body).html(htmlStr);
+        
+        
+    </script>
+</body>
+</html>
