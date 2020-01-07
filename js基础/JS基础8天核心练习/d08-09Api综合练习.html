@@ -1,0 +1,132 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //一、数组练习 -----------------------------------------------
+    // 练习1
+    var arr = ["刘备"];
+    //添加数据后变成：["赵云","马超","刘备","关羽","张飞"]
+    arr.unshift("赵云", "马超");
+    console.log(arr);
+
+    arr.push("关羽", "张飞");
+    console.log(arr);
+
+    //删除数据后变成：["关羽","张飞"]
+    arr.splice(0, 3);
+    console.log(arr);
+
+    // 练习2
+    var arr = ["赵云", "马超", "刘备", "关羽", "张飞"];
+    //            0      1      2       3       4     length = 5
+    //把数组的最后一个元素变成数组的第一个元素
+    //把数组的第一个元素变成数组的最后一个元素
+    var temp = arr[0];
+    arr[0] = arr[4];
+    arr[4] = temp;
+    console.log(arr);
+
+
+
+    // 补充：数组的 slice(beginIndex,endIndex) 方法   [beginIndex,endIndex)
+    //                   将 数组中 beginIndex 下标 的元素 一直 截 到 endIndex 前面一个元素，并返回 截取的新数组
+    //                   注意：不会修改原数组
+
+    var arr = ["赵云", "马超", "刘备", "关羽", "张飞"];
+    //            0      1      2       3       4     length = 5
+    //截取["刘备","关羽"]
+    arr.splice(2, 2);
+    console.log(arr);
+
+
+    var arr = ["赵云", "马超", "刘备", "关羽", "张飞"];
+    //            0      1      2       3       4     length = 5
+    //在马超后面增加 马化腾
+    arr.splice(2, 0, '马化腾');
+    console.log(arr);
+
+
+
+    var arr = ["赵云", "马超", "刘备", "关羽", "张飞"];
+    //            0      1      2       3       4     length = 5
+    //删除关羽
+    arr.splice(3, 1);
+    console.log(arr);
+
+    var arr = ["赵云", "马超", "刘备", "关羽", "张飞"];
+    //            0      1      2       3       4     length = 5
+
+    //二、字符串练习 -----------------------------------------------
+    //1. 截取字符串"我爱中华人民共和国"，中的"中华"
+    var str = '我爱中华人民共和国';
+    //         0 1 2 3 4 5 
+    var str1 = str.substr(2, 2);
+    console.log(str1);
+
+
+    //2. "abcoefoxyozzopp"查找字符串中所有o出现的位置
+    //    分析：将 所有 o 的 下标 都 找到 ，并存入 数组，最后打印数组
+    var str = 'oabcoefoxyozzoppooooooo';
+    //         a b c o e f o x y o  z  z   o  p  p
+    //         0 1 2 3 4 5 6 7 8 9  10 11  12 13 14
+    var arrIndex = [];
+    for (var i = 0; i < str.length; i++) {
+      if (str[i] == 'o') {
+        arrIndex.push(i);
+      }
+    }
+
+    console.log(arrIndex);
+
+
+
+
+    //3. 把字符串中所有的o替换成!
+    var str = 'oabcoefoxyozzopp';
+    str = str.replace(/o/g, '!');
+    console.log(str);
+
+    //4. 把一个字符串中所有的空格全部去掉
+    var str = 'i love u,but u dont know ~~~';
+    str = str.replace(/ /g, '');
+    console.log(str);
+
+    //5. 统计字符串中每个字符出现的次数 ----------------------
+    var str = 'iloveuiiiilooooveu';
+    // a=2
+    // k=1
+    // ........
+    // 思路：
+    //   a.到底有几个字符呢？--- 字符个数 不确定
+    //   b.每个字符出现了几次呢？ --- 字符出现的次数 不确定
+    //   { a:3 ,b:4 .... }
+
+    // 5.1 创建用来 保存 各个字母出现 次数的 空对象
+    var obj = {};
+
+    // 5.2 遍历 字符串 中的 每一个 字符
+    for (var i = 0; i < str.length; i++) {
+      // 5.3 取出 遍历的 字符
+      var char1 = str[i];
+      // 5.4 判断 对象中 是否 存在 与 字符同名的 属性
+      if (char1 in obj) {
+        obj[char1]++; // obj['a']++; 将 对象中 与 char1 中字符 同名的 属性值 + 1
+      } else {
+        obj[char1] = 1;// obj['a']=1; 动态 为 对象 添加一个 与 char1 中字符 同名的 属性，并设置默认值为 1
+      }
+    }
+
+    console.log(obj);
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

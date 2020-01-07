@@ -1,0 +1,61 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 1.变量 就是一个 容器，可以用来装一个数据
+    var a = 1;
+
+    // 2.数组 
+    var arr = [1, 2, 3, 4];
+    // arr[0]
+
+    // 3.函数 可以将代码装起来
+    function showLove() {
+      console.log('小白，我喜欢你哦~~~~');
+    }
+
+
+    //4.对象：超级容器，可以存放所有东西 -- 变量、数组、函数、对象--------------------------------
+    // 4.1 创建一个 对象 -----------------
+    var bzGF = {
+      name: '素雅',
+      age: 18,
+      gender: false,
+      children: ['ruiky', '瑞琪', '瑞奇'],
+      pet: {
+        name: '花花',
+        age: 2,
+        bark: function () {
+          console.log('汪汪汪~~~~~');
+        }
+      },
+      cook : function () {
+        console.log('老公，饭做好了，快回家吃吧~~~~');
+      }
+    };
+
+    // 4.2 访问 对象 里的 “变量”----------------
+    console.log(bzGF.name);
+    console.log(bzGF.age);
+    console.log(bzGF.children);
+
+    // 4.3 调用 对象 里的 函数 ---------------
+    bzGF.cook();
+
+
+
+    //5.  对象的成员，包括 属性 和 方法
+
+    //5.1 对象的属性：就是 对象里的 “变量”，用来 保存 数据
+    //5.2 对象的方法：就是 对象里的 “函数”，用来 保存 代码
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script>
+
+/* 要求：接收用户输入的分数，根据分数输出对应的等级字母 A、B、C、D、E。其中：
+	a. 90分(含)以上 ，输出：A；
+	b. 80分(含)~ 90 分(不含)，输出：B；
+	c. 70分(含)~ 80 分(不含)，输出：C；
+	d. 60分(含)~ 70 分(不含)，输出：D；
+	e. 60分(不含) 以下，输出 E。
+ */
+var num =parseInt( prompt('请输入你的分数') );
+if (num>=90) {
+    alert('A');
+}else if (num>=80 && num<90) {
+    alert('B');
+}
+else if (num>=70 && num<80) {
+    alert('C');
+}
+else if (num>=60 && num<70) {
+    alert('D');
+}
+else {
+    alert('E');
+}
+
+
+</script>
+
+
+
+
+</head>
+<body>
+    
+</body>
+</html>

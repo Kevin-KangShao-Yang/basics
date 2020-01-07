@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 利用函数 求3个数的最大值
+        // 传入 3个数，返回 3个数中 最大 的那个数
+        function getMaxNum(x, y, z) {
+            if (x >= y && x >= z) {
+                return x;
+            } else if (y >= x && y >= z) {
+                return y;
+            } else {
+                return z;
+            }
+        }
+
+        var maxNum = getMaxNum(100, 22, 3);
+        console.log(maxNum);
+
+
+        // 2.求 任意数组 的 和 ----------------------- -----------------------
+        // 思路：声明一个函数，接收 一个数组（需要准备一个参数）
+        //       函数内部： 准备 一个 保存求和 的箩筐变量
+        //                 遍历传入的数组中的元素，将他们累加到 箩筐变量中
+        //                 通过 return 关键字 将 箩筐变量中的 所有元素之和 返回 给函数的调用者
+
+        function sumArr(arrNum) {
+            var sumNum = 0;
+
+            // 遍历 数组中的元素，并 累加 到 求和变量中
+            for (var i = 0; i < arrNum.length; i++) {
+                sumNum += arrNum[i];
+            }
+
+            // 返回 求和变量
+            return sumNum;
+        }
+
+        var arrNum1 = [2, 3, 6, 1, 1, 6, 19];
+
+        
+        // 调用 sumArr 函数，传入 数组，获取 数组中所有元素的 和，并 保存到变量 sumNum1 中
+        var sumNum1 = sumArr(arrNum1);
+        // 打印 和
+        console.log(sumNum1);
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    /*
+      写一个构造函数，用来创建学生对象，学生对象包括的内容有：姓名（name）、学号（id）、性别（sex）、打招呼（ sayHi ）—— 在弹出框中提示：“你好我是XXX”，其中XXX代表对象的name属性值
+    */
+
+    // 1.构造函数 本质 就是一个 普通的函数而已
+    // 2.构造函数 的目的：为了 与 new 关键字 结合 使用 批量 创建对象
+    function StuInfo(sId,sName,sSex) {
+      this.id = sId;
+      this.name = sName;
+      this.sex = sSex;
+
+      this.sayHi = function () {
+        
+      }
+    }
+
+    var s1 = new StuInfo(1,'小白白',true);
+    // 3.new 关键字 4件事情
+    // a.创建空对象
+    // b.将对象 设置给 构造函数的 this
+    // c.调用构造函数代码 -- 一般都是为 对象 添加成员(属性和方法)
+    // d.将 对象 返回 给 前面的 变量 s1
+
+    console.log(s1);
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // while循环案例
+        // 1. 打印人的一生，从1岁到100岁  --------------------------------------------------
+        // var age = 1;
+        // while (age <= 100) {
+        //     console.log(age);
+        //     age++;
+        // }
+
+        // 2. 计算 1 ~ 100 之间所有整数的和 --------------------------------------------------
+        var sumNum = 0;
+
+        var i = 1;
+        while (i <= 100) {
+            sumNum += i;
+            i++;
+        }
+        console.log('1-100之间的和：' + sumNum);
+
+
+        // 3. 弹出一个提示框， 你爱我吗？  如果选择 是，提示结束，否则，一直询问~~ -----------------
+        // 思路：
+        //    a.创建变量 doULoveMe 变量 来保存 对方是否 选择了 爱你
+        //    b.使用 confirm 确认选择框 询问
+        //    c.使用 while 来循环 询问的过程
+
+        // var doULoveMe = confirm('亲，你爱我吗？'); // 点击 确定：true ，点击 取消：false
+
+        // while (!doULoveMe) { // while (doULoveMe == false) {
+        //     doULoveMe = confirm('亲，你爱我吗？');
+        // }
+
+        // console.log('总算知道她是爱我的~~~~');
+
+
+        // 4. 检测 用户输入的数据是否为 数值，如果不是，则重新输入 -------------------------------------
+        // 思路：
+        //     parseInt(x) 如果 x 是一个 数字字符串，就会返回 数值， 如果 x 不是一个 数字字符串，就会 返回 NaN
+        //     a. 如何 判断 接收的数据 是否 不是一个 数值
+        //     b. 如果 不是一个 数值，要求重新输入
+        //     c. 如果   是一个 数值，则 退出循环，执行后面的代码
+
+        // var age = parseInt(prompt('请输入你的年龄：(必须是数值)'));
+
+        // while (isNaN(age)) {
+        //     age = parseInt(prompt('你是不是傻，必须是数值啊！！！！请输入你的年龄：(必须是数值)'));
+        // }
+
+        // console.log('age =' + age);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

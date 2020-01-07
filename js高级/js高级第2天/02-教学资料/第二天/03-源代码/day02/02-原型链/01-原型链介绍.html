@@ -1,0 +1,79 @@
+<!--
+ * @Description: In User Settings Editcript
+ * @Author: your name
+ * @Date: 2019-08-11 09:34:59
+ * @LastEditTime: 2019-08-11 10:57:04
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /* 
+        1.原型链： 每一个对象都有__proto__指向自身的原型，而原型也是对象，也有自己的原型，以此类推
+        形成链式结构，称之为原型链。
+
+        2.对象访问原型链成员规则：就近原则
+            当对象访问原型的成员，先看自己有没有。 如果有则访问（取值+赋值）,没有找原型，
+            如果原型有则访问原型的，如果原型没有则访问原型的原型，以此类推一直到原型链最顶端，
+        如果还没有。  属性  则返回undefined,  方法 则报错  xxxx is not a function
+        
+        
+         */
+        //原型测试题
+
+        //构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        };
+
+        //原型对象
+        Person.prototype.sayHi = function(){
+            console.log('你们是我教过的最好的学生');
+            
+        };
+
+        Person.prototype.country = '中国人';
+
+        //实例化对象
+        var p1 =  new Person('xjh',26);
+        p1.bigSowrd = function(){
+            console.log('精油开背');
+            
+        };
+
+        console.log(p1);
+
+        //请问下面代码的结果是什么
+        console.log(p1.name);//  xjh  因为p1自己有name
+        console.log(p1.country);// 中国人 p1自己没有country，但是原型有
+        p1.bigSowrd();// 精油开背   p1自己有这个方法
+        p1.sayHi(); //  教过的学生  p1自己没有，但是原型有
+        console.log(p1.girlfriend);//undefined  p1自己没有，原型也没有
+        //报错 : xxxx is not a function
+        //p1.learn();// (1) p1.learn = undefined  (2)undefined()
+
+        //为什么不报错？
+        p1.toString(); // p1没有tostring，原型没有toString。  但是p1的原型的原型有toString
+
+        //查看p1的原型链
+        console.log(p1.__proto__.constructor);//Person
+        console.log(p1.__proto__ === Person.prototype);//true
+        //查看p1的原型的原型
+        console.log(p1.__proto__.__proto__.constructor);//Object
+        console.log(p1.__proto__.__proto__ === Object.prototype);//true
+        //查看p1的原型的原型的原型
+        console.log(p1.__proto__.__proto__.__proto__);//null
+
+        
+    </script>
+</body>
+</html>

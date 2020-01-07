@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+var div1 = document.getElementById('div1');
+    console.log ( div1 );
+    console.log ( typeof  div1 );//object
+
+    //2.如果没有这个id，那么会得到一个null
+    var box = document.getElementById('box');
+    console.log ( box );//null
+
+    //3.由于在html的标签元素中id具有唯一性，所以我们可以直接使用id来表示这个元素
+    //这种用法不推荐，有些浏览器不支持
+    console.log ( div2 );
+    </script>
+</head>
+
+<body>
+    <div id="div1">我是div1</div>
+    <div id="div2">我是div2</div>
+    
+</body>
+
+</html>

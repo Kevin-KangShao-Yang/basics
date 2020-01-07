@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var dog = {
+      dName: '小花花',
+      dAge: 5,
+      dGender: true,
+
+      bark: function () {
+        console.log('汪汪汪~~~~~~');
+      }
+    };
+
+
+    //1.修改 对象 属性值 ----------------------------------------------------------
+    dog.dName = '瑞琪~~~';
+    console.log(dog);
+
+    //2.为 对象 动态添加 成员------------------------------------------------------
+    //2.1 为对象 动态添加 属性-----------
+    //【语法】对象.要添加的属性名 = 属性值
+    dog.furtherColor = '亮棕色';
+    console.log(dog);
+
+
+    //2.2 为 对象 动态添加 方法---------
+    //【语法】对象.要添加的方法名 = function (){  }
+
+    dog.bite = function() {
+      console.log('wheng~~~ 咬你~~！');
+    }
+    
+    console.log(dog);
+    dog.bite();
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

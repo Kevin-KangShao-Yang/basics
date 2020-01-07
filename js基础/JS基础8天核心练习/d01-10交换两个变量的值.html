@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 要求：交换两个变量的值 ( *实现思路：使用一个 临时变量 用来做中间存储* )
+    // 思路：杯子1装满可乐，杯子2装满了茶，要把两个杯子里的饮料对调，可以借用第三个杯子
+    var num1 = '可乐';
+    var num2 = '绿茶';
+
+    console.log(num1,num2,num3);
+
+    //将 第1个杯子的值 “倒入” 第三个杯子
+    var num3 = num1;
+    console.log(num1,num2,num3);
+
+    //将 第2个杯子的值 “倒入” 第一个杯子
+    num1 =  num2;
+    console.log(num1,num2,num3);
+
+    //将 第3个杯子的值 “倒入” 第二个杯子，完成 交换
+    num2 = num3;
+    console.log(num1,num2,num3);
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

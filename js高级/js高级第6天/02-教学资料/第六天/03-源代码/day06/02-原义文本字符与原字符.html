@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        /* 
+        1.正则表达式主要由两部分组成
+            原义文本字符 ： 就是字符串本身的含义，别想多了
+            元字符 ： 修改了字符串原本的含义 (类似于js的关键字)
+                [] {} () + * ? . \ ^ $ |
+
+        
+        */    
+
+        //a。原义文本字符
+        //   /黑马/ : 检测字符串有没有黑马这两个字。 不是有黑或者有马，也不是有黑并且有马，就是看有没有黑马
+
+        console.log(/黑马/.test('黑色的马'));//false
+        console.log(/黑马/.test('黑色的利群'));//false
+        console.log(/黑马/.test('利群的马'));//false
+        console.log(/黑马/.test('利群是一匹黑马'));//true
+
+        // /abc/ : 检测字符串有没有 abc 这个字符串
+        console.log(/abc/.test('a1b1c1'));//false
+        console.log(/abc/.test('123abc'));//true
+        
+        
+    </script>
+</body>
+</html>

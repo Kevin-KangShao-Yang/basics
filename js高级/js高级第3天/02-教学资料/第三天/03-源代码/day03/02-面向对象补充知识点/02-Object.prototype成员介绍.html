@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+       1. Object.prototype成员 ： 原型链中所有的对象最终的原型都会指向object的原型
+        这就意味着，所有的对象都能访问  Object.prototype
+
+       2. 介绍Object.prototype成员
+         */
+        console.log(Object.prototype);
+
+        function Person(name,age){
+            //实例化对象
+            this.name = name;
+            this.age = age;
+        };
+
+        //属于原型对象
+        Person.prototype.type = '哺乳动物';
+
+        var p1 = new Person('班长',26);
+
+        //2.1 hasOwnProperty :  对象是否有某个成员
+        // 作用： 检查一个成员 是自己的 还是原型的  
+        // 语法： 对象名.hasOwnProperty('属性名')  true:有 false:没有
+
+        console.log(p1.hasOwnProperty('name'));//true
+        console.log(p1.hasOwnProperty('age'));//true
+        console.log(p1.hasOwnProperty('type'));//false
+
+        //2.2 isPrototypeOf ： 检测一个对象是不是另一个对象的原型
+        // 语法： A对象.isPrototypeOf(B对象)   A是不是B的原型 ( A == B.__proto__)
+
+        console.log(Person.prototype.isPrototypeOf(p1));//true
+        
+        var p2 = {};
+        p1.__proto__ = p2;//修改p1的原型为p2
+        console.log(p2.isPrototypeOf(p1));//true
+
+        //2.3 propertyIsEnumerable() : 检测对象的成员是否可以被枚举
+        // 枚举 必须满足两个条件 ： （1）是自己的成员  （2）可以被for-in遍历
+
+        //数组的length : 无法被for-in循环遍历
+        var arr = [10,20,30];
+        console.log(arr.hasOwnProperty('length'));//true 
+        console.log(arr.propertyIsEnumerable('length'));//false 满足条件1  不满足条件2 
+
+        for(var key in arr){
+            console.log(key);
+            console.log(arr[key]);
+        };
+    </script>
+</body>
+</html>

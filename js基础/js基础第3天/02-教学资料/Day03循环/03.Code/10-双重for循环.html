@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 注意：双重循环时，外层循环 一次，内层循环 全部走完
+
+        //模拟 在传智 一周 5天，一天4小时课 的过程
+        for (var weekDay = 1; weekDay <= 5; weekDay++) {
+            //模拟 每天 4小时课
+            for (var hour = 1; hour <= 4; hour++) {
+                console.log('今天是星期【' + weekDay + '】，现在是第【' + hour + '】节课~~~');
+            }
+        }
+
+
+
+        // 1. 双重for循环 语法结构
+        // for (外层的初始化变量; 外层的条件表达式; 外层的操作表达式) {
+        //     for (里层的初始化变量; 里层的条件表达式; 里层的操作表达式) {
+        //         // 执行语句;
+        //     }
+        // }
+        // 2. 我们可以把里面的循环看做是外层循环的语句
+        // 3. 外层循环循环一次， 里面的循环执行全部
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        借用构造函数继承 ： 使用不多
+            只能继承 this.xxx 属性
+         */
+        
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        };
+
+        // var p1 = new Person('张三',18);
+        // p1.sayHi = function(){
+        //     console.log('1111');
+            
+        // };
+        // p1.hobby = '洗脚';
+
+        // console.log(p1);
+        
+
+        function Student(name,age,score){
+            // this : new创建的空对象
+            // this.name = name;
+            // this.age = age;
+            //借用Person构造函数的赋值代码 ： 给student构造函数new创建的空对象赋值
+            Person.call(this,name,age);//将person函数中的this，改成student函数中的this
+            this.score = score;
+        };
+
+        var s1 = new Student('班长',26,98);
+        console.log(s1);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    /* 
+    12. 请用户输入年份和月份，打印出这个月有多少天
+        var usrYear,usrMonth,usrDay;
+        
+        1，3，5,7,8,10,12月有31天
+        4,6,9,11月有30天
+        2月，如果是平年就是28天，闰年就是29天
+    */
+
+    var usrYear, usrMonth, usrDay;
+
+    usrYear = parseInt(prompt('请输入年份：'));
+    usrMonth = parseInt(prompt('请输入月份：'));
+
+    //2.判断是否为 大月
+    if (usrMonth == 1 || usrMonth == 3 || usrMonth == 5 || usrMonth == 7 || usrMonth == 8 || usrMonth == 10 ||
+      usrMonth == 12) {
+      usrDay = 31;
+    }
+    //3.判断是否为 小月
+    else if (usrMonth == 4 || usrMonth == 6 || usrMonth == 9 || usrMonth == 11) {
+      usrDay = 30;
+    }
+    //4.判断是否为 2月
+    else if (usrMonth == 2) {
+
+      if (usrYear % 400 == 0 || (usrYear % 4 == 0 && usrYear % 100 != 0)) {
+        usrDay = 29;
+      } else {
+        usrDay = 28;
+      }
+
+    } else {
+      alert('您输入的月份有误~~~可能您的身份不是地球人吧~~~');
+    }
+
+    //5.如果 usrDay 已经被赋值过了，就打印出来
+    if (usrDay != undefined) {
+      alert('【' + usrYear + '】年【' + usrMonth + '】月有【' + usrDay + '】天');
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

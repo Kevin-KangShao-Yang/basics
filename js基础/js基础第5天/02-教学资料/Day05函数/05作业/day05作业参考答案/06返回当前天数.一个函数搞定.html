@@ -1,0 +1,85 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // /* 
+    //   6.输入某年某月某日，判断这一天是这一年的第几天，封装成函数
+    //     2019.1.1 -》 2019.5.29  有多少天？
+    //     1月份总天数
+    //     2月份总天数
+    //     3月份总天数
+    //     4月份总天数
+    //     5 月份 29
+    //    */
+    // function countDay2(usrYear, usrMonth, usrDay) {
+    //   // 总天数变量
+    //   var allDaysNum = 0;
+
+    //   // 月份天数数组
+    //   var arrMonthDays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    //   //                  0   1   2   3   4   5   6   7   8   9  10  11  12
+
+    //   if (usrYear % 400 == 0 || (usrYear % 4 == 0 && usrYear % 100 != 0)) {
+    //     arrMonthDays[1] = 29;
+    //   }
+
+    //   // 1.1 使用 for 循环 生成 前面几个月
+    //   for (var yue = 1; yue < usrMonth; yue++) {
+    //     allDaysNum += arrMonthDays[yue];
+    //   }
+
+    //   //2.再把 最后一个月的天数 累加进去
+    //   allDaysNum += usrDay;
+    //   //3.返回 总天数
+    //   return allDaysNum;
+    // }
+
+
+
+
+
+    // 一、函数声明 ------------------------------------
+    function countDays(usrYear, usrMonth, usrDay) {
+      // 总天数变量
+      var allDaysNum = 0;
+
+      //1.先把 从 1月 到 usrMonth-1 月 的 总天数计算出来
+      // 1.1 使用 for 循环 生成 前面几个月
+      for (var yue = 1; yue < usrMonth; yue++) {
+        if (yue == 1 || yue == 3 || yue == 5 || yue == 7 || yue == 8 || yue == 10 || yue == 12) {
+          allDaysNum += 31;
+        } else if (yue == 4 || yue == 6 || yue == 9 || yue == 11) {
+          allDaysNum += 30;
+        } else {
+          if (usrYear % 400 == 0 || (usrYear % 4 == 0 && usrYear % 100 != 0)) {
+            allDaysNum += 29;
+          } else {
+            allDaysNum += 28;
+          }
+        }
+      }
+      //2.再把 最后一个月的天数 累加进去
+      allDaysNum += usrDay;
+      //3.返回 总天数
+      return allDaysNum;
+    }
+
+
+    // 二、测试函数调用 ------------------------------------
+    var year = parseInt(prompt('请输入年份'));
+    var month = parseInt(prompt('请输入月份'));
+    var day = parseInt(prompt('请输入天'));
+
+    //调用函数 获取 总天数
+    var num = countDays(year, month, day);
+
+    alert('总天数为：' + num);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

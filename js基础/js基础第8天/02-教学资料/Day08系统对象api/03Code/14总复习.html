@@ -1,0 +1,144 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 1. 变量命名规则 : 字母、数字、_ $      数字 不能开头      不能用js关键字   区分大小写
+    var a_1$ = 1;
+    // var 1a = 2; 报错
+
+    // 2. 运算符  算数   一元   比较   逻辑
+    // 2.1 算数运算符 ： + - * / % ** ...
+    // 2.2 一元运算符： ++   -- 
+    // 2.3 比较运算符：> <  >=  <=  ==  !=   ===   !==
+    //   ==   只判断值，不判断类型    1 == '1' -> true
+    //   ===  既判断类型也判断值      1 === '1' ->false
+
+    //4. 逻辑运算符 
+    //   4.1 && 逻辑与 ： 一假都假
+    //   4.2 || 逻辑或 ： 一真都真
+    //   4.3 !  取反运算符： 相反值
+
+
+    //5. 循环变量最后值
+    for (var i = 1; i < 10; i++) {
+
+    }
+
+    console.log(i);  // 10
+
+
+    // 6. break 和 continue  可以用于 三种循环：  for     while     do while
+    //   break    退出整个循环  和 退出 switch case
+    //   continue 退出本次 循环  退到 i++ 位置
+
+
+    // 7 .数组 -新增数组的两种方式----
+    var arr = [2, 45, 7, 87];
+    //         0  1   2  3   length = 4
+    // 7.1 访问数组元素
+    console.log(arr[1]); // 45
+
+    // 7.2 修改数组的元素-------------
+    arr[1] = 3747;
+
+    // 7.3 新增元素 ------------------
+    // a. push(新的值)-----
+    arr.push(100);
+    console.log(arr);
+
+    // b. 数组[length] = 新的值-----
+    arr[arr.length] = 200;
+    console.log(arr);
+
+
+    // 7.4 删除数组元素
+    arr.splice(1, 2);
+    console.log(arr);
+
+
+    // 7.5 遍历数组
+    // a.正序
+    for (var i = 0; i < arr.length; i++) {
+
+    }
+    // b.倒序
+    for (var i = arr.length - 1; i >= 0; i--) {
+
+    }
+
+    // 8. 对象成员的中括号访问法 --------------------------------
+    var cat = {
+      cName: 'kitty',
+      cAge: 2,
+      miao: function () {
+        console.log('喵喵喵~~~~~');
+      }
+    };
+
+    // 8.1 对象成员的 . 访问法
+    console.log(cat.cAge);
+    cat.miao();
+
+    // 8.2 对象成员的 [] 访问法
+    console.log(cat['cAge']);
+    cat['miao']();
+
+
+    // 9. 方法的传参 -- 形参是声明变量，实参是传递数据
+    function hate(aaa) {  // 形参
+      console.log(aaa);
+    }
+
+    hate(123); // 实参 -- 调用时 传给 形参 的数据
+    // console.log(aaa); //  aaa is not defined
+
+    //10. 找数组中最大值
+    var arr = [2, 3, 6, 3, 200, 8, 9, 3, 3];
+    var maxNum = arr[0];
+
+    for (var i = 1; i < arr.length; i++) {
+      if (arr[i] > maxNum) {
+        maxNum = arr[i];
+      }
+    }
+
+    console.log(maxNum);
+
+    //11. 预解析：函数提升 和 变量提升
+    // a. 函数提升 -- 只有 声明式的函数 才会 函数提升
+    sayHi();
+    function sayHi() {
+      console.log('sayHI~~~');
+    }
+
+    var s1 = function () {
+      
+    }
+
+    var s2 = new Function();
+
+
+    // b.变量提升 ---- 提升 变量 声明部分，赋值部分留在原地不动
+    console.log(age); // undefined
+    var age = 18;
+
+
+    // 关于 null 和 undefined
+    var a; // undefined
+    var b  = prompt('非常好~~~如果 点取消按钮 就会 返回 null ');
+
+
+
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

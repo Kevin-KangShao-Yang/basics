@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //7.将数组['P城','Z城','医院','市政厅','R城'] 元素 拼接成 一个字符串，中间用 '-' 分隔。
+    //    如：'P城-Z城-医院-市政厅-R城'
+
+
+
+    var arr = ['P城', 'Z城', '医院', '市政厅', 'R城'];
+    //           0      1      2          3     4      length =5
+
+    // 思路：
+    //     a.准备一个字符串变量
+    //     b.通过 for循环，生成 数组里的 每个元素的 下标
+    //     c.根据下标 获取 数组元素，然后 将它 拼接 到 字符串中 
+    //     d.每个元素后面 还拼接一个 '|'
+
+    var str = '';
+
+    for (var i = 0; i < arr.length; i++) {
+      str += arr[i];
+
+      //  i < 4   最后一个元素 不要 加 竖线
+      if (i < arr.length - 1) {
+        str += ',';
+      }
+    }
+
+    console.log(str);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

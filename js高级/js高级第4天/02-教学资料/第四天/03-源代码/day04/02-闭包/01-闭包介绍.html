@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        1.学习目标
+            （1）闭包 : 是一个可以在函数外部访问函数内部变量的函数
+            （2）闭包作用 在函数外面访问函数内部的变量
+            （3）闭包语法 ： 闭包语法大概可以分为三个步骤
+                    a。 在外部函数中声明一个闭包函数
+                    b. 在闭包函数中返回你想要访问的变量
+                    c. 返回这个闭包函数
+        
+        2.学习路线
+            （1）抛出需求 ： 如何在函数外面访问函数内部变量
+            (2)复习 js变量的作用域
+            (3)返回值 ： 引出性能问题
+            (4)引出闭包
+         */
+
+        /* 
+        复习js作用域
+            1.全局作用域（全局变量） ： 函数外声明
+                全局变量生命周期 ： 从页面加载到关闭
+            2.局部作用域（局部变量） ： 函数内声明
+                局部变量生命周期 ： 从函数开始执行到结束执行
+         */
+
+        //（1）  如何在函数外面访问函数内部变量
+        // function fn() {
+        //     var person = {
+        //         name: '白石老师',
+        //         age: 30
+        //     };
+        //     //person的生命周期 ： 变量从声明到被系统回收  （1）执行函数声明  （2）执行完毕回收
+        // };
+
+
+        // fn();
+
+         //js中不能直接在函数外部访问函数内部变量 （变量有作用域）
+        //  console.log(person);
+
+        //（2）函数返回值
+        // function fn() {
+        //     var person = {
+        //         name: '白石老师',
+        //         age: 30
+        //     };
+        //     return person;
+        // };
+
+        //  var p1 = fn();
+        //  var p2 = fn();
+        //  //两次调用函数返回的不是同一个局部变量 （内存资源浪费）
+        // console.log(p1 == p2);//false
+
+
+        /* 
+        3.
+        闭包 : 是一个可以在函数外部访问函数内部变量的函数
+        闭包作用 在函数外面访问函数内部的变量
+        闭包语法 ： 闭包语法大概可以分为三个步骤
+            a。 在外部函数中声明一个闭包函数
+            b. 在闭包函数中返回你想要访问的变量
+            c. 返回这个闭包函数
+
+        闭包本质 ： 沟通函数内部与外部的一座桥梁
+         */
+
+         function fn() {
+            var person = {
+                name: '白石老师',
+                age: 30
+            };
+            //1.在函数内部声明一个函数(开辟局部作用域)
+            function closure(){
+                //2.在闭包函数中返回你想要访问的变量
+                return person;
+            };
+            //3.在函数中返回闭包函数
+            return closure;
+        };
+
+
+        var bibao =  fn();
+        var p1 =  bibao();
+        var p2 = bibao();
+        //true
+        console.log(p1 == p2);
+        
+
+
+        
+
+
+    </script>
+</body>
+
+</html>

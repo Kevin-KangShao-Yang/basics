@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 共产主义： 均富 --- 【头号玩家】
+    // 人活着有什么意义？ --- 在于 身边 和 以后的人 
+    // 2009 接触  android -- HTC G1
+
+
+    // 1. 后自增  在变量后面 写 ++    -------------------------------
+    // var age = 1;
+    // age++;
+    // console.log(age);
+
+    // 后自增 特点：先执行 其他运算符，最后执行 后++操作 
+    // var num = 1;
+    // var b = num++;
+    // console.log(b); // 1
+    // console.log(num); // 2
+
+    // 2. 前自增 在变量前面 写 ++      --------------------------------
+    // var age = 1;
+    // ++age;
+    // console.log(age);
+
+    // 前自增特点：先执行 前+=操作，再执行 其他运算符
+    var num1 = 1;
+    var b = ++num1;
+    console.log(b); // 2
+    console.log(num1); // 2
+
+
+    // 思考：
+    var a = 2;
+    var b = 3;
+    var c = ++a + b++;
+    console.log(a, b, c); // a = 3   b= 4   c = 6
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

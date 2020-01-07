@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var arrCity = ['P城', 'R城', 'G港', '学校', '靶场'];
+    //               0      1     2       3       4      length = 5
+    // console.log(arrCity);
+    // arrCity.length = 3;
+    // console.log(arrCity);
+
+    //1. splice 删除 指定 下标 的元素
+    //   splice( beginIndex, count )
+    //           beginIndex 要删除的元素的下标
+    //           count      要删除元素的个数
+
+    console.log(arrCity);
+    // arrCity.splice(2,1); // 从 下标 2 的元素开始删除，一共删除 1个元素
+    // arrCity.splice(2); // 如果 不设置 第二个参数，就会 从 指定下标 开始删除，一直删到最后一个元素
+    arrCity.splice(2,2); // 从 下标为2 开始删，删除 2个元素
+    console.log(arrCity);
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

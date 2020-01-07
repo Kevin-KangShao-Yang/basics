@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    function getMin() {
+      //2.遍历数组中的元素
+      for (var i = 0; i < arrNums.length; i++) {
+
+        //2.1 将 每个元素 去和 擂台变量 比较看谁更小，将更小的值 赋给 擂台变量
+        if (arrNums[i] < minNumber) {
+          minNumber = arrNums[i];
+        }
+
+      }
+    }
+    var arrNums = [];
+    var minNumber = 1;
+    getMin();
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

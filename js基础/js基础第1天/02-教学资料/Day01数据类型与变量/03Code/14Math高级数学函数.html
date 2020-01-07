@@ -1,0 +1,80 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // Math对象：负责高级数学函数
+    // 不用硬背，对常用的有个印象即可，用的时候可以直接查阅官方文档
+
+    //1. Math中的 PI ，保存了 一个 圆周率 的数值
+    console.log(Math.PI); // 3.141592653589793
+
+    //小练习：求 0.5米 半径的 圆的 面积
+
+
+
+    //2. 求绝对值函数 abs
+    var num1 = Math.abs(-100);
+    console.log(num1); // 100
+
+
+
+
+    //3. 天花板函数 ceil  -- 整数位 + 1，小数位 去掉
+    //                   注意：只针对 有小数的 数值，如果是整数，返回原来的值
+    var num2 = Math.ceil(1.001);
+    console.log(num2); // 2
+
+    var num3 = Math.ceil(119.2);
+    console.log(num3); //  120
+
+    var num4 = Math.ceil(3747);
+    console.log(num4);
+
+
+    //4. 地板函数 floor --- 整数位 不变，小数位 去掉
+    var num5 = Math.floor(11.1);
+    console.log(num5);
+
+
+
+    //5. 四舍五入函数 round --- 小数位 >= 0.5 ,小数位去掉，整数位 +1
+    //                                < 0.5 ，小数位去掉，整数位 不变
+    var num6 = Math.round(11.5);
+    console.log(num6); // 12
+    var num7 = Math.round(11.2);
+    console.log(num7); // 11
+
+
+
+
+    //6.求最大值函数 max---------------------------------
+    // 10,21,199,423,1
+    var maxNum = Math.max(10, 21, 199, 423, 1, 87, 12);
+    console.log(maxNum);
+
+
+
+    //7.求最小值函数 min -----------------------------
+    // 10,21,199,423,1
+    var minNum = Math.min(10, 21, 199, 423, 1);
+    console.log(minNum);
+
+
+    // 思考：有四个变量，里面放了4个数值，请找出最大值？
+    var a1 = 10;
+    var a2 = 20;
+    var a3 = 15;
+    var a4 = 2;
+
+    var maxNum1 = Math.max(a1, a2, a3, a4);
+    console.log(maxNum1);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

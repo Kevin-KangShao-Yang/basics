@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 预解析：JS引擎 在 执行 页面上的 JS代码之前，会 先 把 页面上所有的 JS代码 看一眼，并 将 
+        //        1.变量的  声明部分 提前 到 当前所在作用域 的 最顶端；
+        //        2.声明式 函数 被  提前 到 当前所在作用域 的 最顶端；
+
+        //一、全局作用域 下的 预解析 ----------------------------
+        // 1. 问
+        // 错误原因：变量 压根就没 声明
+        // console.log(num); //  num is not defined
+
+
+
+        // 2. 问
+        // 
+        // console.log(num);  // undefined
+        // var num = 10;
+        // console.log(num);  // 10
+
+
+
+        // 3. 问
+
+        // fn();
+        // function fn() {
+        //     console.log('我喜欢你~~~');
+        // }
+
+
+        //二、局部作用域中的预解析 ------------------------------------------------
+
+        // 4. 问
+        function showLove() {
+            console.log(loverName); // undefined
+            var loverName = '小苍苍';
+        }
+
+        showLove();
+
+
+
+        // ------------------------ 三种函数的区别 + 预解析 -----------------------
+        orderFood('湖南常德牛肉粉 -- 红烧');
+
+        function orderFood(foodName) {
+            console.log('您的【' + foodName + '】菜已经送达~~~');
+        }
+
+
+
+        orderFood2('湖南常德牛肉粉 -- 红烧'); // orderFood2 is not a function
+
+        var orderFood2 = function (foodName) {
+            console.log('您的【' + foodName + '】菜已经送达~~~');
+        }
+
+
+
+
+
+
+
+
+
+
+
+        // 1. 我们js引擎运行js 分为两步：  预解析  代码执行
+        // (1). 预解析 js引擎会把js 里面所有的 var  还有 function 提升到当前作用域的最前面
+        // (2). 代码执行  按照代码书写的顺序从上往下执行
+        // 2. 预解析分为 变量预解析（变量提升） 和 函数预解析（函数提升）
+        // (1) 变量提升 就是把所有的变量声明提升到当前的作用域最前面  不提升赋值操作
+        // (2) 函数提升 就是把所有的函数声明提升到当前作用域的最前面  不调用函数
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

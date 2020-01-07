@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 利用函数计算1-100之间的 累加和 
+        // 思路：
+        //    a.声明 一个 求和变量 (箩筐变量)
+        //    b.for 循环 生成 1 - 100之间的数，然后 一次 累加到 求和变量中
+
+        // 1. 声明函数
+        function sum(){
+            var sumNum = 0;
+
+            for(var i = 1; i <= 100; i++){
+                sumNum += i;
+            }
+
+            console.log(sumNum);
+        }
+        
+        // 2. 调用函数
+        sum();
+        sum();
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

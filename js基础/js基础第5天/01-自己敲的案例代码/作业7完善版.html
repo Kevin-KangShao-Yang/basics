@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 1. 输入某年某月某日，判断这一天是这一年的第几天，封装成函数
+        
+        > 2019.1.1 -》 2019.7.20  有多少天？
+        >
+        > 1月份总天数
+        >   2月份总天数
+        >   3月份总天数
+        >   4月份总天数
+        >   5月份总天数
+        >   6月份总天数
+
+        1，3，5,7,8,10,12月有31天
+​	4,6,9,11月有30天
+​	2月，如果是平年就是28天，闰年就是29天
+        
+        > 7月份 到20号   是 20天
+         */
+
+        var year = parseInt(prompt('请输入年份'));
+        var month = parseInt(prompt('请输入月份'));
+        var day = parseInt(prompt('请输入今天是几号'));
+        function getMonthDays(year, month, day) {
+            var dayNum = 0;
+            var arrMonthDays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            //                  0   1   2   3   4   5   6   7   8   9  10  11  12
+
+            if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+                arrMonthDays[2] = 29;
+            }
+            for (var i = 0; i < month; i++) {
+                dayNum += arrMonthDays[i];
+            }
+            dayNum += day;
+            return dayNum;
+        }
+
+        var allDay = getMonthDays(year, month, day);
+        alert('总天数' + allDay);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               // planB
+        // recDate();
+        // function recDate() {
+        //     // 接受用户输入的年月日
+        //     var usrYear = +prompt('请输入年份:');
+        //     var usrMonth = +prompt('请输入月份:');
+        //     var usrDay = +prompt('请输入日期:');
+        //     // 调用 计算总天数的函数
+        //     var dayNum = countTotalDays(usrYear, usrMonth, usrDay);
+        //     // 打印结果
+        //     console.log('【' + usrYear + '】年【' + usrMonth + '】月【' + usrDay + '】日一共有【' + dayNum + '】天');
+        // }
+        // // 计算从一月一号到当前日期的天数
+        // function countTotalDays(usrYear, usrMonth, usrDay) {
+        //     var totalDayNum = 0;
+        //     var monthDays = 0;
+        //     if (usrMonth == 1) {
+        //         totalDayNum += usrDay;
+        //     } else {
+        //         for (var i = 1; i < usrMonth; i++) {
+        //             var monthDay = getMonthDayNum(usrYear, usrMonth);
+        //         }
+        //         monthDays += monthDay;
+        //         totalDayNum = monthDays + usrDay;
+        //     }
+        //     return totalDayNum;
+        // }
+        // // 返回某个月的天数
+        // function getMonthDayNum(year, month) {
+        //     var i = month;
+        //     var monthDay = 0;
+        //     if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
+        //         monthDay = 31;
+        //         // 31天
+        //     } else if (i == 4 || i == 6 || i == 9 || i == 11) {
+        //         monthDay = 30;
+        //         // 30天
+        //     } else if ((year % 4 == 0 || year % 400 == 0) && year % 100 != 0) {
+        //         monthDay = 29;
+        //         // 29天
+        //     } else {
+        //         monthDay = 28;
+        //         // 28天
+        //     }
+        //     return monthDay;
+        // }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

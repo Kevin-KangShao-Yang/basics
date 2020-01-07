@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+
+    // 1.类    --- 建筑图纸 ------------------------------------
+    // 类名 BoyFriend
+    class BoyFriend {
+
+      // 构造函数
+      constructor(name, age, gender) {
+        // 类的属性
+        this.gfName = name;
+        this.gfAge = age;
+        this.gfGender = gender;
+      }
+
+
+      //类的 方法
+      sayHi() {
+        console.log('hi~~亲爱的~~~~');
+      }
+
+      makeMoney(){
+        console.log('老婆，我去挣钱了~~~~');
+      }
+    }
+
+    // 2.创建 类 的 对象  ---- 按照 图纸 新建的 房子 ---------------
+    // 通过 new 关键字 创建
+    var bf01 = new BoyFriend('曹操', 1800, true);
+    var bf02 = new BoyFriend('诸葛亮', 1800, true);
+    var bf03 = new BoyFriend('孙权', 1800, true);
+
+    console.log(bf01);
+    console.log(bf02);
+    console.log(bf03);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

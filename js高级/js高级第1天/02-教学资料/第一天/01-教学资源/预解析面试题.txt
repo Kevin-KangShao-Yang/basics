@@ -1,0 +1,119 @@
+//1.------------------------------
+function foo() {
+    var num = 123;
+    console.log(num); //
+}
+foo();
+console.log(num); //
+
+// 2
+var scope = "global";
+function foo() {
+    console.log(scope); //
+    var scope = "local";
+    console.log(scope); //
+}
+foo();
+
+// 3
+if("a" in window){
+    var a = 10;
+}
+alert(a); // ?
+
+
+
+if(!"a" in window){
+    var a = 10;
+}
+alert(a); // ?
+
+
+
+if(name in window){
+   var a = 10;
+}
+alert(a); //undefiend   name在window中有，值是"", ""在window中没有
+
+
+
+if("name" in window){
+   var a = 10;
+}
+alert(a);
+
+
+
+if(a in window){
+  var a = 10;
+}
+alert(a); //10, a去window中找，得到undefined，undefined在window中是存在的。
+
+
+// 4
+var foo = 1;
+function bar() {
+    if(!foo) {
+        var foo = 10;
+    }
+    alert(foo); //
+}
+bar();
+
+
+//5.------------------------------------
+var num = 123;
+function f1() {
+    console.log(num); // 123
+}
+
+function f2() {
+    var num = 456;
+    f1();
+}
+
+f2();
+
+//6.---------------------------------------
+var num = 123;
+function f1(num) { // 参数理解为：函数内部的一个变量
+    console.log(num); // 456
+}
+
+
+function f2() {
+    var num = 456;
+    f1(num); 
+}
+
+f2();
+
+
+//------------------变态面试题---------------------
+function Foo() {
+  getName = function(){
+    alert(1);
+  };
+  return this;
+}
+Foo.getName = function() {
+  alert(2);
+};
+Foo.prototype.getName = function(){
+  alert(3);
+};
+var getName = function() {
+  alert(4);
+};
+function getName(){
+  alert(5);
+}
+
+Foo.getName(); // ?
+getName(); // ?
+Foo().getName(); // ?
+getName(); // ?
+new Foo.getName(); // ?
+new Foo().getName(); // ?
+new new Foo().getName(); // ?
+

@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // day01 :  变量 ， 数据类型（简单数据类型）
+    var loverName;
+    loverName = '小白'; // == 判等      === 判断全等
+
+    console.log(loverName); // console.log('小白');
+
+    // day02 ：条件判断 if else  /   swtich case ，类型转换
+    // var usrName = prompt('请输入您的名字：'); // 'jameszou'
+    // var age = +prompt('输入年龄：'); // +'18' -> 18
+    // var usrName = +prompt('输入名字：'); // 错误的写法： +'JamesZou'  -> NaN
+
+    // 转数值
+    // parseInt  parseFloat  Number  +
+
+    // 转字符串
+    // 数据.toString()     String()
+
+    // 转布尔值  true/false
+    // Boolean(x)
+    //        转false的情况： 0 -0  NaN   ''   undefined  null false  document.all
+    //        转true ：其它
+
+
+    // day03 ：循环  for
+    // 思考：打印 1-100之间 所有的 奇数
+    // 思路：a.生成 1-100之间所有的整数  -- for 
+    //       b.在循环中 判断 i % 2 != 0  ，如果 成立，就是 奇数
+    //       c.打印当前循环的 符合奇数要求的 数值
+
+    for (var i = 1; i <= 100; i++) {
+      if (i % 2 != 0) {
+        console.log(i);
+      }
+    }     
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

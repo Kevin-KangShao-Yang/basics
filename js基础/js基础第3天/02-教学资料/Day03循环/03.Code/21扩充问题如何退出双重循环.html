@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 请大家思考 如何 在 第2天 第3节课时 ，退出 内外两层循环，执行 最后的代码
+
+    for (var weekDay = 1; weekDay <= 5; weekDay++) {
+      console.log('----------第【'+weekDay+'】天-----------');
+      //模拟 每天 4小时课
+      for (var hour = 1; hour <= 4; hour++) {
+        console.log('今天是星期【' + weekDay + '】，现在是第【' + hour + '】节课~~~');
+        if (weekDay == 2 && hour == 3) {
+          // 起火啦，大家赶紧下楼逃命呀~~~~
+          break;
+        }
+      }
+    }
+
+    console.log('我是最后的代码，房子被烧光了，大家 退学吧~~~');
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

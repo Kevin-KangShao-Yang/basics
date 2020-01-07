@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      // 题目：用户登录验证
+      // 接收用户输入的用户名和密码，若用户名为 “admin” ,密码为 “123456” ,则提示
+      // 用户登录成功!  否则，让用户一直输入
+
+      var usrName; // 用户名
+      var usrPwd;  // 用户密码
+
+      do {
+        usrName = prompt('请输入用户名：');
+        usrPwd = prompt('请输入密码：');
+      } while (usrName != 'admin' || usrPwd !='123456');
+      //   用户名   错没错？错了，就循环
+      //   用户密码 错没错？ 错了 ，就循环
+      //   二者 都没错时，退出循环
+
+      
+
+      //       用户名 错    重新输入
+      //                              密码错      重新输入
+      //       用户名 对               密码对      退出循环，因为输入正确  
+
+      //              true        ||     false   --> true
+      //              false       ||     true    --> true
+      //              false       ||     false   --> false
+
+
+      // do {
+      //   usrName = prompt('请输入用户名：');
+      //   usrPwd = prompt('请输入密码：');
+      // } while (!(usrName == 'admin' && usrPwd =='123456'));
+
+      console.log('登录成功~~~');
+      
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

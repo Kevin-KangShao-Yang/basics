@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 利用函数判断闰年
+        //  如果 是 闰年 就返回 true
+        //  如果 不是 闰年 就返回 false
+        function isRun(year) {
+            if(year % 400 == 0 || (year % 4 ==0 && year %100 !=0)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        var y1 = isRun(2019);
+        console.log(y1);
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

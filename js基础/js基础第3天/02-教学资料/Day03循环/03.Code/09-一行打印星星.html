@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 一行打印五个星星 
+        // console.log('★★★★★');
+
+        // 练习：一行打印指定数量的星星
+        // 思路：
+        //     a.接收 用户输入的 星星 个数
+        //     b.准备一个 字符串变量 来 保存 星星
+        //     c.使用for循环 根据 用户输入的 星星的 个数 ，来 循环 向  字符串变量 中 添加 一个 星星
+        //     d.注意：console.log 只需要 使用 一次 就够，因为 一次 就是打印一行！！
+
+        var starCount = +prompt('请输入星星的个数：');
+
+        // 星星字符串变量
+        var strStar='';
+
+        // 循环 是 根据 用户要求输出的 星星的个数来的 -- 要几颗星星，就循环几次
+        for (var i = 1; i <= starCount; i++) {
+            // 将 字符串  '★' 拼接到 字符串变量中 strStar
+            strStar += '★';
+            // console.log('★' + i); // 注意：console.log 每次 会 打印 一行！！！
+        }
+
+        console.log(strStar);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* 
+       1.需求 ： 匹配字符串中有没有数字字符 
+        /[0123456789]/ : 检测数字字符
+       2.需求：匹配字符串有没有字母 ，代码冗余
+        /[abcdefghijk………………]/
+
+       3.范围类
+        /[0-9]/ : 匹配数字字符
+        /[a-z]/ : 匹配小写字母 
+        /[A-Z]/ : 匹配大写字母 
+       */   
+      
+       console.log(/[0-9]/.test('zxcvxvd1'));//true
+       console.log(/[a-z]/.test('2342524242'));//false
+       console.log(/[a-z]/.test('2342524242a'));//true
+       console.log(/[A-Z]/.test('zsvsdvsvbs'));//false
+       console.log(/[A-Z]/.test('Pzsvsdvsvbs'));//true
+
+       /*范围类注意点 
+       a. 范围类可以连写： /[0-9a-zA-Z]/ : 任意数字 + 任意字母
+       b. 范围类的区间是闭区间 ： [0-9]  包含0和包含9
+       c. 范围类 左边一定要小于右边  [5-8]
+       */
+
+       // /[5-8]/ : 5678
+    //    console.log(/[8-90-5]/.test('1213fsdvd'));
+       
+
+       
+        
+    </script>
+</body>
+</html>

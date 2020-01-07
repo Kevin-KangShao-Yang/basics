@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var num = 1;
+
+    function demo() {
+      console.log(num);
+      function demoSon() {
+        num = 3;
+      }
+      var num = 2
+      demoSon();
+    }
+
+    demo();
+
+    // ----------------预解析------------------
+    var num;
+    
+    function demo() {
+      var num; // 声明局部变量
+      
+      function demoSon() {
+        num = 3;
+        num2 = 1; // 创建全局变量
+      }
+
+      console.log(num); // undefined
+
+      num = 2;
+      demoSon();
+      console.log(num); // 3
+    }
+
+
+    num = 1;
+
+
+    demo();
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

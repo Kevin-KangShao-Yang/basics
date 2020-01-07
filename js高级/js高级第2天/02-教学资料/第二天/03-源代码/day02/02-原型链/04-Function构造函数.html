@@ -1,0 +1,57 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-11 09:35:31
+ * @LastEditTime: 2019-08-11 12:23:50
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.函数也是对象类型,它是由Function()构造函数生成
+        2. js中所有的对象都是构造函数创建，所有的函数对象被Function构造函数创建,包括`Object`构造函数
+        
+         */
+
+        //1. 所有的函数都是Function构造函数创建
+        //前面所有的参数都是形参，最后一个参数是函数体代码 （字符串）
+        //返回函数对象
+        var fn =  new Function('a','b','console.log("666666");return a+b;');
+        var res =  fn(10,20);// (1)传参 （2）执行函数体  （3）返回值
+        console.log(res);
+        console.log(fn);
+   fn();
+
+        
+        
+        //2.复习js 两种声明
+        // 唯一区别 ： 函数声明可以在任何地方调用， 表达式声明只能在声明后调用
+
+        //2.1 函数声明 ： function 函数名(){}
+        function fn1(a,b){
+            console.log('1111');
+        };
+fn1();
+        //2.2 表达式声明 ：  var 函数名 = 匿名函数
+        var fn2 = function(){
+console.log('8888');
+ };
+fn2();
+
+        //高级函数 ： 
+        //回调函数 ： 如果一个函数的参数是一个函数。这个参数函数称之为回调函数
+        //自调用函数 ： 自己调用自己    函数调用语法：  函数名()    (函数名)()
+        //构造函数 ： 如果调用一个函数加了new 称之为构造函数
+
+        
+    </script>
+</body>
+</html>

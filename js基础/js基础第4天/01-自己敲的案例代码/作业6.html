@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+// 将数组['P城','Z城','医院','市政厅','R城'] 元素 拼接成 一个字符串，中间用 '-' 分隔。
+// 如：'P城-Z城-医院-市政厅-R城'
+var arr = ['P城','Z城','医院','市政厅','R城']
+var str = [];
+for (var i = 0; i < arr.length; i++) {
+   str += arr[i] ; 
+  //  不能用等号,是需要不断的递加内容的
+  if (i < arr.length-1) {
+    str += '-';
+  }
+}
+       console.log(str);
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

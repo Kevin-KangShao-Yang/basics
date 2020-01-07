@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        需求 ： 匹配连续出现十个数字的字符
+
+        /\d\d\d\d\d\d\d\d\d\d/ : 连续出现十个数字
+        /\d{10}/ : 连续出现十个数字
+        */
+
+        /*量词： 表示字符出现的数量
+
+        量词                  含义
+        ?                       出现零次或一次（最多出现一次） <=1
+        +                       出现一次或多次（至少出现一次） >= 1
+        *                       出现零次或多次（任意次） >= 0
+        {n}                     出现n次  
+        {n,m}                  出现n-m次
+        {n,}                     出现至少n次（>=n）
+        */
+
+        console.log(/\d?/.test('123456'));//true  // 数字出现零次或一次
+        console.log(/\d+/.test('123456'));//true
+        console.log(/\d*/.test('123456'));//true
+        console.log(/\d{5}/.test('123456'));//true
+        console.log(/\d{5,10}/.test('123456'));//true 
+        console.log(/\d{5,}/.test('123456'));//true
+        
+    </script>
+</body>
+</html>

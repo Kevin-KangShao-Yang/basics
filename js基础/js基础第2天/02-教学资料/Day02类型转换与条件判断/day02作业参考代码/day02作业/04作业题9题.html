@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 9.接收并判断 num1 和 num2、num3 中哪个数最大,并打印最大值。（不可以用 Math.max()函数）
+    var num1 = parseInt(prompt('请输入第1个数：'));
+    var num2 = parseInt(prompt('请输入第2个数：'));
+    var num3 = parseInt(prompt('请输入第3个数：'));
+
+    // var maxNum = Math.max(num1,num2,num3);
+
+    if (num1 >= num2 && num1 >= num3) {
+      alert('最大值为：' + num1);
+    } else if (num2 >= num1 && num2 >= num3) {
+      alert('最大值为：' + num2);
+    } else {
+      alert('最大值为：' + num3);
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

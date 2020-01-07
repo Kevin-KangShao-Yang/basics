@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [100,60,55,90,88];
+
+        //求数组最大值
+
+        //擂台思想
+        // //1.声明空擂主
+        // var max = -Infinity;
+        // //2.遍历挑战者
+        // for(var i = 0;i<arr.length;i++){
+        //     //3.挑战者和擂主PK
+        //     if(arr[i] > max){
+        //         max = arr[i];
+        //     };
+        // };
+        // console.log(max);
+
+
+        //Math.max(数字1，数字2，数字3………………)
+
+        // var max = Math.max(arr[0],arr[1],arr[2],arr[3],arr[4]);
+        // console.log(max);
+
+        //这里不需要修改this，只是借助apply传参是一个数组
+        var max = Math.max.apply(Math,arr);
+        console.log(max);
+        
+        
+        
+    
+    </script>
+</body>
+</html>

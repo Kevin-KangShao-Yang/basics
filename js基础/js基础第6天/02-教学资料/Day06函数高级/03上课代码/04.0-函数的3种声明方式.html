@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // // 简单数据类型 ： Number String  Boolean Undefined Null
+        // var a = 1;
+        // var sName = '小白';
+
+        // // 复杂数据类型 ：Array 、Function 、 Object、自定义类型
+        // var arr = ['小白不白', '小黄不黄', 123, false];
+
+        // function showLove(toName) {
+        //     console.log(toName + '，我喜欢你哦~~~');
+        // }
+
+
+
+        // 函数的3中声明方式
+        // 1. 声明式 函数 --- 直接 使用 function 关键字 + 函数名 
+        function showLove() {
+            console.log('小白，我爱你哦~~~');
+        }
+        // showLove();
+
+        // 2. 函数表达式(匿名函数) 
+        // var 变量名 = function() {};
+        // (1) fun是变量名 不是函数名  
+        // (2) 函数表达式声明方式跟声明变量差不多，只不过变量里面存的是值 而 函数表达式里面存的是函数
+        // (3) 函数表达式也可以进行传递参数
+
+        var showLove2 = function (toName) {
+            console.log(toName + '，我喜欢你哦~~~');
+        };
+
+        showLove2('小白222');
+
+        // console.log(showLove);
+        // console.log(showLove2);
+
+
+        //3. 函数对象方式（了解：用的很少）
+        var showLove3 = new Function('toName','console.log( toName + "，我稀罕你哦~~~~")');
+        showLove3('Linda');
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

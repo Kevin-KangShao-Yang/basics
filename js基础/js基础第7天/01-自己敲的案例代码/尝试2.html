@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        var arrOld = [2, 3, 0, 5, 0, 2, 3, 9];
+        function num(arrOld) {
+            var num1 = [];
+            for (var i = 0; i < arrOld.length; i++) {
+                var num2 = arrOld[i];
+                var num3 = false;
+                for (var j = 0; j < num1.length; j++) {
+                    if (num1[j] == num2) {
+                        var num3 = true;
+                        break;
+                    }
+                }
+                if (!num3) {
+                    num1.push(num2);
+                }
+            }
+            console.log(num1);
+
+        }
+        num(arrOld);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

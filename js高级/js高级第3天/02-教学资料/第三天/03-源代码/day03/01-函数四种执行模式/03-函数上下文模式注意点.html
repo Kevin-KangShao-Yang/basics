@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.上下文模式 ： 动态修改函数this  (三种语法)
+
+        2. 特点 ： 修改的this一定是引用类型  （数组，函数，对象）
+         */
+
+        function fn(){
+            console.log(this);
+            console.log(typeof this);
+            
+        };
+
+        //(1)指向基本数据类型   string  boolean  number (包装类型)
+        //自动帮我们转成对应的包装类型  new String()   new Boolean()  new Number()
+        fn.call('1');
+        fn.call(1);//new Number(1)
+        fn.call(true);
+
+        //(2)undefined 和 null : 修改无效，还是默认的window
+        fn.call(undefined);
+        fn.call(null);
+        fn.call();//不改this
+        fn.call(window);
+    </script>
+</body>
+</html>

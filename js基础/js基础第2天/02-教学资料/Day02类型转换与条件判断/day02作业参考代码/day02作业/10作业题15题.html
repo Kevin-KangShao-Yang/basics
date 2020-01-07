@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    // 15. 请用户输入一个人的年龄
+    //     如果年龄在18岁以上，就打印“这个网站可以给你看”
+    //     如果年龄在14-18岁中间， 就用 选择框 询问是否真的要继续查看    
+    //          如果用户按的是确认，就提示‘给你看了，后果自负’ ----提示：var a = confirm() -> 返回 bool
+    //          如果用户按的是取消，就提示‘好孩子，不看也好’
+    //     如果年龄在14岁以下，就提示‘sorry，请回家找妈妈’。
+
+    var usrAge = parseInt(prompt('请输入年龄：'));
+    if (usrAge >= 18) {
+      alert('这个网站可以给你看~~~~');
+    } else if (usrAge >= 14 && usrAge < 18) {
+      var isOk = confirm('是否真的要继续查看~~？'); // --> 返回 true / false
+      if (isOk) { // 相当于 isOk == true
+        alert('给你看了，后果自负~~~');
+      } else {
+        alert('好孩子，不看也好~~~');
+      }
+    } else {
+      alert('回家找妈妈~~~~');
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

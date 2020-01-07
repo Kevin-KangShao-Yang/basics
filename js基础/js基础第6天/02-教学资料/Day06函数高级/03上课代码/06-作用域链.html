@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 作用域：变量可以访问的范围
+
+        // 作用域链  ： 内部函数访问外部函数的变量，采取的是链式查找的方式来决定取那个值 这种结构我们称为作用域链   就近原则
+
+        //1.全局作用域 ------------------------------
+        //1.1 简单的 作用域链
+        // var num = 1;
+        // var num2 = 2;
+
+        // function sayHi() {
+        //     var num2 = 3;
+        //     console.log(num); // 1
+        //     console.log(num2); // 3
+        // }
+
+        // sayHi();
+
+
+
+        var num = 10;
+
+        function f1() { // 外部函数
+            var num = 20;
+
+            function f2() { // 内部函数
+                console.log(num); // 20
+            }
+            f2();
+        }
+
+        f1();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

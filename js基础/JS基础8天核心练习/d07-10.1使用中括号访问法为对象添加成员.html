@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 请用户 输入一个 新的属性名，并 输入一个 新的属性值，将 这对 属性名和属性值 添加到对象中
+    var obj = {};
+
+
+    var proName = prompt('请输入新的属性名：');  // 如果用户输入 'age'
+    var proValue = prompt('请输入新的属性值：'); // 如果用户输入  '18'
+
+
+    // obj.name = '青蛙呱呱';
+
+    // obj.proName = proValue;  // { proName: "18" }
+
+    // 使用 中括号访问法 为 对象 动态添加 属性
+    obj[proName] = proValue; // {age: "18"}
+
+    console.log(obj);
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script>
+    var num = [1, 1, 2, 3, 3, 2, 4, 5, 5, 4, 3, 2, 1]; //旧数组
+  //对应的下标  0  1  2  3  4  5  6  7  8  9  10 11 12   length=13
+    var num1 = [];  //准备一个空的数组来保存得到的新元素
+
+    //外层循环用来遍历旧数组,取出元素
+    for (var i = 0; i < num.length; i++) {    
+      var num2 = num[i];   // 取出遍历旧数组中的元素,用变量num2来接收保存,最后用来判等
+      var num3 = false;    // 开关变量,将变量num3设置为false ，代表 num2在新数组中不存在
+
+      //内层循环用来遍历新数组，看老元素是否存在于新数组中
+      for (var j = 0; j < num1.length; j++) {
+        if (num2 == num1[j]) {  //判等, 如果旧数组中的元素已经存在新数组中,则执行里面的代码
+          num3 = true; // 修改开关变量为true
+          break;// 直接退出内层循环
+        }
+      }
+      // 根据开关变量 判断num2是否要加入到新数组
+      if (!num3) {   //判等,如果 !num3 为true,则执行里面代码
+        num1.push(num2);  //将num2添加进新数组num1新数组中
+      }
+    }
+    console.log(num1);  //控制台打印出新数组
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

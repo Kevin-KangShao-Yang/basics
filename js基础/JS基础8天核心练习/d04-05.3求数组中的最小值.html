@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 求 数组中的 最小值
+    var arr = [2, 6, 1, 7, 52];
+    //         0  1  2   3    4   length = 5
+    // 思路：
+    //    a. 准备一个变量 保存 最小值
+    //    b. 使用 for 循环，获取 数组中的元素 ，并 一一和 最小值变量中的 数 进行比较
+    //    c. 将 比较 小的 数 设置到 最小值变量中，
+    //    d. 当 循环结束后，最小值变量中 就保存了 数组中的最小值了
+
+    // 创建 最小值变量
+    var minNum = Infinity;
+
+    // for循环 生成 下标
+    for (var i = 0; i < arr.length; i++) {
+      // 判断 当前 i　对应的元素　是否　小于 minNum
+      if (arr[i] < minNum) {
+        // 如果 i对应元素较小，则将它 存入 minNum
+        minNum = arr[i];
+      }
+    }
+
+    console.log(minNum);
+
+
+    //  -----------------------  优化版 找最小值  -----------------------------
+    var arr = [2, 6, 1, 7, 52];
+    var minNum = arr[0]; // 将 数组 第0个 元素 直接存入 擂台变量
+
+    // for循环 生成 下标 注意：因为 第0个元素已经 在擂台变量了，所以 循环可以 从 下标 1 开始
+    for (var i = 1; i < arr.length; i++) {
+      // 判断 当前 i　对应的元素　是否　小于 minNum
+      if (arr[i] < minNum) {
+        // 如果 i对应元素较小，则将它 存入 minNum
+        minNum = arr[i];
+      }
+    }
+
+    console.log(minNum);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

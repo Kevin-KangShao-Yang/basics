@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    var girlFriend = {
+      gfName: '小静',
+      age: 21,
+      gender: false,
+
+      xcook: function () {
+        console.log('做菜简直就是 金顶厨师的水平~~~~');
+      },
+      run: function () {
+        console.log('每天晚上跑跑步~~~~');
+        //return undefined;
+      }
+    };
+
+    // 注意：对象成员的名字 也都 区分大小写！！！
+
+
+    //需求：打印 用户输入的 属性名 对应的 属性值！！！
+    // a.使用 变量 接收 prompt 返回的 用户输入的 【属性名字符串】  
+    var proName = prompt('请输入 您要显示的 属性的 名字：'); // 假设：var proName = 'gfName';
+
+    // b.使用 对象中括号 访问法
+    var proValue = girlFriend[proName]; // 相当于：var proValue = girlFriend.gfName;
+    
+    // girlFriend[proName]();  //  girlFriend.xcook();
+
+    // c.打印 属性名 和 属性值
+    // console.log(proName + ' = ' + proValue); // 相当于：console.log('gfName = 小静')
+
+
+
+    var proName = 'gfName';
+
+    var proValue1 = girlFriend.proName; // JS引擎 会 直接到 对象中 查找 名为 proName 的属性，如果找不到就返回 undefined，如果找到了就返回 属性值
+
+    var proValue2 = girlFriend[proName];// JS引擎 会 直接 到 对象中查找 名为 'gfName' 的属性，如果找不到就返回 undefined，如果找到了就返回 属性值
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

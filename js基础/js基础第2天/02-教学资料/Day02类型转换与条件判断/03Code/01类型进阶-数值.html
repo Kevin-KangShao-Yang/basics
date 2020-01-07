@@ -1,0 +1,64 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    //1.数值类型 Number
+    //  JS数值类型中的 特殊值：Infinity , -Infinity , NaN
+
+    //1.1 NaN(Not a Number) - 非数值 -----------------------------------------------------
+    // a.NaN 从何而来？  ---  当 代码中 有 错误的 [算数表达式] 进行 执行，就会 返回 [NaN]
+
+    console.log(1 + 'a'); // '1a'
+    console.log(1 * 'a'); // NaN
+    console.log(10 / 'c'); // NaN
+
+    // b.NaN和任何值 进行运算，结果都是 NaN
+    console.log(NaN - 'ccccccccccc'); //NaN
+    console.log('ccc' * NaN); // NaN
+
+    console.log('abc' * 123); // NaN
+
+    // c.NaN 和 任何值 都不相等，包括它自己！！！
+    // ==  可以判断 两个值 是否相等：如果相等，返回 true；如果不等，返回 false
+    console.log(1 == 1); // true
+    console.log('abc' == 'abc'); // true
+    console.log('abc' == '小狗狗'); // false
+
+    console.log(NaN == 'abc'); // false
+    console.log(NaN == NaN); // false
+
+    //2. isNaN(x) ：传入 x数据，isNaN 会进行判断，如果 x 是 非数值，返回 true -----------------
+    //                                              x 不是非数值，返回 false
+    // 思考：判断 一个 变量中的 值 是否为 非数值
+    var num = 520;
+    console.log(num == NaN); // false
+    console.log(isNaN(num)); // false
+
+    var str = '小狗狗';
+    console.log(str == NaN); // false
+    console.log(isNaN(str)); // true
+
+    var isNum = NaN;
+    console.log(isNum == NaN); // false
+    console.log(isNaN(isNum)); // true
+    
+    
+
+
+
+
+
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

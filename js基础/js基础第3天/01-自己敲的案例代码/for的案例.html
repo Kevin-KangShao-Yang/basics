@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script>
+// 输入学员个数,依次录入每位越远的成绩,最后学员总成绩和平均成绩
+var geShu = +prompt('请输入学员总个数');
+var zongChengJi = 0;
+for (var i = 1; i<=geShu; i++) {
+     var chengJi = +prompt('请输入第['+i+']学员成绩');
+      zongChengJi +=chengJi;
+      
+}
+    var  pingJun = zongChengJi/geShu;
+alert('学员个数为['+geShu+'] , 学员总成绩为['+zongChengJi+'], 学员平均成绩为['+pingJun+'] ')
+
+
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>

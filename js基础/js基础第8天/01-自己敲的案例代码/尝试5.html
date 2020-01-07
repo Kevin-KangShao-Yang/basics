@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+     function StuInfo(sId,sName,sSex) {
+       this.id =sId;
+       this.name =sName;
+       this.sex=sSex;
+       this.sayHi=function(){
+         console.log('我是一名初学者');
+       }
+     }
+
+     function Cat(cName) {
+       this.name=cName;
+       this.miao=function (){
+         console.log('喵喵喵');
+       }
+     }
+  var s1 = new StuInfo(2,'康哥',true);
+  var s2 =new Cat('小猫咪');
+console.log(s1 instanceof StuInfo);
+console.log(s2 instanceof Cat);
+console.log();
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

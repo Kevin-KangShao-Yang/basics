@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 利用函数求任意个数的数值的 和
+        function add() {
+            var sumNum = 0;
+            // 遍历 所有的实参，并累加到 求和变量中
+            for (var i = 0; i < arguments.length; i++) {
+                sumNum += arguments[i];
+            }
+            return sumNum;
+        }
+
+        var res = add(1, 2);
+        console.log(res);
+
+        var res = add(1, 2, 3, 4, 5, 6, 7, 8, 10000, 123123, 12, 3123);
+        console.log(res);
+
+
+        // 利用函数求任意个数的数值的 最大值
+        // Math.max(1,12,3,12,3,12,31,23)
+        
+        function myMax() {
+            var maxNum = arguments[0];
+            for (var i = 1; i < arguments.length; i++) {
+                if(arguments[i] > maxNum){
+                    maxNum = arguments[i];
+                }
+            }
+
+            return maxNum;
+        }
+
+        var maxNum = myMax(1, 2, 3123, 12, 3123);
+        console.log(maxNum);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

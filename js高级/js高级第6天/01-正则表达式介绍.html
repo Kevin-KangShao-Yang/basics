@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        js内置对象 ： Math Date Array String Number Boolean Object Events Function RegExp(正则表达式)
+       
+        RegExp : regular 规则  Expression表达式
+        */    
+
+
+        /* 
+        1.RegExp（正则表达式）作用： 是一个对字符串进行逻辑匹配运算的对象
+            内置对象 ： 存储一些属性和方法
+            表达式 ： 对字符串进行逻辑匹配运算
+
+        2.使用步骤（2） ： 
+            2.1 创建正则表达式 ： new RegExp(/正则表达式/)
+            2.2 使用方法：  reg.test(字符串)
+        
+        */
+
+        //1.创建正则表达式对象
+        var  reg = new RegExp(/a/);
+        //2.调用test() 检测字符串是否符合规则 : true 符合规则  false 不符合规则
+        console.log(reg.test('112233445a'));//true
+        console.log(reg.test('112233445'));//false
+
+
+        //3. 字面量（直接量语法） 
+        console.log(/abc/.test('123abc'));//true
+        
+        
+    </script>
+</body>
+</html>

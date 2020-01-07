@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        var arrCity = ['P城', 'R城', 'G港', '学校', '靶场', 'Y城'];
+        //               0      1     2       3       4     5     length = 6
+
+        // 注意：数组 最后一个 元素 下标 和 length的关系：
+        //       数组 最后一个元素的下标 == 数组.length - 1
+
+        // 遍历数组：就是把数组的每一个元素都访问一次
+
+
+        //1.直接 写
+        // console.log(arrCity[0]);
+        // console.log(arrCity[1]);
+        // console.log(arrCity[2]);
+        // console.log(arrCity[3]);
+        // console.log(arrCity[4]);
+        // console.log(arrCity[5]);
+
+
+        //2.使用 for 循环来遍历 数组 里的 每个元素
+        console.log('-------1.正序遍历数组---------------');
+
+        //2.1 【正序遍历】数组 下标  0  到    length-1 --------------------------------
+        
+        var arrCity = ['P城', 'R城', 'G港', '学校', '靶场', 'Y城'];
+        //               0      1     2       3       4     5     length = 6
+
+        // arrCity[i] -> arrCity[0]  arrCity[1]  arrCity[2] arrCity[3]  arrCity[4]  arrCity[5]      
+
+        // 思路：
+        //     重点 -- 访问数组中的 一个元素 必须 通过 【数组[下标]】 访问
+        //     a.使用 for 循环 生成 数组中 每个元素的 下标 (0 --- length-1)
+        //     b.数组[下标] 访问到 对应下标的 元素了！
+        // for(var i = 0 ;i <= 6-1 ;i++)
+
+        // a.使用 <= length -1  的方式 遍历
+        // for (var i = 0; i <= arrCity.length - 1; i++) { // 0 - 5
+        //     // console.log(i);
+        //     console.log(i + ' - > ' + arrCity[i]);
+        // }
+
+        // b.使用 < length  的方式 遍历 （推荐）
+        for (var i = 0; i < arrCity.length; i++) { // 0 - 5
+            // console.log(i);
+            console.log(i + ' -> ' + arrCity[i]);
+        }
+
+        console.log('-------2.倒序遍历数组---------------');
+        //2.2 【倒序遍历】数组 下标  length-1 到 下标 0---------------------
+
+        var arrCity = ['P城', 'R城', 'G港', '学校', '靶场', 'Y城'];
+        //               0      1     2       3       4      5     length = 6
+        // 思路：
+        //      a.使用for循环 生成 数组中的每个元素的 下标( 5 ---- 0)
+        //      b. 数组[下标] 访问到 对应下标的 元素了！
+
+        for(var i = arrCity.length - 1; i >= 0 ; i--){
+            // console.log(i);
+            console.log(i + ' -> ' + arrCity[i]);
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

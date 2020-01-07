@@ -1,0 +1,75 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var s = Date();
+    console.log(s);
+
+    // --------------------------- 恒定性 ---------------------------
+
+    // 字符串恒定性：字符串 一旦创建 无法修改，只能销毁
+    var str = 'james';
+    str = str + 'zou';
+
+    // 'xiaobai' + 'buhei' -> 'xiaobaibuhei'
+
+    // 上面两行代码 一共个出现了 3个 字符串 ：'james'   ， 'zou'   ，'jameszou'
+    // 'abc'.replace('b','d')   -> 'adc'
+
+    console.log('--------------------------');
+    // 由于 字符串的恒定性， 字符串对象 的 各种 方法 都是 返回 新的 字符串，而不是 直接 修改 原来的字符串
+    var str = 'abc';
+    var str1 = str.replace('b', 'd');
+    console.log(str); // abc
+    console.log(str1); // adc
+    console.log('--------------------------');
+
+    // 字符串的常量池
+    var a = '小白';
+    var b = '小白';   // 只有一个 字符串 '小白' 在内存中
+
+    // -------------------------------关于 值类型的 包装器 -------------------
+    var age = 1;
+    age.toString();
+
+    // js引擎 会 自动 帮我们 产生 包装器
+    var age1 = new Number(1);
+    age1.toString();
+
+    // 包装器 使用完成后 会自动 立即 销毁
+
+    // ----------------------------------json ---------------------------------------------------------------
+
+
+
+    // json是一种 字符串 格式:类似 与 js中 数组和 对象的 字面量 表示法，只不过 对象属性名 用引号引起来了！！
+    // var objJson2 = '{"name":"james","age":1}';
+
+    var obj2 = {
+      name: 'james',
+      age: 1
+    };
+
+    console.log(obj2);
+
+    // 1. JSON.stringify 将 对象 转成 JSON 格式的 字符串
+    var strJson = JSON.stringify(obj2);
+
+    console.log(strJson);
+
+    // 2. JSON.parse 可以 将 json字符串 转成 对象
+    var strJson2 = '{ "name": "james", "age": 1 }';
+    var dog = JSON.parse(strJson2);
+    console.log(dog);
+    console.log(dog.name);
+    console.log(dog.age);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

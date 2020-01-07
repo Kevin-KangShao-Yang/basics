@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 利用函数翻转任意数组 reverse 翻转
+        //                 arrObj = [1,6,21,2,3,4];
+        //                           0 1 2 3 4  5    length = 6
+        //1. 函数声明  ---------------------------------------------
+        
+        function reverse(arr) {
+            //1.准备新数组
+            var arrNew = [];
+            //2. 倒序遍历 arr
+            for (var i = arr.length - 1; i >= 0; i--) {
+                //3. 将 老数组中的元素 添加到 新数组中
+                arrNew.push(arr[i]);
+            }
+            //4.返回 新数组
+            return arrNew;
+        }
+
+        //2.测试调用1 -------------------------------------------
+        var arr = [1, 6, 21, 2, 3, 4]; // 准备一个 数组
+        var arr1 = reverse(arr);
+        console.log(arr);
+        console.log(arr1);
+
+
+
+        //2.测试调用2 -------------------------------------------
+        var arrO = [99, 22, 1, 6, 4, 77, 22, 33]; // 准备一个 数组
+        var arr2 = reverse(arrO);
+        console.log(arrO);
+        console.log(arr2);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

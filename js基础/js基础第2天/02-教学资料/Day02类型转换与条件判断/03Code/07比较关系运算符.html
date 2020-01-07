@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.比较运算符：比大小的~~！！
+    //  运算符 本身 没有意义，要和 两边的数据 组成 表达式 才有意义
+    //  >    <     >=    <=    ==   !=    ===    !==
+    // 【永远都会返回 bool值】
+    
+
+    //a.要么 返回  true，要么 返回 false
+    
+    //1.比较关系运算符 --> 结果 一定是 布尔值 ：true/false
+    // 1.1 比大小  >   <     >=   <=
+    console.log(1 > 2); // false
+    console.log(2 > 1); // true
+    console.log(2 >= 2); // true
+    console.log(2 <= 2); // true
+
+    // 1.2 判等    ==  !=     ===     !==
+    console.log(1 == 1); // true
+    console.log('Linda' == 'LindA'); // 比较字符串时 ，区分 大小写
+    console.log(1 != 1); // false
+
+
+    // 注意：使用 == 对 数值 和 数值 字符串判等时，只要 值相等 就会 返回 true
+    // 双等号：只判断 值是否相等，不判断类型
+    console.log(1 == '1'); // true
+    console.log(true == 1); // true
+
+    // 全等号：既会判断 值是否相等 也会判断 类型 是否相等！！！
+    console.log(1 === '1'); // false
+    console.log(true === 1); //false
+
+    // 全不等号
+    console.log(1 != '1'); // false
+    console.log(1 !== '1'); // true
+
+
+
+
+
+
+    //b. >=  和 <=  是取的 并集，也就是说 大于 或 等于 就成立， 小于 或 等于 就成立
+    //   注意： 条件是或的关系，只要 满足一个 就返回 true，只有两个都不满足时才返回 false
+
+    //c.== 只判断值是不是相等，不判断类型
+
+
+    //d.=== 全等号，判断值 也 判断类型
+
+    //【注意：强调】变量 赋值 用  = 
+
+
+    //e.不等号 !=   全不等号 !==
+
+
+    //注意： undefined 和 null 判等 ------
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

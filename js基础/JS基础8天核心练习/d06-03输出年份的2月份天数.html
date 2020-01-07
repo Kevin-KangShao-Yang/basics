@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 什么时候 需要 抽出一部分代码 写成另一个函数呢？  ----
+        //          有独立的子业务，就把 代码抽出来
+        //          简单判断法：如果一个函数中 的代码 超过了 30行，基本可以判断内部有可以提出来的 独立业务代码了！！
+
+        // 1.用户输入年份，输出当前年份2月份的天数
+        function get2YueDays(year) {
+            // 先要判断 是否是 闰年
+            if (isRunYear(year)) {
+                // 如果 是闰年 就返回 29天
+                return 29;
+            } else {
+
+                // 否则 返回 28天
+                return 28;
+            }
+        }
+
+
+        /**
+         * @description: 2.判断是否为闰年的函数
+         * @param {Number}  year 要判断是否为闰年的 年份
+         * @return: 如果 是闰年 就返回 true，否则 返回 false
+         */
+        function isRunYear(year) {
+            if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+                return true;
+            }
+
+            return false;
+        }
+
+        // ---测试调用-----------------------
+
+        var usrYear = +prompt('请输入年份：');
+        var febDays = get2YueDays(usrYear);
+        console.log('您输入的【' + usrYear + '】年的2月共有【' + febDays + '】天~~~');
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      // 1.只要是变量赋值，就是 将 变量 中的 值复制 一份 给另一个变量
+
+      //1.1 值类型变量 赋值
+      var num = 1; // 值类型变量 中存放的 是 数据
+      var age = num; // var age = 1;  值类型变量 中的 数据 被复制  了一份 给 age
+      age++; // 修改 age 的值，并不会 影响 num 的值
+
+      console.log(num); // 1
+
+
+      //1.2 引用类型变量 赋值
+      // 引用类型变量中 保存的 是 对象在内存的 地址
+      var dog = {
+        name:'whisky',
+        age :3,
+      };
+
+      var dog2 = dog; // var dog2 = 0x11; 引用类型变量 中 保存的 对象 地址 被复制了一份 给 do2
+      dog2.age++; // 通过 dog2 修改 对象中的 age属性，其实 修改的 就是 同一个 对象
+
+      console.log(dog.age);
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.声明数组
+    // 最常用方式 ----------------
+    var arr = ['小苍苍', '小波波', '小洁洁'];
+    //            0         1         2     length= 3
+
+    console.log(arr);
+
+    // 其他方式--------------------------------------------
+    // var arr = [];
+
+    // var arr1 = new Array();
+    // var arr2 = new Array(5); // 创建 带 初始 容量的 数组
+    // var arr3 = new Array('小苍苍', '小波波', '小洁洁');
+
+    //2.取值
+    // 语法： 数组名[下标]
+    console.log(arr[0]); // 小苍苍
+    console.log(arr[1]); // 小波波
+    console.log(arr[2]); // 小洁洁
+
+    //3.赋值 设置元素的值 修改元素的值
+    arr[2] = '黑黑的裙姐';
+
+    console.log(arr); // ["小苍苍", "小波波", "黑黑的裙姐"]
+
+    //4.遍历数组 -----------------------------------
+    var arr = ['小苍苍', '小波波', '小洁洁'];
+    //            0         1         2     length= 3
+
+    //4.1 正序遍历
+    for (var i = 0; i < arr.length; i++) {
+      // console.log(i);
+      console.log(arr[i]);
+    }
+    console.log('------------------');
+    //4.2 倒序遍历
+    for (var i = arr.length - 1; i >= 0; i--) {
+      console.log(arr[i]);
+    }
+
+
+    //5.使用 legnth属性 修改 数组的长度
+    var arr = ['小苍苍', '小波波', '小洁洁'];
+    //            0         1         2     length= 3
+    arr.length = 5; //  ['小苍苍', '小波波', '小洁洁' , undefined  , undefined];
+
+
+    arr.length = 2; // ['小苍苍', '小波波'];
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

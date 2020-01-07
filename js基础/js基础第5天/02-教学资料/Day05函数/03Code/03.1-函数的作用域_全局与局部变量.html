@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // if/elseif/for/while/do while 大括号 没有作用域 
+    // if(1 > 0){
+    //   var a = 1;
+    // }
+    // console.log(a);
+
+
+    // 作用域：就是指 变量 可以被访问的 范围！
+    // 全局作用域 - 就是指 整个页面
+    // 局部作用域 - 就是指 函数 {} 内部，而 if/elseif/for/while/do while 大括号 没有作用域 
+
+    // 全局变量 - 在 全局作用域中 声明的 变量
+    //     特点 - 在页面任何位置 都可以访问，包括在任意函数 内部
+
+    // 局部变量 - 在 局部作用域中 声明的 变量
+    //     特点 - 只能 在 局部作用域中 访问，函数中的变量 只能在 函数内部访问，外部无法访问
+
+
+    // 1.全局作用域
+    var num = 777;
+    console.log(num);
+
+
+
+    //1.函数作用域 ： 就是 指 函数大括号 里的区域，在内部 创建的 变量 只能在 函数内部使用，在函数外部 无法访问到！
+    function showLove() {
+      var loverName = '小静静';
+      console.log('我在函数内部访问 loverName = ' + loverName);
+      console.log('我在函数内部访问 num = ' + num);
+    }
+
+    showLove();
+    console.log(loverName); // 函数外部 无法 访问 函数内部的 变量
+
+
+      //2.全局变量与局部变量
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

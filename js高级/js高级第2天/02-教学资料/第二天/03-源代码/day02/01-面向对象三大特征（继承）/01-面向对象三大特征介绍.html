@@ -1,0 +1,77 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-11 08:46:52
+ * @LastEditTime: 2019-08-11 08:59:59
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        /* 
+        面向对象这种思维方式有三大特征
+            封装：把代码放到对象的方法中， 解决代码冗余 + 全局变量污染
+            继承：一个对象拥有另一个对象所有的成员
+            多态：一个对象在多种情况下的不同状态
+         */
+
+        //多态：一个对象在多种情况下的不同状态 （变量访问原型成员规则：就近原则
+        //例子 ： 饲养员给动物吃东西
+
+        
+        //1.动物
+        function Animal(name,age){
+            this.name = name;
+            this.age = age;
+        };
+        //吃东西
+        Animal.prototype.eat = function(food){
+            console.log('我还开心啊，我吃东西哦' + food);
+            
+        };
+
+        //小猪
+        var peiqi = new Animal('佩奇',6);
+        //小狗
+        var dog = new Animal('旺财',5);
+        dog.eat = function(food){
+            console.log('汪汪汪，我是小狗，我吃了' + food);
+        };
+        //小猫
+        var cat = new Animal('lucky',8);
+        cat.eat = function(food){
+            console.log('喵喵喵,我是小猫，我吃了' + food);
+            
+        };
+
+        //2.饲养员
+        function Person(name,sex){
+            this.name = name;
+            this.sex = sex;
+        };
+        //工作 : 给动物吃东西
+        //
+        Person.prototype.work = function(animal,food){
+            animal.eat(food);//我的工作就是给动物吃东西
+        };
+
+
+        var qunqun = new Person('群群','男');
+
+        qunqun.work(peiqi,'泔水');
+        qunqun.work(dog,'翔');
+        qunqun.work(cat,'饼干');
+
+
+
+    </script>
+</body>
+</html>

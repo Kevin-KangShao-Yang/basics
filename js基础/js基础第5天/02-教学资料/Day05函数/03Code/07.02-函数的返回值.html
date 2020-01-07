@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 回想：调用 Math.random()  的目的是做什么？
+        // 目的：
+        //     从 开发者 调用 的调度来说：为了　获取　一个　随机数
+        //     从 js 设计者的 的角度来说：为了 向  开发者 生成 提供 一个 随机数
+
+        // 为什么 要 在函数 中 返回值？
+        //    就比如 你去 面馆 让 老板 给你做一碗面吃
+        //                如果 老板 把 面自己吃了，你是不是 还饿着肚子
+        //                所以说：你去面馆 目的是 拿一碗面吃
+        //                       老板开面馆的 目的 是 做一碗面 给 你吃
+        // -------------------------------------------------
+        // var ranNum = Math.random();
+        // console.log(ranNum);
+
+
+
+
+        // 思考：函数 将相关代码 都 封装在一个“盒子”里，但我们有时需要 使用盒子里的 数据，怎么办？
+
+
+        // 生成 0-100之间的随机整数
+        function makeRanNum100() {
+            var ranNum = Math.floor(Math.random() * 100);// 0.19123123123
+            return ranNum;
+        }
+
+        var ranNum1 = makeRanNum100();
+        console.log(ranNum1);
+
+        // var ran100 = makeRanNum100();
+
+        // console.log(ran100);
+
+
+        // 2. 函数的返回值格式
+        // function 函数名() {
+        //     return 需要返回的结果;
+        // }
+        // 函数名();
+
+        // (1) 我们函数只是实现某种功能，最终的结果需要返回给函数的调用者函数名() 通过return 实现的
+        // (2) 只要函数遇到return 就把后面的结果 返回给函数的调用者  函数名() = return后面的结果
+
+        // 针对返回值 的 用法：
+        // (1) 直接使用返回值
+        // (2) 使用变量保存 函数的 返回值
+
+
+        // 3. 代码验证
+
+        // 4. 求任意两个数的和
+
+
+
+        // 【注意】：return 也会跳出函数，执行 后面的代码        
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

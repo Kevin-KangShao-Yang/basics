@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        斐波那契
+        1.递归 ： 性能最低（浪费CPU）
+        2.循环+数组 ： 性能也低(浪费内存)
+        3.闭包 ：性能最高
+         */
+
+        function feiBo(n) {
+            var arr = [1, 1, 1];
+            for (var i = 2; i < n; i++) {
+                arr[2] = arr[0] + arr[1];
+                //下标前移用于下一次计算
+                arr[0] = arr[1]
+                arr[1] = arr[2]
+            };
+            console.log(arr);
+            return arr[2];
+        };
+
+        feiBo(100);
+    </script>
+</body>
+
+</html>

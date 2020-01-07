@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // do while 循环案例
+
+        // 1. 打印人的一生，从1岁到100岁----------------------------
+        // var age = 1;
+        // do {
+        //     console.log(age);
+        //     age++;
+        // } while (age <= 100);
+
+        // for(var a = 1;a <= 100;a++){
+
+        // }
+
+        // 2. 计算 1 ~ 100 之间所有整数的和 ------------------------
+        // 思路：
+        //     a.准备一个变量 来 存放 整数的和 sum
+        //     b.循环生成 1-100 之间的数，并将每个数 都 累加到 变量中
+        //       b1.准备一个变量 num 用来保存 生成的每个数
+        //       b2.将 num 累加到 sum 变量 中
+
+        // var sum = 0;
+        // var i = 1;
+        // do {
+        //     sum += i;
+        //     i++;
+        // } while (i <= 100);
+        // console.log(sum);
+
+
+        // 3. 弹出一个提示框， 你爱我吗？   --------------------------
+        //    如果 选择确定，就提示结束，否则，一直询问。
+
+        do{
+            var doULoveMe = confirm('你爱我吗？');
+        }while(!doULoveMe);
+
+        console.log('你总算承认爱我了~~~');
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

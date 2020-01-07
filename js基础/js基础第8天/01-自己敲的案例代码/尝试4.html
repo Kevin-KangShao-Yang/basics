@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        // var date0 = new Date();
+    //     console.log(date0);
+    //     console.log(date0.toLocaleDateString());
+    //     console.log(date0.toLocaleTimeString());
+
+    //     function getNow() {
+    //         var date = new Date();
+    //         var year = date.getFullYear();
+    //         var month = date.getMonth();
+    //         var day = date.getDay();
+    //         console.log(year.toString(), month.toString(), day.toString());
+    //         var hour = date.getHours();
+    //         var min = date.getMinutes();
+    //         var sco = date.getSeconds();
+    //         console.log(hour.toString(), min.toString(), sco.toString());
+
+    //     }
+    // getNow();
+
+
+
+/*     var date0 = new Date();
+ var now = date0.getTime();
+
+ console.log(now );
+ 
+ var now1 = changeDateFormat(now);
+ var now2 = changeDateFormatWithTime(now);
+ console.log(now1,now2); */
+ 
+
+
+var date = new Date();// 创建日期对象
+    var nowMS = date.getTime(); // 获取 毫秒
+    console.log(nowMS);
+
+    var now1 = changeDateFormat(nowMS);
+    var now2 = changeDateFormatWithTime(nowMS);
+
+    console.log(now1,now2);
+    function changeDateFormat(cellval) {
+      if (!cellval) return "暂无";
+      cellval = cellval.toString();
+      var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+      var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+      var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+      date.get
+      return date.getFullYear() + "-" + month + "-" + currentDate;
+    }
+
+    function changeDateFormatWithTime(cellval) {
+      if (!cellval) return "暂无";
+      cellval = cellval.toString();
+      var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+      var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+      var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+      var hours = date.getHours() < 10 ? "0" + (date.getHours()) : date.getHours();
+      var minute = date.getMinutes() < 10 ? "0" + (date.getMinutes()) : date.getMinutes();
+      var second = date.getSeconds() < 10 ? "0" + (date.getSeconds()) : date.getSeconds();
+      return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minute + ":" + second;
+    }
+
+
+        
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

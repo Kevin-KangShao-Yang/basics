@@ -1,0 +1,115 @@
+<!--
+ * @Description: In User Settings Editcript 
+ * @Author: your name
+ * @Date: 2019-08-11 08:47:04
+ * @LastEditTime: 2019-08-11 09:20:44
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 继承 ： 一个对象拥有另一个对象所有的成员 */
+
+        //父对象
+        var wangjianlin = {
+           hourse:{
+               address:'北京一环',
+               price:100000000000,
+           },
+           car:{
+               pinpai : '劳斯莱斯',
+               price: 8000000
+           }  
+        };
+        console.log(wangjianlin);
+        
+        //子对象
+        var  congcong = {
+            name:'聪聪',
+            gfs : ['雪梨','豆得儿','林更新','xjh']
+        };
+        console.log(congcong);
+        
+        /* 
+        1. 混入式 ： 遍历父对象成员添加给子对象
+        弊端 ： 多个子对象继承需要写很多循环，代码冗余
+        应用场景 ： 适合单个对象继承
+        */
+        // for(var key in wangjianlin){
+        //     congcong[key] =  wangjianlin[key];
+        // };
+        // console.log(congcong);
+        
+
+
+        /* 
+        2. 替换原型 : 将父对象作为子对象构造函数的原型
+        适用于： 多对象继承
+        弊端 ： 会覆盖子对象构造函数默认原型
+        */
+        // function SonWang(name,gfs){
+        //     this.name = name;
+        //     this.gfs = gfs;
+        // };
+
+        // //每一个儿子有自己的方法：花钱
+        // SonWang.prototype.flowerMoney = function(){
+        //     console.log('我是wangjianlin的儿子，我很快花钱请女孩子吃麻辣烫');
+        // };
+        // //替换原型继承
+        // SonWang.prototype = wangjianlin;
+
+
+        // var congcong = new SonWang('匆匆',['雪梨','豆得儿','林更新','xjh']);
+        // console.log(congcong);
+        // console.log(congcong.hourse);
+        
+        
+
+        // var xjh = new SonWang('恒恒',['小苍苍','左膀','右臂']);
+        // console.log(xjh);
+        // console.log(xjh.car);
+        
+        
+        
+
+        /* 
+        3. 混合式 ： 混入 + 替换原型
+        解决方案 ： 遍历父对象成员，添加到子对象构造函数原型中
+        */
+
+        function SonWang(name,gfs){
+            this.name = name;
+            this.gfs = gfs;
+        };
+
+        //每一个儿子有自己的方法：花钱
+        SonWang.prototype.flowerMoney = function(){
+            console.log('我是wangjianlin的儿子，我很快花钱请女孩子吃麻辣烫');
+        };
+        //遍历父对象成员，添加到子对象构造函数原型中
+        for(var key in wangjianlin){
+            SonWang.prototype[key] = wangjianlin[key];
+        };
+
+
+        var congcong = new SonWang('匆匆',['雪梨','豆得儿','林更新','xjh']);
+        console.log(congcong);
+        console.log(congcong.hourse);
+        
+        
+
+        var xjh = new SonWang('恒恒',['小苍苍','左膀','右臂']);
+        console.log(xjh);
+        console.log(xjh.car);
+        
+    </script>
+</body>
+</html>

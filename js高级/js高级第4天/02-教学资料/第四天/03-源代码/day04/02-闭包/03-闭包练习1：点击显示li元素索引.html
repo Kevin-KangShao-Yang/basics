@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+
+    <script>
+
+        var buttonList = document.getElementsByTagName('button');
+        for (var i = 0; i < buttonList.length; i++) {
+            //声明外部函数
+            buttonList[i].onclick = (function (num) {
+                //声明闭包函数
+                return function () {
+                    console.log(num);
+                };
+            })(i);
+
+            
+
+            // //声明外部函数
+            // function outer(){
+            //     var num = i;
+            //     //声明闭包函数
+            //     function closure(){
+            //         console.log(num);
+
+            //     };
+            //     return closure;
+            // };
+            // //调用外部函数得到闭包函数
+            //  var bibao = outer();
+            // //  bibao();
+
+            // //注册事件本质是给dom对象属性赋值 i= 0 1 2 3 4
+            // buttonList[i].onclick = bibao;//将闭包函数地址赋值给按钮的onclick属性
+        };
+
+    </script>
+</body>
+
+</html>

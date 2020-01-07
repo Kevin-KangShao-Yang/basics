@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // var usrWord = '呵呵';
+
+    // switch (usrWord) {
+    //   case '呵呵': {
+    //     console.log('你说的内容我不感兴趣~~~');
+    //   }
+    //   case '嗯': {
+    //     console.log('你说的内容还可以，继续吧~~~');
+    //   }
+    //   case '哦': {
+    //     console.log('无所谓~~~');
+    //   }
+    //   case '我要去洗澡了': {
+    //     console.log('不想和你聊了~~~');
+    //     break;
+    //   }
+    //   case '你是好人': {
+    //     console.log('我俩不可能~~~');
+    //   }
+    //   default: {
+    //     console.log('太高级了，我翻译不出来了');
+    //   }
+    // }
+
+    // console.log('翻译结束~~~');
+
+    //1.switch穿透：当 case 中 没有 写 break 来 退出 整个 swtich结构时，就叫做 switch穿透。
+    //              没写 break 的 case {} 代码结束后，会执行 下一个 case{} 代码块里的代码！！直到遇到 break 或 default 为止！！！
+
+
+
+    //2. 合理使用switch 穿透 ----------------------------------------------
+    //  判断当前月份所属的季节： 冬季：12 1 2    春：3 4 5   夏 6 7 8 秋 9 10 11
+    //接收用户输入的月份
+    var month = +prompt('请输入月份：');
+    switch (month) {
+      case 12:
+      case 1:
+      case 2: {
+        console.log('大约在冬季~~~');
+        break;
+      }
+      case 3:
+      case 4:
+      case 5: {
+        console.log('大约在春季~~~');
+        break;
+      }
+      case 6:
+      case 7:
+      case 8: {
+        console.log('大约在夏季~~~');
+        break;
+      }
+      case 9:
+      case 10:
+      case 11: {
+        console.log('大约在秋季~~~');
+        break;
+      }
+    }
+
+
+
+    //接收用户输入的年和月份，alert 显示 这个月有多少天
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

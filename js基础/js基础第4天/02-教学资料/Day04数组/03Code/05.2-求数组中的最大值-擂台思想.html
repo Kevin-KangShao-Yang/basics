@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 求数组[2,6,1,77,52,25,7]中的最大值
+        // var arrNum = [2, 6, 1, 77, 52, 25, 7];
+        // 思路：
+        //     a. 准备一个 变量 保存 最大值
+        //     b. 遍历 数组中的 元素，前后两两相比，将 较大的值 存入 最大值变量
+
+        var arrNum = [2, 3, 4, 5, 6, 52, 25, 7];
+        //            0  1  2  3   4   5   6   length = 7
+
+        var maxNum = -Infinity; // 最大值变量
+        // 遍历 生成 数组中的 每个元素的 下标
+        for (var i = 0; i < arrNum.length; i++) {
+            // 判断 i对应的元素是否 比 maxNum 变量中的 值要大
+            if(arrNum[i] > maxNum){
+                maxNum = arrNum[i]; // 如果 i对应的 元素 较大，就 存入 最大值变量
+            }
+        }
+
+        // 打印最大值
+        console.log(maxNum);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

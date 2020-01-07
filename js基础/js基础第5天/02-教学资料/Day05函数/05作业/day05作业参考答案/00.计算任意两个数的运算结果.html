@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 写一个函数，用户输入任意两个数字的任意算术运算（简单的计算器小功能），并能弹出运算后的结果。
+
+    // 一、函数声明 ------------------------------------
+    // 编写函数的 思维方式：
+    //         a.函数时做什么功能的
+    //         b.函数需要什么 -- 形参
+    //         c.函数返回什么 -- return 返回值
+
+    /**
+     * @description: 建议计算器
+     * @param {Number}  num1
+     * @param {Number}  num2
+     * @param {String}  ope  操作符 ( + - * /)
+     * @return: num1 和 num2 的运算结果
+     */
+    function operate(num1, num2, ope) {
+      var res = 0; //保存运算结果的变量
+      
+      // 1.根据 传入的 符号 进行不同的 算数运算
+      //   并将 运算结果 存入 变量 res
+      switch(ope){
+        case '+':{
+          res = num1 + num2;
+          break;
+        }
+        case '-':{
+          res = num1 - num2;
+          break;
+        }
+        case '*':{
+          res = num1 * num2;
+          break;
+        }
+        case '/':{
+          res = num1 / num2;
+          break;
+        }
+        default:{
+          alert('运算符错误~~！');
+        }
+      }
+
+      // 2.将结果返回 到 函数调用处
+      return res; 
+    }
+
+    // 二、测试函数调用 ------------------------------------
+
+    var x = +prompt('请输入第1个值：'); //  2
+    var y = +prompt('请输入第2个值：'); //  5
+    var o = prompt('请输入运算符(+ - * /)：'); // '+'
+
+    // 调用函数 并接收 函数的返回值
+    var rNum = operate(x,y,o); // operate(2,5,'+');
+    alert('运算结果为：' + rNum);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

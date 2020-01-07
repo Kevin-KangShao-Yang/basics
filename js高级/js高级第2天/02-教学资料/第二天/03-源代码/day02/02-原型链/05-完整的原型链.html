@@ -1,0 +1,71 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-11 09:35:38
+ * @LastEditTime: 2019-08-11 15:29:56
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.js完整原型链 ： 构造函数对象 、 原型对象 、 实例化对象  三者之间的关系
+
+        2. 关系 ： js中所有的对象都是构造函数创建，不同的对象不同的构造函数
+        
+         */
+
+        //(1)自定义构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        };
+
+        //原型对象
+        Person.prototype;
+
+        //实例化对象
+        var p1 = new Person('张三',20);
+
+        //1.1  查看p1的原型链
+        console.log(p1.__proto__.constructor);//Person
+        console.log(p1.__proto__ === Person.prototype);//true
+
+        console.log(p1.__proto__.__proto__);//Object
+        console.log(p1.__proto__.__proto__ === Object.prototype);//true
+
+        console.log(p1.__proto__.__proto__.__proto__);//null
+
+        //1.2  查看Person函数对象的原型链
+        console.log(Person.__proto__.constructor);//Function
+        console.log(Person.__proto__ === Function.prototype);//true
+
+        console.log(Person.__proto__.__proto__.constructor);//Object
+        console.log(Person.__proto__.__proto__ === Object.prototype);//true
+
+        //1.3 查看Object函数对象的原型链
+        console.log(Object.__proto__.constructor);//Function
+        console.log(Object.__proto__ === Function.prototype);//true
+
+        //1.4 查看Function函数对象的原型链
+
+        // Function函数对象的原型链  Fucntion函数对象 ->Function.prototype -> Object.prototype->NULL
+        console.log(Function.__proto__.constructor);//Function
+        console.log(Function.__proto__ === Function.prototype);//true
+        
+        //(2)内置构造函数
+        var obj = {};// new Object()
+        console.log(obj.__proto__.constructor);//Object
+        console.log(obj.__proto__ === Object.prototype);//true
+        
+        
+    </script>
+</body>
+</html>

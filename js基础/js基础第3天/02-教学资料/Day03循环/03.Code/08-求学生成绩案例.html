@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 输入学员个数，依次录入每位学员的成绩，最后求 学员总成绩 和 平均成绩
+        
+        // 思路：
+        //   a. 接收用户输入的学员个数 - 使用一个变量 stuCoutn
+        //   b. for循环，录入每位学员的成绩 -- “有几位学员 就 循环几次”
+        //      b1. 循环 接收 用户录入的 某位学员成绩
+        //      b2. 将 接收到的 某位学员的成绩 累加到 学员总成绩变量 -- 需要使用一个变量 保存 学员总成绩
+        //   c.循环结束后，用总成绩 / 学员个数 求 平均成绩
+
+
+        var stuCount = +prompt('请输入学员的个数：');
+
+        var stuScoreSum = 0; // 学员总成绩变量
+
+        for (var i = 1; i <= stuCount; i++) {
+            var stuScore = +prompt('请输入第【' + i + '】位学员的成绩：');
+            // 将 学员 成绩 累加到 总成绩变量中
+            stuScoreSum += stuScore;
+        }
+
+        var stuAvgScroe = stuScoreSum / stuCount;
+
+        console.log('总人数：【' + stuCount + '】，总成绩【' + stuScoreSum + '】，平均分：【' + stuAvgScroe + '】');
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

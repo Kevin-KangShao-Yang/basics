@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 3.要求：求一组数值 [2,6,1,77,52,25,7] 的 最大值，以及 最大值在数组中的下标。
+    var arr = [2, 6, 1, 77, 7];
+    //         0  1  2  3   4    5  6     length = 7
+    // 思路：
+    //   a. 创建 擂台变量 -- 保存最大值
+    //   b. 创建 保存最大值下标 的变量
+    //   c. for遍历 数组，将 数组中i对应的元素 和 擂台变量 进行比较，如果更大，就将 元素 设置给 【擂台变量】
+    //                                                                    同时，还 将 i 设置给 【最大值下标 变量】
+
+    var maxNum = -Infinity;
+    var maxNumIndex = -1; // 注意：保存下标的 变量，初始值 一般 都给 -1
+
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] > maxNum) {
+        maxNum = arr[i];// 保存较大的元素
+        maxNumIndex = i;// 保存较大的元素  的 下标
+      }
+    }
+
+    console.log(maxNum, maxNumIndex);
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 输入一个年份，判断是否是闰年(能被4整除而不能被100整除.2.能被400整除.)
+
+    // 一、函数声明 ------------------------------------
+    function isRunNian(year) {
+      if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+        return true;
+      }
+
+      return false;
+    }
+
+
+    // 二、测试函数调用 ------------------------------------
+    var usrYear = parseInt(prompt('请输入年份：'));
+
+    var isNian = isRunNian(usrYear);
+
+    alert(isNian);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

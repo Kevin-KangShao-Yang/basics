@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.求 数组 [2, 4, 6, 1, 8, 7, 9, 99, 22] 最大值
+    var arr = [2, 4, 6, 1, 8, 7, 9, 99, 22];
+    //         0  1  2  3  4  5  6   7  8     length = 9
+
+    var maxNum = arr[0];
+
+    for (var i = 1; i < arr.length; i++) {
+      if (arr[i] > maxNum) {
+        maxNum = arr[i];
+      }
+    }
+
+    console.log('最大值为：' + maxNum);
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

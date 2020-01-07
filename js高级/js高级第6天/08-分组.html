@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.分组 () : 将多个字符分为一组
+
+        2.优先级（）：
+            通常要与 | 或 一起使用
+            
+        3 反向引用() :
+        
+        */  
+       
+        
+        //1.分组 () : 将多个字符分为一组
+        /* 
+        需求： 匹配 连续出现 三个love的字符
+
+        /love{3}/ : lov + e{3}  默认量词只能作用一个字符
+        /(love){3}/ : (love) 出现三次
+
+        */
+
+        /* 2.优先级（）：
+             通常要与 | 或 一起使用
+        
+        需求： 匹配 live 或者 love
+        /li|ove/ :  li 或者 ove
+        /l(i|o)ve/ :  l + i或者o + ve
+        */   
+
+        /*  3 反向引用() :
+        正则表达式会自动捕捉引用 () 中匹配到的数据，存储在 静态成员RegExp中$1 $2
+        */
+
+        // 'yyyy-mm-dd' : '2019-08-17'    08-17-2019
+        /(\d{4})-(\d{2})-(\d{2})/.test('2019-08-17');
+
+        console.log('2019-08-17'.replace(/(\d{4})-(\d{2})-(\d{2})/,'$2-$3-$1'));
+        
+
+        console.log(RegExp.$1);
+        console.log(RegExp.$2);
+        console.log(RegExp.$3);
+        
+
+    </script>
+</body>
+</html>

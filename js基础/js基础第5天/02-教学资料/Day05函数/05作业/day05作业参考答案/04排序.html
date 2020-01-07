@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    // 数组排序函数
+
+    // 一、函数声明 ------------------------------------
+    function sortArr(arrNum) {
+      // 1.外层循环 负责 比较 轮数 控制： 轮数 = 数组元素个数 - 1
+      for (var lun = 1; lun < arrNum.length; lun++) {
+
+        console.log('第' + lun + '轮比较--------------------');
+
+        // 2.内层循环 负责 比较的次数
+        for (var i = 0; i < arrNum.length - lun; i++) {
+
+          //console.log('第' + lun + '轮的 第 '+ i +'次比较--------------------');
+          if (arrNum[i] > arrNum[i + 1]) {
+            var temp = arrNum[i];
+            arrNum[i] = arrNum[i + 1];
+            arrNum[i + 1] = temp;
+          }
+        }
+
+        console.log(arrNum);
+      }
+
+      //3.返回排序后的数组
+      return arrNum;
+    }
+
+    // 二、测试函数调用 ------------------------------------
+    var arr = [2, 1, 5, 8, 99, 33, 21];
+    arr = sortArr(arr);
+    console.log('排序结果 arr = ' + arr);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

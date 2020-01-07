@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 函数 内部的 特殊 属性(变量) arguments
+        // 作用：在函数调用时 会 自动将 实参 都 存入 arguments 属性
+        // 【类数组】arguments存储数的 格式：【类数组】， 有 元素、下标、length 
+
+        function showLove(toName, fromName) {
+
+            console.log('要开始表白了：');
+            console.log(toName + ',我喜欢你哦~~~ ' + fromName);
+
+            console.log(arguments);
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+        }
+
+        showLove('Linda', 'James');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 预解析案例
+        
+        console.log('--------------------案例1--------------------');
+        // // 案例1
+        // var num = 10;
+        // fun();
+
+        // function fun() {
+        //     console.log(num); // undefined
+        //     var num = 20;
+        // }
+        // console.log(num); // 10
+
+
+
+        console.log('--------------------案例2--------------------');
+        // 案例2
+        
+        var num = 10;
+        fun();
+        console.log(num); 
+
+        function fun() {
+            console.log(num);
+            var num = 20;
+            console.log(num);
+        }
+        
+
+        // console.log('---------------------案例3-------------------');
+        // // 案例3
+        // var a = 18;
+        // f1();
+
+        // function f1() {
+        //     var b = 9;
+        //     console.log(a); 
+        //     console.log(b);
+        //     var a = '123';
+        // }
+        
+
+        // console.log('--------------------案例4--------------------');
+
+        // // 案例4
+
+        // function f1(){
+        //     loverName = '小苍苍';
+        // 如果没有用var声明变量,那么loverName就不是局部变量,而是全局变量,所以在局部和全局都能访问到
+        //     console.log(loverName); 
+        // }
+
+        // f1();
+        // console.log(loverName);
+
+
+
+
+      num1('吃货');
+      function num1(food) {
+          console.log(food+'是谁');
+          
+      }
+      num2('水货');
+      var num2 =function (food){
+        console.log(food+'是谁');
+      }
+
+     var num2 ;
+    //  先提升声明变量
+    function num1(food) {
+          console.log(food+'是谁');
+          
+      }
+    //   再提升函数变量
+    num1('吃货');
+    num2('水货');
+    num2 =function (food){
+        console.log(food+'是谁');
+      }
+        // 提升声明变量以后,剩下的会留在原地不动
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

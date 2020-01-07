@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        伪数组排序
+        
+         */
+
+        var weiArr = {
+            0:88,
+            1:100,
+            2:60,
+            3:90,
+            4:55,
+            length:5
+        };
+
+        //数组排序 ： arr.sort()
+        // var arr = [60,88,20,40,66];
+        // arr.sort(function(a,b){
+        //     // return a-b;
+        //     return b-a;
+        // });
+        // console.log(arr);
+
+        //伪数组调用sort ： 越过原型链，直接使用Array.prototype来调用
+        Array.prototype.sort.call(weiArr,function(a,b){
+            // return a-b;
+            return b-a;
+        });
+
+        console.log(weiArr);
+    </script>
+</body>
+</html>

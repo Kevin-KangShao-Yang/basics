@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //面试题 ： 衡量一个人会不会闭包，只要给他做这两道题即可
+
+        //1.
+        var name = 'The Window';
+        var obj = {
+            name :'The Object',
+            getName :function(){
+                return function(){
+                    return this.name;
+                };
+            }
+        };
+
+        // (1) var fn = obj.getName();//全局  （2）fn();
+
+        // (1)调用obj.getName()返回全局匿名函数 （2）调用这个匿名函数，this->window
+        console.log(obj.getName()());//The window
+
+        //2.
+        var name = 'The Window';
+        var obj = {
+            name :'The Object',
+            getName :function(){
+                var that = this;
+                return function(){
+                    return that.name;
+                };
+            }
+        };
+
+        //(1) obj.getName() ： this-> obj  that = this = obj  (2) obj.getName()(); this->window that->obj
+        console.log(obj.getName()());//The Object
+        
+
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1. 对象
+    var dog = {
+      name: 'ruiky',
+      age: 1,
+      gender: true,
+
+      bark: function () {
+        console.log(this.name + ' , age =' + this.age);
+      } //,
+      // run() {
+      //   console.log('我是会跑的 小狗狗~~~~');
+      // }
+    };
+
+    // 2. 对象成员 的 . 访问法
+    console.log(dog.name);
+    console.log(dog.age);
+
+    dog.bark();
+
+    // 3. 中括号 访问法
+    console.log(dog['name']); //dog.name
+    console.log(dog['age']); // dog.age
+
+    dog['bark']();
+
+
+    //4.对象成员的修改
+    dog.name = 'whisky';
+    dog['age'] = 3;
+
+    console.log(dog);
+
+
+    //5.添加 对象的成员
+    dog.pinZhong = '雪纳瑞';
+    dog.run = function () {
+      console.log(this.name + ', 我在奔跑哦~~~');
+    }
+
+
+    // 6. 删除 对象的成员
+    delete dog.run;
+
+    console.log(dog);
+
+
+    // -------------------------------------------------------
+
+    var dog = {
+      name: 'ruiky',
+      age: 1,
+      gender: true,
+
+      bark: function () {
+        console.log(this.name + ' , age =' + this.age);
+      }
+    };
+
+    dog.bark();
+
+
+    console.log('遍历 对象中 所有成员的 名字:');
+    // 遍历 对象中 所有成员的 名字
+    for (var k in dog) {
+      console.log(k);
+
+      var v = dog[k]; // k = name   age   gender  bark
+      console.log(v);
+      console.log('----------------------');
+    }
+
+    // ------------------------------------------------
+    // this口诀：调用方法时，谁 . 出的方法，方法里的 this 就是谁
+
+    function a() {
+      console.log(this); // window
+    }
+
+    // window.a();
+    a();
+
+
+    // -------------------------------------------
+    // 构造函数 名称：首字母 一般都大写， 一般使用名词
+    function Dog(name1, age1) {
+      this.name = name1;
+      this.age = age1;
+    }
+
+    var d1 = new Dog('Ruikey', 1);
+    var d2 = new Dog('Ruikey2', 2);
+    var d3 = new Dog('Ruikey3', 3);
+    // new 关键字 4 个事情
+    //   a. 创建 空对象     var obj = {};
+    //   b. 将 空对象 设置给 构造函数的 this    this = obj;
+    //   c. 调用构造函数  Dog('Ruikey', 1)
+    //   d. 返回 obj -> { name:'Ruikey', age : 1}
+
+    console.log(d1);
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

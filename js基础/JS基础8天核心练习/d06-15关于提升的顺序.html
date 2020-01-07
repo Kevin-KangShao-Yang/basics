@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      // 预解析： JS引擎执行 代码之前 会 先 扫描页面中的 JS代码，做适当的调整
+      //  变量提升
+      //  函数提升
+      //  顺序：变量 先提升，函数 后提升，同名 函数 会 覆盖 同名变量
+
+      console.log(showLove); // 打印的是 函数代码，说明，变量 先提升，函数 后提升
+
+      function showLove() {
+          console.log('bbb');
+      }
+      var showLove = 'aaa';
+
+      console.log(showLove); //  aaa
+
+
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.基本数据类型（值类型）：
+    //   number , string , boolean , undefined ,null
+    var num1 = 101;
+    var str = '小白白';
+    var isOk = true;
+
+    //2.复杂数据类型（引用类型）：
+    //   Object , Array , Function , 自定义构造函数
+
+    // var obj = new Object();
+    var obj = {
+      name: 'james',
+      age: 18
+    };
+
+    var arr = [1, 2, 3];
+
+    function showLove() {
+      console.log('你好呀，我爱你呀~~~~');
+    }
+
+    function StuInfo(sName, sAge) {
+      this.name = sName;
+      this.age = sage;
+    }
+
+
+
+
+
+
+
+
+
+
+    // 总结：
+    //     赋值： 不管是 引用类型 还是 值类型 变量 ，相互之间赋值，其实 是把 栈空间里的值 复制一份 给 另一个变量
+    //     传参： 不管是 引用类型 还是 值类型 传参，其实 就是 把 栈空间里的 值 复制一份 给了 形参
+
+    //      区别：值类型 栈空间 里保存 的 是 值 本身
+    //          引用类型 栈空间  里保存 的是 对象 的 地址
+
+    //1.简单数据类型（值类型）： Number, String, Boolean, Undefined, Null  ----------------------------------------------
+    //1.1 值类型 赋值-------------------------------------
+    var age = 18;
+    var myAge = age;
+    myAge++;
+
+    console.log(age);  // 18
+
+
+
+
+
+
+
+    //1.2 值类型 传参   -----------------------------------
+    function changeNum(num) {
+      num += 100;
+    }
+
+    var age1 = 100;
+
+    changeNum(age1);
+
+    console.log(age1); // 100
+
+
+
+
+    console.log('----------------------------------');
+    //2.复杂数据类型（引用类型）：Object , Function , Array , 自定义类型（构造函数） ---------------------------------------
+    //1.1 引用类型 赋值 -----------------------------------
+    var arr = [1, 2];
+    //         0  1
+
+    var arr2 = arr;
+
+    arr2[0] = 5;
+
+    console.log(arr); // [5,2]
+
+
+    //1.2 引用类型传参 -----------------------------------
+
+    function changeEle(arrObj) {
+      arrObj[0] = '学无止境，回头是岸';
+    }
+
+    var arr5 = ['不要再讲了', '这不是扩展呀'];
+    //               0              1          length = 2
+
+    changeEle(arr5);
+
+    console.log(arr5); // [ '学无止境，回头是岸', '这不是扩展呀' ]
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

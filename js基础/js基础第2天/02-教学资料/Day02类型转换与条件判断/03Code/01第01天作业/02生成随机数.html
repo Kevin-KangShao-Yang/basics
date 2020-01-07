@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 2.随机生成0-100之间的三个整数字，打印出每个数字，并打印出里面的最大值，最小值
+
+    //2.1 生成3 个 随机数，并分别存入 三个 变量中
+    var ranNum1 = Math.floor(Math.random() * 100);
+    var ranNum2 = Math.floor(Math.random() * 100);
+    var ranNum3 = Math.floor(Math.random() * 100);
+
+    //2.2 打印3个随机数
+    console.log(ranNum1, ranNum2, ranNum3);
+
+    //2.3 求最大值
+    var maxDog = Math.max(ranNum1, ranNum2, ranNum3);
+    console.log('最大值：' + maxDog);
+
+    //2.4 求最小值
+    var minCat = Math.min(ranNum1, ranNum2, ranNum3);
+    console.log('最小值：' + minCat);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

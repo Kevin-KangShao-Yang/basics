@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 写一个函数，用户输入任意两个数字的最大值，并能出弹运算后的结__果。
+
+    // 一、函数声明 ------------------------------------
+    function getMax(x, y, z) {
+      // 准备一个变量 保存最大值
+      var maxNum = 0;
+
+      if (x >= y && x >= z) { // 判断 x 是不是 最大值
+        maxNum = x;
+      } else if (y >= x && y >= z) { // 判断 y 是不是 最大值
+        maxNum = y;
+      } else { // 如果x,y 都不是最大值，那么 z 是 最大值
+        maxNum = z;
+      }
+
+      // 返回最大值
+      return maxNum;
+    }
+
+
+    // 二、测试函数调用 ------------------------------------
+    var r1 = getMax(1, 2, 3);  // 相当于 ： var r1 = 函数中的 return maxNum; 
+    console.log(r1);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

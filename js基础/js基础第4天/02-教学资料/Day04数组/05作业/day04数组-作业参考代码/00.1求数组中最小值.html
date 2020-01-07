@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 求数组中的最小值 ：[2,5,11,3,0,57]
+
+    var arr = [2, 5, 11, 3, 0, 57];
+    //         0  1   2   3  4  5     length = 6
+
+    var minNum = Infinity;
+
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] < minNum) {
+        minNum = arr[i];
+      }
+    }
+
+    console.log('最小值为：' + minNum);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

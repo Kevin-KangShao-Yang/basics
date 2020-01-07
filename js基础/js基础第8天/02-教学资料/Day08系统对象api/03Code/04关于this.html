@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+
+  <script>
+
+    //【关于 this 的 总结】 ------------------------------------------------------
+    //  this 的本质：就是函数内部 由系统 定义的一个 特殊变量（属性）
+    function aaa() {
+      console.log(this); // window
+    }
+
+    // window.aaa();
+    aaa();
+
+
+    var cat = {
+      name: '小喵喵',
+      miao: function () {
+        console.log('喵喵喵~~~~' + this.name);
+      }
+    };
+
+    cat.miao();
+
+    // this 两个角度：
+    //  1.写代码时，脑子里可以这么想： 某个对象 方法 里的 this 就是 这个对象
+    //                             因为 要调用 一个对象里的方法时，大部分情况 都是 通过这个 对象.方法() 去调用的
+    //  2.本质上说：对象 方法里的 this，就是 ： 【谁.出这个方法，方法里的this就是谁】
+
+    // this 三种情况：
+    // 1. 构造函数 里的 this，就是 new 关键字 创建的 对象
+    // 2. 对象方法 里的 this，就是 对象本身 --- 谁.的方法，方法里的this就是谁
+    // 3. 普通函数 里的 this, 就是 window  --- 谁.的方法，方法里的this就是谁
+
+  </script>
+
+</head>
+
+<body>
+</body>
+
+</html>

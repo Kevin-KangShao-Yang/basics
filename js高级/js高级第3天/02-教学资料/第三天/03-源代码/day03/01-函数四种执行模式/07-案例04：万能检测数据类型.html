@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        /* 
+        1.typeof 数据 ： 检测数据类型
+            可以检测 除 null 和 array之外的数据类型
+         */
+        console.log(typeof null);//object
+        console.log(typeof []);//object
+        
+
+        //2. Object.prototype.toString() : 返回固定格式字符串  [object 数据类型]
+
+        console.log({}.toString());//[object Object]
+        //数组也有toString() :返回调用join()之后得到的字符串
+        console.log([10,20,30].toString());//10,20,30
+
+        //如何让arr调用 Object.prototype中的toString() : 越过原型链
+        console.log(Object.prototype.toString.call([10,20,30]));// [object Array]
+
+        //3.万能检测数据类型 ： Object.prototype.toString.call(要检测的数据)
+        console.log(Object.prototype.toString.call('123'));//[object String]
+        console.log(Object.prototype.toString.call(123));//[object Number]
+        console.log(Object.prototype.toString.call(true));//[object Boolean]
+        console.log(Object.prototype.toString.call(undefined));//[object Undefined]
+        console.log(Object.prototype.toString.call(null));//[object Null]
+        console.log(Object.prototype.toString.call([]));//[object Array]
+        console.log(Object.prototype.toString.call(function(){}));//[object Function]
+        console.log(Object.prototype.toString.call({}));//[object Object]
+        
+        
+
+        //请说出下面代码执行结果，能否打印null,如果不能，请写出如何检测null类型
+        console.log(typeof null);//object
+        
+        
+        
+    </script>
+</body>
+</html>

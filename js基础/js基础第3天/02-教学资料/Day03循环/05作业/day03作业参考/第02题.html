@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      // 2. 求1-100之间所有 偶数的和
+      //思路：
+      //    a.准备一个变量 保存 所有偶数的 和
+      var sum = 0;
+
+      // 生成 1-100之间所有的数，并累加 所有 偶数 到 变量 sum中
+      for(var i = 1; i<= 100; i++){
+        if(i % 2 == 0){
+          console.log(i);
+          
+          sum += i;
+        }
+      }
+
+      console.log(sum);
+      
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

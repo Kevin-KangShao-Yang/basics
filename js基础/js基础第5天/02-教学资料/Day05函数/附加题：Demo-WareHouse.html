@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简易仓储系统</title>
+  <script>
+    //*****************核心：1. 货物数组 的增删改查**************************
+    var arrStuffName = ['苹果','香蕉','哈士奇','金毛']; // 存放货物名称
+    var arrStuffNum = [100 , 200 , 10 , 20]; // 存放货物数量 
+    //*******************************************************************
+
+    /* 
+      1. 添加货物数量（ 要添加的货物下标 ， 添加数量 ）
+     */
+    function editStuff(stuffIndex,stuffNum){
+      //从 货物名称数组中 获取 对应 下标的 货物名称
+      var stuffName = arrStuffName[stuffIndex];
+      //把 数量 追加到 货物数量数组 对应 下标的 货物库存量 中
+      arrStuffNum[stuffIndex] += stuffNum;
+
+      // 新增【货物名称】共【100】个成功，库存：货物数量数组[stuffIndex]
+      alert('新增【'+ stuffName +'】共 【' + stuffNum + '】个成功，库存：' + arrStuffNum[stuffIndex]);
+    }
+
+    /* 
+      2. 移出货物( 要取出的货物下标 ， 取出数量)
+     */
+    function removeStuff(stuffIndex,stuffNum){
+      //获取 要取出货物 的 库存
+      var targetNum = arrStuffNum[stuffIndex];
+      //获取 要取出货物 的 名称
+      var stuffName = arrStuffName[stuffIndex];
+      //如果 要取出的货物数量 < 该货物库存数量，则 库存 - 要取出的数量
+      if(targetNum >= stuffNum){
+        //将 货物数量数组 里 该货物的 库存 修改
+        arrStuffNum[stuffIndex] -= stuffNum;
+        
+        // 取出【货物名称】共【100】个成功，库存：货物数量数组[stuffIndex]
+        alert('取出【'+ stuffName +'】共 【' + stuffNum + '】个成功，库存：' + arrStuffNum[stuffIndex]);
+      }else{
+        alert('对不起，库存不够~~！');
+      }
+    }
+
+    /*
+      3. 根据 货物名称 找到 货物名称 在数组里的 下标 ( 货物名称 )
+         返回值：返回 货物 在 货物名称数组中 对应的下标
+    */
+    function getIndexByName(stuffName){
+      var targetIndex = -1;
+      for(var i =0;i< arrStuffName.length;i++){
+        if(arrStuffName[i] == stuffName){
+          targetIndex = i;
+          break;
+        }
+      }
+      return targetIndex;
+    }
+
+    /* 
+      4. 获取用户的操作选项 方法
+         返回值：返回 操作提示 字符串
+     */
+    function getOperator(){
+      var strMsg = '欢迎使用简易仓储系统~~！\n';
+      strMsg += '请选择您要进行的操作：\n';
+      strMsg += '1.新增货物\n2.取出货物\n3.查看货物清单\n4.退出';
+      var usrInput = prompt(strMsg);
+      return usrInput;
+    }
+
+    /* 
+      5. 获取用户要操作的货物名称
+         返回值：返回 货物清单 和 提示用户选择的字符串。
+     */
+    function getUsrChooseStuffIndex(){
+      var strMsg = '请选择您要操作的【货物名称】：';
+      strMsg += getStuffInfo();
+      //接收用户 选择 货物 对应的 下标
+      var usrChooseStuff = prompt(strMsg);
+      return usrChooseStuff;
+    }
+
+    /* 
+      6.获取货物清单（名称和数量）
+        返回值：货物清单字符串
+     */
+    function getStuffInfo(){
+      var strHouseInfo = '\n';
+      for(var i = 0; i < arrStuffName.length; i++){
+        /* 组成字符串： 
+           1.苹果 的数量为：101 \n
+           2.香蕉 的数量为：10 \n
+         */
+        strHouseInfo += i + '.' + arrStuffName[i] + ' 的数量为：' +arrStuffNum[i] + '\n';
+      }
+      return strHouseInfo;
+    }
+
+    //0.启动函数，开始执行仓库业务
+    function startWork(){
+      var doWhile = true;
+      //开始循环 与 用户交互操作
+      while(doWhile){
+        // 获取用户的操作选项
+        var usrOperator = getOperator();
+        // 根据用户选项 进行不同操作
+        switch(usrOperator){
+          case '1': // 追加货物数量
+            // 获取用户要操作的货物名称 序号
+            var usrStuffNameIndex = getUsrChooseStuffIndex();
+
+            // 获取用户要追加的数量
+            var usrStuffNum = parseInt(prompt('请选择您要追加的【数量】：'));
+
+            // 追加 数组中 对应 货物 的库存数量
+            editStuff(usrStuffNameIndex , usrStuffNum);
+            break;
+
+          case '2':// 取出货物
+            // 获取用户要取出的货物名称 序号
+            var usrStuffNameIndex = getUsrChooseStuffIndex();
+
+            // 获取用户要取出的数量
+            var usrStuffNum = parseInt(prompt('请选择您要追加的【数量】：'));
+
+            // 减少 数组中 对应 数组的库存数量
+            removeStuff(usrStuffNameIndex,usrStuffNum);
+            break;
+
+          case '3':// 查看货物清单
+            var strMsg = getStuffInfo();
+            alert(strMsg);
+            break;
+
+          case '4':
+            doWhile = false;
+            alert('谢谢光临，欢迎再来~~~！');
+            break;
+        
+        }
+      }
+    }
+
+    // 开始执行业务代码
+    startWork();
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.找出数组中的最大值，只不过封装成函数，功能不能单调，意思就是我传入什么数组，就找出什么数组的最大值
+
+    // 一、函数声明 ------------------------------------
+    // getMax - 找到数组中的最大值
+    //       arrObj - 调用函数时，需要传入一个数 给 形参
+    //       return - arrObj中的最大值
+    function getMax(arrObj) { // 形参的本质：局部变量
+      //1.1 准备一个变量，用来保存 数组中的 最大值
+      var maxValue = arrObj[0]; // 设置数组中的第一个 元素 给 变量  --- 减少 循环时的对比次数
+
+      //1.2 循环 遍历数组 中的 元素，用来和 maxValue内的数值 进行 比较
+      for(var i = 0; i < arrObj.length; i++){
+        if(arrObj[i] > maxValue){
+          maxValue = arrObj[i];
+        }
+      }
+
+      //1.3 返回 数组中的最大值
+      return maxValue;
+    }
+
+    
+    // 二、测试函数调用 ------------------------------------
+    var arr = [2, 5, 8, 1, 7, 8, 0, 4, 3, 2];
+    var maxNum = getMax(arr); // arrObj = arr;
+
+    console.log('arr = ' + arr);
+    console.log(maxNum);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

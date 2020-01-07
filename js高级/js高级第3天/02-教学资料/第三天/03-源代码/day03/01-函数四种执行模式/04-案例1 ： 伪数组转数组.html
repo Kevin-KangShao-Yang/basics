@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 伪数组 ：有数组的三要素（元素，下标，长度），没有数组的API
+        伪数组本质是 对象    转数组目的：让伪数组也可以调用数组的api
+         */
+
+        var weiArr = {
+            0: '林绿裙',
+            1: '保健坤',
+            2: '炮王周',
+            3: '屁股林',
+            length: 4
+        };
+
+        console.log(weiArr);
+        // weiArr.reverse();
+
+        //需求 ： 伪数组转数组  （伪数组也可以调用数组的API）
+
+        //1. 遍历伪数组。每一个元素添加到真数组中
+        // var arr = [];//new Array()
+        // for (var i = 0; i < weiArr.length; i++) {
+        //     arr.push(weiArr[i]);
+        // };
+        // console.log(arr);
+
+        /* 
+        2. push() : 最常用
+            固定语法 ： 数组.push.apply(数组,伪数组)
+         */
+        var arr1 = [];
+        // arr1.push(weiArr[0],weiArr[1],weiArr[2],weiArr[3]);
+        //这里不需要修改this，只是希望借助apply传参可以传数组
+        arr1.push.apply(arr1, weiArr);
+        console.log(arr1);
+
+        /* 
+        3. slice() : 最常用
+        a. 数组.slice(start,end) 返回  statr <= 范围 < end
+        b. 如果传参0或者不传，返回数组自身。
+        c. 思路 ： 如果伪数组也可以调用slice，不传参数。不就返回真数组了吗？
+         */
+
+        // console.log(weiArr.slice());//报错 为数组的原型链中没有这个方法
+
+        //手动替换js底层slice(js作者)
+        // Array.prototype.slice = function () {
+        //     //this : 调用这个方法的每一个数组对象
+        //     console.log(this);//arr1
+            
+        //     var arr = [];
+        //     for (var i = 0; i < this.length; i++) {
+        //         arr.push(this[i])
+        //     };
+        //     return arr;
+        // }
+
+
+        //谁可以访问 ： （1）构造函数自身  （2）实例化对象
+        //越过了数组的原型链，直接使用构造函数的原型来访问，此时this就是构造函数原型
+        
+        // 需要将这个this 由 Arr.prototype 改成 weiArr
+        var arr =  Array.prototype.slice.call(weiArr);
+        console.log(arr);
+        
+        // arr1.slice() 
+
+
+        // 4 concat() : 连接数组
+    var arr = [];
+    //不能直接这样写，会把weiArr当成一个元素连接到数组中
+    arr = arr.concat(weiArr);
+    console.log ( arr );
+    arr = arr.concat.apply(arr, weiArr);//将weiArr每一个元素连接到arr中
+    console.log ( arr );
+
+
+    </script>
+</body>
+
+</html>

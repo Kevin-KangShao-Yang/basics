@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script>
+/* 请用户输入年份
+   打印该年是平年还是闰年。
+   闰年的计算方法：
+       能被400整除        或者       能被4整除且不能被100整除
+	   year % 400 == 0 */
+
+var year = parseInt(prompt('请输入年份'));
+if (year%400==0 || (usrYear % 4 == 0 && usrYear % 100 != 0)) {
+    console.log('闰年');
+}else {
+    console.log('平年')
+}
+
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>

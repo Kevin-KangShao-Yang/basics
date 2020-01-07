@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <script>
+      var number = +prompt('请输入月份(用数字表示)');
+      var huiFu;
+      switch (number) {
+          case 12:
+          case 1:
+          case 2:{
+           huiFu = '春季';   
+           break;           
+           
+          }
+          case(3):
+          case(4):
+          case(5): {
+            huiFu = '夏季';
+           }
+           case 6:
+           case 7:
+           case 8:{
+            huiFu = '秋季';
+           }
+           case 9:
+           case 10:
+           case 11: {
+            huiFu = '冬季';
+           }
+      }
+      var tiShi = alert(huiFu);
+      console.log('行了' + huiFu);
+
+  
+  
+  
+  </script>
+</head>
+<body>
+    
+</body>
+</html>

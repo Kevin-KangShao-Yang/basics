@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var benLaoPo = {
+      name: '小笨蛋',
+      cook: function () {
+        console.log('做的菜真难吃~~~');
+      }
+    };
+
+    console.log(benLaoPo);
+    delete benLaoPo.name;
+    console.log(benLaoPo);
+
+
+    // 创建一个 法拉利 赛车 对象，里面有 颜色、型号、价格 三个属性 ， 还有 run 方法
+
+    var farali = {
+      type: 'SF90 Stradale',
+      color: 'red',
+      price: 10000000,
+
+      run: function () {
+        console.log('速度300迈~~~');
+      }
+    };
+
+    delete farali.color;
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

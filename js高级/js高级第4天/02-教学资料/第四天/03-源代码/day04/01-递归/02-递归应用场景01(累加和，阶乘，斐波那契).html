@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.求 1-n累加和
+
+        function getSum(n){
+            //递归
+            return n == 1 ? 1 : n + getSum(n-1);
+            // if(n == 1){
+            //     return 1;
+            // } else{
+            //     return n + getSum(n-1);
+            // };
+
+            // if(n == 1){
+            //     return 1;
+            // }else if(n == 2){
+            //     return 2 + getSum(2-1)
+            // }else if(n == 3){
+            //     return 3 + getSum(3-1)
+            // }
+            // ****
+            // else if(n == n){
+            //     return n + getSum(n-1)
+            // }
+
+            //循环 : 箩筐思想求和（求和+平均值）
+            // var sum = 0;
+            // for(var i = 1;i<=n;i++){
+            //     sum+=i;
+            // };
+            // return sum;
+
+        };
+
+        var res1 = getSum(5);
+        console.log(res1);
+        
+
+        //2.求 1-n阶乘
+        /* 
+        6! =  6 * 5 * 4 * 3 * 2 * 1 = 720
+        5! =   5 * 4 * 3 * 2 * 1 = 120
+         */
+
+       var res =  (function(n){return n==1?1:n*arguments.callee(n-1)})(5);
+       console.log(res);
+       
+
+        function getJieChen(n){
+
+            // 表达式 ? 代码1 : 代码2
+            return n == 1 ? 1 : n * getJieChen(n-1);
+
+            //递归
+            // if(n == 1){
+            //     return 1;
+            // }else{
+            //     return n * getJieChen(n-1)
+            // };
+
+            // if(n == 1){
+            //     return 1;
+            // }else if(n == 2){
+            //     return 2 * getJieChen(1);
+            // }else if(n == 3){
+            //     return 3 * getJieChen(2)
+            // }
+            // ^^^
+            // else if(n == n){
+            //     return n * getJieChen(n-1)
+            // }
+
+            //循环实现
+            // var sum = 1;//不能是0，0乘以任何数字都是0
+            // for(var i = 1;i<=n;i++){
+            //     sum *= i;
+            // };
+            // return sum;
+        };
+
+        var res1 = getJieChen(6);
+        console.log(res1);
+        
+
+        //3.求斐波那契额数列
+        //1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233，377，610，987，1597，2584，4181，6765，10946，17711，28657，46368........
+        /* 
+        a. 前面两个数字固定： 1,1
+        b. 从第三列开始 ，每一列都是前面两列的和
+         */
+        function feiBo(n){
+
+           // return n == 1 || n == 2 ? 1 : feiBo(n-1) + feiBo(n-2);
+
+            if(n == 1 || n == 2){
+                return 1;
+            }else{
+                return feiBo(n-1) + feiBo(n-2);
+            };
+
+            //递归
+            // if(n == 1 || n == 2){
+            //     return 1;
+            // }else if(n == 3){
+            //     return feiBo(1) + feiBo(2)
+            // }else if(n == 4){
+            //     return feiBo(3) + feiBo(2)
+            // }
+            // ***
+            // else if(n == n){
+            //     return feibo(n-1) + feibo(n-2)
+            // }
+
+            //循环 + 数组
+            // var arr = [1,1];
+            // for(var i = 2;i < n;i++){
+            //     arr[i] = arr[i-1] + arr[i-2];
+            // };
+            // console.log(arr);
+            // return arr[arr.length-1];
+            
+        };
+
+        var num =  feiBo(5);
+        console.log(num);
+        
+    
+    </script>
+</body>
+</html>

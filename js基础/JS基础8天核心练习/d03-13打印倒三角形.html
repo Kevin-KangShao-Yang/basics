@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // ★★★★★
+        // ★★★★★
+        // ★★★★★
+        // ★★★★★
+        // ★★★★★
+
+        //1. 使用 一个 字符串变量 保存 所有要打印的 星星
+        //2. 使用 外层  for 循环 来生成行 --- 本质上 就往 字符串变量 追加了 '\n'
+        //3. 使用 内层 for 循环 来生成列 --- 本质上 就往 字符串变量 追加了 '★'
+
+        // var str = '★★★★★\n★★★★★\n★★★★★\n★★★★★\n★★★★★\n';
+        // console.log(str);
+
+
+
+        // 打印正三角形案例 ★---------------------------------------
+        /*
+        ★
+        ★★
+        ★★★ 
+        ★★★★
+        ★★★★★
+        */
+        // var str = '★\n★★\n★★★\n★★★★\n★★★★★\n';
+        var strStar = '';
+        //外层 循环 生成行
+        for (var row = 1; row <= 5; row++) {
+            //内层 循环 生成列（星星）
+            for (var col = 1; col <= row; col++) {
+                strStar += '★';
+            }
+
+            strStar += '\n';
+        }
+        console.log(strStar);
+
+
+        console.log('-------------打印倒三角形案例--------------------');
+        // 打印倒三角形案例 ★ -----------------------------------
+        /*
+        ★★★★★
+        ★★★★
+        ★★★
+        ★★
+        ★
+        */
+
+        var strStar = '';
+        //外层 循环 负责 生成行 
+        for (var row = 1; row <= 5; row++) {
+            //内层循环 生成 列(星星)
+            for (var col = 1; col <= 6 - row; col++) {
+                strStar += '💖';
+            }
+
+            strStar += '\n';
+        }
+
+        console.log(strStar);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

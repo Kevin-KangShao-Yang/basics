@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 使用for循环打印三角形
+    // 思路：
+    //     a.准备一个 字符串变量，用来保存 要打印的 星星
+    //     b.外部循环 来负责 生成 5 行
+    //     c.内存循环 来负责 生成 星星 -> 星星个数 = 行号
+
+    var str = '';
+    // 外层循环 负责 生成 行
+    for (var row = 1; row <= 5; row++) {
+
+      // row =1 ->  内层循环 for(var col = 1; col <= 1; col++)
+      // row =2 ->  内层循环 for(var col = 1; col <= 2; col++)
+      // row =3 ->  内层循环 for(var col = 1; col <= 3; col++)
+      // row =4 ->  内层循环 for(var col = 1; col <= 4; col++)
+      // row =5 ->  内层循环 for(var col = 1; col <= 5; col++)
+
+      // 内存循环 负责 生成 和 行号 数量一样的 星星
+      for (var col = 1; col <= row; col++) {
+        str += '☆';
+      }
+      str += '\n';
+    }
+    console.log(str);
+
+    console.log('-------------------');
+    
+
+
+    //打印 倒三角
+    // 思路：
+    //     a.准备一个 字符串变量，用来保存 要打印的 星星
+    //     b.外部循环 来负责 生成 5 行
+    //     c.内存循环 来负责 生成 星星 -> 星星个数 = 行号
+
+    // 第1行  有 6 - 1 = 5个星星
+    // 第2行  有 6 - 2 = 4个星星
+    // 第3行  有 6 - 3 = 3个星星
+    // 第4行  有 6 - 4 = 2个星星
+    // 第5行  有 6 - 5 = 1个星星
+
+    var str = '';
+    //外层循环生成行
+    for (var row = 1; row <= 5; row++) {
+      //内层循环生成星星 
+      for(var col = 1;col <= 6 - row; col++){
+        str+='☆';
+      }
+      str += '\n';
+    }
+
+    console.log(str);
+    
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

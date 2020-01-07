@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script>
+// 根据客户输入的行列来提供需要的星星数量
+var rowStar = +prompt('请输入一行需要的星星数');
+var colStar = +prompt('请输入需要的列数');
+var star = '';
+for (var col = 1; col<=colStar; col++) {
+
+    for (var row =1; row<=rowStar; row++) {
+       star += '*';
+    }
+    star += '\n';
+}
+console.log(star);
+</script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    body {
+        background: #ccc;
+    }
+
+    label {
+        width: 40px;
+        display: inline-block;
+    }
+
+    span {
+        color: red;
+    }
+
+    .container {
+        margin: 100px auto;
+        width: 400px;
+        padding: 50px;
+        line-height: 40px;
+        border: 1px solid #999;
+        background: #efefef;
+    }
+
+    span {
+        margin-left: 30px;
+        font-size: 12px;
+    }
+
+    .wrong {
+        color: red
+    }
+
+    .right {
+        color: green;
+    }
+
+    .defau {
+        width: 200px;
+        height: 20px;
+    }
+
+    .de1 {
+        background-position: 0 -20px;
+    }
+</style>
+<body>
+<div class="container">
+    <label>Q Q</label><input type="text" id="inp1"><span></span><br/>
+    <label>手机</label><input type="text" id="inp2"><span></span><br/>
+    <label>邮箱</label><input type="text" id="inp3"><span></span><br/>
+    <label>座机</label><input type="text" id="inp4"><span></span><br/>
+    <label>姓名</label><input type="text" id="inp5"><span></span><br/>
+</div>
+</body>
+</html>
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    var inpQQ = $("inp1");
+    var inpMobile = $("inp2");
+    var inpEmail = $("inp3");
+    var inpTel = $("inp4");
+    var inpName = $("inp5");
+
+    //检查 指定的输入框 中的内容是否符合 指定的表达式
+    function check(inp, regEx) {
+        inp.onblur = function () {
+            if (regEx.test(this.value)) {
+                this.nextSibling.innerHTML = "正确";
+                this.nextSibling.style.color = "green";
+            } else {
+                this.nextSibling.innerHTML = "错误";
+                this.nextSibling.style.color = "red";
+            }
+        }
+    }
+
+
+    //QQ的规律 5-11位 开头不为0
+    //var regQQ = /^[^0]\d{4,10}$/;//不为零的数字
+    var regQQ = /^[1-9]\d{4,10}$/;
+    //手机的规律 11位 另外有规定号段
+    //var regMobile = /^\d{11}$/;
+    var regMobile = /^(13[0-9]|14[57]|15[0-9]|18[0-9])\d{8}$/;
+    //邮箱的规律 barack.hussein.obama@white-house.gov.us
+    //var regEmail = /^\w@\w$/;
+    var regEmail = /^\w+([+-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    //座机和姓名规律见之前的案例
+    var regTel = /^0\d{2,3}-\d{7,8}$/;
+    var regName = /^[\u4e00-\u9fa5]{2,}$/;
+
+    check(inpQQ, regQQ);//验证QQ
+    check(inpMobile, regMobile);//验证手机
+    check(inpEmail, regEmail);//验证邮箱
+    check(inpTel, regTel);//验证座机
+    check(inpName, regName);//验证姓名
+
+</script>

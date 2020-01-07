@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*修饰符：影响整个正则规则的特殊符号
+            书写位置：  /pattern/modifiers(修饰符)
+             i (intensity)：大小写不敏感（不区分大小写）
+             g (global) : 全局匹配
+             m(multiple) : 检测换行符，使用较少，主要影响字符串的开始^与结束$边界
+        */
+
+        // i : 不区分大小写    正则默认区分大小写
+        console.log('AaaaAA'.replace(/a/,'X'));//AXaaAA   默认区分大小写
+        console.log('AaaaAA'.replace(/a/i,'X'));//XaaaAA    i:不区分大小写
+
+        // g : 全局匹配    正则默认只能匹配第一个
+        console.log('AaaaAA'.replace(/a/,'X'));//AXaaAA   默认只能匹配一个
+        console.log('AaaaAA'.replace(/a/g,'X'));//AXXXAA   i:不区分大小写
+
+        //注意点： 修饰符可以同时使用
+        console.log('AaaaAA'.replace(/a/ig,'X'));//XXXXXX
+
+        /* 
+        m : 检测换行符。 
+            主要用于边界 ^ 或者 $
+
+        默认^只能识别字符串开头位置， \n虽然看起来换行但是在字符串中只是一个换行符
+        m ： 让 ^ 能够识别\n之后的第一个字符,也作为开头位置
+        */
+
+        console.log('我爱我的学生\n我爱我的学生\n我爱我的学生');
+
+        console.log('我爱我的学生\n我爱我的学生\n我爱我的学生'.replace(/^我/gm,'你'));
+        ;
+        
+        
+        
+    </script>
+</body>
+</html>

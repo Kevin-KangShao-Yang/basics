@@ -1,0 +1,95 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <style>
+    table {
+      border: 1px solid #0094ff;
+    }
+
+    table th,
+    td {
+      border: 1px solid #0094ff;
+    }
+  </style>
+  <script>
+
+    /* 使用document.write 输出表格 */
+
+    var tbData = {
+      thData: ["姓名", "年龄", "性别"],
+      trData: [
+        { name: "小白", age: 22, sex: "男" },
+        { name: "小黑", age: 17, sex: "女" },
+        { name: "小黄", age: 26, sex: "男" },
+        { name: "小绿", age: 26, sex: "男" }
+      ]
+    };
+
+    // 1.根据 表格 数据 生成 table 标签 字符串
+    var strHtml = '<table>\n';
+
+    // 2. 根据 数据 生成 第一行 表头 -- 遍历数组 ["姓名", "年龄", "性别"]
+    strHtml += '<tr>'
+    for (var i = 0; i < tbData.thData.length; i++) {
+      // 2.1 获取 表头 数组 中的 元素
+      var thName = tbData.thData[i]; // 姓名 、 年龄 、 性别
+      // 2.2 将 表头数据 生成 <th>姓名</th> 存入 strHtml 变量中
+      strHtml += '\n\t<th>' + thName + '</th>\n'; // strHtml += '<th>姓名</th>';
+    }
+    strHtml += '</tr>\n'
+
+    // 3. 根据 数据 生成 每一行  --- 遍历 数组 trData
+
+    for (var i = 0; i < tbData.trData.length; i++) {
+      strHtml += '<tr>'
+      // 3.1 获取 数据行数组中的 行数据对象
+      var stuObj = tbData.trData[i];
+      
+      // 3.2 将 行 数据 生成 <td>stuObj.name</td> <td>stuObj.age</td> <td>stuObj.sex</td> 存入 strHtml 变量中
+      strHtml += '\n\t<td>' + stuObj.name + '</td>\n \t<td>' + stuObj.age + ' </td>\n \t<td>' + stuObj.sex + '</td>\n';
+      strHtml += '</tr>\n'
+    }
+
+
+    strHtml += '</table>';
+
+    console.log(strHtml);
+
+    // 4.将 表格 代码 输出 到 body 中
+    document.write(strHtml);
+
+
+
+
+
+
+
+
+
+    /*
+    冒泡排序 ，规则
+
+    */
+  </script>
+</head>
+
+<body>
+
+  <!-- <table>
+  <tr>
+    <th>姓名</th>
+    <th>年龄</th>
+    <th>性别</th>
+  </tr>
+  <tr>
+    <td>小白</td>
+    <td>22</td>
+    <td>男</td>
+  </tr>
+</table> -->
+
+</body>
+
+</html>

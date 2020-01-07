@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+    // 10.要求：接收用户输入的分数，根据分数输出对应的等级字母 A、B、C、D、E。其中：
+    // a. 90分(含)以上 ，输出：A；
+    // b. 80分(含)~ 90 分(不含)，输出：B；
+    // c. 70分(含)~ 80 分(不含)，输出：C；
+    // d. 60分(含)~ 70 分(不含)，输出：D；
+    // e. 60分(不含) 以下，输出 E。
+
+    var usrFen = parseInt(prompt('请输入您的分数：'));
+    
+    if(usrFen > 90){
+      console.log('A');
+    }else if(usrFen > 80 && usrFen <= 90){
+      console.log('B');
+    }else if(usrFen > 70 && usrFen <= 80){
+      console.log('C');
+    }else if(usrFen > 60 && usrFen <= 70){
+      console.log('D');
+    }else{
+      console.log('E');
+    }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

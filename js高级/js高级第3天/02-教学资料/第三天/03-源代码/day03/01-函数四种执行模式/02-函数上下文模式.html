@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        1.函数三种执行方式 ： 全局函数 、 对象方法、构造函数
+            共同的特点 ： this指向是固定的，无法动态修改
+
+        2.函数上下文执行方式 ： 动态修改this指向
+            三种语法，作用完全一样都是修改this指向。不同点是传参方式不同
+            call() : 函数名.call(修改的this,arg1,arg2………………)
+                适合 ： 函数原本形参数量 <= 1
+            apply() :函数名.apply(修改的this,数组/伪数组)
+                适合 ： 函数原本形参数量 >= 2
+            bind() : 函数名.bind(修改的this,arg1,arg2………………)
+                不会立即执行，而是返回修改this的新函数
+                适合 ： 定时器，事件处理函数   回调函数
+           
+        3. 特点 ： 修改的this一定是引用类型  （数组，函数，对象）        
+         */
+
+        function fn() {
+            console.log(this);
+            //动态修改this指向
+            //程序报错 ： this指向是固定的，无法动态修改
+            // this = {name:'班长'};
+
+        };
+
+        fn();//全局函数 this一定是window
+
+
+        //函数的上下文执行模式三种语法
+        //三种语法，作用完全一样都是修改this指向。不同点是传参方式不同
+
+        /* 1. call() :  函数名.call(要修改的this,arg1,arg2,………………)
+        适用场景 ： 函数原本只有 1个或者没有 形参
+        */
+        function fn(a, b) {
+            console.log(this);
+
+            console.log(a + b);
+        };
+
+        fn(10, 20);//全局函数 this：window
+        fn.call({ name: '班长' }, 100, 200);//上下文模式 call
+
+        /* 2. apply() : 函数名.apply(要修改的this,参数数组/伪数组)
+        适用场景 ： 函数原本有多个形参
+        */
+        fn.apply({ name: '坤坤' }, [20, 30]);
+
+        /* 3. bind() : 函数名.call(要修改的this,arg1,arg2,………………)
+         特点： 不会立即执行这个函数，而是返回一个修改this之后的新函数
+         适应场景 ： 定时器，事件处理函数
+        */
+        function fn(a, b) {
+            console.log(this);
+
+            console.log(a + b);
+        };
+
+        var newFn = fn.bind({age:18});
+        newFn(1,2);//this变成了bind修改的对象
+
+
+        //4. 定时器中的this ：默认指向window
+
+        //定时器中的this动态修改 ： bind()
+
+        
+        var test = function(){
+            console.log('22222');
+            console.log(this);
+        };
+        var newText = test.bind({age:66});
+
+        setTimeout(newText,3000);
+
+
+        //匿名函数
+        setTimeout(function(){
+            console.log('11111');
+            console.log(this);
+        }.bind({age:88}),2000);
+    </script>
+</body>
+
+</html>

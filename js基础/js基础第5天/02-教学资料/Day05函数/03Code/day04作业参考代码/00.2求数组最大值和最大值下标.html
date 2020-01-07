@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //要求：求一组数值 [2,6,1,77,52,25,7] 的最大值，以及 最大值在数组中的下标。
+
+    var arr = [2, 6, 1, 77, 52, 25, 7];
+    // 擂台思想：拿数组里数据依次 和 擂台变量的值 进行比较，比较大的 存入变量
+    // 1.创建 "擂台变量"
+    var maxNum = -Infinity;
+    // 1.1 创建保存 最大值 的下标 的变量
+    var maxIndex = -1;
+    
+    // 2. 循环 生成 数组元素的下标
+    for (var i = 0; i < arr.length; i++) {
+      //3. 依次比较 数组元素 和 擂台变量 的值，如果 元素更大，就将元素 存入 变量
+      if (arr[i] > maxNum) {
+        maxNum = arr[i];
+        maxIndex = i;
+      }
+    }
+
+    // 4. 循环结束后，擂台变量中 保存的 就是 数组里最大的元素了！
+    console.log('maxNum = ' + maxNum);
+    console.log('maxIndex = ' + maxIndex);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

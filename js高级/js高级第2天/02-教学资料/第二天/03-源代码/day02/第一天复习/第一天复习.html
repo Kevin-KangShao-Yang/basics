@@ -1,0 +1,100 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-11 08:32:43
+ * @LastEditTime: 2019-08-11 08:40:27
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.原型:不管是那个构造函数被创建,系统都会自动的帮我们生成一个和这个构造函数对应的对象,这个对象就是原型.
+        1.1:如何访问原型: 构造函数名.prototype.
+        1.2:谁可以访问原型
+            a.构造函数自身
+            b.构造函数实例化出来的对象
+    */
+
+
+    /*2.原型使用需要注意的地方.
+        a.构造函数实例化的对象们共有的数据.才可以存进原型中.
+        b.构造函数名.prototype. 的方式来访问原型(给原型添加成员).
+        c.构造函数实例化的对象们 访问属性和方法的规则:就近原则    先看自己的,自己有就用自己的,自己没有就看原型有没有......
+        d.原型可以修改: 创建对象的代码是在修改原型之前还是修改原型之后.
+     */
+
+
+    /*3.__proto__
+        作用：属于对象的,指向创建他的构造函数对应的那个原型.
+        注意：开发测试可以用, 实际开发就不推荐使用.
+    */
+
+    /*4.constructor属性
+        作用：属于原型的,指向他对应的构造函数.
+            可以得知某个具体实例对象，到底是哪一个构造函数生成的
+    */
+
+  
+
+    function Person(name){
+        this.name = name;
+    };
+
+    var  p1 = new Person('张三');
+
+    //原型
+    Person.prototype.sayHi = function(){
+        console.log('1111');
+        
+    };
+    console.log(p1);
+
+    p1.sayHi();
+    
+
+    console.log(Person.prototype === p1.__proto__);
+    console.log(Person.prototype.constructor === Person);
+
+    //如果对原型重新赋值
+
+    Person.prototype = {
+        sayHi:function(){
+            console.log('222');
+            
+        }
+    };
+
+
+    var p2 = new Person('弟弟');
+    p2.sayHi();
+    
+    
+
+
+  
+
+
+    /* 将var关键字与function关键字声明提前，赋值与调用在原地
+
+    var p;
+    function p(){
+        console.log('1111');
+    };
+    
+    p = function(){
+        console.log('22222');
+    };
+
+    p();
+    
+     */
+</script>
+</body>
+</html>

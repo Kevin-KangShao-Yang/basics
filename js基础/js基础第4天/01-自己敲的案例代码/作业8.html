@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script>
+  /*   // 本金10000元存入银行，年利率是千分之三，每过1年，将本金和利息相加作为新的本金。计算5年后，获得的本金是多少？  money *= 1.003
+    var initialMoney = 10000;
+    // 本金10000
+    var interestMoney = 0;
+    // 利息
+    var fiveMoney = 0;
+    // 每年加利息的总金额
+    for (var i = 0; i <=  4; i++) {
+      fiveMoney = (10000+initialMoney*0.003)*(1.003**i);
+      // 
+    }
+console.log(fiveMoney);
+   */
+
+
+  // 老师的方式 
+  // 银行账户 变量
+  /* var moneyCount = 10000;
+    // 每年的 账户 余额 数组
+    var arrMoneyYear = [];
+    
+    for (var i = 1; i <= 5; i++) {
+      // 新本金  =    本金     +    年利息
+      moneyCount = moneyCount + (moneyCount * 0.003); //  也可用：  moneyCount *= 1.003;
+      // 将 每年新本金 都存入数组
+      arrMoneyYear.push(moneyCount);
+    }
+
+    console.log('5年后获取本金为：' + moneyCount);
+    console.log('历年本金如下：');
+    console.log(arrMoneyYear);
+ */
+
+
+
+// 第三种方式
+var initialMoney = 10000;
+    // 本金10000
+    var interestMoney = 0;
+    // 利息
+    var fiveMoney = 0;
+    // 每年加利息的总金额
+    for (var i = 0; i <=  4; i++) {
+      fiveMoney = (initialMoney *= 1.003);
+      // 
+    }
+console.log(fiveMoney);
+  
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

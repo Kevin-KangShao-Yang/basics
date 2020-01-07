@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1. 求和运算：在两边 都是 数值类型 的情况下，进行 求和 运算，返回 两个数的和
+    var res = 10 + 20;
+    console.log(res);
+
+
+
+    //2. 连接字符串：当两边 有任意一边 为 字符串时，会先将 另一边 自动转成字符串，然后 将 两个 字符串 拼接字一起 返回一个 新的字符串
+    var res2 = 10 + '20'; // '10' + '20' ->  '1020'
+    console.log(res2);
+
+    var res3 = 'a' + 5201314; //  'a' + '5201314' ->  'a5201314' 
+    console.log(res3); // a5201314
+
+
+    //3. 变量"相加"：要看 两个变量中的值 是否有 字符串，如果有，就起到连接字符串作用
+    var num1 = 10;
+    var str1 = 'iloveu';
+    var res = num1 + str1; //  10 + 'iloveu' -> '10' + 'iloveu' -> '10iloveu'
+    console.log(res); // 10iloveu
+
+
+
+    //4. 类型转换：将 数值字符串 转成 数值
+    console.log(+'999');
+    
+
+
+    //思考：使用下面变量中的值 做自我介绍：你们好呀~我的名字叫 心安理得的伏地魔
+    var uName = '心安理得的伏地魔';
+    var str = '你们好呀~我的名字叫 ' + uName;
+    console.log(str);
+
+
+    //思考：如何接受用户的名字并 打印：'你好，【JamesZou】，我是您的高级管家~~~'
+    var masterName = 'JamesZou';
+    console.log('你好，【 ' + masterName + ' 】，我是您的高级管家~~~'); // 你好，【 JamesZou 】，我是您的高级管家~~~
+
+
+
+
+    //思考：接受用户的年龄，并为这个年龄 + 10岁，最后打印
+    // 强调：prompt 函数，永远返回 字符串！！！ 哪怕用户 输入的是一个 数值，但返回的 也是 带了引号的 '数值'
+    var kdbAge = +prompt('请输入课代表的课代表的年龄：'); // +'19' -> 19
+    kdbAge = kdbAge + 10; // 19 + 10 -> 29  //  '19' + '10' -> '1910'
+    console.log(kdbAge);
+    // console.log(typeof kdbAge); // string
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

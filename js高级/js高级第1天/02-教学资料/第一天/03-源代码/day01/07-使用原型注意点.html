@@ -1,0 +1,125 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-10 10:53:33
+ * @LastEditTime: 2019-08-10 12:18:14
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.哪些属性应该放到原型  : 所有实例化成员共有的属性
+
+        // function Dog(name,age,sex){
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // };
+
+        // //世界上每一条狗可以叫，应该放到原型中
+        // Dog.prototype.sayHi = function(){
+        //     console.log('汪汪汪，我是小狗狗');
+        // };
+        // // 性别sex能不能放到原型中 : 不能。  每一条性别不一样
+        // // Dog.prototype.sex = '公狗';
+        // // 世界上所有的狗都是哺乳动物
+        // Dog.prototype.tyoe = '哺乳动物';
+
+        // //实例化对象
+        // var dog1 = new Dog('瑞奇',5,'公狗');
+        // console.log(dog1);
+        // dog1.sayHi();
+
+        // var dog2 = new Dog('群群',6,'母狗');
+        // console.log(dog2);
+        // dog2.sayHi();
+        
+        
+        
+
+        // //2.对象访问原型中成员(属性+方法)的规则
+
+        // /* 
+        // 就近原则 ： 当访问一个对象的成员时候，先看这个对象自己有没有，如果有则访问（取值+赋值）自己的
+        // 没有则访问原型的。
+        //  */
+        // function Student(name,age){
+        //     this.name = name;
+        //     this.age = age;
+        // };
+        // //每一个学生都有学习的方法，可以放到原型中
+        // Student.prototype.learn = function(){
+        //     console.log('坤哥在上面苦口婆心的教啊教，我在下面认真的钓啊钓');
+            
+        // };
+
+        // //实例化对象
+        // var banzhang = new Student('班长',26);
+        // console.log(banzhang);
+        // banzhang.learn();
+        
+        // var jieGe = new Student('杰哥',32);
+
+        // jieGe.__proto__.learn();
+        
+        // jieGe.learn = function(){
+        //     console.log('别人跟坤哥学习代码，我跟坤哥学习保健');
+            
+        // };
+        // jieGe.__proto__.learn();
+        // console.log(jieGe);
+        // jieGe.learn();
+        
+
+
+
+        //3.原型可以重新赋值
+
+        /* 
+        实例化对象访问修改前的原型还是修改后 取决于  这个对象是在修改前创建还是修改后
+
+        修改前创建 ： 修改前的原型
+        修改后创建 ： 修改后的原型
+         */
+        
+        //构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        };
+
+        //原型
+        //这个不是原型的重新赋值：而是给默认原型添加方法
+        Person.prototype.sayHi = function(){
+            console.log('我是原型修改前的sayHi');
+            
+        };
+
+        //实例化对象
+        var kunge = new Person('黑马李宗盛',32);
+        console.log(kunge);//修改前
+        kunge.sayHi();
+
+        //原型重新赋值
+        Person.prototype = {
+            sayHi:function(){
+                console.log('我是修改后的原型');
+                
+            }
+        };
+        var didi = new Person('我是坤哥的小迷弟',20);
+        didi.sayHi();//修改后
+        
+        kunge.sayHi();////修改前
+        
+
+    </script>
+</body>
+</html>

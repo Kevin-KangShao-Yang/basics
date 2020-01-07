@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+/* 数学题：
+一个篮子放10个鸡蛋，要求用户输入鸡蛋的数量，我们计算并打印出一共需要多少个篮子
+	例：一共有30个鸡蛋，需要3个篮子
+	    一共有31个鸡蛋，需要4个篮子 */
+var num = +prompt('请输入鸡蛋数量') ;
+ if (num<=10) {
+     num1=1;
+ } else if (num<=20 && num>10) {
+     num1=2;
+ }else if (num<=30 && num>20) {
+     num1=3;
+ }
+ else if (num<=40 && num>30) {
+     num1=4;
+ }
+ else if (num<=50 && num>40) {
+     num1=5;
+ }
+ else if (num<=60 && num>50) {
+     num1=6;
+ }
+ else if (num<=70 && num>60) {
+     num1=7;
+ }
+ else if (num<=80 && num>70) {
+     num1=8;
+ }
+ alert('需要的篮子为'+num1);
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

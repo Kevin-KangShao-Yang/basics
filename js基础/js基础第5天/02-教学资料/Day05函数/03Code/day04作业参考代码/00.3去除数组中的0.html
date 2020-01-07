@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 要求：要求将数组 [2,0,6,1,77,0,52,0,25,7] 中的 0 去掉后 形成一个不包含 0 的新数组。
+    // 思路：
+    //     a.创建一个 空数组
+    //     b.for循环 遍历 原数组里的元素
+    //         判断 元素 是否 等于0，如果不等于，就把元素 加入 新数组
+
+    var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+    // a.创建一个 空数组
+    var arrNew = [];
+
+    // b.遍历原数组，将 != 0 的元素 存入新数组
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] != 0) {
+        arrNew.push(arr[i]);// 将 不等于0 的数 存入新数组
+      }
+    }
+
+    console.log('原数组：' + arr);
+    console.log('新数组：' + arrNew);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

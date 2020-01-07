@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    // 开关思想：假设成立法
+    // 数组 去重：将 老数组中的 元素 添加到 新数组中，不要有重复的值
+    var arr = [3, 2, 4, 5, 4, 6, 4, 2, 33];
+    //         0  1  2  3  4  5  6   length = 7
+
+    var arrNew = [];
+
+    // 外层循环 遍历 老数组，取出 元素
+    for (var i = 0; i < arr.length; i++) {
+      // 取出 正在 遍历的 元素
+      var oldEle = arr[i];
+
+      var isIn = false; // 默认 设置为 false ，代表 oldEle 在新数组中 不存在
+
+      // 内层循环 遍历 新数组，看 老元素 是否 在 新数组中 存在
+      for (var j = 0; j < arrNew.length; j++) {
+        if (oldEle == arrNew[j]) {
+          isIn = true; // 当 找到 一个 新数组元素 等于 oldEle 时，说明 新数组 不需要添加 oldEle，修改 开关变量 为 true
+          break;// 因为已经确定 新数组中 存在 oldEle ，所以 不需要 再继续 循环了
+        }
+      }
+
+      // 根据 开关变量 判断 oldEle 是否要加入到 新数组
+      if (!isIn) {
+        arrNew.push(oldEle);
+      }
+    }
+
+    console.log(arr);
+    console.log(arrNew);
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

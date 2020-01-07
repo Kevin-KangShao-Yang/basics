@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 1. 为回调函数 传参（字符串） ---------------------
+    function a(fn) {
+      fn('小白'); // showLove('小白');
+    }
+
+    function showLove(toName) {
+      console.log(toName + ',我喜欢你哦~~小狗狗~~~');
+    }
+
+    a(showLove);
+
+
+    // 2. 为回调函数 传参 (函数) ------------------------
+    function c(toName) {
+      console.log(toName + '我喜欢你哦~~小狗狗~~~');
+    }
+
+    function b(fn1) { // fn1 = c
+      fn1('小白'); // c('小白');
+    }
+
+    function a(fn) { // fn = b
+      fn(c); // b(c);
+    }
+
+    a(b);
+
+
+    // 3. 函数作为返回值
+    function a() {
+      console.log('我是函数a~~');
+    }
+
+    function b() {
+      return a; // 将 函数 a  作为返回值
+    }
+
+    var c =  b(); // var c = a;
+    c(); // a();
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 5.要求：翻转数组，将数组[2,6,1,77,52,25,7] 的内容 反过来存放。
+
+    var arr = [2, 6, 1, 77, 52, 25, 7];
+
+    // a.准备新数组
+    var arrNew = [];
+
+    // b.倒序遍历 原数组，将元素 存入 新数组
+    for (var i = arr.length - 1; i >= 0; i--) {
+      arrNew.push(arr[i]);
+    }
+
+    console.log('原数组：' + arr);
+    console.log('新数组：' + arrNew);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

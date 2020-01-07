@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 开关思想：设置标志位 
+
+    /* 
+      开关思想 实现 思路：
+        1.遍历 老数组 中的每个元素，
+                取出 老数组 中的 第 i 个元素
+                
+        2.遍历 新数组 中的 每个月元素 是否 和 老数组中的 当前取出的元素 相等
+                如果 相等 ，则 设置 开关变量为 true，代表 已经在新数组中找到了这个元素，不要再添加到新数组中了！！！
+                                  并且 退出 内层 循环。
+
+        3.判断 开关变量 是否 等于 true，如果是 true 说明 元素已经在新数组中存在，不需要 再添加到 新数组中
+                                      等于 false，代表 元素 在新数组中 不存在，所以 将它 添加到新数组中
+     */
+
+
+    // var arrOld = [2, 3, 0, 5, 0, 2, 3, 9]; // 老数组
+
+    // 判断 老数组 中的 元素 是否 在 新数组中存在，如果 存在，就不添加到新数组，如果 不存在 就添加到新数组！
+
+    // var arrNew = []; // 新数组
+
+    /**
+     * @description: 数组去重函数
+     * @param {Array} arrOld 需要去重的数组 
+     * @return: 去重后的 新数组(不包含重复的值)
+     */
+    function removeRepeat(arrOld) {
+      var arrNew = []; // 新数组
+
+      // 1.遍历老数组
+      for (var i = 0; i < arrOld.length; i++) {
+        // 2.取出 老数组中的 一个 元素
+        var ele = arrOld[i];
+
+        // var arrOld = [2, 3, 0, 5, 【0】, 2, 3, 9]; 
+        // var arrNew = [2,3,5];
+
+        //3.检查 该 元素 是否在 新数组 中存在
+        //3.1 设置 元素 是否在 新数组 中存在的 标志位
+        var isInArr = false;
+        //3.2 遍历 新数组 中的元素，看是否 有和 元素 相等的值，如果有，则将 标志位 设置为 true
+        for (var j = 0; j < arrNew.length; j++) {
+          if (arrNew[j] == ele) {
+            isInArr = true;
+            break;
+          }
+        }
+        //3.3 如果 标志位 ==false，说明 元素 在 新数组中 不存在，可以 添加到新数组
+        if (!isInArr) {
+          arrNew.push(ele);
+        }
+      }
+
+      //4. 返回 新数组
+      return arrNew;
+    }
+
+    // 调用
+    var arr = [2, 3, 0, 5, 0, 0, 0, 2, 3, 3, 9]; // 老数组
+    console.log(arr); // 打印老数组
+    var arrNew = removeRepeat(arr); // 调用函数 为 arr 数组 去重，获取 去重后的 新数组
+    console.log(arrNew); // 打印新数组
+
+
+
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

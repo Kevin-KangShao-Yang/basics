@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+/* 写一个程序，输入总人数，每10人一列，要求站成一个方队（每队必须保持10人，不够就不要了），可以排多少列，余多少人。
+	例：一共有30个人，一共可以排3列，余0个
+	    一共有31个人，一共也只可以排3列（因为每对必须保持10个人，不够就不要了），余1个
+
+ */
+
+ var num = +prompt('请输入总人数');
+   var num1 = Math.floor(num / 10) ;
+  var  num2 = num % 10 ;
+    alert('可以排列'+num1+'余'+num2);
+    
+    
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

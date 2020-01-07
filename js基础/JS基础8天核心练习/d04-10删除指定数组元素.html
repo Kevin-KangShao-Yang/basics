@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 将数组[2, 0, 6, 1, 77, 0, 52, 0, 25, 7]中的 0 去掉后，形成一个不包含 0 的新数组
+        // 思路：
+        //    a.准备新的空数组
+        //    b.遍历老数组，将 不等于 0 的元素 加到 新数组
+        var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var arrNew = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i] != 0){
+                arrNew.push(arr[i]);
+            }
+        }
+
+        console.log(arr);
+        console.log(arrNew);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

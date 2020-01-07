@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 数组：是 用来 存储很多 数据的 类型
+    var arr = [1, 2, 3, true, false, { name: '小白' }];
+
+    // 数组对象 -----------------------------------------------
+    var arrCity = ['P城', 'C城', 'Y城', 'R城', '军事基地'];
+
+    //1.【concat】 连接 连个数组，将 连接后的 数组 返回，不会影响 当前数组
+    var newCitys = ['武汉', '成都', '重庆'];
+    arrCity = arrCity.concat(newCitys, ['1', '20'], 123, 321);
+    console.log(arrCity);
+
+    //2.join 将元素 拼接成 字符串 返回
+    var arrCity = ['P城', 'C城', 'Y城', 'R城', '军事基地'];
+    // 'P城-C城.....'
+    var str = arrCity.join('-');
+    console.log(str);
+
+
+    //3.reverse 翻转数组 -- 直接 对 本数组 的元素做翻转操作，不需要返回值
+    var arrCity = ['P城', 'C城', 'Y城', 'R城', '军事基地'];
+    console.log(arrCity);
+    arrCity.reverse();
+    console.log(arrCity);
+
+
+    //4.splice 删除 和 替换 --------------------------------------
+    var arrCity = ['P城', 'Y城', 'N港', 'R城', '军事基地'];
+    //               0      1      2      3      4
+
+    // 4.0 移除 后面的 3个元素
+    // arrCity.length = 2;
+
+    //4.1 删除 指定元素 splice(beginIndex,count)
+    //                        beginIndex - 要删除的元素的开始下标啊
+    //                        count      - 要删除的元素的个数
+
+    console.log(arrCity);
+    arrCity.splice(3, 1);
+    console.log(arrCity);
+
+
+    //4.2 替换 指定元素
+    //    替换 指定元素 splice(beginIndex,count,replacer)
+    //                        beginIndex - 要删除的元素的开始下标啊
+    //                        count      - 要删除的元素的个数
+    //                        replacer   - 用来替换的 数据
+
+    var arrCity = ['Y城', 'R城', 'N港', '军事基地', '武汉'];
+    //               0      1      2      3          4
+    // 将 R城 换成 P城
+    console.log(arrCity);
+    arrCity.splice(1, 1, 'P城');
+    console.log(arrCity);
+
+
+    // 4.3 插入 指定元素
+    var arrCity = ['P城', 'C城', 'Y城', 'R城', '军事基地'];
+    //               0      1      2      3      4
+    console.log(arrCity);
+    arrCity.splice(2, 0, '医院'); // 在 下标为 2 的元素 前面 加上一个 '医院'
+    console.log(arrCity);
+
+
+    
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

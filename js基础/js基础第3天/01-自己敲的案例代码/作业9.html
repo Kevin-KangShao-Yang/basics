@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    /* - 题目描述：
+    
+    - 里面现存有  100 块钱。
+    
+    - 如果存钱，就用输入钱数加上先存的钱数, 之后弹出显示余额提示框
+    
+    - 如果取钱，就减去取的钱数，之后弹出显示余额提示框
+    
+    - 如果显示余额，就输出余额
+    
+    - 如果退出，弹出退出信息提示框
+    
+    
+    - 题目提示：
+    
+    - 通过输入的数值判断用户操作 */
+
+    var name = prompt('请输入你要的操作:' + '\n' + '1.存钱' + '\n' + '2.取钱' + '\n' + '3.显示余额' + '\n' + '4.退出');
+
+    switch (name) {
+      case '1': {
+        var saveMoney = +prompt('请输入需要存入的金额') + 100;
+        alert('余额为:' + saveMoney);
+        break;
+      }
+      case '2': {
+        var drawMoney = 100 - (+prompt('请输入需要取出的金额'));
+        alert('余额为:' + drawMoney);
+        break;
+      }
+      case '3': {
+        alert('余额为:100');
+        break;
+      }
+      case '3': {
+        alert('余额为:100');
+        break;
+      }
+      case '4': {
+       var exit = confirm('是否退出');
+       while (!false) {
+        
+       
+        break;
+       }
+      }
+
+
+
+
+      default:
+        break;
+    }
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

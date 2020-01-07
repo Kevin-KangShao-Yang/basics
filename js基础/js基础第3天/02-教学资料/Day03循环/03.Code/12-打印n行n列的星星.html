@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 打印n行n列的星星
+
+        //【双重循环注意：】  外层循环 走一次， 内存循环要 走n次（n次指内存循环的次数）
+        // 思路：
+        //    1.用两个变量 接收 用户输入的 行和 列 rowNum    colNum  , 和保存 字符串的变量 strStar
+        //    2.外层循环负责 生成 行  --- '\n'
+        //    3.内存循环负责 生成 星星  -- '★'
+
+        var rowNum = +prompt('请输入行数：');
+        var colNum = +prompt('请输入列数：');
+        var strStar = '';
+
+        for (var row = 1; row <= rowNum; row++) {
+            for (var col = 1; col <= colNum; col++) {
+                strStar += '★';
+            }
+            strStar += '\n';
+        }
+
+        console.log(strStar);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

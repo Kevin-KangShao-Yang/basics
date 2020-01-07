@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <title></title> 
+  <meta charset='UTF-8' />
+  <script>
+    // 复合算数赋值运算符：就是用来 为一个 变量 本身的值 做 修改的！
+
+    // 思考：用一个变量保存了 James 的钱，然后再此基础上再加 50万，怎么实现呢？
+    var money = 100000;
+    // money = money + 500000;
+    money += 500000;
+
+    console.log(money); // 600000
+
+
+
+    /* 复合算术运算符 ： 用当前变量 与 一个新的值进行 运算，并且将 运算结果 重新赋值给 当前变量
+    +=： 将变量 和 一个 新的值 相加，结果 重新赋值给 变量本身
+         【变量 +=1 , 相当于 在 变量原来的值 的基础上 再 +1】
+         
+    -= ：将变量 和 一个 新的值 相减，结果 重新赋值给 变量本身
+    *= ：将变量 和 一个 新的值 相乘，结果 重新赋值给 变量本身
+    /=:  将变量 和 一个 新的值 相除，结果 重新赋值给 变量本身
+    %=:  将变量 和 一个 新的值 取模运算，结果 重新赋值给 变量本身
+     */
+
+     // 复合算数运算符：
+     //       1.结合 变量 使用
+     //       2.将 变量 原来的值 与 一个新的值 进行运算
+     //       3.将 运算的结果 重新赋值给 变量本身
+
+     // +=
+     var num1 = 100;
+     num1 += 200; // num1 = num1 + 200;
+     console.log(num1); // 300
+
+     // -=
+     var num2 = 300;
+     num2 -= 100; // num2 = num2 - 100;
+     console.log(num2); // 200
+
+     // *=
+     var num3 = 5;
+     num3 *= 3; // num3 = num3 * 3;
+     console.log(num3); // 15
+
+    // /=
+    var num4 = 20;
+    num4 /= 4; // num4 = num4 / 4;
+    console.log(num4); // 5
+    
+
+    // %=
+    var num5 = 10;
+    num5 %= 3; // num5 = num5 % 3;
+    console.log(num5);
+    
+    
+    // -------------------- 神奇的 += --------------------------------
+    var luckyNum = 7;
+    luckyNum += 7;
+    console.log(luckyNum); // 14
+
+
+    var luckyNum = 77;
+    luckyNum += '23'; // lucknum = '77' + '23' -> '7723'
+    console.log(luckyNum); // 7723
+
+    var luckStr = 'James';
+    luckStr += ' Linda';
+    console.log(luckStr); // 'James Linda'
+
+    // 注意： 复合赋值运算符 是针对 变量 来做操作的，不能直接 对 直接量 做操作
+
+    // 1 += 10; // 不可以这么写
+    
+     
+    
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

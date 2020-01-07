@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 自定义 “类型” JS高级编程 + 犀牛
+
+    //1.构造函数 + new 关键字
+
+    //1.1 构造函数 
+    function BoyFriend(name, age, gender) {
+
+      // 2. 为对象添加成员 并 赋值
+      this.gfName = name;
+      this.gfAge = age;
+      this.gfGender = gender;
+      this.sayHi = function () {
+        console.log('hi~~亲爱的~~~~');
+      };
+    }
+
+    //1.2 使用 new 关键字 来 调用 构造函数，批量创建对象
+    // 【new关键字】做了 4件事情：
+    //   a.创建【空对象】
+    //   b.将  【空对象】 设置给构造函数里的 【this】
+    //   c.调用执行 构造函数 ,意味着 为 【空对象】 添加了 各种成员
+    //   d.将 对象 返回
+
+
+    var bf01 = new BoyFriend('曹操', 1800, true);
+    var bf02 = new BoyFriend('诸葛亮', 1800, true);
+    var bf03 = new BoyFriend('孙权', 1800, true);
+
+    console.log(bf01);
+    console.log(bf02);
+    console.log(bf03);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

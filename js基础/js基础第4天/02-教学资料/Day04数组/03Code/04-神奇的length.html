@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 神奇的 length
+
+    //0. 创建了一个数组，里面有5 个元素
+
+    var arrCity = ['P城', 'R城', 'G港', '学校', '靶场'];
+    //               0      1     2       3       4      length = 5
+
+    //1. 通过 length 【访问】数组中 元素的个数  --------------------
+    console.log(arrCity.length);
+
+
+
+    //2. 通过 length 【修改】 数组 的 元素个数 -------------------
+    //2.1 通过 length 为 数组 增加 空的 元素
+    // arrCity.length = 8;
+    // console.log(arrCity);
+
+    //2.2 通过 length 为数组 删减 元素
+    arrCity.length = 3;
+
+
+    //思考：如何 清空整个数组
+    arrCity.length = 0;
+
+
+    // 数组中 length 和 最有一个元素下标的关系
+    // 数组.length - 1  == 最有一个元素的下标
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

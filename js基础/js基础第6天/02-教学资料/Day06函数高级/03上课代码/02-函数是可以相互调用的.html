@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // // 函数是可以相互调用的
+        // function a(loverName) {
+        //     console.log('a~~~~' + loverName);
+        //     console.log('a~~~~' + loverName);
+        //     console.log('a~~~~' + loverName);
+        //     console.log('a~~~~' + loverName);
+        // }
+
+        // function b(loverName1) {
+        //     console.log('b~~~~~~~~' + loverName1);
+        //     console.log('b~~~~~~~~' + loverName1);
+        //     a(loverName1);
+        //     console.log('b~~~~~~~~' + loverName1);
+        //     console.log('b~~~~~~~~' + loverName1);
+        // }
+
+        // b('James');
+
+
+        // 函数是可以相互调用的
+        function a(loverName) {
+            console.log('a~~~~' + loverName);
+            console.log('a~~~~' + loverName);
+            console.log('a~~~~' + loverName);
+            console.log('a~~~~' + loverName);
+
+            return 'A函数 爱你哦~~~';
+        }
+
+        function b(loverName1) {
+            console.log('b~~~~~~~~' + loverName1);
+            console.log('b~~~~~~~~' + loverName1);
+
+            var aRes = a(loverName1);
+
+            console.log('b~~~~~~~~' + loverName1);
+            console.log('b~~~~~~~~' + loverName1);
+
+            return aRes;
+        }
+
+        var res =  b('James');
+        console.log(res);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

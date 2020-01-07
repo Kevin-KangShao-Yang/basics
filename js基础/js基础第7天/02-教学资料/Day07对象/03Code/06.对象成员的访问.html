@@ -1,0 +1,80 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // function a() {
+    //   uName = '小白白'; // 创建了一个 全局 变量
+    // }
+
+    // a();
+    // console.log(uName);
+
+    // class 类 
+
+    //1.对象：超级容器，可以存放所有东西 -- 变量、数组、函数、对象
+    //【对象的成员】包括 属性 和 方法
+    //  1.1 对象的属性：就是 对象里的 “变量”，用来 保存 数据  --> 用来 代表 对象 的 相关数据
+    //  1.2 对象的方法：就是 对象里的 “函数”，用来 保存 代码  --> 用来 代表 对象 的 相关行为
+
+
+    var dog = {
+      dName: '小花花',
+      dAge: 5,
+      dGender: true,
+
+      bark: function () {
+        console.log('汪汪汪~~~~~~');
+      },
+      run:function(){
+
+      }
+    };
+
+
+    var cat = {
+      dName: '小喵喵',
+      dAge: 3,
+      dGender: true,
+
+      bark: function () {
+        console.log('喵喵喵~~~~~~');
+      }
+    };
+
+    //  1.3 打印整个对象
+    console.log(dog);
+
+    //2.访问 对象 里的成员 ---------------------------------------------------
+    // 对象 点 访问法
+    //  2.1 访问 对象的 属性： 对象.属性
+    //  2.2 调用 对象的 方法： 对象.方法()
+    // 补充：【对象的成员】   -> 凡是 写在 对象对象中的数据，不管是 属性 还是方法，都可以 统一 的成为 对象的 成员！！！
+    
+    console.log(dog.dName);
+    // console.log(dName); // dName is not defined  ---> 对象里的 成员 属于对象，在外部 无法 直接访问到！！！
+
+    dog.bark();
+    cat.bark();
+
+
+
+
+    // 2.1 访问 对象的 属性： 对象.属性
+
+    //【注意】访问 对象中 不存在的 属性，返回 undefined
+    console.log(dog.dAge250); // undefined
+
+
+    // 2.2 调用 对象的 方法： 对象.方法()
+
+    //3.特例：
+    //  3.1 访问 对象中 不存在的属性时，返回 undefined
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

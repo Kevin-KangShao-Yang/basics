@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 将数组 ['P城', 'Z城', '军事基地', 'Y城'] 转换为字符串，并且用 ‘|’ 分割
+        var arrCity = ['P城', 'Z城', '军事基地', 'Y城'];
+        //              0      1      2           3     length = 4
+
+        // 目标结果 'P城|Z城|军事基地|Y城'
+        // 思路：
+        //   a. 准备字符串变量 str
+        //   b. 遍历数组 中的 元素，将 元素 追加 字符串变量中
+        //   c. 并且 将  |  追加到 字符串变量中
+
+        var str = '';
+        for (var i = 0; i < arrCity.length; i++) {
+            var ele = arrCity[i];
+            str += ele;
+            if (i < arrCity.length - 1) {
+                str += '|';
+            }
+        }
+
+        console.log(str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

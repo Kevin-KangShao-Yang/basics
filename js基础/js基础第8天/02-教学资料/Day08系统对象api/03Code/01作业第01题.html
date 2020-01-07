@@ -1,0 +1,57 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    /*
+    创建一个电脑对象，该对象要有颜色、重量、品牌、型号，可以看电影、听音乐、打游戏和敲代码。
+    题目描述：颜色、重量、品牌、型号是属性；看电影、听音乐、打游戏、敲代码是方法，在调用方法时打印 “我在看电影/听音乐/打游戏/敲代码”
+    */
+
+    // function say(params) {
+    //   // var a = 1;
+    //   a = 1;
+    // }
+
+    var pc = {
+      color:'red',
+      weight:2,
+      brand:'ThinkPad T540P',
+
+      watchMove : function () {
+        console.log('今天的电影真好看~~~~');
+        // var a = 1;
+        // a = 1; // 全局变量
+      },
+      listenMusic:function(){
+        console.log('wonderful tonight~~~');
+      },
+      playGame:function(){
+        console.log('今晚吃鸡，大吉大利~~~');
+      },
+      codeing:function(){
+        console.log('人生的意义是什么？ --- 敲代码！！！');
+      },
+    };
+
+    console.log(pc.brand);
+    pc.watchMove();
+
+
+    // 简单数据类型
+      // number string boolean  undefined null
+    // 复杂数据类型
+      // Array-[]  Function Object-{}   class 
+
+    // 思考：如下数组输出什么？
+    var arr = [, , , ,]; 
+    console.log(arr);  // 4个 undefined
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

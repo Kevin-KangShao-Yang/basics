@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //【函数形参 的默认值】: 当 调用函数时，没有传入实参时，形参 会有一个 默认的值
+    // 形参的默认值： 如果 没有传入 实参，形参 就等于 默认值
+    //                    有传入   实参，形参 就等于 实参
+
+
+    function showLove(usrName = 'Linda', fromName = 'James') {
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+    }
+
+    // showLove();
+    showLove('班长');
+    // showLove('班长','裙姐');
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

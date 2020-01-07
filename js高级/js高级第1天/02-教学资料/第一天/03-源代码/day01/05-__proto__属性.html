@@ -1,0 +1,68 @@
+<!--
+ * @Description: In User Settings Editcript
+ * @Author: your name
+ * @Date: 2019-08-10 10:53:12
+ * @LastEditTime: 2019-08-10 11:12:51
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1. 只要是构造函数，就有prototype指向自身对应的原型对象
+         */
+
+        /* 
+        本小节知识点
+            __proto__ : 属于实例化对象，指向自身原型对象
+                作用：可以让实例化对象访问原型中的成员（属性+方法）
+        
+         */
+
+        //构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        };
+
+        //原型对象
+        Person.prototype.eat = function(){
+            console.log('吃饭');
+        };
+        Person.prototype.type = '哺乳动物';
+
+        //实例化对象
+        var p1 = new Person('班长',26);
+        console.log(p1);
+
+        //访问原型对象
+        //1.构造函数 ：  构造函数名.prototype
+        console.log(Person.prototype);
+        //2.实例化对象
+
+        /* 
+        __proto__ : 开发中千万不要使用。因为不是W3C标准属性
+         但是在学习阶段，为了方便学习。学习研究可以使用
+         */
+        console.log(p1);
+        console.log(p1.type);// p1.__proto__.type
+        console.log(p1.__proto__);
+
+
+        console.log(p1.__proto__ === Person.prototype);//true
+        
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>

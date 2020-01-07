@@ -1,0 +1,32 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.转 字符串
+    //a. 要转换的数据.toString() --------------------------------
+    var num = 3747;
+    console.log(num.toString());
+
+    // 注意：数字的直接量 不能直接 . 出 toString() ，因为 会被当做 小数点！
+    // 3747.toString(); // 报错！！
+
+    var isOk = true;
+    console.log(isOk.toString());
+
+    console.log(true.toString());
+
+
+    //b. String()
+    //  有一些 数据类型 是没有 toString() 方法的，所以  要转成 字符串，就可以使用 String(数据)
+    // console.log(undefined.toString()); // 报错：Cannot read property 'toString' of undefined
+    console.log(String(undefined));
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

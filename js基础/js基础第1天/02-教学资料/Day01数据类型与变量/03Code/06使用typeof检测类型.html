@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.检测数据所属的类型： 可以得到数据所属类型的 【小写名称字符串】
+    //2.语法：
+    //  a. tpyeof 直接量  -> 直接量的 数据类型名字
+    //  b. typeof(直接量)  -> 直接量的 数据类型名字
+
+    console.log(typeof '你是小狗狗'); // 'string'
+
+    console.log(typeof 520.1314); // 'number'
+    console.log(typeof Infinity); // 'number'
+    console.log(typeof -Infinity); // 'number'
+    console.log(typeof Number.MAX_VALUE); // 'number' 
+    console.log(typeof Number.MIN_VALUE); // 'number'
+
+    console.log(typeof true); // 'boolean'
+    console.log(typeof false); // 'boolean'
+
+    console.log(typeof undefined); // 'undefined'
+
+    // 特例：用 typeof 检测 null 时，返回的 类型名称是 'object'
+    console.log(typeof null); // 'object'
+
+    // 强调：使用 typeof 检测 数据类型时，获取的 是 数据类型名称 字符串！！！
+    console.log(typeof('你是小狗狗~~~')); // 'string'
+
+    //          typeof(   'number'       );
+    console.log(typeof( typeof(5201314)) ); 
+
+
+
+  // number string boolean undefined null
+
+
+
+
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

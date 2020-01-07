@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      function a() {
+        console.log('我是快乐的 小aa~~~~');
+      }
+
+      function b() {
+        console.log('我是快乐的 小 sb ~~~');
+        return a; // 将 函数 a 返回
+      }
+
+
+      var fn = b(); // 调用函数 b 会 返回 函数 a 给 变量 fn
+      fn(); // a(); 调用 fn 相当于 调用 函数a
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 全局作用域 和 局部作用域（函数）
+
+        // 注意：在 现在所学的语法中，只有 函数 的 大括号 有作用域
+        function a(){
+            var age = 18;
+        }
+
+        // a();
+        // console.log(age); // age is not defined
+
+        // if / switch / for /while / do while 的大括号 都没有作用域
+        // 在里面 声明的 变量 都是 全局变量！！！
+        if(true){
+            var uName = '小白';
+        }
+
+        console.log(uName);
+
+        //
+
+        function showLove() {
+            if(2>1){
+                var loverName = '小白';
+            }
+        }
+
+        showLove();
+        // console.log(loverName); // loverName is not defined
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

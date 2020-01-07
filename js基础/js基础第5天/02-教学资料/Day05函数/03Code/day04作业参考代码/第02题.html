@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 2.求数组中的最小值 ：[2,5,11,3,0,57]
+    var arr = [2, 5, 11, 3, 0, 57];
+    //         0  1  2   3  4   5   length = 6
+
+    //2.1 准备一个 擂台变量
+    var minNum = Infinity; // 正无穷
+
+    //2.2 遍历数组中 每个元素，并且 拿来和 minNum 中的值比较 谁 更小，把小的存入 变量 minNum
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] < minNum) {
+        minNum = arr[i];
+      }
+    }
+
+    console.log(minNum);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+// 接收用户输入的身高（178.2），并转成 浮点数，在此基础上 + 2，最后打印到控制台
+
+
+        // 第一种方式:+号
+    var height = +prompt('请输入你的身高cm');
+    console.log(2+height);
+
+    // 第二种方式: parseFloat()
+    var shengao = prompt('请输入你的身高cm');
+    shengao = parseFloat(shengao)+2;
+    console.log(shengao);
+
+    // 第三种方式:Number()   可转换整数.小数点的字串符,如果字串符不是全数字,无法转换,得到的为 非数值 NaN
+    var shenGao = prompt('请输入你的身高cm');
+    shenGao = Number(shenGao)+2;
+    console.log(shenGao);
+    
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

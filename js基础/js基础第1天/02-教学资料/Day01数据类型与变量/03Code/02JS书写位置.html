@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title>JS书写位置</title>
+  <meta charset='UTF-8' />
+  <!--
+  1.行内写法：写在标签内部，不推荐，因为不便于维护
+  2.内联写法：写在script标签里面
+  3.外联写法：写在js文件中，使用script标签的src属性来导入
+
+  注意点：  script标签没有src属性：内联写法，js写在标签里面
+            script标签有src属性：外联写法，js写在js文件中,此时写在标签里面js无效
+  -->
+
+  <!-- 3.外部JS 随着浏览器由上到下的解析执行，遇到要导入外部Js文件时，
+                    就会从路径指定的位置找到js文件，并执行-->
+  <!-- <link rel="stylesheet" href=""> -->
+  <script src="02外部JS.js"></script>
+  <!-- <script src="02外部JS.js">
+    alert('我是用来引入 外部 JS 文件的 script标签 中的 淘气的代码~~！');
+  </script> -->
+
+  <!-- 2.内嵌JS 学习期间用的最多-->
+  <script>
+    alert('我是可爱纯洁的 内嵌 Js~~~~ 当浏览器由上到下 解析时，一旦 遇到我，就会执行~~！');
+  </script>
+</head>
+
+<!-- 1.行内JS ,都是 写在 on开头 的 事件属性中-->
+<body style="border:1px dashed #0094ff;" onclick="alert('你们好呀，40期的小伙伴们~~我的cpu为什么会高温呢？');">
+  我是快乐的程序员~~~你信吗？
+</body>
+
+
+</html>

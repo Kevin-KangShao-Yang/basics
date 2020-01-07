@@ -1,0 +1,2 @@
+1、先安装DiagramDesignerSetup1.28.msi
+2、再安装LanguagePackDD-2016-01-24.exe 这个是语言包

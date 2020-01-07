@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script>
+    var tbData = {
+      thData: ["姓名", "年龄", "性别"],
+      trData: [
+        { name: "小白", age: 22, sex: "男" },
+        { name: "小黑", age: 17, sex: "女" },
+        { name: "小黄", age: 26, sex: "男" },
+        { name: "小绿", age: 26, sex: "男" }
+      ]
+    };
+    var str = '<table>\n';
+     str +='<tr>'
+     for (var i=0;i<tbData.thData.length;i++){
+       var name = tbData.thData[i];
+       str +='\n\t<th>'+name+'</th>';
+     }
+     str +='\n</tr>'
+     for (var i=0; i<tbData.trData.length;i++){
+       str+='\n<tr>'
+       var str1 = tbData.trData[i];
+       str+= '\n\t<td>'+str1.name+'</td> \n \t<td>'+str1.age+'</td> \n \t<td>'+str1.sex+'</tb>\n'
+       str+='</tr>\n'
+     }
+     str+='</table>'
+     console.log(str);
+     document.write(str);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

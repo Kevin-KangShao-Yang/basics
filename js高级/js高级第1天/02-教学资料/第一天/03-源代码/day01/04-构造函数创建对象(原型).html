@@ -1,0 +1,210 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-10 09:49:36
+ * @LastEditTime: 2019-08-10 10:37:15
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 1. 学习目标 ： 原型对象
+            a. 原型是什么？
+                原型对象 ： 每一个函数被创建的时候，系统会自动帮我们创建一个与之对应的对象，称之为原型对象
+                作用 ： 解决内存资源浪费 + 全局变量污染
+            b. 原型怎么用？
+                构造函数 ：  构造函数名.prototype
+                实例化对象: 实例化对象名.__proto__(已经不再这样使用了)
+                使用建议:私有成员(一般都是非函数成员)放在构造函数中,
+                        共享成员(一般就是函数)放在原型对象中
+                注意:如果重置了prototype 记得修正constructor的指向      
+
+          2.学习路线
+            （1）复习构造函数new的工作原理（4个步骤）
+            (2) 发现构造函数的弊端 （浪费内存资源）
+            (3) 使用函数解决内存资源浪费 （新的问题：全局变量污染）
+            （4）引入对象 ： 同时解决内存资源浪费 与 全局变量污染
+         */
+
+        //（1）复习构造函数new的工作原理
+        //构造函数中的方法弊端 ： 浪费内存资源
+        /* 
+        a. js中所有的对象都是构造函数创建
+                内置构造函数 ： js作者提前写好的   [] - > new Array()   {} -> new Object()
+                自定义构造函数 ： new Person()   new Student()
+        b. 自定义构造函数 工作原理
+            //1.创建空对象  {}
+            //2.this指向这个对象 ”： this = {}
+            //3.执行构造函数赋值代码
+            //4.自动返回这个对象
+         */
+        
+        // function Person(name,age){
+        //     //1.创建空对象  {}
+        //     //2.this指向这个对象 ”： this = {}
+        //     //3.执行构造函数赋值代码
+        //     this.name = name;
+        //     this.age = age;
+        //     this.eat = function(){
+        //         console.log('大吉大利今晚吃鸡');
+                
+        //     };
+        //     //4.自动返回这个对象
+        // };
+
+        // var xjh = new Person('班长',38);
+        // console.log(xjh);
+        // xjh.eat();
+
+
+        // var classFlower = new Person('班花',18);
+        // console.log(classFlower);
+        // classFlower.eat();
+
+        // //每执行一次构造函数，就会在堆内存重新声明一个函数。所以两个对象的方法不一样
+        // console.log(xjh.eat ==  classFlower.eat);//false
+        
+        
+        //2. 使用函数解决 ： 内存资源浪费问题
+
+        //新的问题 ： 全局变量污染
+        
+        // function eat(){
+        //     console.log('大吉大利今晚吃鸡');
+                
+        // };
+
+        // function play(){
+        //     console.log('玩一玩');
+            
+        // }
+
+        // function Person(name,age){
+        //     //1.创建空对象  {}
+        //     //2.this指向这个对象 ”： this = {}
+        //     //3.执行构造函数赋值代码
+        //     this.name = name;
+        //     this.age = age;
+        //     this.eat = eat;
+        //     this.play = play;
+        //     //4.自动返回这个对象
+        // };
+
+        // var xjh = new Person('班长',38);
+        // console.log(xjh);
+        // xjh.eat();
+
+
+        // var classFlower = new Person('班花',18);
+        // console.log(classFlower);
+        // classFlower.eat();
+
+       
+        // console.log(xjh.eat ==  classFlower.eat);//true
+
+        //3. 使用对象解决 ： 全局变量污染 + 内存资源浪费
+            //弊端 ： 造成新的全局变量污染
+        // var obj = {
+        //     eat:function(){
+        //         console.log('吃鸡');
+                
+        //     },
+        //     play:function(){
+        //         console.log('玩一玩');
+                
+        //     }
+        // };
+        
+
+        // function Person(name,age){
+        //     //1.创建空对象  {}
+        //     //2.this指向这个对象 ”： this = {}
+        //     //3.执行构造函数赋值代码
+        //     this.name = name;
+        //     this.age = age;
+        //     this.eat = obj.eat;
+        //     this.play = obj.play;
+        //     //4.自动返回这个对象
+        // };
+
+        // var xjh = new Person('班长',38);
+        // console.log(xjh);
+        // xjh.eat();
+
+
+        // var classFlower = new Person('班花',18);
+        // console.log(classFlower);
+        // classFlower.eat();
+
+       
+        // console.log(xjh.eat ==  classFlower.eat);//true
+        // console.log(xjh.eat ==  obj.eat);//true
+
+
+        /*        4.原型 ： 同时解决内存资源浪费 + 全局变量污染  */
+
+        function Person(name,age){
+            //1.创建空对象  {}
+            //2.this指向这个对象 ”： this = {}
+            //3.执行构造函数赋值代码
+            this.name = name;
+            this.age = age;
+            //4.自动返回这个对象
+        };
+
+        //4.1 原型 ： 每一个函数在被创建的时候，系统会自动帮我们创建一个与之对应的对象，称之为原型对象
+        //4.2 如何获取原型对象？
+            // 构造函数.prototype
+        console.log(Person.prototype);
+        //4.3 既然是对象 ，就可以存储数据
+        Person.prototype.eat = function(){
+            console.log('吃鸡');
+            
+        };
+
+        Person.prototype.play = function(){
+            console.log('玩一玩');
+            
+        };
+
+        //4.4 谁可以访问原型中的数据呢？
+
+        //（1）函数自身
+        console.log(Person.prototype.eat());
+        //(2)这个构造函数 实例化（创建） 的每一个对象 
+        var banzhang = new Person('班长',18);
+        console.log(banzhang);
+        
+        var banhua = new Person('班花',16);
+        console.log(banhua);
+
+        banzhang.eat();
+
+        console.log(banzhang.eat === banhua.eat);//true
+        
+        
+        
+
+
+
+        
+
+        
+        
+        
+
+       
+
+
+        
+    
+    </script>
+</body>
+</html>

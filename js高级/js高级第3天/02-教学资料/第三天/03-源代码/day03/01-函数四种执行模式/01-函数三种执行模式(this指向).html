@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.函数三种调用方式 ： 全局函数 、 对象方法 、 构造函数
+            this ： 谁 `调用` 我，我就指向谁
+                全局函数 ： 指向window
+                对象方法 ： 指向对象
+                构造函数 ： 指向new创建的空对象
+            * this指向取决于函数是如何调用的，跟声明没有关系的
+         */
+
+        //1.全局函数
+        function fn(){
+            console.log('我是ikun');
+            console.log(this);
+            
+        };
+
+        fn();// window.fn()
+
+        //2.对象的方法
+        var person = {
+            name:'班长',
+            age:30,
+            sayHi:function(){
+                console.log(this);
+                
+                console.log('我是班长，你的心理+生理辅导师'); 
+            }
+        };
+
+        person.sayHi();
+
+        //将fn中的地址 拷贝 赋值给sayHi
+        person.sayHi = fn;
+        person.sayHi();//执行fn中存储的代码
+
+        //3.构造函数
+        function Student(age){
+            //(1)创建空对象
+            //(2)this指向这个对象
+            console.log(this);
+
+            this.age = age;
+        };
+
+        var s1 =  new Student();//构造函数
+
+        //没有使用new调用构造函数，this指向window。 相当于给window添加属性 （全局变量）
+        Student(18);//全局函数
+        console.log(age);// window.age
+        console.dir(s1);
+        
+        
+    </script>
+</body>
+</html>

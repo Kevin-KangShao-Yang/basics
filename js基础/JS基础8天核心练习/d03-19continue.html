@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 案例：班长早上吃包子，吃 10个，吃到 第5个时，发现有半条虫，接着吃后面的包子
+        for (var i = 1; i <= 10; i++) {
+            if (i == 5) {
+                console.log('呀~~·妈呀~~~包子里竟然有虫子，还在动~~！这个包子不吃了，扔掉~~！');
+                continue;
+            }
+
+            console.log('班长正张开血盆大嘴 啃第【' + i + '】个包子');
+        }
+
+        // continue 关键字   退出本次（当前次的循环）--- {}中后面的代码不执行，调到 i++处，进入下次循环
+        //                   继续执行剩余次数循环
+
+
+        // 1. 求1~100 之间， 求除了能被7整除之外的 其余的整数之和
+        var sumNum = 0;
+        
+        for (var i = 1; i <= 100; i++) {
+            if (i % 7 == 0) {
+                continue;
+            }
+
+            sumNum += i;
+        }
+
+        console.log('1-100之间不是7的倍数 的 整数之和：' + sumNum);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

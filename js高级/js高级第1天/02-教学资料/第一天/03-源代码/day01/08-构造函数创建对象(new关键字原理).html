@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*学习目标：了解new关键字的工作原理（四个步骤） 
+         new关键字原理（4件事）
+            1.创建空对象
+            2.this指向这个对象
+            3.执行赋值代码(即复制一份代码在空对象中)
+            4.返回这个对象
+         */
+
+
+        /*学习路线 
+        1.复习对象两种声明方式
+        2.抛出一个问题： 如何创建多个对象（函数创建）
+        3.引出构造函数
+
+        总结：
+            创建一个对象 ：
+                最常用 ： {}
+                内置构造函数： new Object()      【内置： js作者提前写好的固定语法】
+            创建多个对象 ： 函数
+                普通函数：代码多，不常用
+                构造函数：代码少，js作者推荐使用
+         */
+
+        //1.复习对象两种声明
+        //创建一个对象 ： 简洁语法（最常用）   内置构造函数方法
+        // var obj = {
+        //     name:'班长',
+        //     age:18
+        // };
+
+        // var obj1 = new Object({
+        //     name:'大飞哥',
+        //     age:16
+        // });
+
+
+        //2.需求 ： 一次创建三个人对象:班长，大飞哥，财务（name，age）
+
+        //复制粘贴：弊端 代码冗余
+        // var banzhang = {};
+        // banzhang.name = '班长';
+        // banzhang.age = 18;
+        // console.log(banzhang);
+
+        // var flgGe = {};
+        // flgGe.name = '大飞哥';
+        // flgGe.age = 26;
+        // console.log(flgGe);
+
+        // var caiwu = {};
+        // caiwu.name = '财务';
+        // caiwu.age = 38;
+        // console.log(caiwu);
+
+
+        //3. 引入函数 ： 创建多个对象解决代码冗余问题
+
+        /*  function createPerson(name,age){
+             //1.声明一个空对象
+             var p = {};
+             //2.赋值
+             p.name = name;// 左边name是属性名 ： 右边name是取形参的值
+             p.age = age;// 
+             //3. 返回造好的对象
+             return p;
+         };
+ 
+         var banzhang = createPerson('班长',18);
+         console.log(banzhang);
+         
+         var bigFlyGe = createPerson('大飞哥',26);
+         console.log(bigFlyGe);
+ 
+         var caiwu = createPerson('财务',38);
+         console.log(caiwu); */
+
+
+        //4.自定义构造函数 ： 功能与上面的普通函数完全一致，但是代码更加简洁
+        // function CreatePerson(name,age){
+        //     this.name = name;
+        //     this.age = age;
+        // };
+
+        // var banzhang = new CreatePerson('班长',18);
+        // console.log(banzhang);
+
+        // var bigFlyGe = new CreatePerson('大飞哥',26);
+        // console.log(bigFlyGe);
+
+        // var caiwu = new CreatePerson('财务',38);
+        // console.log(caiwu);
+
+
+        /* 
+        5.了解new关键字工作原理
+        */
+
+        // //写一个空函数，分别使用new和不使用new调用
+        // function fn(){};
+
+
+        // var res1 = fn();//普通函数
+        // console.log(res1);//undefined
+
+        // var res2 = new  fn();//构造函数
+        // //new : (1)创建空对象 (2)返回这个空对象
+        // console.log(res2);//空对象
+
+
+        /* 
+        new关键字原理（4件事）
+        1.创建空对象
+        2.this指向这个对象
+        3.执行赋值代码(就是复制一份代码在空对象中)
+        4.返回这个对象
+        
+         */
+         function CreatePerson(name, age) {
+            //1.创建空对象  {}
+            //2.this指向这个对象 this = {}
+            //3.执行构造函数代码（完成对象的赋值）
+            this.name = name;
+            this.age = age;
+            //4.返回这个对象
+            // return 'sb'; 基本数据类型，返回无效
+            // return [10,20,30];复杂数据类型，会覆盖new创建的哪个对象
+        };
+
+        var banzhang = new CreatePerson('班长', 18);
+        console.log(banzhang);
+
+        var bigFlyGe = new CreatePerson('大飞哥', 26);
+        console.log(bigFlyGe);
+
+        var caiwu = new CreatePerson('财务', 38);
+        console.log(caiwu);
+
+        /* 
+        构造函数注意点
+        1. 一定要用new来调用。 一般构造函数首字母大写（提醒别人别忘记使用new来调用）
+        2. 如果在构造函数中 手动使用了return  : 
+            基本数据类型，返回无效
+            复杂数据类型，会覆盖new创建的哪个对象
+        */
+    </script>
+</body>
+
+</html>

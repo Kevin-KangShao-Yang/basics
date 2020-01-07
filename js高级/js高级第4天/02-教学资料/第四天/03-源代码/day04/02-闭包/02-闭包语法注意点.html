@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.闭包语法 三个流程
+        2.闭包语法注意点
+            得到的是同一个变量 ： 外部函数调用一次，闭包调用多次
+            得到的是不同变量 ： 外部调用多次，闭包调用一次
+         */
+
+        function outer(){
+            var num = Math.ceil(Math.random()*100);
+            //1.声明闭包函数
+            function closure(){
+                //2.返回你想要访问的局部变量
+                return num;
+            };
+            //3.返回这个闭包函数
+            return closure;
+        };
+
+        //1. 得到是同一个变量 ： 外部函数调用一次,闭包函数调用多次
+        var bibao = outer();
+        var n1 = bibao();
+        var n2 = bibao();
+        var n3 = bibao();
+        console.log(n1,n2,n3);
+
+        //2. 得到的是不同的变量 ：外部调用多次，闭包函数调用一次
+        // var bibao1 =  outer();
+        // var num1 = bibao1();
+        outer()();
+
+        var bibao2 =  outer();
+        var num2 = bibao2();
+
+        var bibao3 =  outer();
+        var num3 = bibao3();
+
+        console.log(num1,num2,num3);
+
+
+        //示例：投票机
+        function tiggerJi(){
+            var num = 10;
+            function closure(){
+                num++;
+                return num;
+            };
+            return closure;
+        };
+
+        //同一个投票机投三票
+        var bibao =  tiggerJi();
+        var n1 = bibao();
+        var n2 = bibao();
+        var n3 = bibao();
+        console.log(n1,n2,n3);//11 12 13
+
+        //三个投票机各投1票
+        var num1 =  tiggerJi()();
+        var num2 =  tiggerJi()();
+        var num3 =  tiggerJi()();
+        console.log(num1,num2,num3);//11 11 11
+        
+        
+        
+        
+    </script>
+</body>
+</html>

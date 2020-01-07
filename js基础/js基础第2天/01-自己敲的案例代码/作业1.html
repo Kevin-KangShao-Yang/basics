@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        /* 使用代码判断以下变量 是否为 非数值
+        var usrAge = 21;
+        var isOk = true;
+        var usrName = 'james';
+        var empty = undefined;
+ */
+
+
+
+        var ursAge = 21;
+        console.log(isNaN(ursAge));
+        // 得到值为 false ;     不是非数值
+
+        var isOk = true;
+        console.log(isNaN(isOk));
+        // 得到值为 false ;     不是非数值
+
+        var usrName = 'jiames';
+        console.log(isNaN(usrName));
+        // 得到值为 true ;     是非数值
+
+        var empty = undefined;
+        console.log(isNaN(empty));
+        // 得到值为 true ;     是非数值
+
+
+        console.log(isNaN(null));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

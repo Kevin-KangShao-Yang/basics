@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 将数组   ['P城', 'R城', 'G港', '学校', '靶场'] 的内容反过来存放
+        //            0      1      2      3       4
+        // 翻转后： ["靶场", "学校", "G港", "R城", "P城"]
+        //            0       1     2      3       4
+
+        // 思路：
+        //     a.倒序 遍历 原数组，将 元素 添加到新数组
+
+        var arr = ['P城', 'R城', 'G港', '学校', '靶场'];
+        //           0       1     2      3       4    length = 5
+
+        var arrNew = [];
+
+        for (var i = arr.length - 1; i >= 0; i--) {
+            arrNew.push(arr[i]);
+        }
+
+        console.log(arr);
+        console.log(arrNew);
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

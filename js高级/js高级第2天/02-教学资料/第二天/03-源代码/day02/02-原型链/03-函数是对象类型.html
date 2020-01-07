@@ -1,0 +1,57 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-11 09:35:21
+ * @LastEditTime: 2019-08-11 11:38:40
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        函数属于对象类型
+            如何验证？ ： 对象有点语法可以动态赋值，如果函数也能使用对象的点语法。可以证明函数也是对象
+        
+         */
+
+        function fn(){
+            console.log('111111');
+            
+        };
+
+        fn.aaa = '啊啊啊';
+        fn.sayHi = function(){
+            console.log('哈哈哈，今天学的好开心啊');
+            
+        };
+
+        fn.sayHi();
+
+        console.log(fn);// log 只能打印函数中存储的代码
+        console.dir(fn);// dir 打印函数对象的成员
+
+        // 查看 fn函数对象的原型
+        // js中 `所有` 的函数都是Function构造函数创建
+        console.log(fn.__proto__.constructor);//Function   内置构造函数
+        console.log(fn.__proto__ === Function.prototype);//true
+
+        //查看 fn原型的原型
+        console.log(fn.__proto__.__proto__.constructor);//Object
+        console.log(fn.__proto__.__proto__ === Object.prototype);//true
+        
+        
+        
+        
+
+        
+        
+    </script>
+</body>
+</html>

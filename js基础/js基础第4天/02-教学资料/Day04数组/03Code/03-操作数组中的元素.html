@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    //0. 创建了一个数组，里面有5 个元素
+    var arrCity = ['P城', 'R城', 'G港', '学校', '靶场'];
+    //               0      1     2       3       4      length = 5
+    //1.访问 数组的 元素：  通过  数组名[下标]   访问  --------------------
+    // console.log(arrCity[0]); // P城
+
+    //1.1 直接 打印数组元素
+    // 错误：arrCity(0)  不是通过小括号，而是中括号！！！
+    console.log(arrCity[0]);
+    console.log(arrCity[1]);
+    console.log(arrCity[2]);
+    console.log(arrCity[3]);
+    console.log(arrCity[4]);
+
+
+    // Math.random()
+    // console.log(arrCity(4));
+
+
+    //1.2 将数组元素 【复制】一份 存入 变量
+    var myFavCity = arrCity[0]; // var myFavCity = 'P城'; 
+
+    //强调：访问 不存在的下标元素 : undefined
+    console.log(arrCity[7]);
+
+
+
+
+    //2.设置 数组的 元素： 通过 数组名[下标] = 新的值 --------------------------
+    var arrCity = ['P城', 'R城', 'G港', '学校', '靶场' ];
+    //               0      1     2       3       4    length = 5
+
+    //2.1 设置修改 已存在的下标里的元素
+    console.log(arrCity); // ["P城", "R城", "G港", "学校", "靶场"]
+    arrCity[4] = 'Y城';
+    console.log(arrCity); // ["P城", "R城", "G港", "学校", "Y城"]
+
+
+
+    //2.2 设置 超出 最大下标 1 的元素 ---- 相当于 向数组 中 加一个元素
+    arrCity[5] = '军事基地';
+
+    // 扩展：因为 数组.length 刚好等于 数组 中 要新增的元素的 下标
+    // arrCity[arrCity.length] = '军事基地';
+    // console.log(arrCity);  // ["P城", "R城", "G港", "学校", "Y城", "军事基地"]
+
+
+
+    //2.3 设置 超出 最大下标 很多 的元素   ---- 相当于 向数组 中加了多个元素，只不过中间的 都为 undefined  
+    arrCity[7] = '小白';
+    console.log(arrCity);
+
+    //2.4 访问 下标 为6 的元素
+    console.log(arrCity[6]);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

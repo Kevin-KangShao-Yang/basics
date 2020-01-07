@@ -1,0 +1,47 @@
+JavaScript基础复习
+
+1. JavaScript 包含: ____, ____, 和 ____. 
+2. JavaScript 的基本类型有 ____, ____, 和 ____.
+3. JavaScript 的复合类型有 ____, ____, ____, ____, ____, ____, 和 ____. 还有两个核心类型: ____ 和 ____.
+4. JavaScript 还有两个空类型: ____ 和 ____.
+5. JavaScript 中获得类型的运算符是 ____. 使用该运算符返回的结果是什么类型? ____.
+6. JavaScript 中 === 和 == 有什么区别? ____.
+7. JavaScript 中 in 运算符有什么用? ____.
+8. JavaScript 的关系运算符是: ____.
+9. JavaScript 中创建对象使用 ____ 运算符.
+10. 什么是引用类型, 什么是值类型? ____.
+11. JavaScript 什么叫逻辑中断: ____.
+12. JavaScript 中 delete 运算符的作用是 ____.
+13. JavaScript 中循环语句有 ____ 种. 分别是: ____, ____, ____, 和 ____.
+14. JavaScript 中分支语句有 ____ 种. 分别是: ____, ____.
+15. JavaScript 中跳转语句 break 与 continue 如何使用? ____.
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.ECMAScript Bom Dom
+2.number string boolean
+3.Array  Date  RegExp  Math  Number   String   Boolean ,  Function  Object
+4.undefiend null
+5.typeof  string
+6.===比较值和类型   ==比较值，会有类型转换
+7.判断对象中有没有某个属性（严谨点的说法是 判断某个对象能不能访问某个属性）
+  判断数组中有没有某个下标（不是判断某个值在不在数组中，判断某个值在不在数组中用indexof）
+8. > < >= <=...
+9.new
+10.存值的就是值类型，，存地址的就是引用类型
+11.逻辑运算符的短路运算
+   e = e || window.event;
+   var boxValue = document.getElementById("box") && document.getElementById("box").value;
+12.可以删除没有用var声明的变量；  
+   可以删除对象的属性。  （不要和removeAttribute弄混淆，这个是删dom元素的属性）
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 【九九乘法表】
+        var strStar = '';
+
+        for (var row = 1; row <= 9; row++) {
+            // 内层循环负责 生成 列
+            for (var col = 1; col <= 10 - row; col++) {
+                // strStar += col + ' * ' + (10 - row) + ' = ' + (col *  (10 - row) ) + '\t';
+
+                var res = col * (10 - row);
+                //          1      *          9         =      9
+                strStar += col + ' * ' + (10 - row) + ' = ' + res + '\t';
+            }
+
+            // 生成换行符
+            strStar += '\n';
+        }
+
+        console.log(strStar);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

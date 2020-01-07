@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        var num = [5, 2, 6, 8, 1, 99, 5, 6, 0, 0, 2, 6, 0];
+        var num1 = [];
+        for (var i = 0; i < num.length; i++) {
+            var num2 = num[i];
+            var num3 = false;
+            for (var j = 0; j < num1.length; j++) {
+                if (num2 == num1[j]) {
+                    num3 = true;
+                    break;
+                }
+
+            }
+            if (!num3) {
+                num1.push(num2);
+            }
+        }
+        console.log(num1);
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

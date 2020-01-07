@@ -1,0 +1,128 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // day01 : 数据类型 和 变量
+    var usrName = '小白';
+    usrName = '小黑裙姐';
+
+
+    console.log(usrName);
+
+
+    // 数据类型：
+    //   简单数据类型
+    //       Number      String     Boolean        Undefined    Null
+    //    11  11.1 -1    ''  ""   true / false     undefined    null
+    //   数据类型转化 : 将 一种数据  转成 另一种数据  数值 -> 字符串    字符串 -> 数值
+    //   转数值
+    ///      +
+    //       parseInt    - 转 整型
+    //       parseFloat  - 转 浮点数
+    //       Number      - 转 整型 浮点 都可以，兼容性差，不能包含 非数值
+
+    // 转字符串：
+    //       1 + 'a' -> '1a'
+    //       数据.toString()
+    //       String
+
+    // 转布尔值
+    //       Boolean(x)
+    //            转 false ： 0 -0 NaN  '' false undefined null  document.all
+
+
+    //   复杂数据类型
+
+
+    //Day02 : if else      -> ? : 三元运算符
+    //        switch case 
+
+    //Day03 : 循环 - for 、 while 、  do while
+
+
+    //Day04 ：数组
+    // 声明数组
+    var arrCity = ['P城', 'G港'];
+    //               0      1     length = 2
+
+    // 数组三要素
+    //          元素 、 下标  、 length
+
+    // 通过 数组[下标] 的方式 访问 元素
+    console.log(arrCity[0]);
+    console.log(arrCity[1]);
+
+    // 修改 数组元素
+    arrCity[0] = '深圳';
+
+    arrCity[2] = '小白白'; // ['P城', 'G港','小白白']
+    //                          0       1       2
+
+    arrCity[5] = '亲爱的'; // ['P城', 'G港','小白白', undefined,undefined, '亲爱的' ]
+    //                          0       1       2     3         4            5
+
+    // 新增 数组元素
+    arrCity.push('慢慢飞'); // ['P城', 'G港','小白白', undefined,undefined, '亲爱的' , '慢慢飞']
+    //                          0       1       2     3         4            5          6
+
+
+    // 删除 数组元素
+    arrCity.splice(3, 2); //  ['P城', 'G港','小白白', '亲爱的' , '慢慢飞']
+    //                          0       1       2     3         4         
+
+    // 清空 数组
+    arrCity.length = 0;
+
+
+    // 遍历数组
+    var arrCity2 = ['P城', 'G港', '小白白', '亲爱的', '慢慢飞'];
+    //               0       1       2        3         4         
+    // 正序遍历
+    for(var i = 0 ;i < arrCity2.length;i++){
+      console.log(arrCity2[i]);
+    }
+
+    // 倒序遍历
+    for(var i = arrCity2.length - 1; i >= 0; i--){
+      console.log(arrCity2[i]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+    var arrScore = [];
+    //                0
+    arrScore[0] = 100; //  [100]
+    arrScore[1] = 99; // [100,99]
+
+
+
+
+    // 接收 学员的个数，循环接收每个学员的成绩，求 平均成绩 和 总成绩
+    var stuNum = +prompt('请输入学员的个数：');
+    var arrScore = [];
+    var totalScore = 0;
+    var avgScore = 0;
+
+    for (var i = 0; i < stuNum; i++) {
+      var score = +prompt('请输入第【' + i + '】位同学的成绩：'); // 100
+      arrScore[i] = score;
+      // arrScore.push(score);
+    }
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

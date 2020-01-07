@@ -1,0 +1,66 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-10 10:53:25
+ * @LastEditTime: 2019-08-10 11:31:19
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1. constructor : 属于原型对象,指向构造函数
+        2. 作用 ：可以让实例化对象知道自己被哪个构造函数创建
+        3.注意点 ： 原型对象重新赋值，则会丢失
+            * 解决访问： 重新找回
+        
+         */
+
+        //构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        };
+
+        //原型对象
+        Person.prototype.eat = function(){
+            console.log('我今天中午要吃黑马猪脚饭');
+        };
+
+       
+        
+
+        //实例化对象
+        var p1 = new Person('班长',26);
+
+         //1. constructor : 指向构造函数
+         console.log(Person.prototype);
+         console.log(Person.prototype.constructor);//Person
+
+         console.log(Person.prototype.constructor === Person);//true
+         //2. 作用 ： 可以让实例化对象知道自己被哪个构造函数创建
+         
+         console.log(p1.__proto__.constructor);//Person
+         console.log(p1.__proto__.constructor === Person);//true
+
+         //测试 ： 以下代码能不能够创建实例化对象
+         var p2 = new p1.constructor('班长的小迷妹',16);
+         console.log(p2);
+
+         //3. 注意点 ： 原型重新赋值会丢失constructor
+         //解决方案： 重新找回来
+         Person.prototype = {
+             constructor:Person
+         };
+         console.log(Person.prototype);
+         
+    </script>
+</body>
+</html>

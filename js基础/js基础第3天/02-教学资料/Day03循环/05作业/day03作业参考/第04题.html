@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 使用for 循环打印矩形  (☆)
+    // 思路：
+    //     a.准备一个 字符串变量，用来保存 要打印的 星星
+    //     b.外部循环 来负责 生成 行
+    //     c.内存循环 来负责 生成 每一行的 星星
+
+    var str = '';
+    for (var row = 1; row <= 4; row++) {
+
+      // row =1 ->  str = '☆☆☆☆☆\n'
+      // row =2 ->  str = '☆☆☆☆☆\n☆☆☆☆☆\n'
+      // row =3 ->  str = '☆☆☆☆☆\n☆☆☆☆☆\n☆☆☆☆☆\n'
+      // row =4 ->  str = '☆☆☆☆☆\n☆☆☆☆☆\n☆☆☆☆☆\n☆☆☆☆☆\n'
+      for (var col = 1; col <= 5; col++) {
+        str += '☆';
+      }
+
+      str += '\n';
+    }
+
+    console.log(str); // str = '☆☆☆☆☆\n☆☆☆☆☆\n☆☆☆☆☆\n☆☆☆☆☆\n'
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

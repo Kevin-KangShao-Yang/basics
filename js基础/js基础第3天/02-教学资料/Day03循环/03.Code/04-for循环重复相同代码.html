@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // i++ ，是在 每一轮 循环的 最后一步 才执行
+
+        // for 循环可以执行相同的代码 ： 打印100次 '媳妇我错了'
+        // for (var i = 1; i <= 100; i++) {
+        //     // console.log('媳妇，我真的错了~~~' + i);
+        //     document.write('媳妇，我真的错了~~~' + i + '<br/>');
+        // }
+
+
+        // 我们可以让用户控制输出的次数：打印指定次 '媳妇我错了'
+        var times = +prompt('媳妇，请输入您要求的道歉的次数：'); // +'10' -> 10
+        
+        for (var i = 1; i <= times; i++) {
+            document.write('媳妇，我真的错了~~~' + i + '<br/>');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-11 09:35:55
+ * @LastEditTime: 2019-08-11 15:42:39
+ * @LastEditors: Please set LastEditors
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+         1. instanceof运算符 ：对象 instanceof 构造函数
+               - 检测构造函数的原型prototype在不在这个对象的原型链上
+    (检测 右边构造函数的原型 在不在 左边对象的原型链中)
+             
+         */
+
+        var arr = [10,20,30];
+        /* 
+        1.数组的原型链 
+            arr -> Array.prototype -> Object.prototype -> null
+         */
+        console.log(arr instanceof Array);// true
+        console.log(arr instanceof Object);// true
+
+        /* 
+        2.Function函数对象的原型链
+            根据instanceof运算规则 ： 左边Function 对象  右边Function是构造函数
+        Function函数对象 -> Function.prototype -> Object.prototype ->null
+         */
+        console.log(Function instanceof Function);// true
+        console.log(Function instanceof Object);// true
+
+        /* 
+        3. Object构造函数的原型链
+            根据instanceof运算规则 ： 左边Object函数对象   右边Object构造函数
+        Object函数对象 ——》 Function.prototype-> Object.prototype -> null
+         */
+
+        console.log(Object instanceof Object);// true
+        console.log(Object instanceof Function);// true
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>输入输出</title>
+  <script>
+  var usrName; // 用户名
+  var usrMoneyCount = 0; //账户
+
+  //一、获取 用户名
+  usrName = prompt('请输入您的用户名：');
+
+  //二、业务功能代码
+  var usrOpt = 0; // 用户选择 操作数
+  var tempMoney =0; // 用户要 操作的 钱数
+  //1.通过 循环 实现与用户的交互，通过 break 结束
+  while(true){
+  //2.显示操作菜单，并接收用户的选择
+  usrOpt = parseInt( prompt(usrName + ' 请输入您要进行的操作：\n 1.存钱 \n 2.取钱\n 3.显示余额\n 4.退出') );
+  //3.根据用户选择 进行不同的业务操作
+  switch(usrOpt){
+    //3.1 存钱业务
+    case 1:
+      //3.1.1 获取用户要存入的 金额
+      tempMoney = parseInt(prompt(usrName + '您现在账户中包含【'+ usrMoneyCount +'】元，请输入您要存入的金额：'));
+      //3.1.2 判断金额为正数，则 累加到 账户中
+      if(tempMoney>0){
+        //3.1.3 将钱数累加到 账户中
+        usrMoneyCount+= tempMoney;
+        //3.1.4 存钱操作成功提示
+        alert(usrName + ' 存入【'+tempMoney+'】成功~您现在账户中包含【'+ usrMoneyCount +'】元。');
+      }else{
+        //3.1.5 存钱操作失败提示
+        alert(usrName + '，Sorry，您输入的金额 为零 或 为负数！');
+      }
+      break;
+    //3.2 取钱
+    case 2:
+      tempMoney = parseInt(prompt(usrName + '您现在账户中包含【'+ usrMoneyCount +'】元，请输入您要取出的金额：'));
+      //3.2.1 判断金额为正数，并且 金额 <= 账户中的钱
+      if(tempMoney<= usrMoneyCount){
+        //3.2.2 将钱数 从 账户中 减掉
+        usrMoneyCount-= tempMoney;
+        //3.1.4 取钱操作成功提示
+        alert(usrName + '取出【'+tempMoney+'】成功~您现在账户中包含【'+ usrMoneyCount +'】元。');
+      }else{
+        //3.1.5 取钱操作失败提示
+        alert(usrName + '，Sorry，您输入的金额 不符合要求，或者 超出了 您账户中的金额~！');
+      }
+      break;
+    //3.3 显示余额
+    case 3:
+        alert(usrName + '，您现在账户中包含【'+ usrMoneyCount +'】元。');
+      break;
+    //3.4 如果输入的是4，则不做任何操作，等最后一句 if 判断后 通过 break 结束循环
+    case 4:
+      break;
+    //3.5 其它内容 认定为非法输入，进入下一次循环操作
+    default:
+        alert(usrName + '，您输入的内容有误，请重新输入......');
+  }
+    //4.如果输入的是4，结束循环
+    if(usrOpt == 4){
+      break;
+    }
+  }
+  //5.通知用户 已结束服务
+  alert(usrName + '，谢谢温柔使用~！');
+
+  </script>
+  <style>
+    #fDiv {
+      width: 50%;
+      margin: 100px auto;
+      font-size:56px;
+      color: #0094ff;
+      text-align: center;
+      border: 0px solid #000;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="fDiv">
+    欢迎使用 ATM 练习~~
+  </div>
+</body>
+
+</html>

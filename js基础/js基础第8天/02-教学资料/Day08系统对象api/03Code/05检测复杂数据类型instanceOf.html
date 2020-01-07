@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+
+    //1. 简单数据类型 ----------------------------------------------
+    // number string boolean  undefined null
+
+    // 1.1 typeof 检测 简单数据类型
+    console.log(typeof 1);
+    console.log(typeof '小白，我好饿啊');
+
+
+    var o = {}; // var o = new Object();
+    console.log(typeof o);
+
+
+
+
+    //2. 复杂数据类型 ----------------------------------------------
+    // Array-[]  Function Object-{}   class 
+
+    // 2.1 使用 instanceof 来检测 复杂数据类型
+    //     一般  用来 检测 一个 变量 是否 属于 某个 类型(构造函数)
+    //     s1 instanceof StuInfo
+    //              如果 s1 属于 StuInfo 类型(构造函数)，返回 true
+    //                                                 返回 false
+
+    // a. 学员信息 构造函数 (学生类)
+    function StuInfo(sId, sName, sSex) {
+      this.id = sId;
+      this.name = sName;
+      this.sex = sSex;
+
+      this.sayHi = function () {
+
+      }
+    }
+
+    // b. 猫 构造函数 (猫类)
+    function Cat(cName) {
+      this.name = cName;
+      this.miao=function(){
+        console.log('我是猫~~~~');
+      };
+    }
+
+    // c. 创建了一个 学员类的 对象
+    var s1 = new StuInfo(1,'小白',true);
+    var cat1 = new Cat('小猫咪');
+    // console.log(typeof s1); // object
+
+    console.log(s1 instanceof StuInfo); // true -- 学员对象 属于 学员构造函数，所以返回 true
+    console.log(s1 instanceof Cat); // false    -- 学员对象 不属于 猫构造函数，所以返回 false
+
+    // console.log(s1 instanceof Object); // true  --- 扩展：因为  StuInfo 的 父亲(父类) 是 Object，所以 检测的结果 也是 true
+    console.log(cat1 instanceof Object); // true
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

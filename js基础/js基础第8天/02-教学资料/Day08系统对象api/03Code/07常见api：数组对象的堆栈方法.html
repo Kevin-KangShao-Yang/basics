@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var arrGF = [];
+    //1.push 从尾部 添加数组元素
+    arrGF.push('小苍');
+    arrGF.push('小芒');
+    arrGF.push('小大');
+    arrGF.push('小地');
+
+    console.log(arrGF);
+    //2.pop 从 尾部 取出 一个 元素
+    var res = arrGF.pop();
+    console.log(res);
+    console.log(arrGF);
+
+
+    // ----------------------------------------------
+    var arrGF = [];
+    //3.unshift 从头部 添加 一个 元素
+    arrGF.unshift('毛泽东是大英雄~~~');
+    arrGF.unshift('周恩来是大英雄~~~');
+    arrGF.unshift('邓小平是大英雄~~~');
+    arrGF.unshift('吴亦凡是大ying雄~~~');
+    console.log(arrGF);
+
+
+
+    //4.shift 从头部 取出 一个 元素
+    var res = arrGF.shift();
+    console.log(res);
+    console.log(arrGF);
+
+
+    console.log('-----------------------------------------------------');
+    //5. 【栈 ： 先进后出】  --- 将 一个 元素 先 存入数组，会 最后一个 取出来 ----------------------------------
+    // 5.1 两种栈的实现方式：从头部存，从头部取  ；    从 尾部存，从 尾部取\
+    //a.从头部存，头部取
+    var arrGF = [];
+    arrGF.unshift('苹果');
+    arrGF.unshift('鸭梨');
+    arrGF.unshift('西瓜');
+
+    console.log(arrGF);
+    arrGF.shift();
+    console.log(arrGF);
+    arrGF.shift();
+    console.log(arrGF);
+    arrGF.shift();
+    console.log(arrGF);
+
+    console.log('-----------------------------------------------------');
+
+    //b.从尾部存，尾部取
+    var arrGF = [];
+    arrGF.push('苹果');
+    arrGF.push('鸭梨');
+    arrGF.push('西瓜');
+    console.log(arrGF);
+
+    arrGF.pop();
+    console.log(arrGF);
+    arrGF.pop();
+    console.log(arrGF);
+    arrGF.pop();
+    console.log(arrGF);
+
+
+
+    //5.2 【队列实现方式： 先进先出】  -- 将一个元素 先存入 数组，会 第一个 取出来
+    // 两种 实现方案： 从 头部存，从尾部取 ；  从 尾部存，从头部取
+    var arrObj4 = [];
+    //a. 头部存，从尾部取
+
+    //b.从尾部存，头部取
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.闭包实际开发经典场景 ： 沙箱模式
+
+        2.沙箱模式 ： js一种设计模式，是一个封闭的作用域空间
+            * 实现方式 ： 匿名函数自调用
+        3.沙箱模式好处 ：
+            a. 模块化开发 
+            b. 独立的内存空间，不存在变量污染
+         */
+
+        (function(w){
+            var person = {};
+            person.nb = function(){
+                console.log('牛逼');
+                
+            };
+            person.hnb = function(){
+                console.log('很牛逼');
+                
+            };
+            var num = 10;
+
+            //使用闭包让外部访问函数内部的变量
+            /* 
+            注意点 ：不能直接在沙箱内部访问任何全局变量
+            a. 破坏封装性
+            b. 以后代码会压缩 window会压缩成w
+            解决方案： 传参
+            */
+            w.person = person;
+        })(window);
+        
+
+        console.log(person);
+        
+    </script>
+</body>
+</html>

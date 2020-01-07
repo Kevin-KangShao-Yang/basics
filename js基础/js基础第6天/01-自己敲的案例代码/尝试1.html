@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+//1.利用 函数 求数组 [5,2,99,101,67,77] 中的最大数值
+var num = [5,2,99,101,67,77];
+  function num1() {
+      var num2 = -Infinity ;
+      for (var i=0;i<num.length;i++){
+          if (num[i]>num2){
+              num2 = num[i];
+          }
+      }
+      return num2;
+  }
+  var num3 = num1();
+  console.log(num3);
+  
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

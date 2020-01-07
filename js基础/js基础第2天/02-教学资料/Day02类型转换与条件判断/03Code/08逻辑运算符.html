@@ -1,0 +1,91 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.逻辑运算符
+    //  &&    ||     !  - > 结果 都是 bool值
+    // 目的：让 多个条件 比较 成为可能
+
+    // 女生 找 男朋友的条件： 帅 高 富  高情商
+
+    //1.1【逻辑与 &&】     ------------------------------------------------------------
+    // 只有 && 两边的 数据 都为 true 时，整个 逻辑与 表达式 才返回 true
+    //                    只要有一个是 false,整个 逻辑与表达式 就返回 false
+    // 【口诀：一假都假】
+    //  左边的表达式  &&  右边的表达式  -> 表达式结果
+    //     true      &&    true            true
+
+    //     false     &&    true            false
+    //     true      &&    false           false
+    //     false     &&    false           false
+
+    var age = 31;
+    console.log(age > 16 && age < 30);
+    //             true  &&   false   -> false
+
+    console.log(age > 16 && age <= 35);
+    //            true   &&     true   -> true
+
+
+
+    // 扩展：有多个 逻辑与 组成的 表达式 ---------------------------------------------------------
+    // 注意：当 && 中有一个 是 false时，会立即终止 执行，直接 返回 false
+    var age1 = 18;
+    console.log(isNaN(age1) && age1 > 18 && age1 < 20);
+    //              false                            -> false
+
+    //扩展：JS引擎 会依次执行 每个 表达式，如果 结果 是 true，则继续 执行判断后面的 表达式 是否为 true，如果全部都为true，就会 返回 true
+    //                                                                                           如果 其中有任何一个为false,立即总之运行，返回 false
+    console.log(2 > 1 && 1 > 0 && 0 == 0);
+    //          true  &&  true &&  true   -> true 
+
+
+
+    //1.2【逻辑或 ||】  ---------------------------------------------------------------
+    // 男生找女朋友：要么 漂亮，要么 温柔，要么 富婆，要么 情商高 
+
+    // 只要 || 两边有一个是 true，整个表达式 就返回 true
+    //         两边都是 false，整个表达式 才返回 false
+    // 【口诀：一真都真】
+    // 左边的表达式  ||  右边的表达式  -> 表达式结果
+    //    true      ||     false          true
+    //    false     ||     true           true
+    //    false     ||     false          false
+
+    console.log(1 > 1 || 2 > 1); 
+    //           false||  true  -> true
+    console.log(2 > 1 || 2 < 1);
+    //           true           -> true
+
+
+
+    //1.3【逻辑非（取反运算符）】 ------------------------------------------------------
+    //    可以用来 将 一个 布尔值 变成 相反的值  
+    //    !true -> false
+    //    !false -> true
+    console.log(!true); // false
+    console.log(!false); // true
+
+    console.log(! (1 > 2)); true
+    
+
+
+
+    // 思考：
+    var isOk = 1 > 2  && 2 < 1 || 3 > 2;
+    //  isOk =  false && false || true;
+    //                false    || true   -> true
+    console.log(isOk); // true
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

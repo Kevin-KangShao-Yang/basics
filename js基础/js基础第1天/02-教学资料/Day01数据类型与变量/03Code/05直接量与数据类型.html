@@ -1,0 +1,120 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.直接量：可以直接使用的数据
+    //哪些数据可以使用：符合数据类型
+    console.log(5257);
+    console.log(520.1314);
+    console.log(-110);
+
+    console.log('我喜欢的是小狗，不是你~~！');
+    console.log("我喜欢的是小狗，不是你~~！");
+    console.log('520');
+
+    // 在 JS中，不能直接 使用字符！！！
+    // console.log(iloveu);
+
+    // 在JS中，可以 使用为数不多的几个 单词字符，不需要加引号：true /  false  / Infinity
+    console.log(true);
+    console.log(false);
+
+    
+    
+
+    //2.数据类型：程序运行时会产生很多的数据，不同的数据处理与存储方式不同，计算机将这些数据进行分类，称为 [数据类型]
+
+
+    //2.1  number: 数值类型   一切数学上的数字   10   9.9   -5
+    //作用： 数学计算
+    console.log(10);
+    console.log(9.9);
+    console.log(-5);
+
+    console.log(5 + 17);
+
+    //a.科学计数法： e ---------------------------
+    // 为什么要用科学计数法：
+    //        1. 当 0的个数 太多时，容易 遗漏，所以 用 科学计数法 表达 会很准确
+    //        2.　当 0 的个数太多时，写都写不过来，要验证一遍 非常困难耗时，所以 用科学计数法 会很方便统计
+    
+    //a1.整数的 表示，e的前面 是 + 号，小数点往右移
+    //1.0  -->  100000000.
+    console.log(1e8);
+    
+    //a2.小数的 表示，小数点往左移
+    //1.0 --> 0.001
+    console.log(1e-3);
+
+
+    //b.特殊：最大值、最小值：因为 JS毕竟是计算机语言，数据 都需要存入内存使用，而内存有大小限制，无法显示 太大的值！！！
+    //                      所以，JS 设计了 可以显示的 最大值  和 最小值
+
+    //JS允许的 最大值
+    console.log(Number.MAX_VALUE); // 1.7976931348623157e+308
+    console.log(Number.MAX_VALUE * 10); // Infinity
+
+    //JS允许的 最小值 -- 无限趋近 0 的 小数
+    console.log(Number.MIN_VALUE); // 5e-324
+    
+
+    
+
+    //c.特殊：无穷大、无穷小
+    console.log(Infinity);
+    console.log(-Infinity);
+     
+    
+
+
+
+    //2.2 string：字符串类型    一切以单引号或双引号引起来的内容  -------------------------------
+    //作用：显示网页的文本
+
+    //a. 用 单引号和双引号 包裹的字符串
+    console.log('我爱北京天安门~~');
+    console.log("我爱广州小蛮腰~~~");
+
+
+    //c.小题目：打印一句话 ---    "程序员" 是最高性价比的男朋友~~~
+    // 单引号 中 可以 包含 双引号
+    // 双引号 中 可以 包含 单引号
+    console.log('"程序员" 是最高性价比的男朋友~~~');
+    console.log("i'm the guy who love u most deeply~~~");  // i'm the guy who love u most deeply~~~
+    
+    //c.小坑：不能使用 单引号 和 双引号 组合使用 ， 必须成对使用！！！
+    //b.小坑：单双引号 不能 同时 分别 作为 字符串的开始 和 结束 用的引号
+    // console.log('这下你还能解析字符串出来吗？");
+
+    // 注意：字符串 单双引号 可以 嵌套使用！！！
+    
+    
+
+
+    //2.3 boolean：布尔类型 只有两个值 true/false
+    //  作用：专门用来表示  两种 对立状态
+    //  如：真/假  对/错  确定/取消  男/女
+    console.log(true);
+    console.log(false);
+
+    // 在 js 程序中 true本质上就是　数字１　，false 本质上就是 数字 0
+    
+
+    //2.4 Undefined：未定义类型 就是一个标识，代表未定义 ，只有一个值：undefined
+    console.log(undefined);
+
+    
+    
+    //2.5 Null：空类型，也是一个标识，代表空引用，只有一个值： null
+    console.log(null);
+    
+    
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

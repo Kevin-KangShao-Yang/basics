@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 6.要求：使用冒泡排序，对数组 [2,6,1,77,52,25,7] 进行排序。
+
+    var arr = [2, 6, 1, 77, 52, 25, 7];
+
+    console.log('排序前的数组：' + arr);
+
+    //外层循环 负责 n轮
+    for (var lun = 1; lun < arr.length; lun++) {
+
+      //内存循环 负责 比较的次数
+      for (var i = 0; i < arr.length - lun; i++) {
+        if (arr[i] > arr[i + 1]) {
+          //交换前后两个元素的位置
+          var temp = arr[i];
+          arr[i] = arr[i + 1];
+          arr[i + 1] = temp;
+        }
+      }
+    }
+
+    console.log('排序后的数组：' + arr);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

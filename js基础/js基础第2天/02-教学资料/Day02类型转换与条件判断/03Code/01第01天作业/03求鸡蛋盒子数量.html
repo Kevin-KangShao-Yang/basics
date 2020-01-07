@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      /* 
+      一个篮子放10个鸡蛋，要求用户输入鸡蛋的数量，我们计算并打印出一共需要多少个篮子
+          例：一共有30个鸡蛋，需要3个篮子
+              一共有31个鸡蛋，需要4个篮子
+       */
+
+      //1. 获取 用户输入的 鸡蛋 个数
+       var eggNum = +prompt('请输入鸡蛋的数量：'); // +'101' -> 101
+
+
+      //2. 求 篮子的个数
+      var lanZiNum = Math.ceil( eggNum / 10);
+
+      console.log('鸡蛋数量：' + eggNum);
+      console.log('篮子数量：' + lanZiNum);
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.递归函数 ： 在函数中调用自己
+
+        2.递归特点
+            a. 一定要有结束的条件，否则会导致斯循环
+            b. 能用递归实现的功能一定可以用循环实现，两者只是语法简洁性不同而已。
+         */
+        
+        //1.单个函数递归
+        // function fn(){
+        //     console.log('哈哈');
+        //     fn();
+            
+        // };
+        // fn();
+
+        // //2.多个函数递归
+        // function fn1(){
+        //     console.log('111');
+        //     fn2();
+            
+        // };
+
+        // function fn2(){
+        //     console.log('222');
+        //     fn1();
+            
+        // };
+
+        // fn2();
+
+
+        // 需求：写一个函数 ：打印三次班长爱坤哥
+
+        var num = 1;
+        function sayLove(){
+
+            //递归
+            console.log('班长爱坤哥');
+            num++;
+
+            if(num <= 3){
+                sayLove();
+            };
+           
+            //循环实现
+            // for(var i = 1;i<=3;i++){
+            //     console.log('班长爱坤哥');
+            // };
+        };
+
+        sayLove();
+    </script>
+</body>
+</html>

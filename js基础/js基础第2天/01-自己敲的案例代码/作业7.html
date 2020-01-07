@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script>
+/* 下面代码中 res 结果为？
+var num1 = 7;
+var str = "我爱你~中国~";
+var res1 = num1 > 5 && str.length >= num1; 
+var res2 = num1 < 5 && str.length >= num1; 
+var res3 = !(num1 < 10);  
+var res4 = !(num1 < 10 && str.length == num1); 
+var res5 = num1 > 5 || str.length >= num1; 
+var res6 = num1 < 5 || str.length >= num1;
+ */
+
+// res1 结果为  true 
+var num1 = 7;
+var str = "我爱你~中国~";
+var res1 = num1 > 5 && str.length >= num1;   
+// console.log(str.length);  得到的值为7 
+// .length 用来测字串符的 字符数量
+console.log(res1);
+// 逻辑与(&&)  一假都假    全真才是真
+
+
+// res2 结果为   false
+var num1 = 7;
+var str = "我爱你~中国~";
+var res2 = num1 < 5 && str.length >= num1;  
+// console.log(str.length);  得到的值为7 
+// .length 用来测字串符的 字符数量
+console.log(res2);
+// 逻辑与(&&)  一假都假    全真才是真
+
+
+// res3 结果为   false
+var num1 = 7;
+var str = "我爱你~中国~";
+var res3 = !(num1 < 10);
+console.log(res3); 
+// 逻辑非(! 取反运算符)
+
+// res4 结果为   false
+var num1 = 7;
+var str = "我爱你~中国~";
+var res4 = !(num1 < 10 && str.length == num1);
+// console.log(str.length);  得到的值为7 
+// .length 用来测字串符的 字符数量
+console.log(res4);
+// 逻辑非(! 取反运算符)
+
+
+// res5 结果为  true
+var num1 = 7;
+var str = "我爱你~中国~";
+var res5 = num1 > 5 || str.length >= num1; 
+// console.log(str.length);  得到的值为7 
+// .length 用来测字串符的 字符数量
+console.log(res5);
+// 逻辑与(||)     一真都真    全假才是假
+
+
+
+// res5 结果为  float
+var num1 = 7;
+var str = "我爱你~中国~";
+var res6 = num1 < 5 || str.length < num1;
+// console.log(str.length);  得到的值为7 
+// .length 用来测字串符的 字符数量
+console.log(res5);
+// 逻辑与(||)     一真都真    全假才是假
+
+
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

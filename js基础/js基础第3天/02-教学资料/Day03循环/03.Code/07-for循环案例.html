@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 1. 求1-100之间所有数的平均值 
+        // 思路：
+        //     a. 准备 求和变量
+        //     b. 使用 for 循环 生成 1 - 100 之间的数
+        //     c. 将 生成的 数 累计到  求和变量 中
+        //     d. 使用 求和变量中的 总和 / 100 得到平均数
+
+        // var sumNum = 0;
+        // for (var i = 1; i <= 100; i++) {
+        //     sumNum += i;
+        // }
+        // var avgNum = sumNum / 100;
+        // console.log('1-100之间数的总和：【' + sumNum + '】，平均值为：【' + avgNum + '】');
+
+
+        // 2. 求1-100之间所有偶数和奇数的和    偶数 i % 2 == 0          奇数  i % 2 != 0
+        // 思路：
+        //     a. 准备 偶数和变量 与 奇数和变量
+        //     b. 使用 for 循环 生成 1 - 100 之间的数
+        //     c. 判断 i % 2 == 0
+        //             c1.如果 成立  就将 i 累加 到 偶数和 变量中
+        //             c2.如果不成立，就将i 累加到  奇数和 变量中
+        // var evenNum = 0;
+        // var oddNum = 0;
+        // for (var i = 1; i <= 100; i++) {
+        //     if (i % 2 == 0) {
+        //         evenNum += i; // 累加到 偶数和
+        //     } else {
+        //         oddNum += i;// 累加到 奇数和
+        //     }
+        // }
+
+        // console.log('偶数和为：' + evenNum);
+        // console.log('奇数和为：' + oddNum);
+
+
+
+
+        // 3. 求1-100之间所有能被3整除的数字的和   i % 3 == 0 
+        // var sumNum = 0;
+        // for(var i = 1;i<=100;i++){
+        //     if(i % 3 == 0){
+        //         sumNum += i;
+        //     }
+        // }
+
+        // console.log('sumNum = ' + sumNum);
+
+
+        // 4. 求1-100之间所有能被3整除的数字的 和 与 平均值 ,并且 把 符合要求的数字的 个数 打印出来
+        // 思路：
+        //     a.准备三个变量分别保存： 总和    、 平均值  、 符合要求的数字的个数
+        //     b.使用 for 循环 生成 1-100之间的数字
+        //     c.判断 i % 3 == 0
+
+        var sumNum = 0;// 累加和
+        var avgNum = 0;// 平均值
+        var count = 0; // 个数
+
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                sumNum += i; // 累加 符合要求的 数值
+                count++; // 累加 个数
+            }
+        }
+
+        avgNum = sumNum / count;
+
+        console.log('1-100之间 能被3整除的数字的 个数为【' + count + '】，总和为【' + sumNum + '】，平均值为【' + avgNum + '】');
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

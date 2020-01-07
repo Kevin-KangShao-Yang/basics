@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    //1.什么是变量：本质上 就是 内存里的 一块空间 , 变量名 就是 这个空间的 代号~~~
+    //             通俗的说 就是 一个容器（盒子），往里面 可以保存 一个苹果！！
+
+    // 变量的 好处： 能够保存 和 复用 数据，也方便修改
+
+    //2.1 变量的 声明----------------------------------------------
+    //    语法 ： var 变量名;
+    //            变量名 = 值; // 声明后，赋值
+    //    a.声明变量，但没有赋值 之前，变量中的默认值为 undefined
+
+    var loverName; // 声明变量 ，变量中的 默认值 ： undefined
+    loverName = '小裙裙姐'; // 变量赋值，将 字符串 设置给了 变量 的内存空间！
+
+    // console.log(loverName);
+    
+
+
+    //2.2 变量的 声明赋值   ----------------------------------------
+    //    语法： var 变量名 = 值；
+    //    =号 赋值运算符 执行顺序：
+    //        1.先执行=号左边，一般都是 声明 或 访问一个变量
+    //        2.再执行=号右边，将数据准备好
+    //        3.最后 将 右边的 值 赋给 左边的变量
+
+    var dogName = 'Ruiky 瑞琪';
+    
+
+    //2.3 访问变量的值：只需要 使用 变量名就可以了！！！ ------------
+    console.log(loverName);
+    console.log(dogName);
+    
+
+    //2.4 修改变量的值 -- 本质上 是 覆盖了 原来 变量空间里的值
+    // 语法：变量名 = 新值;
+
+    var catName = '小喵喵';
+    console.log(catName);
+    catName = '大喵喵'; // 直接个通过 = 号 为 变量 赋一个新的值！！
+    console.log(catName);
+
+    //3.易错 -------------------------------------------------------
+    //3.1 变量名 和 字符串容易弄混
+    var carName = '劳斯莱斯';
+    console.log('carName');  // carName
+    console.log(carName); // 劳斯莱斯
+
+    //3.2 不声明，不赋值，报错！
+    // houseNo; // houseNo is not defined
+    // console.log(houseNo);
+    
+
+    //4.特殊情况 ---------------------------------------------------
+    //4.1 只声明，但不赋值，变量中 默认 就有一个 undefined
+    var isok;
+    console.log(isok);
+    
+
+    //4.2 不使用 var 关键字来创建变量 -- 注意：强烈不推荐 这种方式
+    littleDog = '小狗狗'; // 小狗狗
+    console.log(littleDog);
+    
+
+    //4.3 声明同名变量，后面的会覆盖前面的
+    var uName = '小班班';
+    var uName = '小裙裙';
+    console.log(uName); // 小裙裙
+    
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

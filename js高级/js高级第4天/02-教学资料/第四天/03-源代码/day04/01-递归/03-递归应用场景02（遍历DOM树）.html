@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div>电脑
+            <span>1111</span>
+            <span>22222</span>
+        </div>
+        <div>手机
+            <p>苹果
+                <b>iphonex</b>
+                <b>iphonemax</b>
+            </p>
+            <p>华为
+
+                <b>p30</b>
+                <b>p35</b>
+            </p>
+        </div>
+        <div>平板
+            <div>ipad
+                <p>ipadmimi
+                    <b>ipadpro</b>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>    
+        /* 
+        需求： 获取box中所有的后代元素
+        1. 原生的DOM操作有没有API可以直接获取后代元素呢？ ---没有
+        2. 写一个函数 ： 获取元素的子元素，如果子元素也有子元素则应该继续调用函数
+        获取子元素的子元素，以此类推，形成递归调用
+         */
+        
+        var domArr = [];//声明数组存储所有的后代元素
+
+        function getHouDai(ele){
+            for(var i = 0;i<ele.children.length;i++){
+                domArr.push(ele.children[i])
+                //递归调用求子元素的子元素
+                getHouDai(ele.children[i]);
+            }
+        };
+
+        // var box = document.getElementById('box');
+        // getHouDai(box);
+
+        getHouDai(document);
+        console.log(domArr);
+        
+        
+    </script>
+</body>
+</html>

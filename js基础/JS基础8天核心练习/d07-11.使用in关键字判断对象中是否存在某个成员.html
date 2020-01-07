@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var stuInfo = {
+      name: '小白',
+      age: 18,
+      gender: false,
+
+      sayHi: function () {
+        console.log('你好呀~~~');
+        return 1;
+      }
+    };
+
+
+    // var s = stuInfo['sayHi']();
+
+    //1. in 关键字：用来判断 对象中 是否 存在 某个成员
+    //      返回值：bool值，如果 对象中 存在 指定的属性 ，返回true，否则返回 false
+
+    console.log('name' in stuInfo); // true
+    console.log('pet' in stuInfo);  // false
+
+    // 2. 业务：要求 判断 用户 输入的 成员名 在 对象中 是否存在
+    var proName = prompt('请输入您要检测的 成员名称：');
+
+    if (proName in stuInfo) {
+      console.log('成员【' + proName + '】已存在~~~');
+    } else {
+      console.log('成员【' + proName + '】不存在~~~');
+    }
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 面向对象：封装 、 继承 、 多态
+    // 封装：用 函数(方法)  封装 代码
+    //      用  类         封装 函数
+    //      用  包         封装 类
+
+    // 封装的目的：复用代码
+
+
+    //1.声明函数 --------------
+    //1.1 函数 的 形参 ：用来 接收 函数调用时 传入的数据  -- win10 1903 win + ;
+
+    function showLove(usrName, fromName) {
+      // var usrName = '小白';
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+      console.log(usrName + ' I love u~~~ 💖 ' + fromName);
+    }
+
+    //2.调用函数 -----------------
+    //2.1 调用函数 传递 实参：为 被调用函数的 形参变量 赋值 --- 从 函数外部 传入 数据 到函数内部使用
+    // showLove('小白','James');
+
+    // console.log(usrName); // usrName is not defined
+
+    // showLove();
+
+    //3.返回值 --------------
+    //  为什么要有返回值：因为 有些函数 目的就是 完成业务处理，并将 结果返回 给 函数的调用者
+    // 3.1 声明一个 带 返回值的函数 ：返回班长女朋友的电话号码
+    function buyCar(money) {
+      var carName = '穷鬼，啥车都买不起~~';
+
+      if (money > 1000000) {
+        carName = '路由揽胜';
+      }else if(money > 500000 && money <= 1000000){
+        carName = '奔驰';
+      }else{
+        carName = '比亚迪/吉利'
+      }
+
+      return carName;
+      
+      console.log(carName);
+
+    }
+
+    // 调用者 决定 执行函数 后 的 结果 如何 处理-----------------------
+    console.log(buyCar(1000000));   // console.log('奔驰');
+
+    var myCar = buyCar(1000000); // var myCar = '奔驰';
+    console.log(myCar);
+
+
+    // Math.random(); // 返回 一个 随机值 给 random 函数的调用者
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

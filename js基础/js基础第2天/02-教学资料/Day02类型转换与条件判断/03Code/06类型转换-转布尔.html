@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      // 转 布尔 值
+      // 使用 Boolean(x) 进行转换
+      // 转换规则：
+      //  a. 转 false ： 0  -0  NaN  ''  false  undefined null document.all
+      console.log(Boolean(0));
+      console.log(Boolean(-0));
+      console.log(Boolean(NaN));
+      console.log(Boolean(''));
+      console.log(Boolean(false));
+      console.log(Boolean(undefined));
+      console.log(Boolean(null));
+      console.log(Boolean(document.all));
+
+      
+      //  b. 转 true：其他的数据 全部 都是 转换成 true
+      console.log(Boolean(121));
+      console.log(Boolean(-121));
+      console.log(Boolean(Infinity));
+      console.log(Boolean(-Infinity));
+      console.log(Boolean('小狗狗和黑裙一起在快乐的吃火腿肠~~~'));
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

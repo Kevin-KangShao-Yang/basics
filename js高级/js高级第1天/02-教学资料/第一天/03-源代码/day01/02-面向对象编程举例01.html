@@ -1,0 +1,116 @@
+<!--
+ * @Description: In User Settings Editdiv
+ * @Author: your name
+ * @Date: 2019-08-10 09:02:45
+ * @LastEditTime: 2019-08-10 09:20:53
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div,
+        p {
+            height: 50px;
+            background-color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <script>
+        //需求： 给页面所有的div 和 p标签 设置 文字 和 边框
+
+        //1.面向过程
+        //弊端 ： （1）冗余 （2）不便于维护
+        // //1.1 获取元素
+        // var divList =  document.getElementsByTagName('div');
+        // var pList =  document.getElementsByTagName('p');
+        // //1.2 遍历数组所有的元素
+        // for(var i = 0;i<divList.length;i++){
+        //     //1.3 设置样式
+        //     divList[i].innerHTML = '前端40期';
+        //     divList[i].style.border = '10px solid red';
+        // };
+
+        // for(var i = 0;i<pList.length;i++){
+        //     //1.3 设置样式
+        //     pList[i].innerHTML = '前我爱你们';
+        //     pList[i].style.border = '10px solid purple';
+        // };
+
+
+        //2. 使用函数 : 解决代码冗余
+        // 造成 全局变量污染 ： 变量名重复，导致覆盖问题
+
+        // var divList = tagName('div');
+        // var pList = tagName('p');
+        // setText(divList, '老铁');
+        // setBorder(divList, '10px solid pink');
+
+
+
+
+        // function tagName(str) {
+        //     return document.getElementsByTagName(str);
+        // };
+
+        // /**
+        //  * @description:  设置文字
+        //  * @param {type} eles：dom数组
+        //  * @param {type} str : 要设置的文字
+        //  * @return: 
+        //  */
+        // function setText(eles, str) {
+        //     for (var i = 0; i < eles.length; i++) {
+        //         eles[i].innerText = str;
+        //     };
+        // };
+
+        // function setBorder(eles, border) {
+        //     for (var i = 0; i < eles.length; i++) {
+        //         eles[i].style.border = border;
+        //     };
+        // }
+
+
+        //3. 使用对象 ： 解决全局变量污染  + 代码冗余
+        var xjh = {
+            tagName: function (str) {
+                return document.getElementsByTagName(str);
+            },
+            setText: function (eles, str) {
+                for (var i = 0; i < eles.length; i++) {
+                    eles[i].innerText = str;
+                };
+            },
+            setBorder: function(eles, border) {
+                for (var i = 0; i < eles.length; i++) {
+                    eles[i].style.border = border;
+                };
+            }
+        };
+
+
+        var divList = xjh.tagName('div');
+        var pList = xjh.tagName('p');
+        xjh.setText(divList,'66666');
+        xjh.setBorder(divList,'10px solid hotpink');
+    </script>
+</body>
+
+</html>

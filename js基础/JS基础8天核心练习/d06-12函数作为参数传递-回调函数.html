@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 回调函数：把 函数 作为参数传递
+
+    function a(fn) {
+      console.log('a~~~1');
+      fn(); // 调用 传入的 函数  -- 回调函数
+      console.log('a~~~2');
+    }
+
+
+    function b() {
+      console.log('我是快乐的 sb ~~~~');
+    }
+
+
+    a(b); // 调用函数 a ，并 把 函数b 作为实参传入
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

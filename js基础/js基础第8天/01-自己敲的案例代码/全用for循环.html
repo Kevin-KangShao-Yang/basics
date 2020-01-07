@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script>
+    var tbData = {
+      theadDatas: ["姓名", "年龄", "性别"],
+      tbodyDatas: [
+        { name: "张三", age: 22, sex: "男" },
+        { name: "小蝉", age: 17, sex: "女" },
+        { name: "元芳", age: 26, sex: "男" },
+        { name: "小红", age: 12, sex: "女" },
+        { name: "赵六", age: 48, sex: "男" },
+      ]
+    }
+    var str = '<table>\n';  //准备str变量来接收所有字符串
+    str += '<tr>\n'  
+    // 遍历对象中theadDatas的属性值
+    for (var i = 0; i < tbData.theadDatas.length; i++) {
+      var thead = tbData.theadDatas[i];  //准备 变量thead来接收 每次遍历出来的元素
+      str += '\n\t<th>' + thead + '</th>';  //得到每次循环的字符串
+    }
+    str += '\n</tr>'
+    for (var i = 0; i < tbData.tbodyDatas.length; i++) {
+      str += '\n<tr>'  //每次循环都在开头加上 <tr>
+      var tbody = tbData.tbodyDatas[i];  //准备 变量tbody来接收 每次遍历出来的元素
+      str += '\n\t<td>' + tbody.name + '</td> \n \t<td>' + tbody.age + '</td> \n \t<td>' + tbody.sex + '</tb>\n'
+      //得到每次循环的字符串   
+      str += '</tr>\n' //每次循环都在开头加上 </tr> ,并且换行
+    }
+    str += '</table>'
+    console.log(str);
+    document.write(str);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    console.log('第1题：----------------------');
+    // 1.使用代码判断以下变量 是否为 非数值
+    var usrAge = 21;
+    var isOk = true;
+    var usrName = 'james';
+    var empty = undefined;
+    console.log('usrAge 是否为 非数值：' + isNaN(usrAge));
+    console.log('isOk 是否为 非数值：' + isNaN(isOk));
+    console.log('usrName 是否为 非数值：' + isNaN(usrName));
+    console.log('empty 是否为 非数值：' + isNaN(empty));
+
+
+
+    console.log('第2题：----------------------');
+    // 2.使用变量保存字符串，并在控制台打印：
+    //   利群来到'桃花岛'，
+    //   看到林林\在\唱歌。
+    var str = '利群来到\'桃花岛\'，看到林林\\在\\唱歌。'
+    console.log(str);
+
+
+
+    console.log('第3题：----------------------');
+    // 3.接收用户输入的身高（178.2），并转成 浮点数，在此基础上 + 2，最后打印到控制台。
+    var height = parseFloat(prompt('请输入您的身高：'));
+    height += 2;
+    console.log('您的身高为：' + height);
+
+
+    // 3. var numLove = parseInt("   520  1314")  执行后 numLove 的值是什么？
+    //    520
+
+    // 4. var num = parseInt("12.3abc")  执行后 num 的值是什么？
+    //    12
+
+    // 5.Boolean()函数能把那些数据 转成 false.
+    //    0 -0 NaN '' undefined null false document.all
+
+    // 6.下面代码中 res 结果为？
+    var num1 = 7;
+    var str = "我爱你~中国~"; // str.length -> 7
+    var res1 = num1 > 5 && str.length >= num1; // 7 > 5 && 7 >= 7 -> true
+    var res2 = num1 < 5 && str.length >= num1; // 7 < 5 && 7 >= 7 -> false
+    var res3 = !(num1 < 10);  // !true -> false
+    var res4 = !(num1 < 10 && str.length == num1);  // !(true && true) -> false
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

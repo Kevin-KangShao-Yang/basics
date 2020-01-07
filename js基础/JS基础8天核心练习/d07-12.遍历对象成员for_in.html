@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //1.要访问数组里的元素，只能通过下标来访问
+
+    var arr = ['P城', 'Y城', '军事基地'];
+    //           0     1        2
+
+    // for (var i = 0; i < arr.length; i++) {
+    //   var ele = arr[i];
+    //   console.log(ele);
+    // }
+
+
+
+    var stuInfo = {
+      name: '小白',
+      age: 18,
+      gender: false,
+
+      sayHi: function () {
+        console.log('你好呀~~~');
+      }
+    };
+
+    // 【前言：遍历对象里的成员 无法使用 下标，因为 对象没有下标，只有  成员名 和 成员值
+    //        所以，可以 通过 for in 获取 对象中 每个 成员的名字，然后结合 对象成员中括号 访问法 获取 成员的值】
+
+    // 1. for in 语法 专门用来 遍历 对象 里的每个成员  ---------------------
+    //   【语法：】for(var key in obj){         }
+    //    1.1 key 是 每次 循环 获取 到的 对象obj 里的成员 的 名字(字符串)
+    //    1.2 obj[key] 可以 获取 对应成员 的值
+
+    for(var key in stuInfo){
+      console.log(key + ' - ' + typeof(key));
+      var value = stuInfo[key];
+      console.log(value);
+    }
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

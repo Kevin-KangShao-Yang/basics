@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 函数：一个 装 代码 的 盒子(容器)
+    //一、 3种创建方式：
+    // 1.声明式
+    function showLove(toName) {
+      console.log(toName + '，i like u~~~');
+    }
+
+    // 2.匿名函数
+    var showLove2 = function (toName) {
+      console.log(toName + '，i like u~~~');
+    }
+
+    // 3.函数对象
+    var showLove3 = new Function('toName', 'console.log(toName + "，i like u~~~");');
+
+
+    //二、形参和实参
+    //  形参：就是 写在 函数名后名括号中的变量，本质就是一个 局部变量
+    //  实参：就是 写在 函数调用时括号中的 数据，按照顺序 传给 形参变量
+    function showLove(toName) {
+      console.log(toName + '，i like u~~~');
+    }
+
+    showLove('小白');
+
+
+    //三、函数的返回值
+    function buyCar() {
+      console.log('欢迎光临 奔驰汽车4S店~~');
+      return '奔驰 GLK';
+    }
+
+    var res = buyCar();
+    console.log(res);
+
+
+    // ---------------------------------------------------------
+    // 四、预解析: JS 在 执行 JS代码之前，先把代码看一遍，并对 js 代码 做适当的修改
+    // 1.变量提升 ： 将 变量 的声明 部分 提升到 所在作用域的 最顶端 ，赋值部分留在原地不动。
+    // 2.函数提升 ： 将 声明式函数 提升到 所在作用域的 最顶端 
+
+
+    // 五、【回调函数】 -- 将 函数作为参数传递
+    function bzCar(fn) {
+      console.log('我是4个轮子，非常安静，不会爆胎~~~');
+      fn();// 调用 传入的 函数
+      console.log('我是5个座位，可以放倒当床午休~~~~');
+    }
+
+    function bydEngine() {
+      console.log('我是快乐的 比亚迪汽车 引擎，可以 拉动 汽车跑到 250km/h~~~');
+    }
+
+    function jlEngine() {
+      console.log('我是快乐的 吉利汽车 引擎，可以 拉动 汽车跑到 250km/h~~~');
+    }
+
+    function bmwEngine() {
+      console.log('我是快乐的 宝马汽车 引擎，可以 拉动 汽车跑到 250km/h~~~');
+    }
+
+
+    // 根据需求调用 不同的 引擎方法
+    //a.接收班长的选择
+    //b.调用班长汽车方法，传入 不同的 引擎方法
+    var bzChoose = prompt('伟大的班长大人，请选择您要为汽车安装的发动机：');
+    if(bzChoose == 'byd'){
+      bzCar(bydEngine); // 将 bydEngine 函数 作为参数 传入 bzCar函数时，不要加 小括号
+    }else if(bzChoose == 'jl'){
+      bzCar(jlEngine);
+    }else if(bzChoose == 'bwm'){
+      bzCar(bmwEngine);
+    }
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

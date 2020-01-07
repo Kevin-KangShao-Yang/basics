@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        // 得到的值是Infinty
+console.log(1/false);  
+
+console.log(NaN*0);
+console.log(NaN==NaN);
+console.log(isNaN('开心吗'));
+var name = 8;
+console.log(name == NaN);
+console.log(!isNaN(name));
+var name = '今天开心吗? \n"不开心"' ;
+console.log(name);
+console.log('多个小\'点\',\n\'看的不爽\'');
+
+var dayName = '好像不能用转移符';
+console.log(dayName.length);
+
+console.log('为啥会不行呢'.length);
+
+var fi = +'5';
+console.log(typeof fi);
+
+// console.log(parseInt('6042'));
+// console.log(parseFloat('20.214'));
+// console.log(Number(false));
+// console.log(Number('54s0'));
+// var youName = prompt('请输入你的年龄');
+// console.log(Number(youName+youName));
+console.log(String(50));
+var number = 70;
+console.log(String(number));
+var body = 6250;
+console.log(body.toString());
+console.log(String(undefined));
+console.log(Number(true));
+var one = Number(true);
+console.log(typeof one);
+console.log(Boolean(0,-0,'',false,NaN,null,undefined,document.all));
+console.log(Boolean(true,3,5.2,'字符串'));
+
+console.log(1===true);
+console.log(1>2&&5<1);
+console.log(2>1 && 6>2);
+console.log(2>1 || 5<3);
+console.log(1>2 || 2>3);
+
+var age = +prompt('请输入你的年龄');
+if(age>=16 && age<=60){
+var name = prompt('欢迎你,请输入你的名字');
+console.log(name);
+};
+
+var year = +prompt('请输入你的年龄');
+if(year>=18 && year<60) {
+    var name = prompt('欢迎你,请输入你的名字');
+    console.log(name);
+}else {
+    var a = alert('不好意思,你的年龄不符合游戏条例');
+}
+console.log('代码结束');
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

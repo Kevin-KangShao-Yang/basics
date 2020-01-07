@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 1. 利用函数求任意两个数的和
+        //    加法 函数
+        function add(x, y) {
+            var res = x + y;
+            console.log(res);
+        }
+
+        add(1, 2);
+        add(892, 654);
+
+
+
+        // 2. 利用函数求任意两个数之间的累加和   10-100
+        function sum(x, y) {
+            var sumNum = 0;
+            // 使用 for 循环 生成 x 到 y之间　所有的　数值
+            for (var i = x; i <= y; i++) {
+                // console.log(i);
+                // 将 数值 累加到 求和变量
+                sumNum += i;
+            }
+
+            console.log('从数字【' + x + '】到【' + y + '】之间的和：' + sumNum);
+        }
+
+        sum(20, 50);
+
+
+        // 3. 注意点
+        // (1) 多个参数之间用逗号隔开
+        // (2) 形参可以看做是不用声明的变量
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

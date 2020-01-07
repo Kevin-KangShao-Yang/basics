@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      //1.【赋值运算符】 = ，用来 给 变量 赋值！！！！
+      var loverName = '温柔体贴情商高的漂亮女人';
+
+      //2.【复合赋值运算符】：在变量 原来的值 的 基础上 做新的运算，并把 运算结果 重新赋值 给 这个变量
+      //  +=   -=   *=   /*   %=
+      var score = 59;
+      console.log('班长去办公室找 裙姐 闭门聊了1小时，出来后，分数 + 10分~~~');
+      // score = score + 10;
+      score += 10; // -> score = score + 10;
+      console.log(score); // 69
+
+      var kdbScore = 79;
+      console.log('课代表看到班长的情况，也去办公室找 裙姐 闭门聊了1小时，出来后，分数 - 20分~~~');
+      kdbScore -= 20;
+      console.log(kdbScore); // 59
+
+   
+      //3.用在变量之间 来 做运算，最后的结果 赋给 等号左边的 变量！！
+      //                                       等号右边的 变量 不变！！！
+      kdbScore += score; // kdbScore = kdbScore + score;
+      console.log(score); // 69
+      console.log(kdbScore); // 128
+
+      //强调：复制运算符 就是给变量使用的！！！！不能直接给数据使用！！！因为 数据 无法 保存数据！！！
+      // 1+=2;
+
+      
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

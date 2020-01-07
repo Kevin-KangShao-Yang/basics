@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        // 求一组数值 [2,6,1,77,52,25,7] 的最大值，以及 最大值在数组中的下标。
+          var arr = [9, 6, 77, 52, 95, 88, 7];
+    //对应上面的下列数 0  1   2  3    4  5  6         .length= 7
+        var maxNum = -Infinity;
+        var subNum = -1;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] > maxNum) {
+                maxNum = arr[i];
+                subNum = i;
+                // 不能是 += i   这样的话就成了subNum = i +1 就不对了
+            }
+        }
+        console.log('最大值为' + maxNum, '下标为' + subNum);
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //  push （意思：推） -- 数组.push（元素）   将 新的元素 追加到 数组 最后面！
+
+        // 1. 新增数组元素 push ，开发中 主要使用 这种方式！！
+        var arrCity = ['P城', 'R城', 'G港', '学校', '靶场'];
+        //               0      1     2       3       4      length = 5
+        arrCity.push('军事基地');
+        arrCity.push('海军航母');
+        console.log(arrCity);
+
+        // 2. 新增数组元素 修改索引号 追加数组元素
+        var arrCity = ['P城', 'R城', 'G港', '学校', '靶场'];
+        //               0      1     2       3       4      length = 5
+        arrCity[arrCity.length] = '军事基地';
+        arrCity[arrCity.length] = '海军航母';
+        console.log(arrCity);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

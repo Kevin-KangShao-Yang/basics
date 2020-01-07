@@ -1,0 +1,91 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // var obj = { a: 123 };
+    // // obj.a
+
+
+    // var a = 123; // var window = { a:123 , showLove :function(){ .....  } }
+    // // console.log(window.a); // 123
+    // // console.log(a); 
+    // // 1. 凡是 属于 window对象的成员，可以 省略 window. 直接调用
+    // // 2. 方法中的this：调用方法时，谁 . 出的方法，方法里的this就是谁！
+
+    // function showLove() {
+    //   //1.函数内 的 特殊属性之一： 实参列表 -- arguments -- 保存了 函数 被调用时 传入的 实参 -- 类数组
+    //   //2.函数内 的 特殊属性之二： this  --- 就是一个 普通的变量，this一般 由js引擎 来赋值
+    //   console.log('i love u ~~~');
+    //   console.log(this); // console.log(window);
+    // }
+
+    // // 当 js引擎 在 调用 showLove() 函数时，会为 函数内的 特殊属性(变量) this 赋值 --- 将 window 设置给了 函数中的 this
+    // // window.showLove();
+    // window.showLove(); // this = window;
+
+    // // 1.全局作用域：就是 window 对象，我们前面学的很多函数 都是 属于 window的，比如：alert  prompt confirm....
+    // 所有的全局变量 和 函数，本质上 都是 添加到 window对象里的 成员-------------------------
+
+    // 所以 我们 可以 通过 window 点出 变量 和 函数 使用
+    // 凡是 属于 window 的成员，都可以 省略 window. ，直接 访问 成员名字
+
+
+
+    // --------------------------------------------------------------
+    // 2.【方法中的 this】： 谁 . 出方法，方法里的 this 就是谁
+
+    // // 2.1 全局函数 中的 this----------------------------
+    // function makeMoney() {
+    //   console.log('挣钱咯～～～～');
+    //   console.log(this); // window
+    // }
+
+    // makeMoney();// window.makeMoney();
+
+
+    // 2.2 对象.方法 中的 this -----------------------
+    var dog = {
+      name: 'ruiky',
+      age: 1,
+      sayHi: function () {
+        console.log('我是狗狗，在做 介绍：');
+        console.log(this);
+      }
+    };
+
+    dog.sayHi();
+
+
+    // var bfName = '小白';
+
+    // 2.3 使用 构造函数创建的 的对象中的 方法 里的 this 是谁 -------------------------------------------
+    function BoyFriend(name, age, gender) {
+
+      // 2. 为对象添加成员 并 赋值
+      this.bfName = name;
+      this.bfAge = age;
+      this.bfGender = gender;
+
+      this.sayHi = function () {
+        // 因为 在方法中 访问变量，默认 去 方法内找，找不到就去 全局作用域 找
+        // console.log('hi~~亲爱的~~~~我是你的男朋友，名字叫：' + bfName); //  bfName is not defined 
+
+        console.log('hi~~亲爱的~~~~我是你的男朋友，名字叫：' + bf02.bfName);
+
+        // 通过 this 访问 当前对象的 成员 （属性 和 方法）
+        console.log('hi~~亲爱的~~~~我是你的男朋友，名字叫：' + this.bfName);
+      };
+    }
+
+    var bf02 = new BoyFriend('孙权', 1800, true);
+    bf02.sayHi();
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

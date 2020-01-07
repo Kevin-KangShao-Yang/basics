@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 排序：将一组数据 按照一定的规则 进行排列
+        // 排序算法：在计算机世界中，有很多中排序的方法，叫做 排序算法
+        //          若干排序算法中，有一个 效率最低，但最容易理解的 叫 【冒泡排序】
+        // 正序排列： 1 2 3 4 5
+        // 倒序排列： 5 4 3 2 1
+
+        // 冒泡排序：正序排列 - 小到大 排列
+        //    temp = 5
+
+
+        // 自动完成一轮比较 的思路：
+        //   a.使用 for循环 生成 数组里的 每个下标
+        //   b.在 循环体中 比较 前后两个元素 的大小，如果 前者比后者大，就交换两个元素 的 位置
+
+        // 要注意之处：
+        // 1. i < arr.length -1 的原因是 ：最后一个元素 已经在 前一次比较完了，不需要再比较
+        // 2. 如果 前面 的比 后面的大，就使用 第三方变量 ，交换两个 元素的值
+
+        var arr = [5, 4, 3, 2, 1];
+        //         0  1  2  3  4
+
+        console.log('排序前的数组：' + arr);
+
+        console.log('正在进行第1轮排序~~~~~');
+        //      i = 0 , 1, 2, 3
+        for (var i = 0; i < arr.length - 1; i++) { 
+            // 将 前后两个元素 进行比较
+            console.log('第1轮的 第【' + i + '】次比较交换之前：' + arr);
+
+            if (arr[i] > arr[i + 1]) {
+                //交换前后两个元素的位置
+                var temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
+
+            console.log('第1轮的 第【' + i + '】次比较交换之后：' + arr);
+        }
+
+        console.log('排序后的数组：' + arr);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

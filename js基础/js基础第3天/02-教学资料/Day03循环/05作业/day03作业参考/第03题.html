@@ -1,0 +1,26 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 求100以内7的倍数的 总和
+    // 思路：
+    //     a.准备变量保存 总和
+    //     b.用循环生成 1 - 100 之间的数，并 取模 7 == 0 ，就 累计到 变量 中
+    var sum = 0;
+    for (var i = 1; i <= 100; i++) {
+      if (i % 7 == 0) {
+        sum += i;
+      }
+    }
+
+    console.log(sum);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    //1.要访问数组里的元素，只能通过下标来访问
+    // var arr = ['P城', 'Y城', '军事基地'];
+    // //           0     1        2
+    // console.log(arr);
+    // console.log(arr[0]);
+    // console.log(arr[1]);
+    // console.log(arr[2]);
+
+
+
+    var girlFriend = {
+      gfName: '小静',
+      age: 21,
+      gender: false,
+      // usrProName:11,
+
+      xcook: function () {
+        console.log('做菜简直就是 金顶厨师的水平~~~~');
+      },
+      run: function () {
+        console.log('每天晚上跑跑步~~~~');
+      },
+      angry: function () {
+        console.log('你又说我的菜不好吃，我很生气，明天你就不要回来了~~~！');
+      }
+    };
+
+    console.log(girlFriend);
+
+   girlFriend['age'] = 23;
+    console.log(girlFriend);
+
+    //1.使用 . 来访问 对象的成员 -------------------------------------------------------
+    // 1.1 访问属性 -> 对象.属性;
+    // 1.2 访问方法 -> 对象.方法();
+
+    console.log(girlFriend.age);
+    console.log(girlFriend.gfName);
+    console.log(girlFriend.gender);
+
+    girlFriend.angry();
+
+
+    //2.【中括号访问法】使用 [] 来访问 对象的成员 --------------------------------------
+    //   除了 数组 可以通过 [下标] 来访问 元素
+    //   对象 也可以 通过 ['属性名'] 来访问 对应的 属性值
+    console.log(girlFriend['age']);
+    console.log(girlFriend['gfName']);
+    console.log(girlFriend['gender']);
+
+    // 2.1 使用 中括号 来访问 对象里的 属性  --------------------------------------
+    //  【语法：】对象['属性名'] 来访问 对应的 属性值
+    console.log(girlFriend['gfName']);
+    console.log(girlFriend['gender']);
+
+
+    // 2.1.1 强调：使用 变量 保存 要访问的属性名，然后 通过 中括号访问法来访问 对应的 属性值
+    var propertyName = 'gfName';
+    console.log(girlFriend[propertyName]); // '小静'
+
+
+    // 2.2 使用 中括号 来访问 对象里的 方法        --------------------------------------
+    //  【语法：】对象['方法名']() 来 调用对应的 方法代码
+
+    girlFriend['angry'](); // girlFriend.angry();
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

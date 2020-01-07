@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //随机数：每次生成的数都是随机的，就好像抛硬币，每次正反面不一定
+    //1. Math.random() 生成 0 - 1 之间的 随机小数 [0,1)
+    //                                  注意：不包含 1
+    console.log(Math.random());
+    
+    
+    //2.生成 0 - 100 之间的随机数(包含小数点) ---------------------
+    var ranNum = Math.random() * 100;
+    console.log(ranNum);
+    
+
+    //3.生成 0 - 100 之间的 随机整数！-----------------------------
+    var ranNum1 = Math.random()* 100;
+    ranNum1 = Math.floor(ranNum1);
+    console.log(ranNum1);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

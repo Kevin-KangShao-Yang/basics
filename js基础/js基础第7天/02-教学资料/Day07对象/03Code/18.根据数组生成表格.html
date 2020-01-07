@@ -1,0 +1,109 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <style>
+    #tbStu {
+      margin: 100px auto;
+      border: 1px solid #0094ff;
+      width: 50%;
+      border-collapse: collapse;
+    }
+
+    #tbStu th {
+      background-color: #0094ff;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 7px;
+    }
+
+    #tbStu td {
+      border: 1px solid #0094ff;
+      padding: 7px;
+      margin: 0px;
+      text-align: center;
+    }
+  </style>
+  <script>
+
+    // -------------------------- 1.数据 初始化 (js 语法) -----------------------
+    var arrData = [
+
+    ];
+
+    arrData.addStu = function (name, age, gender) {
+      // 创建对象
+      var stuInfo = {
+        id: this.length + 1,
+        name: name,
+        age: age,
+        gender: gender
+      };
+
+      // 将 对象 添加 到 本数组中
+      this.push(stuInfo);
+
+      // 返回对象
+      return stuInfo;
+    };
+
+
+    arrData.addStu('谢俊恒', 24, true);
+    arrData.addStu('欧阳庆', 25, true);
+    arrData.addStu('程朗', 25, true);
+    arrData.addStu('倪锐炫', 35, true);
+    arrData.addStu('赵泽坤', 25, true);
+    arrData.addStu('洪创力', 135, true);
+    arrData.addStu('陈依真', 18, false);
+
+
+    // console.log(arrData);
+    // -------------------------- 2.根据数组中的 数据 创建表格 (dom 和 bom 语法)  -----------------------
+    // 当 页面 上所有的 资源和代码 都加载完毕后，就会 自动 调用 onload 里的方法
+    window.onload = function () {
+      //1.遍历 数组 arrData
+      for (var i = 0; i < arrData.length; i++) {
+        //2.取出 数组中的 学员信息对象
+        var stuInfo = arrData[i];
+        //3.创建 表格行，并将 学员信息 设置到 行的 单元格中
+        createTr(stuInfo);
+      }
+    }
+
+    // 创建表格行，共设置 数据 --------------------------------------------------------------------------------
+    function createTr(stuO) {
+      // 根据 标签 的 id 获取 标签dom对象
+      var tbDom = document.getElementById('tbStu');
+      // 通过 表格对象 新增 行
+      var trDom = tbDom.insertRow(-1);
+      // 通过 行对象 新增 单元格
+      var tdDom1 = trDom.insertCell(-1);
+      tdDom1.innerHTML = stuO.id;
+
+      var tdDom2 = trDom.insertCell(-1);
+      tdDom2.innerHTML = stuO.name;
+      
+      var tdDom3 = trDom.insertCell(-1);
+      tdDom3.innerHTML = stuO.age;
+      
+      var tdDom4 = trDom.insertCell(-1);
+      tdDom4.innerHTML = stuO.gender ? '男' : '女';
+      
+    }
+
+  </script>
+</head>
+
+<body>
+  <table id='tbStu'>
+    <tr>
+      <th>id</th>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>性别</th>
+    </tr>
+  </table>
+</body>
+
+</html>

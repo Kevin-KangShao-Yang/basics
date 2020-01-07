@@ -1,0 +1,63 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    //2.3 if else if else ......多条件 -----------------------------------------------
+    //【多条件 if】可以用来 在一个业务中 根据不同条件 执行不同的代码， 
+    // 注意：一旦满足一个条件，后面的else if 就不执行了，和 多个 if 比起来，执行效率更高
+    /* 语法：
+    if(bool){
+
+    }else if(bool){
+
+    }else if(bool){
+
+    }else{
+
+    }
+    */
+    // var num1 = +prompt('请输入数值1：');
+    // var num2 = +prompt('请输入数值2：');
+    // console.log(num1,num2);
+
+    // if (num1 > num2) {
+    //   console.log('数字1 大于 数字2');
+    // } else if (num2 > num1) {
+    //   console.log('数字2  大于 数字1');
+    // } else {
+    //   console.log('数字1  等于  数字2');
+    // }
+
+
+
+
+
+    // 裙姐发工资了：
+    //       工资 > 10000 就请我 去按脚
+    //       工资 > 15000 就请我 去按摩脖子
+    //       工资 > 25000 就请我 正规盲人按摩~~~
+    
+    var heiJia  = +prompt('请输入裙姐的本月薪资：');
+    if(heiJia > 25000){
+      console.log('裙姐 请我去 正规盲人按摩~~~~');
+    }else if(heiJia > 15000 && heiJia <= 25000){
+      console.log('裙姐 请我去 按摩脖子~~~~');
+    }else if(heiJia >10000 && heiJia <= 15000){
+      console.log('裙姐 请我去 洗脚~~~~~~');
+    }else{
+      console.log('裙姐，不用再破费了~~~~我请你吃个饭~~~菜你买~~~！');
+    }
+
+    console.log('if结构 执行结束~~~');
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

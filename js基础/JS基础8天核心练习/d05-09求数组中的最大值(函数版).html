@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //1.利用 函数 求数组 [5,2,99,101,67,77] 中的最大数值
+        function getArrMax(arrNum) {
+            //1.创建 擂台变量
+            var maxNum = -Infinity;
+            //2.循环遍历 元素 ，找 最大值
+            for(var i = 0 ;i< arrNum.length;i++){
+                
+                if(arrNum[i] > maxNum){
+                    maxNum = arrNum[i];
+                }
+            }
+
+            //3.将 最大值 返回
+            return maxNum;
+        }
+
+        //2.调用 getArrMax 函数 --------------------
+        var arr = [5,2,99,101,67,77];
+        var maxNum1 = getArrMax(arr);
+        console.log(maxNum1);
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

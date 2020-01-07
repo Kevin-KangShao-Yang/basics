@@ -1,0 +1,67 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // var gfObj1 = {
+    //   name: '小苍苍',
+    //   age: 34,
+    //   gender: false,
+    //   sayHi: function () {
+    //     console.log('a yi xi te lu ~~~');
+    //   }
+    // };
+
+    // var gfObj2 = {
+    //   name: '小波波',
+    //   age: 34,
+    //   gender: false,
+    //   sayHi: function () {
+    //     console.log('a yi xi te lu ~~~');
+    //   }
+    // };
+
+    // var gfObj3 = {
+    //   name: '小洁洁',
+    //   age: 34,
+    //   gender: false,
+    //   sayHi: function () {
+    //     console.log('a yi xi te lu ~~~');
+    //   }
+    // };
+
+    // 1.简单工厂模式 -- 批量生产 对象
+
+    // 2.工厂函数：每次调用，内部都会 创建一个对象，并 设置好 属性的值（一般通过形参传入），最后返回 这个对象 给 调用者
+    function createGF(name, age, gender) {
+      //1.创建对象
+      var obj = {
+        // 2. 为对象添加成员 并 赋值
+        gfName:name,
+        gfAge :age,
+        gfGender : gender,
+        sayHi:function(){
+          console.log('hi~~亲爱的~~~~');
+        }
+      };
+      //3.返回 对象
+      return obj;
+    }
+
+    //3. 调用 工厂函数 创建 3个对象
+    var gf1 = createGF('小苍苍',34,false);
+    var gf2 = createGF('小班班',24,false);
+    var gf3 = createGF('小猫猫',18,true);
+
+    console.log(gf1);
+    console.log(gf2);
+    console.log(gf3);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

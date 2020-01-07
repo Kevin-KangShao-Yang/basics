@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script>
+    // 输入班级人数(比如10人),然后依次输入学员成绩，计算班级学员的平均成绩和总成绩  把成绩还要保存在数组里
+    // 思路：务必 做两次 循环：
+    //        第一次 接收学员成绩 push到 数组中
+    //        第二次 循环 遍历数组 里的元素，统计 总成绩和平均分
+    var numPeople = +prompt('请输入班级总人数');
+    var Mark = [];
+    var sumNum = 0;
+    for (var i = 0; i < numPeople; i++) {
+      var numMark = parseFloat(prompt('请依次输入学员成绩'));
+      // 成绩会有小数点,所以必须要用 parseFloat
+      Mark.push(numMark);
+      // 先提取每个学员的成绩,保存在Mark数组中
+    }
+
+    for (var a = 0; a < Mark.length; a++) {
+      sumNum += Mark[a] ;
+      // 必须先创建个sunNum=0,不然没法进行计算
+    }
+    meanNum = sumNum / Mark.length;
+    // 给个变量名meanNum当平均值,方便打印平均数
+    console.log(Mark);
+    console.log(sumNum);
+    console.log(meanNum);
+
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

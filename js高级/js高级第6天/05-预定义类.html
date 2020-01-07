@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*预定义类： 正则表达式提供好的用来匹配常见的字符类
+         预定义类           等价类                                     含义
+            .                 [^\r\n]                         除了回车和换行之外的所有字符
+           \d                 [0-9]                           数字字符
+           \D                 [^0-9]                         非数字字符
+           \s                 [\f\n\r\t\v]                    空白字符
+           \S                 [^\f\n\r\t\v]                  非空白字符
+           \w                 [a-zA-Z_0-9]                单词字符（字母、下划线、数字）
+           \W                 [^a-zA-Z_0-9]              非单词字符
+        */    
+
+        //1.  /./ :  [^\r\n]   任意字符
+        console.log(/./.test('\n'));// false
+        console.log(/./.test('\n1'));// true
+
+        //2. \d : [0-9]  任意数字
+        console.log(/\d/.test('abcedf'));//false
+        console.log(/\d/.test('abc123'));//true
+        console.log(/\d/.test('123456'));//true
+
+        //3. \D : [^0-9]  非数字字符
+        console.log(/\D/.test('abcedf'));//true
+        console.log(/\D/.test('abc123'));//true
+        console.log(/\D/.test('123456'));//false
+
+        //4. \s : [\f\n\r\t\v] 空白字符 
+        console.log(/\s/.test(' '));//true
+        console.log(/\s/.test('我爱你们\n你们爱我吗'));//true
+        console.log(/\s/.test('我爱你们么么哒'));//false
+
+        //5. \S       [^\f\n\r\t\v]    非空白字符
+        console.log(/\S/.test(' '));//false
+        console.log(/\S/.test('我爱你们\n你们爱我吗'));//true
+        console.log(/\S/.test('我爱你们么么哒'));//true
+
+        //6 \w  : 单词字符（字母，数字，下划线）
+        console.log(/\w/.test('_,.:|;'));//true
+        console.log(/\w/.test(',.:|;'));//false
+
+        // 6. \W : 非单词字符
+        console.log(/\W/.test('_,.:|;'));//true
+        console.log(/\W/.test(',.:|;'));//true
+        console.log(/\W/.test('abc'));//false
+        
+        
+        
+    </script>
+</body>
+</html>

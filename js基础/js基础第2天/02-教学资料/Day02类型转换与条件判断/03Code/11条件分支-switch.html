@@ -1,0 +1,125 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    // 如果 case {} 中 没有写 break，就会 接着执行 下一个 case 中的 {} 里的代码
+    // 如果 每个 case 中 都没有 break关键字，就会执行 每一个 case {} 里的代码
+    // 一直 执行到  default {} 中，直到结束
+
+    // 根据用户输入的数值（数字1 到 数字 7），返回星期几。
+    // 如：1 返回 星期一，2 返回 星期二
+    // var dayNum = +prompt('请输入 1 - 7 之间的数字~~：');
+
+    // switch (dayNum) {
+    //   case 1: {
+    //     console.log('星期 1');
+    //     break;
+    //   }
+    //   case 2: {
+    //     console.log('星期 2');
+    //     break;
+    //   }
+    //   case 3: {
+    //     console.log('星期 3');
+    //     break;
+    //   }
+    //   case 4: {
+    //     console.log('星期 4');
+    //     break;
+    //   }
+    //   case 5: {
+    //     console.log('星期 5');
+    //     break;
+    //   }
+    //   case 6: {
+    //     console.log('星期 6');
+    //     break;
+    //   }
+    //   case 7: {
+    //     console.log('星期 天');
+    //     break;
+    //   }
+    //   default: {
+    //     console.log('请输入 1 - 7 之间的数字，班长你是不是傻呀~~~');
+    //   }
+    // }
+
+
+
+    // 1. switch case 语法 主要用来 做 【变量 判等】 操作
+    //                     注意：switch case 中 对变量做判等 用的是 全等号 === ！
+    //                     补充：case 后面 可以 放 任意类型的值 与 变量 进行判等 ！
+    //    switch(要进行判等的 变量) {
+    //         case '值1':{
+    //                 case1 代码块~~~~
+    //                 break; // 退出 整个 switch 结构 
+    //          }
+    //         case '值2':{
+    //                 case2 代码块~~~~
+    //                 break; // 退出 整个 switch 结构 
+    //          }
+    //         case '值3':{
+    //                 case3 代码块~~~~
+    //                 break; // 退出 整个 switch 结构 
+    //          }
+    //         default:{
+    //                 default 代码块~~~~
+    //          }
+    // }
+
+    var usrName = '悟空';
+
+    //【强调】 switch 小括号中 放的 是 变量！！！
+
+
+    /*
+      课堂案例：让男生输入女神刚刚说了什么
+	             根据女神说的内容，来判断，打印出它对应的意思
+
+      【女神聊天翻译器】
+        呵呵                 你说的内容我不感兴趣
+        嗯                   你说的内容还可以，继续吧
+        哦                   无所谓
+        我要去洗澡了          不想和你聊了
+        你是好人              我俩不可能
+        其他内容：太高级了，我翻译不出来了
+     */
+
+    var words = prompt('刚才你喜欢的女生对你说了啥：');
+    var trueWords;
+
+    switch (words) {
+      case '呵呵': {
+        trueWords = '你说的内容我不感兴趣';
+        break;
+      }
+      case '嗯': {
+        trueWords = '你说的内容还可以，继续吧';
+        break;
+      }
+      case '哦': {
+        trueWords = '无所谓';
+        break;
+      }
+      case '我要去洗澡了': {
+        trueWords = '不想和你聊了';
+        break;
+      }
+      case '你是好人': {
+        trueWords = '我俩不可能';
+        break;
+      }
+    }
+
+    console.log('她真正想和你说的是：' + trueWords);
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*边界：正则表达式提供了几个常用的边界匹配字符
+    边界字符            含义
+      ^                  以xxxx开头
+      $                  以xxxx结束
+      \b                  单词边界
+      \B                  非单词边界
+     */   
+
+     /* 一个元字符可能会有多种功能
+     /[^abc]/ : 负向类
+     /^abc/ : 边界，以xxx开头
+     
+      /^a/ :  以a开头的字符
+     */
+    console.log(/^a/.test('123abc'));//false
+    console.log(/^a/.test('abc123'));//true
+
+    /* 
+    /^abc/ : 开头为a ， 后面是bc的字符。
+        误区 ： 不要理解为以abc开头。 虽然两者含义类似，就是有很大区别
+    */
+
+    console.log(/^abc/.test('a1bc'));//false
+    console.log(/^abc/.test('abc123'));//true
+
+    /* 
+    /abc$/ : 字符 a  + b + c(结尾)
+        误区：不要理解为以abc结尾
+    */
+    console.log(/abc$/.test('ab1c'));//false
+    console.log(/abc$/.test('abc1'));//false
+    console.log(/abc$/.test('1abc'));//true
+
+    /* 
+    /^abc$/ :  开头为a + b + c(结尾)
+       严格模式 唯一的字符 ： abc
+    */
+
+    console.log(/^abc$/.test('abcabc'));//false
+    console.log(/^abc$/.test('a1b1c'));//false
+    console.log(/^abc$/.test('abc'));//true
+
+
+    // 3. /\b/ : 单词边界 （位置）
+    console.log('this is a girl'.replace(/\bis/,'X'));// "this X a girl" 
+    
+    // 4. /\B/ : 非单词边界 （位置）
+    console.log('this is a girl'.replace(/\Bis/,'X'));// thX is a girl
+    
+    
+    
+    
+        
+    </script>
+</body>
+</html>

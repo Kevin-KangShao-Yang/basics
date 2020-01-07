@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var arr = [ 'Y城好', '四楼也不错', 'P城','广州小蛮腰最美'];
+    var arr = [5, 44, 33, 22, 11];
+
+    // console.log(arr.toString());
+
+    arr.sort(daoXu);// 将 比较 两个元素 大小 的 函数 方法 传入,并调用
+
+    console.log(arr.toString());
+
+    arr.sort(shengXu)//调用函数
+    console.log(arr)
+
+    // 1.1 数值 升序排列 使用 ---------------
+    function shengXu(prev,next){ // prev是表示第一个数  ,next是表示最后一个数,取什么名字都没关系,但是不能赋值,这是格式
+      return prev - next;  // 返回   最小数 到 最大数
+    }
+
+    // 1.2 数值 降序排列 使用 ---------------
+    function daoXu(prev,next){
+      return next - prev;   //最大数 到 最小数
+    }
+
+    
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

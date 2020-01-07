@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+       1. [] : 字符类 ， 将字符归为一类
+
+        /[abc]/ : 将a 和 b 和 c这种特征字符归为一类。 只要你的字符串符合这些特征就算。
+        说人话 ： 含义是字符串中有a 或者有b 或者有c
+        
+        */
+
+        console.log(/[abc]/.test('a1'));//true
+        console.log(/[abc]/.test('b1'));//true
+        console.log(/[abc]/.test('c1'));//true
+        console.log(/[abc]/.test('abc1'));//true
+        console.log(/[abc]/.test('123'));//false
+
+
+        /* 
+        2. [^] : 负向类（反向类）
+            /[^abc]/ : 包含非a或者非b或者非c的一类字符
+                说人话 ： 只要有任何 非a 非b 非c的字符
+        */
+
+        console.log(/[^abc]/.test('a1'));//true  
+        console.log(/[^abc]/.test('b1'));//true 
+        console.log(/[^abc]/.test('c1'));//true   
+        console.log(/[^abc]/.test('abc1'));//true  
+        console.log(/[^abc]/.test('123'));//true  
+        console.log(/[^abc]/.test('aabbccabcbca'));//false 
+        
+    </script>
+</body>
+</html>

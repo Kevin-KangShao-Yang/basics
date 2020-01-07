@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+/* - 题目描述：
+  - 求整数1～100的累加值，但要求跳过所有个位为3的数。
+- 题目提示：
+  - 使用%判个位数是否为3
+  - 用continue实现 */
+var num = 0;
+ for (var i = 1; i <= 100; i++) {
+    if (i % 10 ==3 || i == 3) {
+      continue;
+    }
+    num += i ;
+ }
+console.log(num);
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    var a = 1;
+    var a = 2;
+
+    // 函数重载 ： 指 在 同一个 文件中，有 多个 同名函数，但是参数不同，就叫做 函数重载
+    // 但是：JS中 不允许 同时 存在 同名的 函数 --- 后面的 函数 会 覆盖 前面的 同名函数
+    // function add(x, y) {
+    //   return x + y;
+    // }
+
+    // function add(x, y, z) {
+    //   return x + y + z;
+    // }
+
+    function add() {
+      // 当 实参 传入的个数 为 2  时，就 计算 下标 为 0 和 1 的两个实参 的和
+      if(arguments.length == 2){
+        return arguments[0] + arguments[1];
+      }
+      // 当 实参 传入的个数 为 3 时，就 计算 下标 为 0 和 1 和 2 的三个实参 的和
+      else if(arguments.length == 3){
+        return arguments[0] + arguments[1] + arguments[2];
+      }
+    }
+
+    var res = add(2,3);
+    console.log(res);
+
+    var res = add(2,3,4);
+    console.log(res);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

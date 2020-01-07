@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    // 业务：地下人间 正规盲人按摩店 有一个规定，将 一些经常赊账不还，还欺负盲人按摩师的 顾客 列入 黑名单，不允许 服务
+
+    function goBigSword(cName) {
+      console.log('****** 欢迎光临 地下人间 ******');
+      var isInHMD = isInBlackList(cName); // 判断 客人名字 是否在黑名单中
+
+      if (isInHMD) {
+        console.log('对不起，您不能再进入 本店 消费了~~~');
+      } else {
+        console.log('请选择技师：88号');
+        console.log('天黑请闭眼，正规盲人按摩开始~~~');
+        console.log('1个小时过去了，按摩结束，请付款：1999');
+        console.log('辛苦了，请喝一杯：可乐 ~~~');
+      }
+
+    }
+
+
+    /**
+     * @description: 判断 传入的 客户名字 是否在  黑名单中存在
+     * @param {String}  customerName  客户名字
+     * @return: 如果 客户名字 在黑名单，就返回 true；否则 返回 false
+     */
+    function isInBlackList(customerName) {
+      var blackList = ['裙姐', '班长', '种马'];
+      //                 0       1      2
+
+      for (var i = 0; i < blackList.length; i++) {
+        if (blackList[i] == customerName) {
+          return true; // 如果 传入的形参的值 和 某个 元素 相等，则返回 true
+        }
+      }
+
+      // 如果 for循环中 没有执行 return true，就已经说明了 数组中 不存在 传入的 参数
+      return false; // 如果 传入的形参的值 和 任何一个 元素都不相等，就返回 false
+    }
+
+
+    // --------------------------------------------
+    goBigSword('班长');
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

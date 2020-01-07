@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        // 声明式函数
+    function name(params) {
+        console.log(params+'声明式函数');
+        
+    }
+    name('你是');
+
+
+
+        // 匿名函数
+     var showLove2 = function (toName) {
+         console.log(toName+'练练');
+     }
+     showLove2('你是谁');
+
+    //  函数对象方式
+    var i = new Function('name','name1','console.log(name+"看上你了"+name1)');
+    i('谁','哈哈,是我');
+    // name就是形参    
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

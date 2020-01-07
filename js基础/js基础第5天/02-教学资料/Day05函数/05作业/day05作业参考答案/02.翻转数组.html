@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 反转数组的代码，封装成函数
+
+    // 一、函数声明 ------------------------------------
+    function reverArr(arrObj) {
+      //1.创建 新数组 变量
+      var arrNew = [];
+
+      //2.倒序 遍历 原数组，并依次取出元素，存入 新数组
+      for (var i = arrObj.length - 1; i >= 0; i--) {
+        var ele = arrObj[i];
+        arrNew.push(ele); // 追加元素 到 新数组
+      }
+
+      //3.返回 新数组
+      return arrNew;
+    }
+
+
+    // 二、测试函数调用 ------------------------------------
+    var arr = [3, 1, 7, 98, 42, 4, 3, 2];
+    //         0 1 2 
+    console.log(arr);
+
+    // 调用函数，将数组中的元素 翻转
+    arr = reverArr(arr); // arrObj = arr;
+
+    // 打印 翻转之后的 数组
+    console.log(arr);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

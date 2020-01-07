@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    // 11.请用户输入年份
+    // 打印该年是平年还是闰年。
+    // 闰年的计算方法：
+    //  能被400整除        或者       能被4整除且不能被100整除
+
+
+    //1.接收用户输入的年份，并 使用 parseInt 将它转成 数值
+    var usrYear = parseInt(prompt('请输入您的年份：')); // parseInt('2019') -> 2019
+
+    //2. 判断 是否为 闰年
+    if (usrYear % 400 == 0 || (usrYear % 4 == 0 && usrYear % 100 != 0)) {
+      alert('【' + usrYear + '】是闰年~~！');
+    } else {
+      alert('【' + usrYear + '】是平年~~！');
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

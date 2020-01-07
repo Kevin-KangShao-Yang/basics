@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //数组核心语法：
+
+        // 1. 求数组 [2 , 6 , 1 , 7 , 8] 里面所有元素的 和 以及 平均值   【箩筐思想】
+        //            0   1   2   3   4  length = 5
+
+        // 思路：
+        //    a. 声明两个变量 保存  和 与 平均值
+        //    b. for循环 生成 数组中的 每个下标
+        //    c. 通过 数组[下标] 将 数组中的 元素 都 取出 并 累加 到 求和变量中
+        //    d. for循环结束后，计算 平均值
+        var arrNum = [2, 6, 1, 7, 8];
+        //            0  1  2  3  4   length = 5
+
+        var sumNum = 0; // 求和变量
+        var avgNum = 0; // 平均值变量
+
+        // 使用 for 循环生成 数组中 每个 元素的 下标
+        for (var i = 0; i < arrNum.length; i++) {
+            sumNum += arrNum[i];//将 数组中元素 取出 并 累加 到求和变量中
+        }
+
+        // 计算平均值
+        avgNum = sumNum / arrNum.length;
+
+        console.log('数组总和为：【' + sumNum + '】，平均值为：【' + avgNum + '】');
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

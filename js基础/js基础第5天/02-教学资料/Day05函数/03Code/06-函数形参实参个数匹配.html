@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 函数形参实参个数匹配
+        // 1. 如果实参的个数和形参的个数一致 则正常输出结果
+        // 2. 如果实参的个数多于形参的个数  会取到形参的个数 
+        // 3. 如果实参的个数小于形参的个数  多于的形参定义为 undefined
+        
+        // 形参可以看做是不用声明的变量  num2 是一个变量但是没有接受值  结果就是undefined 
+
+        // 【建议】 我们尽量让实参的个数和形参相个数 匹配
+
+        function showLove(toName, fromName) {
+            console.log(toName + '，i 老虎 由~~~ ' + fromName);
+        }
+
+        // 1. 传递 和 形参个数 一样的 实参
+        // showLove('小静静','小花花');
+
+        // 2. 传递 少于 形参个数的 实参
+        // showLove('小静静');
+        // showLove(); // undefined，i 老虎 由~~~ undefined
+
+        //3. 传递 多余 形参个数的 实参
+        //   多处来的实参 ，其实 也 传给 函数内部，但是 没有 对应的 形参 接收 
+        showLove('小白', '小黑', '老王');
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

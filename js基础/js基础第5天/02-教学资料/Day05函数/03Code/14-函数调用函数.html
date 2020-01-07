@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      // 我们可以 在 函数 内部 去 调用其他的 函数
+      function getRanNum100() {
+        var num = Math.random() * 100;
+        return num;
+      }
+
+      var res = getRanNum100();
+      console.log(res);
+
+
+      function a() {
+        console.log('讨厌~~');
+      }
+
+      function b() {
+        console.log('死鬼~~');
+      }
+
+      function c() {
+        console.log('去死吧~~');
+      }
+
+
+      function d() {
+        a();
+        b();
+        c();
+      }
+
+      d();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

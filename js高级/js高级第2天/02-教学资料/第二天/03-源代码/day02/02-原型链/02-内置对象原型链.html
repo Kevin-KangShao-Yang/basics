@@ -1,0 +1,73 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-11 09:35:06
+ * @LastEditTime: 2019-08-11 11:27:12
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background-color:red">我是div</div>
+
+    <div id="box"></div>
+    <p id="p1"></p>
+    <script>
+        //1.Date日期对象 完整的原型链
+        
+        var d1 = new Date();
+        console.log(d1);// log 打印，date对象会自动转成字符串
+        console.dir(d1);//查看对象内存
+        //1.1 查看d1的原型
+        console.log(d1.__proto__.constructor);//Date
+        console.log(d1.__proto__ === Date.prototype);//true
+        //1.2 查看d1的原型的原型
+        console.log(d1.__proto__.__proto__.constructor);//Object
+        console.log(d1.__proto__.__proto__ === Object.prototype);//true
+        
+        //2. Array 完整的原型链
+
+        var arr = new Array(10,20,30);
+        console.log(arr);
+        
+        
+        //2.1 查看arr的原型
+        console.log(arr.__proto__.constructor);//Array
+        console.log(arr.__proto__ === Array.prototype);//true
+        arr.reverse();
+        
+        
+        //2.2 查看arr的原型的原型
+        console.log(arr.__proto__.__proto__.constructor);//Object
+        console.log(arr.__proto__.__proto__ === Object.prototype);//true
+        
+
+        //3. String   Number Boolean
+        var str =  new String('abc');
+        console.log(str);
+        
+        //3.1 查看str对象的原型
+        console.log(str.__proto__.constructor);//String
+        console.log(str.__proto__ === String.prototype);//true
+        //3.2 查看str对象的原型的原型
+        console.log(str.__proto__.__proto__.constructor);//Object
+        console.log(str.__proto__.__proto__ === Object.prototype);//true
+        
+        //4. DOM对象
+        var box = document.getElementById('box');
+        var p1 = document.getElementById('p1');
+
+        
+  
+
+    </script>
+</body>
+</html>

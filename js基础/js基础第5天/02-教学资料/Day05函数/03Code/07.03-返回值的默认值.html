@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset='UTF-8'/>
+    <script>
+      // 函数 默认 返回值： undefined
+      //    如果 函数 内部 没有使用  return 关键字 返回一个 值，那么 函数 就会 默认 返回 undefined
+      //    如果 函数 内部 使用了 reutrn，但 return 后面没有值，那么 默认 也 返回 undefined
+
+      function getLuckNum() {
+        console.log('讨厌，幸运数字已经不在了~~~~');
+        return; // 默认 返回 undefined
+        console.log('死鬼~~再给我一个幸运数字嘛~~~~');
+      }
+
+      var num = getLuckNum();
+
+      console.log(num);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

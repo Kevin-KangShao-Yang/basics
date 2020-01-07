@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+ function student(name1,id1,sex1,grade1,) {
+     this.name=name1;
+     this.id=id1;
+     this.sex1=sex1;
+     this.grade=grade1;
+     this.sayHi=function (){
+      console.log('你好,我是'+this.name);
+
+     }
+ };
+ console.log(typeof(student));
+ 
+   var stu =new student('康康',2015,'男','3年级');
+  console.log(stu);
+  stu.sayHi();
+ console.log(typeof(stu));
+  
+  
+
+   
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

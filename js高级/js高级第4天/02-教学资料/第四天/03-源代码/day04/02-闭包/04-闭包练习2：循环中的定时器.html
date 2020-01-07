@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //需求： 开三个定时器，分别1s之后打印 1 2 3
+        // setTimeout(function () {
+        //     console.log(1);
+
+        // }, 1000);
+
+        // setTimeout(function () {
+        //     console.log(2);
+
+        // }, 1000);
+
+        // setTimeout(function () {
+        //     console.log(3);
+
+        // }, 1000);
+
+        //定时器代码冗余 ： 循环实现
+        /* 
+        发现问题 ： 打印三个4
+        分析问题 ： 定时器中的函数代码不会立即执行，等整个页面加载完毕之后，等待1s后执行（类似于事件处理函数）
+        解决问题 ： 有困难找闭包
+         */
+        for (var i = 1; i <= 3; i++) {
+
+            var outer = function (num) {// num = i
+                return function () {
+                    console.log(num);
+                };
+            };
+
+            setTimeout(outer(i), 1000);
+        };
+
+        //面试题
+        //请说出以下代码打印结果，如果不是打印1 2 3，则修改代码让其打印 1 2 3
+        // for (var i = 1; i <= 3; i++) {
+        //     setTimeout(function(){
+        //         console.log(i);
+        //     }, 1000);
+        // };
+        console.log(1);
+        console.log(2);
+        console.log(3);
+        
+    </script>
+</body>
+
+</html>

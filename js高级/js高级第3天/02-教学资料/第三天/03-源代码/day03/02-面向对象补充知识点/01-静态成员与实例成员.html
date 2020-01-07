@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        静态成员 ： 属于函数对象自身的
+        实例成员 ： 属于实例化对象的
+         */
+
+        //函数是一个对象
+        function Person(name,age){
+            //属于实例化对象的
+            this.name  = name;
+            this.age = age
+
+        };
+
+        Person.prototype;//静态
+
+        //给函数对象添加成员
+        Person.sayHi = '你好';
+        console.log(Person);//打印代码
+        console.dir(Person);//打印对象
+        console.log(Person.sayHi);// 静态 
+        
+        
+
+        var p1 = new Person('她',20);
+        console.log(p1.name);// 实例
+        console.log(p1.sayHi);
+        
+        
+    </script>
+</body>
+</html>

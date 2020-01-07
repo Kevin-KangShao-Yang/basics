@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //神级难度面试题
+
+        //预解析 变量提升
+        var getName;
+        function getName() {
+            alert(5);
+        };
+
+        //1.声明一个全局函数 
+        function Foo() {
+            //声明一个全局函数 ： 如果变量没有用var声明，不参与预解析和作用域链。一定是全局变量
+            getName = function () {
+                alert(1);
+            };
+            return this;
+        }
+
+        //2.给函数对象添加成员（静态成员）
+        Foo.getName = function () {
+            //创建空对象
+            //返回这个空对象
+            alert(2);
+        };
+
+        //3. 给函数原型添加方法 ： 每一个实例化对象
+        Foo.prototype.getName = function () {
+            alert(3);
+        };
+
+        //预解析 : var和function关键字声明提前，赋值和调用在原地
+
+        //4. 声明全局函数 getName
+        getName = function () {
+            alert(4);
+        };
+
+        //5.声明全局函数 getName
+        // function getName() {
+        //     alert(5);
+        // }
+
+        Foo.getName(); //  2
+        getName(); // 4 
+        // (1) Foo() : return this:window   (2)window.getName()
+        // 一调用Foo() 就声明了全局函数getName覆盖全局函数
+        Foo().getName(); // 1
+        // 上面代码执行了Foo()函数体代码 ， 重新声明了getName覆盖了全局变量 （1）
+        getName(); //  1
+        //这个new是迷惑你的，没有起作用，执行Foo.getName()  2
+        new Foo.getName(); // 2
+        // (1) new Foo() : return this:new创建的空对象    (2) 访问的是原型的getName
+        new Foo().getName(); // 3 
+
+        // 前面那个new是迷惑你的 
+        new new Foo().getName(); // 3
+
+
+        // 2 4 1 1 2 3 3
+
+       
+
+       
+
+    </script>
+</body>
+
+</html>

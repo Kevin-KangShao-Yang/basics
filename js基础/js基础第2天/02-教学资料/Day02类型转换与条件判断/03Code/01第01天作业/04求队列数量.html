@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    /*
+    写一个程序，输入总人数，每10人一列，要求站成一个方队（每队必须保持10人，不够就不要了），可以排多少列，余多少人。
+        例：一共有30个人，一共可以排3列，余0个
+        一共有31个人，一共也只可以排3列（因为每对必须保持10个人，不够就不要了），余1个
+     */
+
+    // 1. 接收用户输入的 人数
+    var totalNum = +prompt('请输入总人数：'); // +'98' -> 98
+    console.log('总人数：' + totalNum);
+
+    // 2. 计算 方阵的 队列 数量
+    var queNum = Math.floor(totalNum / 10);
+    console.log('队列数：' + queNum);
+
+
+    // 3. 将 没在方阵里的 人数 显示
+    var leftNum = totalNum % 10;
+    console.log('剩余：' + leftNum);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
