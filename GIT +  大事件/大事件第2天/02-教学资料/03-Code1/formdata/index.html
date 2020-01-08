@@ -1,0 +1,105 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script src="../jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+  <!-- 
+    1. enctype 
+    multipart/form-data ： 当表单 中 有文件选择框，要上传 文件时，必须使用
+    application/x-www-form-urlencoded（默认） ：当表单 中 没有 文件选择框，就可以使用 urlencode
+    2.表单元素的 name 属性
+       如果 有，则 表单 和 FormData对象 提交 数据时，就会 被 提交到服务器
+            没有，                                   不会
+   -->
+  <form id="f1" action="/login.html" method="GET" enctype="application/x-www-form-urlencoded">
+    <input type="text" name="txtName" id="txtName" /><br>
+    <input type="text" name="txtAge" id="txtAge" /><br>
+    <input type="file" name="upPic" id="upPic" /><br>
+
+    <input id="btnOk1" type="submit" value="submit 提  交"><br>
+    <input id="btnOk2" type="button" value="button 手动 ajax 提  交"><br>
+    <input id="btnOk3" type="button" value="button FormData ajax 提  交"><br>
+  </form>
+</body>
+
+<script>
+  //表单提交方式：
+  // 1. 直接在表单中 添加 submit 按钮，会自动提交表单
+  // 2. 手动获取 表单元素值，ajax 提交
+  // 3. 使用 FormData 对象 + ajax 提交数据 ： 适合于 表单中 包含 文件上传 
+
+  // 1.1 表单提交事件
+  document.getElementById('f1').onsubmit = function () {
+    if (document.getElementById('txtName').value.trim().length == 0 ||
+      document.getElementById('txtAge').value.trim().length == 0) {
+      //如果 任意文本框 的内容长度 ==0，就阻断 表单的提交行为
+      return false;// 在 onsubmit 事件中，如果 return false 可以阻断当前表单的提交
+    }
+  };
+
+  // 2.1 手动异步提交
+  document.getElementById('btnOk2').onclick = function () {
+    // //手动获取 文本框数据
+    // var strName = document.getElementById('txtName').value.trim();
+    // var strAge = document.getElementById('txtAge').value.trim();
+
+    // $.ajax({
+    //   url: 'url',
+    //   method: 'post',
+    //   data: 'uName=' + strName + '&uAge=' + strAge,
+    //   success: function (backData) {
+
+    //   }
+    // });
+
+    //手动获取 文本框数据 -- 不用上传文件的情况使用
+    var strData = $('#f1').serialize(); // txtName=123
+    console.log(strData);
+
+    $.ajax({
+      url: 'url',
+      method: 'post',
+      data: strData,
+      success: function (backData) {
+
+      }
+    });
+  }
+
+  // 3.1 使用 FormData 提交 
+  document.getElementById('btnOk3').onclick = function () {
+    // var fd = new FormData(表单dom对象); // 不能使 表单 jquery 对象
+    // var fd = new FormData(document.getElementById('f1'));
+
+    // 什么是 FormData 对象：dom表单 对象中 所有 元素的 数据的 容器
+    var fd = new FormData($('#f1')[0]); // 取出 jq 对象 中类数组 里 的 第0个元素(唯一的一个表单)
+
+    console.log(fd);
+    var txtValue =  fd.get('txtName'); // 获取 formdata 对象中的数据
+    console.log(txtValue);
+    fd.set('txtName','讨厌，死鬼~~~'); // 设置 formdata 对象中的数据
+    var txtValue =  fd.get('txtName');
+    console.log(txtValue);
+
+    fd.append('txtGender','女'); // 向 formdata 对象中 添加数据
+
+    console.log(fd.get('txtGender'));
+
+    // $.ajax({
+    //   url: 'url',
+    //   method: 'post',
+    //   data: fd,
+    //   contentType:false,// true - urlencode , false - formdata
+    //   processData:false, // true - key=value&k1=v1 ...  , false 就不编码
+    //   success: function (backData) {
+
+    //   }
+    // });
+  }
+</script>
+
+</html>

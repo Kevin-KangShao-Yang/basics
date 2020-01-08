@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 1.导入 富文本编辑器 js 包 -->
+    <script src="./tinymce/tinymce.min.js"></script>
+
+    <!-- 2.写好的 编辑器 配置 js 文件 -->
+    <script src="tinymcesetup.js"></script>
+</head>
+
+<body>
+    <!-- 3.设置 一个 文本框，注意 设置 id -> mytextarea -->
+    <textarea id="mytextarea"></textarea>
+
+    <input type="button" value="获取内容" id='btnGet'>
+</body>
+
+<script>
+document.getElementById('btnGet').onclick=function () {
+    // 获取 编辑器中的内容
+    var a = tinyMCE.activeEditor.getContent();
+    console.log(a);
+
+    // 设置 编辑器中的内容
+    tinyMCE.activeEditor.setContent('需要设置的编辑器内容');
+}
+</script>
+</html>

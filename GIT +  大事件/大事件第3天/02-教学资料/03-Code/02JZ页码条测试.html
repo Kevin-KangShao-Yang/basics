@@ -1,0 +1,60 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script src="./JZPagination.js"></script>
+  <style>
+    div {
+      font-size: 14px;
+
+    }
+
+    a,
+    span {
+      border: 1px solid #000;
+      padding: 3px 10px;
+      margin: 3px 2px;
+      color: #000;
+      background-color:whitesmoke;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #fff;
+      background-color: #0094ff;
+    }
+
+    select {
+      margin: 5px;
+    }
+
+    a.active {
+      color: #fff;
+      background-color: #0094ff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1.页码条 容器标签 -->
+  <div id='pageBar'></div>
+
+  <script>
+    // 2.页面加载完毕后 调用组件 页码条方法
+    window.onload = function () {
+      // 参数：翻页方法 , 页码条容器dom或id ，当前页码 ，页容量 ，页码组容量 ，总行数
+      makePageBar(toPage, 'pageBar', 2, 5, 8, 1000);
+    }
+
+    /**
+     * @description: 3. 翻页方法
+     * @param {string}  pageIndex - 要前往的页码
+     */
+    function toPage(pageIndex) {
+      makePageBar(toPage, 'pageBar', pageIndex, 5, 8, 1000);
+    }
+  </script>
+</body>
+
+</html>

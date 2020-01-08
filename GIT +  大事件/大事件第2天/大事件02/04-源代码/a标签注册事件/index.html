@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function test1() {
+            console.log('我是test1')
+        }
+        function test2(num) {
+            console.log('我是test1,参数是'+num)
+        }
+    </script>
+</head>
+
+<body>
+    <!-- 点击a标签,执行href中的js代码,void(0) 意思就是什么都不干 -->
+    <a href="JavaScript:void(0)">新闻1</a> <br>
+    <a href="javaScript:console.log('呵呵')">新闻2</a> <br>
+    <a href="javaScript:test()">新闻3</a> <br>
+    <a href="javaScript:test1()">新闻4</a> <br>
+    <a href="javaScript:test2(13)">新闻5</a> <br>
+</body>
+
+</html>

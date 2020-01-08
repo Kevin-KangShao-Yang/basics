@@ -1,0 +1,32 @@
+01-回顾
+02-git pull的作用
+03-git pull的实际使用
+   两个文件夹模拟
+04-iframe基本使用
+   <iframe src="https://www.baidu.com" frameborder="0"></iframe>
+05-iframe嵌套其他的网页
+   a标签的target指向iframe的name属性
+06-大事件-首页用户信息获取
+07-大事件-获取详细信息
+08-本地图片预览
+     选择了不同的图片之后
+           change事件,表单元素的value值改变的时候触发
+     把图片设置给img标签
+           var icon = this.files[0];获取到表示图片的js对象,无法设置为img   
+           需要把文件变为url; URL.createObjectURL(icon); 
+09-大事件用户头像预览
+10-formData的使用
+11-jQuery中使用formData的使用
+    data  放formData对象,实例化formData必须是一个dom对象
+    contentType:false; //不要设置请求头
+    processData:false; //不要把对象变成key=value这种格式的字符串
+12-大事件-用户修改
+13-大事件-美化上传按钮样式 
+   默认的input上传按钮太丑,基本不用
+   开发中一般把他隐藏,搞一个好看的图片,放在lable中
+   lable的for属性指向input的id,点击lable就相当于点击了input.
+14.文章分类信息获取
+15.文章分类新增
+    
+
+       

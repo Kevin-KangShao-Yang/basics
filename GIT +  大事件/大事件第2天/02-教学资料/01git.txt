@@ -1,0 +1,31 @@
+一、和本地仓库有关
+git init 初始化 项目 本地仓库 -- 在 项目文件夹中 创建了 一个 .git隐藏文件夹（git本地仓库）
+git add .  提交 项目中 修改的内容 到 仓库缓冲区
+git commit -m'备注' 提交缓冲区的内容 到 本地仓库，并设置备注
+
+// commit 要求 必须先 提供 用户名 和 邮箱地址，因为提交到本地仓库时，git需要知道是谁提交的，方便以后查证
+git config --global user.email 'sb@qq.com'
+git config --global user.name 'sb'
+
+git status 检查 本地仓库缓冲区
+git log 打印所有 提交日志
+git log --oneline 单行显示 所有的版本记录
+
+git reset --hard 版本号   回滚到 指定的 版本，此句命令 可以帮我们完成 版本切换(穿梭)
+ 
+git reflog 显示 所有的版本 包括 回滚记录
+
+安装：git
+1.安装目录 不够科学：最好 把软件 都安装到 D:\Program Files
+2.运行目录 -》 项目文件夹
+
+
+二、和远程仓库相关
+git remote add origin 远程仓库地址 -- 将 远程仓库地址 保存到 本地仓库配置数据中
+git push -u origin master 提交本地仓库内容 到 远程仓库中 -- 根据 远程仓库地址，将 数据 提交到 指定的 远程仓库中！
+git pull origin master 从 远程 仓库中，拉取 修改了的数据 到 本地仓库
+
+三、上班实际使用
+1.早上来了后，先  拉取(pull) 远程仓库最新的代码版本
+2.白天写代码
+3.晚上下班前，将 白天写好的代码 推送(push) 到 远程仓库中

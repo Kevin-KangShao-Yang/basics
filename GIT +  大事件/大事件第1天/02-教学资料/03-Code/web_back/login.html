@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大事件-后台登录页</title>
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="main_wrap">
+        <div class="header">
+            <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+            <div class="copyright">CopyRight © 2019 深圳百秀信息技术股份有限公司<br>All Rights Reserved</div>
+        </div>
+
+        <div class="login_form_con">
+            <div class="login_title"></div>
+            <form class="login_form">
+                <i class="iconfont icon-user"></i>
+                <i class="iconfont icon-key"></i>
+                <input type="text" class="input_txt" placeholder="邮箱/手机号">
+                <input type="password" class="input_pass" placeholder="密码">
+                <input type="button" class="input_sub" value="登 录">
+            </form>
+        </div>
+
+    </div>
+
+    <!-- bootstrap 模态框 的 html 代码 -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- 消息框内容区域 -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button> -->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /bootstrap 模态框 的 html 代码  -->
+</body>
+<script>
+
+    /**
+     * @description: 模态框 显示 方法
+     * @param {String} msg - 要显示的内容
+     * @param {Function} func - 消息显示2秒后要执行的 回调函数
+     */
+    function showModel(msg, func) {
+        $('.modal-body').text(msg);
+        $('#myModal').modal({ keyboard: true });
+
+        // 如果 第二个参数 func 存在，并 为 函数类型，则启动 定时器
+        if (func && func instanceof Function) {
+            // 启动 一次性 定时器，2秒后 执行 回调函数
+            setTimeout(func, 2000);
+        }
+    }
+
+    // 登录业务思路：登录按钮  点击时 获取用户名和密码，异步提前交到 服务器对应的 登录接口
+    // 1.导入 jquery.js 文件
+    // 2.当 页面加载完成后，为登录按钮 添加 点击事件
+    $(function () {
+        $('.input_sub').click(function () {
+            //3.获取 用户名和密码
+            var usrName = $('.input_txt').val().replace(/ /g, '');
+            var usrPwd = $('.input_pass').val().replace(/ /g, '');
+
+            //3.1 将 去掉所有空格之后的 用户名 和 密码 重新设置给 文本框
+            $('.input_txt').val(usrName);
+            $('.input_pass').val(usrPwd);
+
+            //4.简单检查 输入规则 是否满足
+            if (usrName.length < 5) {
+                // 设置 用户名文本框 为选中状态
+
+                showModel('用户名长度必须 >= 5~~');
+                  //focus()  jq语法,鼠标默认选中回到用户名输入
+                $('.input_txt').focus();
+            } else if (usrPwd.length < 5) {
+                // 设置 密码框 为选中状态
+                showModel('用户密码长度必须 >= 5~~~');
+                  //focus()  jq语法,鼠标默认选中回到用户名输入
+                $('.input_pass').focus();
+            } else {
+                $.ajax(
+                    {
+                        url: 'http://127.0.0.1:8080/admin/user/login',
+                        method: 'post',
+                        data: 'username=' + usrName + '&password=' + usrPwd,
+                        success: function (backData) { // {code: 400, msg: "用户名或密码错误"} or {code: 200, msg: "登录成功"}
+                            // 打印 服务器端 发来的 消息
+                            showModel(backData.msg, function () {
+                                // 如果 登录成功
+                                if (backData.code == 200) {
+                                    // 跳转到 后台首页
+                                    window.location = './index.html';
+                                } else {
+                                    $('.input_txt').focus();
+                                }
+                            });
+                        }
+                    }
+                );
+            }
+        });
+    });
+
+//用户名输入框回车键登录事件
+$('.input_txt').keydown(function (e) {
+    if (e.keyCode==13) {
+        $('.input_sub').trigger('click');
+    }
+})
+
+
+//用户密码框输入框回车键登录事件
+$('.input_pass').keydown(function (e) {
+    if (e.keyCode==13) {
+        $('.input_sub').trigger('click');
+    }
+})
+
+</script>
+
+</html>

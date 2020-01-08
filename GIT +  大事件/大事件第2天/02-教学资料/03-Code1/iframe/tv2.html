@@ -1,0 +1,21 @@
+<html>
+
+<head>
+  <title>班长家的电视机</title>
+  <meta charset='UTF-8' />
+</head>
+
+<body style="background-color: #0094ff;">
+  <ul>
+    <!-- 使用 超链接 的 target 属性可以 设置 iframe的 name 属性值
+        一旦设置好，点击超链接 就可以 控制 iframe 显示的页面 -->
+    <li><a href="cctv5.html" target="innerF">cctv5</a></li>
+    <li><a href="cctv6.html" target="innerF">cctv6</a></li>
+    <li><a href="cctv8.html" target="innerF">cctv8</a></li>
+  </ul>
+
+  <!-- iframe 相当于 在 当前页面 中 “新建”了一个新的窗口，可以查看 src属性指定的 另一个页面 -->
+  <iframe name="innerF" src="cctv5.html" style="width: 500px;height:300px;border:5px solid #000;"></iframe>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+  </script>
+</head>
+
+<body style="background-color: red;">
+  <input type='button' id='btn1' value='显示父页面的全局变量值-猫页面' />
+</body>
+
+<script>
+  document.getElementById('btn1').onclick = function () {
+    // console.log(window.parent.parent.myLoverDog);
+    alert(window.top.myLoverDog);
+  }
+</script>
+
+</html>

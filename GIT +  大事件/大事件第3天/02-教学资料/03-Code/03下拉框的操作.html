@@ -1,0 +1,38 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+</head>
+
+<body>
+
+  <select id='selCity' name="selCity">
+    <option value="Ptown1">P城</option>
+    <option value="Rtown2">R城</option>
+    <option value="Ytown3">Y城</option>
+  </select>
+
+  <input type="button" id='btnGet' value="获取 下拉框的值" />
+  <input type="button" id='btnSet' value="设置 下拉框选项" />
+</body>
+
+<script>
+  var selObj = document.getElementById('selCity');
+
+  //1.获取 下拉框中 被选中 的 option 的 value 值
+  document.getElementById('btnGet').onclick = function () {
+    //  所以由此可见： option 标签中的 文字 是给 浏览器普通用户看的   --大部分情况下 放的都是 文字（标题，名字.....）
+    //                       value 值，一般是用来 提交给 服务器用的  --大部分情况下 option的value值 都是放的 id 值
+    console.log(selObj.value);
+  }
+
+  
+  //2.设置 下拉框中 选中 的 option
+  //   直接 设置 下拉框.value = 要选中的选项的value值
+  document.getElementById('btnSet').onclick = function () {
+    selObj.value = 'Ytown3';
+  }
+</script>
+
+</html>

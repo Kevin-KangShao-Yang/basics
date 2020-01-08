@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://josecebe.github.io/twbs-pagination/ -->
+<html xmlns="http://www.w3.org/1999/html"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="./jQuery Pagination plugin_files/css" rel="stylesheet" type="text/css">
+    <link href="./jQuery Pagination plugin_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./jQuery Pagination plugin_files/css(1)" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./jQuery Pagination plugin_files/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./jQuery Pagination plugin_files/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./jQuery Pagination plugin_files/print.css" media="print">
+
+    <!--<link rel="stylesheet" type="text/css" href="css/color-brewer.css">-->
+    <link rel="stylesheet" href="./jQuery Pagination plugin_files/atom-one-light.min.css">
+    <script src="./jQuery Pagination plugin_files/highlight.min.js.下载"></script>
+    <script type="text/javascript">
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <script src="./jQuery Pagination plugin_files/jquery-3.1.1.min.js.下载" type="text/javascript"></script>
+    <script src="./jQuery Pagination plugin_files/bootstrap.min.js.下载"></script>
+    <script src="./jQuery Pagination plugin_files/jquery.twbsPagination.js.下载" type="text/javascript"></script>
+    <script src="./jQuery Pagination plugin_files/jquery.simplePagination.js.下载" type="text/javascript"></script>
+    <script src="./jQuery Pagination plugin_files/main.js.下载" type="text/javascript"></script>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+        table {
+            color: #333; /* Lighten up font color */
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .hljs {
+            background-color: #fff;
+        }
+
+        td, th {
+            text-align: center;
+            border: 1px solid #CCC;
+            height: 30px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        th {
+            background: #F3F3F3; /* Light grey background */
+            font-weight: bold; /* Make sure they're bold */
+        }
+
+        td {
+            background: #FAFAFA; /* Lighter grey background */
+            text-align: center; /* Center our text */
+        }
+
+        tr td:nth-child(1),
+        tr td:nth-child(2) {
+            text-align: left;
+        }
+
+        .input-with-button {
+            padding: 0;
+            background: none;
+        }
+
+        .input-with-button .btn {
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        .btn {
+            border-radius: 0;
+        }
+
+        .input-with-button input {
+            width: 200px;
+            border-radius: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .b4-iframe {
+            width: 100%;
+            height: 68px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <title>jQuery Pagination plugin</title>
+</head>
+
+<body data-spy="scroll" data-target="#navigation">
+<header>
+    <div class="inner">
+        <h1>jQuery Pagination plugin</h1>
+
+        <h2>Optimized for bootstrap</h2>
+        <a href="https://github.com/esimakin/twbs-pagination" class="button">
+            <small>View project on</small>
+            GitHub</a>
+    </div>
+</header>
+
+<div id="content-wrapper">
+    <div class="inner clearfix">
+        <section id="main-content">
+            <h3>
+                <a id="demo" class="anchor" href="http://josecebe.github.io/twbs-pagination/#demo"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+            <p>This jQuery plugin simplifies the usage of Bootstrap Pagintion. It uses appropriate classes:
+                <code>.pagination</code> (you change this one), <code>.active</code> and <code>.disabled</code>.
+                Check out the demo.</p>
+
+            <div id="page-content" class="well">Page 1</div>
+            <div class="text-center">
+                <ul id="pagination-demo" class="pagination-sm pagination"><li class="page-item first disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">First</a></li><li class="page-item prev disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Previous</a></li><li class="page-item active"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">1</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">2</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">3</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">4</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">5</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">6</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">7</a></li><li class="page-item next"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Next</a></li><li class="page-item last"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Last</a></li></ul>
+            </div>
+
+            <p>Here is corresponding piece of code:</p>
+            <pre><code class="js hljs javascript">    $(<span class="hljs-string">'#pagination-demo'</span>).twbsPagination({
+        <span class="hljs-attr">totalPages</span>: <span class="hljs-number">35</span>,
+        <span class="hljs-attr">visiblePages</span>: <span class="hljs-number">7</span>,
+        <span class="hljs-attr">onPageClick</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event, page</span>) </span>{
+            $(<span class="hljs-string">'#page-content'</span>).text(<span class="hljs-string">'Page '</span> + page);
+        }
+    });</code></pre>
+
+            <p>And HTML code:</p>
+            <pre><code class="html hljs xml">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pagination-demo"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pagination-sm"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+
+            <p class="text-center">Download master:</p>
+
+            <p class="text-center">
+                <a href="https://github.com/esimakin/twbs-pagination/zipball/master" class="button text-left">
+                    <small>Download</small>
+                    .zip file
+                </a>
+                <a href="https://github.com/esimakin/twbs-pagination/tarball/master" class="button text-left">
+                    <small>Download</small>
+                    .tar.gz file
+                </a>
+            </p>
+
+            <h3>
+                <a id="options-and-events" class="anchor" href="http://josecebe.github.io/twbs-pagination/#options-and-events"><span class="octicon octicon-link"></span></a>Options explanation</h3>
+
+            <p>
+
+            </p><table>
+                <thead>
+                <tr>
+                    <th>Option name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>totalPages</code></td>
+                    <td>The number of pages</td>
+                    <td>Number</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td><code>startPage</code></td>
+                    <td>The current page that show on start</td>
+                    <td>Number</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td><code>visiblePages</code></td>
+                    <td>Max visible pages</td>
+                    <td>Number</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td><code>initiateStartPageClick</code></td>
+                    <td>Fire click at start page when plugin initialized</td>
+                    <td>Bool</td>
+                    <td><code>true</code></td>
+                </tr>
+                <tr>
+                    <td><code>hideOnlyOnePage</code></td>
+                    <td>This hides all control buttons if it has one page</td>
+                    <td>Bool</td>
+                    <td><code>false</code></td>
+                </tr>
+                <tr>
+                    <td><code>href</code></td>
+                    <td>Generate query string or generate #</td>
+                    <td>Bool</td>
+                    <td><code>false</code></td>
+                </tr>
+                <tr>
+                    <td><code>pageVariable</code></td>
+                    <td>Template that will be replaced with page number</td>
+                    <td>String</td>
+                    <td><code>'{{page}}'</code></td>
+                </tr>
+                <tr>
+                    <td><code>totalPagesVariable</code></td>
+                    <td>Will be replaced with total pages number</td>
+                    <td>String</td>
+                    <td><code>'{{total_pages}}'</code></td>
+                </tr>
+                <tr>
+                    <td><code>page</code></td>
+                    <td>It can be used to customize page number label</td>
+                    <td>String</td>
+                    <td><code>null</code></td>
+                </tr>
+                <tr>
+                    <td><code>first</code></td>
+                    <td>Text label for the 'First' button</td>
+                    <td>String</td>
+                    <td><code>'First'</code></td>
+                </tr>
+                <tr>
+                    <td><code>prev</code></td>
+                    <td>Label for the 'Previous' button</td>
+                    <td>String</td>
+                    <td><code>'Previous'</code></td>
+                </tr>
+                <tr>
+                    <td><code>next</code></td>
+                    <td>Label for the 'Next' button</td>
+                    <td>String</td>
+                    <td><code>'Next'</code></td>
+                </tr>
+                <tr>
+                    <td><code>last</code></td>
+                    <td>Label for the 'Last' button</td>
+                    <td>String</td>
+                    <td><code>'Last'</code></td>
+                </tr>
+                <tr>
+                    <td><code>loop</code></td>
+                    <td>Carousel-style pagination</td>
+                    <td>Bool</td>
+                    <td><code>false</code></td>
+                </tr>
+                <tr>
+                    <td><code>onPageClick</code></td>
+                    <td>Callback on click event</td>
+                    <td>Function</td>
+                    <td><code>null</code></td>
+                </tr>
+                <tr>
+                    <td><code>paginationClass</code></td>
+                    <td>The root style for pagination component</td>
+                    <td>String</td>
+                    <td><code>'pagination'</code></td>
+                </tr>
+                <tr>
+                    <td><code>nextClass</code></td>
+                    <td>CSS class(es) for the 'Next' button</td>
+                    <td>String</td>
+                    <td><code>'page-item next'</code></td>
+                </tr>
+                <tr>
+                    <td><code>prevClass</code></td>
+                    <td>Class(es) for the 'Previous' button</td>
+                    <td>String</td>
+                    <td><code>'page-item prev'</code></td>
+                </tr>
+                <tr>
+                    <td><code>lastClass</code></td>
+                    <td>Class(es) for the 'Last' button</td>
+                    <td>String</td>
+                    <td><code>'page-item last'</code></td>
+                </tr>
+                <tr>
+                    <td><code>firstClass</code></td>
+                    <td>Class(es) for the 'First' button</td>
+                    <td>String</td>
+                    <td><code>'page-item first'</code></td>
+                </tr>
+                <tr>
+                    <td><code>pageClass</code></td>
+                    <td>Class(es) for the page buttons</td>
+                    <td>String</td>
+                    <td><code>'page-item'</code></td>
+                </tr>
+                <tr>
+                    <td><code>activeClass</code></td>
+                    <td>Class(es) for active button</td>
+                    <td>String</td>
+                    <td><code>'active'</code></td>
+                </tr>
+                <tr>
+                    <td><code>disabledClass</code></td>
+                    <td>Class(es) for the disabled button(s)</td>
+                    <td>String</td>
+                    <td><code>'disabled'</code></td>
+                </tr>
+                <tr>
+                    <td><code>anchorClass</code></td>
+                    <td>CSS class(es) for anchors inside buttons</td>
+                    <td>String</td>
+                    <td><code>'page-link'</code></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3>
+                <a id="examples" class="anchor" href="http://josecebe.github.io/twbs-pagination/#examples"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+            <h4>Dynamic total pages number</h4>
+
+            <p>This is from frequently asked questions. For e.g. - How can I set new number of total pages?
+            How can I initialize plugin with new set of options?
+            How to refresh or redraw it?</p>
+
+            <p>You can do it with two simple steps. Call <code>destroy</code> method and then initialize it
+                with new options.</p>
+
+            <pre><code class="js hljs javascript">    <span class="hljs-keyword">var</span> $pagination = $(<span class="hljs-string">'selector'</span>);
+    <span class="hljs-keyword">var</span> defaultOpts = {
+        <span class="hljs-attr">totalPages</span>: <span class="hljs-number">20</span>
+    };
+    $pagination.twbsPagination(defaultOpts);
+    $.ajax({
+        ...,
+        <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+            <span class="hljs-keyword">var</span> totalPages = data.newTotalPages;
+            <span class="hljs-keyword">var</span> currentPage = $pagination.twbsPagination(<span class="hljs-string">'getCurrentPage'</span>);
+            $pagination.twbsPagination(<span class="hljs-string">'destroy'</span>);
+            $pagination.twbsPagination($.extend({}, defaultOpts, {
+                <span class="hljs-attr">startPage</span>: currentPage,
+                <span class="hljs-attr">totalPages</span>: totalPages
+            }));
+        }
+    });</code></pre>
+
+            <div class="text-center">
+                <div id="dynamic-total-pages-content" class="well">Page 1</div>
+                <ul id="dynamic-total-pages-pagination" class="pagination-sm pagination"><li class="page-item first disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">First</a></li><li class="page-item prev disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Previous</a></li><li class="page-item active"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">1</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">2</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">3</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">4</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">5</a></li><li class="page-item next"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Next</a></li><li class="page-item last"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Last</a></li></ul>
+            </div>
+
+            <p>Here you can change the total pages:</p>
+
+            <form id="dynamicTotalForm" class="input-with-button">
+                <input type="number" min="2" max="30" value="2" class="form-control js-total-pages-value">
+                <button type="submit" class="btn btn-default">Change</button>
+            </form>
+
+            <p></p>
+
+            <h4>Synchronized pagination elements</h4>
+
+            <p>You can attach multiple paginators to your content and access them via class name.
+                The following example show this case.</p>
+
+            <p>HTML code:</p>
+            <pre><code class="html hljs xml">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sync-pagination"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span>Page 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sync-pagination pagination-sm"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+
+            <p>JS code:</p>
+            <pre><code class="js hljs javascript">    $(<span class="hljs-string">'.sync-pagination'</span>).twbsPagination({
+        <span class="hljs-attr">totalPages</span>: <span class="hljs-number">20</span>,
+        <span class="hljs-attr">onPageClick</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">evt, page</span>) </span>{
+            $(<span class="hljs-string">'#content'</span>).text(<span class="hljs-string">'Page '</span> + page);
+        }
+    });</code></pre>
+
+            <div class="text-center">
+                <ul class="sync-pagination pagination-sm pagination"><li class="page-item first disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">First</a></li><li class="page-item prev disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Previous</a></li><li class="page-item active"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">1</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">2</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">3</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">4</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">5</a></li><li class="page-item next"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Next</a></li><li class="page-item last"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Last</a></li></ul>
+                <div id="sync-example-page-content" class="well">Page 1</div>
+                <ul class="sync-pagination pagination-sm pagination"><li class="page-item first disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">First</a></li><li class="page-item prev disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Previous</a></li><li class="page-item active"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">1</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">2</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">3</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">4</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">5</a></li><li class="page-item next"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Next</a></li><li class="page-item last"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Last</a></li></ul>
+            </div>
+
+            <h4>Bootstrap 4 example (in iframe)</h4>
+
+            <p>It shows how it look like with bootstrap 4 (version 4.0.0-alpha.4).</p>
+
+            <iframe src="./jQuery Pagination plugin_files/bootstrap-v4.html" class="b4-iframe"></iframe>
+
+            <p>
+
+            </p><h4>Alternative style pagination (with start and end page numbers)</h4>
+
+            <p>For that purpose (see example view) I suggest
+                <a href="https://github.com/flaviusmatis/simplePagination.js">flaviusmatis/simplePagination.js</a>
+                plugin.</p>
+
+            <p>JS code:</p>
+            <pre><code class="js hljs javascript">    $(<span class="hljs-string">'selector'</span>).pagination({
+        <span class="hljs-attr">items</span>: <span class="hljs-number">20</span>,
+        <span class="hljs-attr">itemOnPage</span>: <span class="hljs-number">8</span>,
+        <span class="hljs-attr">currentPage</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">cssStyle</span>: <span class="hljs-string">''</span>,
+        <span class="hljs-attr">prevText</span>: <span class="hljs-string">'&lt;span aria-hidden="true"&gt;&amp;laquo;&lt;/span&gt;'</span>,
+        <span class="hljs-attr">nextText</span>: <span class="hljs-string">'&lt;span aria-hidden="true"&gt;&amp;raquo;&lt;/span&gt;'</span>,
+        <span class="hljs-attr">onInit</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">// fire first page loading</span>
+        },
+        <span class="hljs-attr">onPageClick</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">page, evt</span>) </span>{
+            <span class="hljs-comment">// some code</span>
+        }
+    });</code></pre>
+
+            <div class="text-center">
+                <div id="alt-style-pagination-content" class="well">Page 1</div>
+                <ul id="alt-style-pagination" class="pagination simple-pagination"><li class="disabled"><span class="current prev"><span aria-hidden="true">«</span></span></li><li class="active"><span class="current">1</span></li><li><a href="http://josecebe.github.io/twbs-pagination/#page-2" class="page-link">2</a></li><li><a href="http://josecebe.github.io/twbs-pagination/#page-3" class="page-link">3</a></li><li><a href="http://josecebe.github.io/twbs-pagination/#page-4" class="page-link">4</a></li><li><a href="http://josecebe.github.io/twbs-pagination/#page-5" class="page-link">5</a></li><li class=""><span class="ellipse clickable">…</span></li><li><a href="http://josecebe.github.io/twbs-pagination/#page-19" class="page-link">19</a></li><li><a href="http://josecebe.github.io/twbs-pagination/#page-20" class="page-link">20</a></li><li><a href="http://josecebe.github.io/twbs-pagination/#page-2" class="page-link next"><span aria-hidden="true">»</span></a></li></ul>
+            </div>
+
+            <h4>Methods 'enable' and 'disable' in action</h4>
+
+            <div class="text-center">
+                <div id="enable-disable-pagination-content" class="well">Page 1</div>
+                <ul id="enable-disable-pagination" class="pagination pagination-sm"><li class="page-item first disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">First</a></li><li class="page-item prev disabled"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Previous</a></li><li class="page-item active"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">1</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">2</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">3</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">4</a></li><li class="page-item"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">5</a></li><li class="page-item next"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Next</a></li><li class="page-item last"><a href="http://josecebe.github.io/twbs-pagination/#" class="page-link">Last</a></li></ul>
+            </div>
+
+            <p>Push the buttons...</p>
+
+            <div class="text-center">
+                <button id="enable-pagination" class="btn btn-default">Enable</button>
+                <button id="disable-pagination" class="btn btn-default">Disable</button>
+            </div>
+
+            <p>JS code:</p>
+
+            <pre><code class="js hljs javascript">    <span class="hljs-comment">// ### IF YOU DON'T PASS onPageClick FUNCTION IN OPTIONS OBJECT</span>
+    <span class="hljs-comment">// ### YOU SHOULD FIRE FIRST PAGE CLICK INDEPENDENTLY</span>
+    <span class="hljs-comment">// ### BECAUSE PLUGIN DOESN'T HAVE ANY CALLBACK</span>
+    <span class="hljs-comment">// ### TO FIRE IT DURING INITIALIZATION</span>
+    <span class="hljs-keyword">var</span> $edPag = $(<span class="hljs-string">'#enable-disable-pagination'</span>).twbsPagination({
+        <span class="hljs-attr">totalPages</span>: <span class="hljs-number">20</span>
+    }).on(<span class="hljs-string">'page'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">evt, page</span>) </span>{
+        $(<span class="hljs-string">'#enable-disable-pagination-content'</span>).text(<span class="hljs-string">'Page '</span> + page);
+    });
+
+    $(<span class="hljs-string">'#enable-pagination'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        $edPag.twbsPagination(<span class="hljs-string">'enable'</span>);
+    });
+
+    $(<span class="hljs-string">'#disable-pagination'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        $edPag.twbsPagination(<span class="hljs-string">'disable'</span>);
+    });</code></pre>
+
+            <h3>
+                <a id="license" class="anchor" href="http://josecebe.github.io/twbs-pagination/#license"><span class="octicon octicon-link"></span></a>License</h3>
+
+            <p>Copyright 2014 Eugene Simakin</p>
+            <p>
+                Licensed under the Apache License, Version 2.0 (the "License");
+                you may not use this file except in compliance with the License.
+                You may obtain a copy of the License at</p>
+
+            <p><a href="http://www.apache.org/licenses/LICENSE-2.0.html">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+            <p>
+                Unless required by applicable law or agreed to in writing, software
+                distributed under the License is distributed on an "AS IS" BASIS,
+                WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+                See the License for the specific language governing permissions and
+                limitations under the License.</p>
+
+        </section>
+
+        <aside id="sidebar" class="hidden-xs">
+            <div id="navigation" data-spy="affix" data-offset-top="200" class="affix-top">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class=""><a class="active" href="http://josecebe.github.io/twbs-pagination/#demo">Demo</a>
+                    </li><li><a href="http://josecebe.github.io/twbs-pagination/#options-and-events">Options explanation</a>
+                    </li><li><a href="http://josecebe.github.io/twbs-pagination/#examples">Examples</a>
+                    </li><li><a href="http://josecebe.github.io/twbs-pagination/#license">License</a>
+                </li></ul>
+            </div>
+        </aside>
+    </div>
+</div>
+
+
+
+
+</body></html>

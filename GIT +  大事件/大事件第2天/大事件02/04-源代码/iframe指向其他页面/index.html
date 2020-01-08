@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,html {
+            margin:0px;
+            padding: 0px;
+            width: 100%;
+            height: 500px;
+            background-color: pink;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 点击a标签,打开的01,02,03页面,都是用iframe打开的. -->
+    <a target="myIframe" href="./01.html">01页面</a>
+    <a target="myIframe" href="./02.html">02页面</a>
+    <a target="myIframe" href="./03.html">03页面</a>
+    <br>
+    <iframe name="myIframe" src="" frameborder="0"></iframe>
+    <br>
+    <p>这是主页面</p>
+</body>
+</html>

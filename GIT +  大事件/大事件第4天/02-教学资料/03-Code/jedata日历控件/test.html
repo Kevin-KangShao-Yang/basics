@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <link rel="stylesheet" href="./skin/jedate.css">
+  <script src="./jedate.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="test03" placeholder="YYYY-MM-DD">
+    <input type="button" value="获取日期" id="btnDate">
+</body>
+
+<script>
+  //1.日期控件 初始化 ：指定 日期文本框，指定 日期参数（日期格式）
+  jeDate("#test03", {
+    format: "YYYY-MM-DD"
+  });
+
+  //2.获取 日期文本框 的 日期值  
+  document.getElementById('btnDate').onclick=function(){
+    console.log(document.getElementById('test03').value);
+  }
+
+</script>
+
+</html>
