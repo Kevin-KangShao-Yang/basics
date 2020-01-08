@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动画-案例《手风琴》</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 2400px;
+        }
+
+        #box {
+            width: 1200px;
+            height: 400px;
+            border: 2px solid red;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        #box li {
+            width: 240px;
+            height: 400px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li><img src="./images/collapse/1.jpg" alt=""></li>
+            <li><img src="./images/collapse/2.jpg" alt=""></li>
+            <li><img src="./images/collapse/3.jpg" alt=""></li>
+            <li><img src="./images/collapse/4.jpg" alt=""></li>
+            <li><img src="./images/collapse/5.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        /* 
+        需求分析
+            1.鼠标移入每一个li元素 ： 自己的宽度变成800，其他兄弟宽度变成100
+            2.鼠标移出box : 所有的后代li元素宽度变成240
+        */
+
+        //1.鼠标移入每一个li元素 ： 自己的宽度变成800，其他兄弟宽度变成100
+        $('#box li').mouseenter(function(){
+            $(this).stop(true,false).animate({width:800}).siblings().stop(true,false).animate({width:100});
+        });
+
+        //2.鼠标移出box : 所有的后代li元素宽度变成240
+        $('#box').mouseleave(function(){
+            /* 
+            $(this) : box大盒子
+            $(this).children() : ul
+            $(this).find() : ul + li
+            */
+            $(this).find('li').stop(true,false).animate({width:240});
+        });
+    </script>
+</body>
+
+</html>

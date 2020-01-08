@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        .small {
+            width: 180px;
+        }
+
+        li {
+            float: left;
+            list-style: none;
+            margin-right: 20px;
+        }
+        ul {
+            width: 1000px;
+            margin: 0 auto;
+
+            height: 160px;
+
+        }
+        .father {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .father #bigPic {
+            width: 1000px;
+        }
+
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li><a href="images/01.jpg" title="美女A"><img src="images/01.jpg" alt="" class="small"/></a></li>
+    <li><a href="images/02.jpg" title="美女B"><img src="images/02.jpg" alt="" class="small"/></a></li>
+    <li><a href="images/03.jpg" title="美女C"><img src="images/03.jpg" alt="" class="small"/></a></li>
+    <li><a href="images/04.jpg" title="美女D"><img src="images/04.jpg" alt="" class="small"/></a></li>
+    <li><a href="images/05.jpg" title="美女E"><img src="images/05.jpg" alt="" class="small"/></a></li>
+</ul>
+<p>美女A</p>
+<div class="father">
+    <img src="images/01.jpg" alt="" id="bigPic"/>
+</div>
+
+<script src="./jquery-1.12.4.js"></script>
+
+<script>
+    $(function(){
+        /* 
+        需求 ： 点击每一个a标签 ： （1）取出自己的href属性赋值给大图的src 
+        (2)取出自己的title属性赋值给p标签的 innerText
+        */
+        $('#ul1>li>a').click(function(){
+            //（1）取出自己的href属性赋值给大图的src 
+            
+            $('#bigPic').attr('src',$(this).attr('href'));
+            //(2)取出自己的title属性赋值给p标签的 innerText
+            $('p').text($(this).attr('title'));
+
+            //阻止a标签默认跳转
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>

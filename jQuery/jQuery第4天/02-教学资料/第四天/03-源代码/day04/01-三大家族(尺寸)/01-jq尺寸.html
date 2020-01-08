@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .one {
+            width: 200px;
+            border: 10px solid red;
+            padding: 20px;
+            margin: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="one" class="one" style="height: 200px;"></div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        1.复习原生DOM操作三大家族
+            a.offset家族 ： 获取元素自身的真实宽高与位置
+                offsetWidth/Height : width + padding + border 
+                offsetParent:  获取最近的定位父级
+                offsetLeft/Top : 获取左/上 外边框  距离 定位父级  左/上 内边框距离
+            b.scroll家族 ： 获取元素内容的真实宽高与位置
+                scrollWidth/scrollHeight
+                scrollLeft/sctollTop
+                应用场景 ： 固定导航
+            c.client家族 ： 获取元素可视区域的真实宽高与位置
+                clientWidth/clientHeight ： 视口
+                clientLeft/clientTop
+                应用场景 ： 响应式布局
+
+            原生三大家族特点
+                a.可以获取行内和行外
+                b.获取number，不带单位
+                c.只能获取，无法修改
+
+        2.jq尺寸
+            outerWidth() / outerHeight() : 获取width+padding+border
+            width()/height() : 获取width/height
+            innerWidth()/innerHeight() : 获取width + padding
+            outerWidth(true)/outerHeight(true) : 获取width+padding+border + margin
+
+            jq三大家族特点
+                a.可以获取行内和行外
+                b.获取number，不带单位
+                c.jq可以修改的，本质修改width/height
+         */
+
+
+        //1. outerWidth() / outerHeight() : 获取width+padding+border
+        console.log($('.one').outerWidth(),$('.one').outerHeight());
+
+       // $('.one').outerWidth(500);//修改本质 改width/height
+        
+        //2. width()/height() : 获取width/height
+        console.log($('.one').width(),$('.one').height()); //200 200
+
+        //3. innerWidth()/innerHeight() : 获取width + padding
+        console.log($('.one').innerWidth(),$('.one').innerHeight());//240 240
+        
+        //4. outerWidth(true)/outerHeight(true) : 获取width+padding+border + margin
+        console.log($('.one').outerWidth(true),$('.one').outerHeight(true));//320 320
+    </script>
+
+</body>
+
+</html>

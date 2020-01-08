@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        li {
+            line-height: 38px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="vendor/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //隔行变色，鼠标进入并高亮显示；
+            $("ul li:even").css("background","skyblue");
+            $("ul li:odd").css("background","yellowgreen");
+
+            //鼠标进入高亮显示；（不用排他思想）
+            $("ul li").mouseover(function () {
+                $("ul li:even").css("background","skyblue");
+                $("ul li:odd").css("background","yellowgreen");
+                //当前的变色，其他的不变
+                $(this).css("background","red");
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>请叫我大康书记的化身......</li>
+        <li>请叫我大康书记的化身......</li>
+        <li>请叫我大康书记的化身......</li>
+        <li>请叫我大康书记的化身......</li>
+        <li>请叫我大康书记的化身......</li>
+        <li>请叫我大康书记的化身......</li>
+        <li>请叫我大康书记的化身......</li>
+        <li>请叫我大康书记的化身......</li>
+    </ul>
+</body>
+</html>

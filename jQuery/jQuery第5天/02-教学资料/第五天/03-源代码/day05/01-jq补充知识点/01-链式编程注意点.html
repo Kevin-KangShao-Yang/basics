@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        1.链式编程 ： 一个对象可以连续的调用方法
+            底层原理 ： 在对象的方法中返回自身
+         */
+         $('div:eq(1)').text('222222').css('color','red');
+
+
+        /* 
+        2.链式编程注意点
+            a.并不是所有的方法都支持链式
+                (1)获取类的方法，返回值是字符串。不能链式调用
+                (2)设置类的方法，返回的是jq对象，可以链式调用
+            b.并不是所有的方法都返回你想要的结果
+
+        总结 ： 链式语法过长就会导致潜在的bug
+            解决方案 ： 一条长链拆成多条链
+         */
+        console.log($('div:eq(1)').text());// "222222"
+
+        //a.并不是所有的方法都支持链式
+        //$('div:eq(1)').text().css('color','green');
+        $('div:eq(1)').text();
+        $('div:eq(1)').css('color','green');
+
+        //b.并不是所有的方法都返回你想要的结果
+        //需求： 给第二个div设置文字 22222 ，给第一个div设置文字 11111 给第三个div设置文字33333
+        /* 
+        (1)$('div:eq(1)').text('222222')  -> 第二个div
+        (2) prev().text('111111').  -> 第一个div
+        (3) next()   ->第二个div
+         */
+        //$('div:eq(1)').text('222222').prev().text('111111').next().text('333333');
+
+        //end() : 回退DOM树之前的状态
+        // console.log($('div:eq(1)').text('222222').prev());//第一个div
+        // console.log($('div:eq(1)').text('222222').prev().end());//回退DOM树状态， 第二个div
+
+   // $('div:eq(1)').text('222222').prev().text('111111').end().next().text('333333');
+
+        $('div:eq(1)').text('222222');
+        $('div:eq(1)').prev().text('111111');
+        $('div:eq(1)').next().text('333333');
+       console.log( jQuery('div'));
+       
+        
+    </script>
+</body>
+</html>

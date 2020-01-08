@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: red;
+        }
+
+        .comment li {
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        需求分析
+        1.鼠标移入每一个li元素 ： 当前移入的li元素和以前的兄弟元素变成实心。 后面所有的兄弟元素空心 
+        2.鼠标单击每一个li元素 ： 记录当前点击的li元素
+        3.鼠标移出每一个li元素 ： 点击的li元素和以前的元素 变成实心 。 后面的元素变成空心
+         */
+        var kx_wjx = '☆';
+        var sx_wjx = '★';
+
+        
+
+        $('.comment>li')
+        .on('mouseenter',function(){
+            //当前移入的li元素和以前的兄弟元素变成实心。 后面所有的兄弟元素空心 
+            $(this).text(sx_wjx).prevAll().text(sx_wjx).end().nextAll().text(kx_wjx);
+            
+        })
+        .on('click',function(){
+            //记录当前点击的li元素 (1)全局index记录下标 (2)行内自定义属性
+            $(this).attr('aaa','current').siblings().removeAttr('aaa');
+        })
+        .on('mouseleave',function(){
+            //先全部设置空心避免用户未点击
+            $('.comment>li').text(kx_wjx);
+            //点击的li元素和以前的元素 变成实心 。 后面的元素变成空心
+            // 属性选择器  [属性名 = “属性值”]
+            $('[aaa="current"]').text(sx_wjx).prevAll().text(sx_wjx).end().nextAll().text(kx_wjx);
+        });
+
+
+    </script>
+</body>
+</html>

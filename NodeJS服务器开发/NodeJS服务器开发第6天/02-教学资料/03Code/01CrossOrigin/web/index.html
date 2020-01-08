@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script src="./jquery-1.12.4.js"></script>
+</head>
+
+<body>
+  <input type="button" value="跨域请求" id='btnTest'>
+  <input type="button" value="JQ -JSonP跨域请求" id='btnTest1'>
+  <input type="button" value="手动 -JSonP跨域请求" id='btnTest2'>
+  <input type="button" value="手动 -JSonP跨域请求 - 获取服务器数据" id='btnTest3'>
+</body>
+
+<script>
+  $(function () {
+    $('#btnTest').click(function () {
+      $.ajax({
+        url: 'http://127.0.0.1:3747/showlove',
+        method: 'post',
+        success: function (backData) {
+          console.log(backData);
+        }
+      });
+    });
+
+    $('#btnTest1').click(function () {
+      $.ajax({
+        url: 'http://127.0.0.1:3747/showlove1',
+        // method:'get' --> jsonp的请求 都是 get
+        dataType: 'jsonp',
+        success: function (backData) {
+          console.log(backData);
+        }
+      });
+    });
+
+
+    $('#btnTest2').click(function () {
+      //1.动态创建 一个 script标签
+      let scriptObj = document.createElement('script');
+      //2.设置 标签的 src 属性 为 跨域请求的 url
+      scriptObj.src = 'http://127.0.0.1:3747/showlove1?i=' + Math.random();
+      //3.将script标签对象 添加到 dom树
+      $('body').append(scriptObj);
+    });
+
+    
+    // 目标：获取 服务器 返回的 爱人的名字，传给 mylove 方法 来使用
+    // 问题：
+    //     a.跨域请求 - 方案：动态创建 script 标签完成跨域请求
+    //     b.数据在服务器端
+    $('#btnTest3').click(function () {
+      //1.动态创建 一个 script标签
+      let scriptObj = document.createElement('script');
+      //2.设置 标签的 src 属性 为 跨域请求的 url
+      scriptObj.src = 'http://127.0.0.1:3747/showLoverName2?callback=mylove&i=' + Math.random();
+      //3.将script标签对象 添加到 dom树
+      $('body').append(scriptObj);
+    });
+  })
+
+  function mylove(loverName) {
+    alert('讨厌~~死鬼~~~' + loverName);
+  }
+</script>
+
+</html>

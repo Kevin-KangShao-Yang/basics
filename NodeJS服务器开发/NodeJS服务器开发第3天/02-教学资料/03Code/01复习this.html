@@ -1,0 +1,67 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    // 箭头函数里的 this
+    function showLove() {
+      console.log('show love~~~');
+      console.log(this); // window
+    }
+
+    showLove();
+
+    let showLove2 = () => {
+      console.log('show love2~~~');
+      console.log(this); // window
+    }
+
+    showLove2();
+
+    // -----------------------------------------------
+    console.log('------------------------------------');
+    function sayHi() {
+      console.log('sayHi');
+      console.log(this); // window
+
+      function hi() {
+        console.log('hi');
+        console.log(this); // window
+      }
+
+      hi();
+    }
+
+    sayHi();
+
+    console.log('-----------------箭头函数-------------------');
+
+    function sayHi2() {
+      console.log('sayHi2');
+      console.log(this); // window
+
+      // 箭头函数中的 this 和 调用无关，而是 在【声明】时，把它的上下文 自动设置个 this
+      // 箭头函数中 其实 没有 this 属性 -->  而是 直接 从 所在 上下文中 获取 this
+      // hi2 函数 中 this 就是 sayHi2 函数的 作用域 （上下文） -> window.sayHi2() 时 传进来的 window
+      let hi2 = () => {
+        console.log('hi2');
+        console.log(this); // window
+      }
+
+      hi2();
+    }
+
+    window.sayHi2();
+
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

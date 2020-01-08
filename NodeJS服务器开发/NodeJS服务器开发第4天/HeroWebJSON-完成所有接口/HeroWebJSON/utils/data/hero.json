@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "瑞琪",
+    "skill": "撒娇",
+    "icon": "72bab65585b19702d82f34adefa06e4f",
+    "isDelete": false
+  },
+  {
+    "id": 2,
+    "name": "孙悟空",
+    "skill": "变~~",
+    "icon": "/imgs/sunwukong.png",
+    "isDelete": false
+  },
+  {
+    "id": 3,
+    "name": "陈真",
+    "skill": "阿达",
+    "icon": "bc28eb1c0c367d880b2937b5fc2a6f0e",
+    "isDelete": false
+  },
+  {
+    "id": 4,
+    "name": "陈真2",
+    "skill": "阿达2",
+    "icon": "011195bcf53c26092fc11c290a434ce9",
+    "isDelete": false
+  }
+]

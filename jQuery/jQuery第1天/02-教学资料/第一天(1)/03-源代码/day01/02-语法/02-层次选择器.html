@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="father">我是爷爷
+        <div id="son">
+            <p>大表哥</p>
+            <p>二表哥</p>
+            <p>三表哥</p>
+        </div>
+        <div>
+            <p>我</p>
+        </div>
+        <p>小姑</p>
+    </div>
+
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            /* 
+            层次选择器
+              子代选择器 ： $('div>p')
+              后代选择器 ： $('div p')
+            */
+           
+           //1. 子代选择器 ： $('div>p') 
+           //获取小姑
+           $('#father>p').css('color','hotpink');
+
+
+            //2. 后代选择器 ： $('div p')
+            //获取爷爷所有的子孙后代
+            $('#father p').css('color','red');
+        });
+        
+    </script>
+</body>
+</html>

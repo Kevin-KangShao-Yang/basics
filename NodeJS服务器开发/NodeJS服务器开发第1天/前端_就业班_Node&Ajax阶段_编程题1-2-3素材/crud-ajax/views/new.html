@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>传智播客 - 黑马程序员</title>
+  <link href="/public/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">传智播客 - 黑马程序员</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
+        <h2 class="sub-header">添加员工</h2>
+        <form id="form">
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" class="form-control" id="nameID" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="gender">性别</label>
+            <div class="radio">
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="inlineRadio1" value="m" required> 男
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="inlineRadio2" value="f" required> 女
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="birthday">出生日期</label>
+            <input type="date" class="form-control" id="birthdayID" name="birthday" required>
+          </div>
+          <div class="form-group">
+            <label for="employmentDate">入职日期</label>
+            <input type="date" class="form-control" id="employmentDateID" name="employmentDate" required>
+          </div>
+          <div class="form-group">
+            <label for="mobilePhone">手机号码</label>
+            <input type="text" class="form-control" id="mobilePhoneID" name="mobilePhone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" class="form-control" id="emailID" name="email" required>
+          </div>
+          <a class="btn btn-danger" href="/">取消</a>
+          <button type="button" class="btn btn-primary">保存</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="/public/vendor/jquery/jquery.js"></script>
+  <script src="/public/vendor/art-template/template-web.js"></script>
+  <script>
+    // 业务实现代码写到这里
+
+    //点击保存获取内容上传
+    $('.btn-primary').click(function () {
+      let sex = $('input[name="gender"]:checked').val();
+      //获取所有输入框的值
+      let formArr = {
+        name: $('#nameID').val(),
+        birthday: $('#birthdayID').val(),
+        employmentDate: $('#employmentDateID').val(),
+        mobilePhone: $('#mobilePhoneID').val(),
+        email: $('#emailID').val(),
+        gender: sex
+      }
+      $.ajax({
+        url: 'employees/create',
+        method: 'post',
+        dataType: 'json',
+        data: formArr,
+        success: function (backData) {
+          alert("新增成功");
+          window.location.href = "./index.html";
+        }
+      });
+    })
+  </script>
+</body>
+
+</html>

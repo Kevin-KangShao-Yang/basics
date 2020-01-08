@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="滑入" id="slideDown" />
+    <input type="button" value="滑出" id="slideUp" />
+    <input type="button" value="切换" id="slideToggle" /><br /><br />
+    <div id="div1"></div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //1.滑入 slideDown
+        $('#slideDown').click(function () {
+            /* 
+            a. 滑入滑出用法与显示隐藏一致
+            b. 与现实隐藏唯一的区别是 ： 默认不传参数也有动画，400
+            */
+           $('div').slideDown();
+        });
+        //2.滑出 slideUp
+        $('#slideUp').click(function () {
+            $('div').slideUp(function(){
+                alert('我走了');
+            });
+        });
+
+        //3.切换 slideToggle
+        $('#slideToggle').click(function () {
+            /*
+            高度为0 ： 则滑入
+            高度不为0：则滑出 
+             */
+            $('div').slideToggle();
+        });
+    </script>
+</body>
+
+</html>

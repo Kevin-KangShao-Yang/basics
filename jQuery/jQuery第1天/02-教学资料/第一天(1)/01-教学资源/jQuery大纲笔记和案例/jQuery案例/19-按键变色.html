@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .wrap {
+            width: 400px;
+            height: 400px;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            text-align: center;
+        }
+
+        .wrap div {
+            width: 400px;
+            height: 300px;
+            background: pink;
+            font-size: 30px;
+            text-align: center;
+            line-height: 300px;
+        }
+    </style>
+    <script src="vendor/jquery.js"></script>
+    <script>
+        $(function () {
+            //需求：在页面中按下键盘上的键的时候，获取他的Unicode编码给定body背景色；
+            $(document).keyup(function (event) {
+                //alert(event.keyCode);
+                //r:82;   p:80;    b:66;    o:79;    y:89;    s:83;
+                $("#keyCodeSpan").text(event.keyCode);
+                changeDivBackground(event.keyCode);
+            });
+
+            //封装一个方法，根据传递的参数值，改变div的背景色；
+            function changeDivBackground(num){
+                switch (num){
+                    case 82:
+                        $("#bgChange").css("background-color","red");
+                        break;
+                    case 80:
+                        $("#bgChange").css("background-color","purple");
+                        break;
+                    case 66:
+                        $("#bgChange").css("background-color","blue");
+                        break;
+                    case 79:
+                        $("#bgChange").css("background-color","orange");
+                        break;
+                    case 89:
+                        $("#bgChange").css("background-color","yellow");
+                        break;
+                    case 83:
+                        $("#bgChange").css("background-color","skyblue");
+                        break;
+                    default :
+                        $("#bgChange").css("background-color","pink");
+                        $("#keyCodeSpan").text("查无此键");
+                }
+            }
+
+
+        });
+    </script>
+</head>
+<body>
+
+    <div class="wrap">
+        <h1>按键改变颜色</h1>
+        <div id="bgChange">
+            keyCode为：
+            <span id="keyCodeSpan"></span>
+        </div>
+    </div>
+
+</body>
+</html>

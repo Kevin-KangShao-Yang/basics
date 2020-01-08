@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        /* 
+        链式编程语法 ： 一个对象可以调用它的方法
+        底层原理：在方法种返回自身
+         */
+
+
+        var person = {
+            name:'尼姑拉斯坤',
+            age:32,
+            sex:'男'
+        };
+
+
+        person.setName = function(str){
+            //this:person
+            this.name = str;
+
+            return this;
+        };
+
+        person.setAge = function(num){
+            //this:person
+            this.age = num;
+            //在方法种返回自身，用于链式调用
+            return this;
+        };
+
+        person.setSex = function(sex){
+            //this:person
+            this.sex = sex;
+
+            return this;
+        };
+
+        person.setName('保健坤').setAge(25).setSex('女');
+        console.log(person);
+        
+    </script>
+</body>
+</html>

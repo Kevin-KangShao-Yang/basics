@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 1000px;
+            text-align: center;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        .word {
+            font-weight: 700;
+        }
+
+        .typed-cursor {
+            opacity: 1;
+            display: none;
+        }
+
+        .saySection {
+            margin-top: 50px;
+        }
+
+        .saySection input {
+            font-size: 30px;
+        }
+
+        .saySection .txtSay {
+            padding-left: 10px;
+        }
+
+        .saySection .btnSay {
+            display: inline-block;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <h1>
+            <span class="word"></span>
+            <span class="typed-cursor">|</span> ！
+        </h1>
+        <div class="saySection">
+            <input type="text" id="inValue" class="txtSay" />
+            <input type="button" value="Say" id="btnSay" class="btnSay" />
+        </div>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+
+        $('.btnSay').click(function(){
+            
+            dazi($('.txtSay').val());
+        });
+
+        /**
+        * @description:酷炫的打字动画
+        * @param {type} text : 文本
+        * @return: 
+        */
+        var timeID = null;
+        function dazi(text) {
+            //1.每一次调用这个动画之前，清除以前的定时器，以本次为准
+            clearInterval(timeID);
+            //2.开始本次打字动画
+            //每过500ms添加一个字
+            //2.1 声明空字符串连接text
+            var str = '';
+            //2.2//每过500ms添加一个字
+            timeID = setInterval(function () {
+                if (str.length != text.length) {
+                    str += text[str.length];
+                    $('.word').text(str).show(500);
+                    $('.typed-cursor').fadeIn(250).fadeOut(250);
+                } else {
+                    clearInterval(timeID);
+                }
+            }, 500);
+        };
+
+        // dazi('黑马前端40期爱你么么哒');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>我是坤哥
+        <p>我是坤哥的小迷妹</p>
+    </div>
+    <img src="./images/0001.jpg" alt="">
+    <a href="http://www.itcast.cn">点我啊</a>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            /* 
+            1.复习原生的html属性操作
+                a.文本内容
+                    innerText ： 获取文本 （包含子元素的文本）
+                    innerHTML: 获取内容 （包含文本和标签）
+                b.标准属性
+                    src : img标签 路径
+                    href : a标签 链接
+                c.自定义属性
+                    getAttribute('属性名')
+                    setAttribute('属性名','属性值')
+                    removeAttribute('属性名')
+            
+            2. jq的html属性操作
+                a.文本内容
+                    $().text()
+                    $().html()
+                b.标准属性 + 自定义属性
+                    $().attr('属性名',属性值)
+                    $().removeAttr()
+            */
+            //1.文本内容
+            //1.1   $().text()
+            console.log($('div').text());
+            // $('div').text('我结婚了<p>我是坤哥的小迷妹</p>');
+            
+            //1.2   $().html()
+            console.log($('div').html());
+            $('div').html('我结婚了<p>我是坤哥的小迷妹</p>');
+            
+            //2.标准属性 + 自定义属性
+
+            //2.1 $().attr('属性名',属性值)
+
+            //src
+            console.log($('img').attr('src'));//./images/0001.jpg
+            $('img').attr('src','./images/0002.jpg');
+
+            //href
+            console.log($('a').attr('href'));//http://www.itcast.cn
+            $('a').attr('href','http://www.itheima.com');
+
+            //自定义属性
+            $('div').attr('aaa','啊啊啊');
+            console.log($('div').attr('aaa'));
+            
+            
+            
+            //2.2  $().removeAttr()
+            $('div').removeAttr('aaa');
+
+        });
+    </script>
+</body>
+</html>

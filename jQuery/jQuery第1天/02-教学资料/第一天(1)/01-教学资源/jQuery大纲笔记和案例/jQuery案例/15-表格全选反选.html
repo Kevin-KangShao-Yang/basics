@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+    <script src="vendor/jquery.js"></script>
+    <script>
+        jQuery(window).ready(function () {
+            //需求1：点击上面的input,下面所有的input和上面的checked值报纸一致；
+            //需求2：点击下面的每一个input,下面所有的input中有一个不是true，上面的input也是false；所有都是true，上面的才是true；
+
+
+            //需求1：点击上面的input,下面所有的input和上面的checked值报纸一致；
+            $("#j_cbAll").click(function () {
+                //下面所有的input和上面的checked值报纸一致;
+                //表单属性操作用prop；因为attr无法获取表单属性值，都是undefined；
+                $("#j_tb input").prop("checked",$(this).prop("checked"));
+            });
+
+            //需求2：点击下面的每一个input,下面所有的input中有一个不是true，上面的input也是false；所有都是true，上面的才是true；
+            $("#j_tb input").click(function () {
+//                alert($("#j_tb input:checked").length);
+                //判断：被选择的input是不是四个；如果不是四个那么上面的就是false，是4个上面的就是true；
+//                if($("#j_tb input:checked").length === 4){
+//                    $("#j_cbAll").prop("checked",true);
+//                }else{
+//                    $("#j_cbAll").prop("checked",false);
+//                }
+
+                //精简
+                $("#j_cbAll").prop("checked",$("#j_tb input:checked").length === 4);
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="j_cbAll"/>
+                </th>
+                <th>课程名称</th>
+                <th>所属学院</th>
+            </tr>
+        </thead>
+        <tbody id="j_tb">
+            <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>JavaScript</td>
+                <td>前端与移动开发学院</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>css</td>
+                <td>前端与移动开发学院</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>html</td>
+                <td>前端与移动开发学院</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>jQuery</td>
+                <td>前端与移动开发学院</td>
+            </tr>
+            <!--<tr>
+                <td><input type="checkbox"/></td>
+                <td>HTML5</td>
+                <td>前端与移动开发学院</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>CSS3</td>
+                <td>前端与移动开发学院</td>
+            </tr>-->
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

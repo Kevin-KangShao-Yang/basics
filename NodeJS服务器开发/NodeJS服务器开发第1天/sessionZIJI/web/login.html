@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-1.12.4.js"></script>
+</head>
+<body>
+    <form action="" method="" name="" id="formID">
+        <input type="text" id="nameID" name="username" placeholder="请输入用户名">
+        <input type="password" id="passwordId" name="paw" placeholder="请输入密码">
+        <input type="text" name="img" id="imgIDg" placeholder="请输入验证码">
+        <img src="/makecode" alt="验证码图片" >
+        <br>
+        <button type="button"  id="btnID">登录</button>
+    </form>
+</body>
+
+<script>
+$('#btnID').click(function () {
+    let inpSe = $('#formID').serialize();
+    console.log(inpSe);
+    $.ajax({
+    url:'/login',
+    method:'post',
+    data:inpSe,
+    success: function(backData){
+
+     alert(backData);
+     window.location.href='/list';
+    }
+    });
+})
+
+</script>
+</html>

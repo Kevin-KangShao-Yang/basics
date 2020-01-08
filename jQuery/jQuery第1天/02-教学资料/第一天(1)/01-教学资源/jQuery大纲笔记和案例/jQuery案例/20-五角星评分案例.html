@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: red;
+        }
+
+        .comment li {
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="vendor/jquery.js"></script>
+    <script>
+        jQuery(function () {
+            //设置两个五角星
+            var SXWJX = "★";
+            var KXWJX = "☆";
+
+            //需求1: 鼠标进入哪个li，让当前的li和之前的所有li内容设置为实心五角星，后面的设置为空心五角星；
+            //需求2: 鼠标移开当前li，让之前记录位置(默认没有)的li和之前的所有li内容设置为实心五角星，后面的设置为空心五角星；
+            //需求3: 鼠标点击哪个li，这个li就变成别记录的五角星，然后设置一个类名，方便下次获取，其他的去掉类名；
+
+
+
+            //需求1: 鼠标进入哪个li，让当前的li和之前的所有li内容设置为实心五角星，后面的设置为空心五角星；
+            $(".comment li").mouseenter(function () {
+                //让当前的li和之前的所有li内容设置为实心五角星，后面的设置为空心五角星；
+                $(this).text(SXWJX).prevAll("li").text(SXWJX).end().nextAll("li").text(KXWJX);
+            });
+            //需求2: 鼠标移开当前li，让之前记录位置(默认没有)的li和之前的所有li内容设置为实心五角星，后面的设置为空心五角星；
+            $(".comment li").mouseout(function () {
+                //判断：有记录以记录位置为基准，没有记录位置，全部设置空五角星；
+                $(".comment li").text(KXWJX);
+                //有就覆盖掉
+                if($(".current").length === 1){
+                    //让之前记录位置(默认没有)的li和之前的所有li内容设置为实心五角星，后面的设置为空心五角星；
+                    $(".current").text(SXWJX).prevAll("li").text(SXWJX).end().nextAll("li").text(KXWJX);
+                }
+            });
+            //需求3: 鼠标点击哪个li，这个li就变成别记录的五角星，然后设置一个类名，方便下次获取，其他的去掉类名；
+            $(".comment li").click(function () {
+                $(this).addClass("current").siblings("li").removeClass("current");
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+
+</body>
+
+</html>

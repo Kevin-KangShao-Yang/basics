@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>关灯</button>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            /* 
+            需求： 点击按钮
+                （1）如果文字是关灯 ： body设置为黑色，自己文字变成开灯
+                （2）如果文字是开灯 ： body设置为默认色，自己文字变成关灯
+            */
+
+            $('button').click(function(){
+                console.log(this);//DOM对象
+                /* 
+                this和$(this)区别
+                 this : 是DOM对象， 只能使用DOM语法
+                 $(this) : 是jq对象， 只能使用jq语法
+                */
+
+                if($(this).text() == '关灯'){
+                    // jq对象只能使用jq的语法
+                    $(this).text('开灯');
+                    $(document.body).css('backgroundColor','black');
+                }else{
+                    //dom对象只能使用dom语法
+                    this.innerText = '关灯';
+                    document.body.style.backgroundColor = '';
+                }
+                
+            });
+        });
+    </script>
+</body>
+</html>

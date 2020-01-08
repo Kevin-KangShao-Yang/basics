@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            width: 200px;
+            background-color: teal;
+            height: 200px;
+            font-size: 20px;
+        }
+
+        .btn-box {
+            width: 30px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+
+<body>
+    <h1>城市选择：</h1>
+    <select id="left" name="src-city" multiple>
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+        <option value="3">深圳</option>
+        <option value="4">广州</option>
+        <option value="5">西红柿</option>
+    </select>
+    <div class="btn-box">
+        <!--实体字符-->
+        <button id="btn1"> &gt;&gt; </button>
+        <button id="btn2"> &lt;&lt; </button>
+        <button id="btn3"> &gt;</button>
+        <button id="btn4"> &lt; </button>
+    </div>
+    <select id="right" name="tar-city" multiple>
+    </select>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //1.全部右移
+        $('#btn1').click(function () {
+            $('#right').append( $('#left').children('option'));
+        });
+
+        //2.全部左移
+        $('#btn2').click(function () {
+            //$('#left').append( $('#right').children('option'));
+            $('#right>option').appendTo( $('#left'));
+        });
+        //3.选中右移
+        $('#btn3').click(function () {
+            //选中左边selected为true的option  添加到   右边
+            $('#left>option:selected').appendTo($('#right'));
+        });
+        //4.选中左移
+        $('#btn4').click(function () {
+            ////选中右边selected为true的option  添加到   左边
+            $('#right>option:selected').appendTo($('#left'));
+        });
+    </script>
+</body>
+
+</html>

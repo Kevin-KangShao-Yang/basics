@@ -1,0 +1,36 @@
+﻿<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script src="./jquery-1.12.4.js"></script>
+</head>
+
+<body>
+  <form id='f1' action="/login" method="post">
+    <input type="text" name='usrname' />
+    <input type="file" name="usrPic" id="usrPic">
+    <input type="button" value="上传" id="btnLogin">
+  </form>
+</body>
+
+<script>
+  $(function () {
+    $('#btnLogin').click(function () {
+      let fd = new FormData(document.getElementById('f1'));
+
+      $.ajax({
+        url: '/up',
+        method: 'post',
+        data: fd,
+        processData:false,
+        contentType:false,
+        success: function (backData) {
+          alert(backData);
+        }
+      });
+    });
+  })
+</script>
+
+</html>

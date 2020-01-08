@@ -1,0 +1,37 @@
+﻿<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script src="./jquery-1.12.4.js"></script>
+</head>
+
+<body>
+  <form id='f1' action="/login" method="post">
+    <input type="text" name='usrname' />
+    <input type="password" name='pwd' />
+    <input type="button" value="登录" id="btnLogin">
+  </form>
+</body>
+
+<script>
+  $(function () {
+    $('#btnLogin').click(function () {
+      let data = $('#f1').serialize();
+      $.ajax({
+        url: '/login',
+        method: 'post',
+        data: data,
+        success: function (backData) {
+          alert(backData.msg);
+
+          if (backData.code == 200) {
+            window.location = '/list';
+          }
+        }
+      });
+    });
+  })
+</script>
+
+</html>

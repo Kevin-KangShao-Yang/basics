@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>固定导航栏</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top,
+        .nav {
+            width: 1423px;
+            margin-left: 50%;
+            transform: translate(-50%);
+        }
+
+        .main {
+            width: 1000px;
+            margin: 10px auto;
+        }
+
+        img {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="top">
+        <img src="images/top.png" />
+    </div>
+    <div class="nav">
+        <img src="images/nav.png" />
+    </div>
+    <div class="main">
+        <img src="images/main.png" />
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //1.给页面注册滚动条事件
+        $(window).scroll(function(){
+            //2.获取页面滚动的距离
+            if($(window).scrollTop() > $('.top').height()){
+                $('.nav').css({
+                    position:'fixed',
+                    left:0,
+                    top:0
+                });
+
+                //设置main的marginTop解决固定定位脱标导致顿闪问题
+                $('.main').css('marginTop',10 + $('.nav').height() + 'px');
+            }else{
+                $('.nav').css({
+                    position:'static',
+                });
+
+                $('.main').css('marginTop','10px');
+            }
+        });
+    </script>
+</body>
+
+</html>

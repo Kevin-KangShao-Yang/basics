@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-moz-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        .wrap {
+            width: 1000px;
+            text-align: center;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        .word {
+            font-weight: 700;
+        }
+
+        .typed-cursor {
+            opacity: 1;
+            -webkit-animation: blink .7s infinite;
+            -moz-animation: blink .7s infinite;
+            animation: blink .7s infinite;
+            display: none;
+        }
+
+        .saySection {
+            margin-top: 50px;
+        }
+
+        .saySection input {
+            font-size: 30px;
+        }
+
+        .saySection .txtSay {
+            padding-left: 10px;
+        }
+
+        .saySection .btnSay {
+            display: inline-block;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="vendor/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //需求：封装一个方法，传递进去一个字符串，利用定时器每隔一段时间输出一个内容；完成后清除定时器；
+                    //1.页面加载的时候，调用一次，内容为："红鲤鱼与绿鲤鱼与驴";
+                    //2.在input里面输入内容后点击按钮后，在次调用，内容为：input的value值;
+            //页面中只能有一个定时器；
+            var timer = null;
+
+            //页面加载默认的内容；
+            fn("红鲤鱼与绿鲤鱼与驴");
+            //点击按钮，显示的是input里面的value值
+            $("#btnSay").click(function () {
+                fn($("#inValue").val());
+            });
+
+
+            //封装一个方法；
+            //步骤：
+            //0.显示插入条光标；
+            //1.先定义一个变量num；以后可以自增，作为索引值用；然后定义一个定时器；新的字符串；
+            //2.定时器里面先把字符串添加到word盒子里面去；然后num++;
+            //3.全部输入以后清除定时器；
+            //4.隐藏插入条光标；
+            function fn(str){
+                //0.显示插入条光标；要用定时器，先清除定时器；
+                clearInterval(timer);
+                $(".typed-cursor").show();
+                //1.先定义一个变量num，可以自增；作为索引值用；然后定义一个定时器；新的字符串；
+                var num = 0;
+                var newStr = "";
+                timer = setInterval(function () {
+                    //判断：如果能够获取内容就添加，如果不能获取内容了(undefined)，那么就清除定时器；
+                    if(str[num] !== undefined){
+                        //2.定时器里面先把字符串添加到word盒子里面去；然后num++;
+                        newStr += str[num];//字符串可以当数组操作；  str.charAt(num);
+                        $(".word").text(newStr);
+                        num++;
+                    }else{
+                        //3.全部输入以后清除定时器；
+                        clearInterval(timer);
+                        //4.隐藏插入条光标；
+                        $(".typed-cursor").hide();
+                    }
+                },300);
+            }
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <h1>
+            You want to say ：
+            <span class="word"></span>
+            <span class="typed-cursor">|</span> ！
+        </h1>
+        <div class="saySection">
+            <input type="text" id="inValue" class="txtSay"/>
+            <input type="button" value="Say" id="btnSay" class="btnSay"/>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>哼哼</button>
+    <button>哼哼</button>
+    <button>哼哼</button>
+    <button>哼哼</button>
+    <button>哼哼</button>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+
+        /* 
+        需求 ：点击按钮 ： 排他思想修改样式
+            （1）自身文字变哈哈，颜色变粉色 （2）其他按钮文字变哼哼，颜色默认
+         */
+
+        $('button').click(function () {
+
+            console.log($(this).text('哈哈'));
+            console.log($(this).text('哈哈').css('backgroundColor', 'pink'));
+
+            /* 
+            链式编程语法 ： 一个对象可以连续调用方法
+                jq的方法会返回一个jq对象，既然是jq对象，就可以继续调用它的方法
+             */
+            $(this).text('哈哈').css('backgroundColor', 'pink').siblings().text('哼哼').css('backgroundColor', '');
+
+
+            //（1）自身文字变哈哈，颜色变粉色 （2）其他按钮文字变哼哼，颜色默认
+            // $(this).text('哈哈');
+            // $(this).css('backgroundColor','pink');
+            // $(this).siblings().text('哼哼');
+            // $(this).siblings().css('backgroundColor','');
+        });
+
+    </script>
+</body>
+
+</html>

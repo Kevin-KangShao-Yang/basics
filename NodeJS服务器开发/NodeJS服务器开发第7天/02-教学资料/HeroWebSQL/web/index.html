@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>英雄列表</title>
+
+  <!-- Bootstrap -->
+  <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style>
+    .wrap {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/bg03.jpg') center bottom no-repeat;
+      overflow: auto;
+    }
+
+    .navbar-brand {
+      padding: 10px 15px;
+    }
+
+    .logout {
+      font-weight: 900;
+      font-size: 20px;
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    .logout:hover {
+      text-decoration: none;
+      color: yellowgreen;
+    }
+
+    #my-table th {
+      text-align: center;
+    }
+
+    #my-table td {
+      text-align: center;
+      line-height: 80px;
+      padding: 0;
+      padding: 10px;
+    }
+
+    td img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .username {
+      font-weight: 900;
+      color: hotpink;
+      background-color: yellowgreen;
+    }
+
+    .pagination {
+      margin: 0px;
+      padding: 0px;
+      font-size: 0;
+      line-height: 1;
+    }
+
+    .pagination li {
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    .mp15 {
+      margin-top: 15px;
+    }
+
+    .table {
+      margin-bottom: 0;
+    }
+
+    .table-bordered>thead>tr>td,
+    .table-bordered>thead>tr>th {
+      border-bottom-width: 1px;
+    }
+
+    .page-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <nav class="navbar  navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mymenu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="images/logo.png"></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+              <div class="row">
+                <div class="col-md-6 page-title">英雄列表</div>
+                <div class="col-md-6 text-right">当前位置：首页</div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-9">
+                </div>
+                <div class="col-md-3">
+                  <a href="./add.html" class="btn btn-success pull-right">新增</a>
+                </div>
+
+              </div>
+
+              <table id="my-table" class="table table-bordered mp15">
+                <thead>
+                  <tr>
+                    <th width="25%">头像</th>
+                    <th width="25%">姓名</th>
+                    <th width="25%">技能</th>
+                    <th width="25%">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="4">对不起，没有数据~~~</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-footer text-center">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="./lib/bootstrap/js/jquery-1.12.4.js"></script>
+<script src="./lib/js/jquery-extends.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- 导入 模板引擎 js 文件 -->
+<script src="./lib/js/template-web.js"></script>
+
+<!-- 行模板 -->
+<script id="trTemp" type="text/html">
+  {{each data v}}
+  <tr>
+      <td><img src="./uploads/{{v.icon}}" alt="" /></td>
+      <td>{{v.name}}</td>
+      <td>{{v.skill}}</td>
+      <td>
+        <a href="./edit.html?id={{v.id}}" data-id="{{v.id}}" class="btn btn-primary btn-edit">编辑</a>
+        <a  data-id="{{v.id}}" class="btn btn-danger btn-delete">删除</a>
+      </td>
+    </tr>
+  {{/each}}
+</script>
+
+<script>
+  //0.页面入口函数
+  $(function () {
+    // 加载英雄列表数据
+    loadList();
+  });
+
+  //1.加载 列表数据 方法 -----------------------------------
+  function loadList() {
+    $.ajaxWithCheck({
+      url: 'http://127.0.0.1:3747/list',
+      method: 'get',
+      success: function (backData) {
+        if (backData.code == 200) {
+          //调用模板方法，将数据转成 tr 标签代码
+          let strHtml = template('trTemp', backData);
+          //将 生成的 tr标签代码 设置给 表格的 tbody
+          $('#my-table>tbody').html(strHtml);
+        }
+      }
+    });
+  }
+
+  //2.删除操作 ---------------------------------------------
+  //找表格中 现在 和 未来的 删除按钮 ， 添加点击事件
+  $('#my-table').on('click', '.btn-danger', function () {
+    if (!confirm('您确认要删除这条可爱的数据吗？')) {
+      return;
+    }
+
+    //a.获取 被点击 按钮上保存的 data-id 值（要删除的 英雄 id）
+    let heroId = this.dataset.id; // this.getAttribute('data-id'))
+
+    // let that = this;// 将 被点击的按钮对象 存入 变量
+
+    //b.发送异步请求的 到 服务器的  /delete 路由接口
+    $.ajaxWithCheck({
+      url: '/delete',
+      method: 'post',
+      data: 'id=' + heroId,
+
+      //注意：【箭头函数】中的 this 创建函数时 确定的 -》 当前所处的 “上下文”
+      success: (backData) => {
+        if (backData.code == 202) {
+          //c.获取接口返回值，判断结果，如果删除成功，则 使用 js 把当前行 给删除
+
+          // 那么，在 删除 按钮的 点击事件中，this就是 被点击的按钮!
+          // console.log(this.dataset.id);
+          $(this).parents('tr').remove();
+        }
+      }
+    });
+  });
+</script>

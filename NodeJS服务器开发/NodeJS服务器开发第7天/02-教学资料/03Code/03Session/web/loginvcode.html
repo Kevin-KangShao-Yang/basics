@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script src="./jquery-1.12.4.js"></script>
+</head>
+
+<body>
+  <form action="" method="post">
+    <input type="text" name="txtName">
+    <input type="password" name="txtPwd"> <br>
+    <input type="text" name="txtVcode">
+    <img src="/makecode" alt="验证码图片" >
+    <br>
+    <input type="button" value="登 录" id='btnLogin'>
+  </form>
+</body>
+
+<script>
+  $(function () {
+    $('#btnLogin').click(function () {
+      
+      //1.准备 登录数据
+      let data = $('form').serialize();
+      //2.发送异步请求
+      $.ajax({
+        url: '/loginvcode',
+        method: 'post',
+        data:data,
+        success: function (backData) {
+          alert(backData);
+          if(backData == '登录成功啦~~~'){
+            window.location='/list';
+          }
+        }
+      });
+    });
+  });
+
+</script>
+
+</html>

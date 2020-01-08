@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>我是班长1</li>
+        <li id="li2">我是班长2</li>
+        <li>我是班长3</li>
+        <li>我是班长4</li>
+        <li>我是班长5</li>
+    </ul>
+
+    <ul id="ul2">
+        <li>我是坤哥1</li>
+        <li>我是坤哥2</li>
+        <li id="li3">我是坤哥3</li>
+        <li>我是坤哥4</li>
+        <li>我是坤哥5</li>
+    </ul>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        /*
+        1.原生DOM操作删除元素
+            a. 全部清空
+                元素.innerHTML = ''
+            b. 单个移除
+                父元素.removeChild(子元素)
+
+        2.jq移除元素 3种
+            a. 全部清空
+                $().html('')   少用，性能问题
+                $().empty()    推荐使用
+            b. 单个移除
+                $().remove()      一律是自杀，底层原理 ： this.parentNode.removeChild(this)
+         */
+
+
+         //1.全部清空
+        //1.1  $().html('')   少用，性能问题
+        // $('#ul2').html('');
+
+        //1.2  $().empty()    推荐使用
+        //$('#ul2').empty();
+
+        //2. 单个移除
+        // $('#li3').remove();
+
+
+        //思考题： 如何通过子元素移除父元素？
+        $('#li3').parent().remove();
+    </script>
+</body>
+
+</html>

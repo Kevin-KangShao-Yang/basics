@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>我陪着你1</li>
+        <li>我陪着你2</li>
+        <li>我陪着你3</li>
+        <li>我陪着你4</li>
+        <li>我陪着你5</li>
+        <li>我陪着你6</li>
+        <li>我陪着你7</li>
+        <li>我陪着你8</li>
+        <li>我陪着你9</li>
+        <li>我陪着你10</li>
+    </ul>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            //jq对象语法和元素DOM 不互通
+
+            var $li = $('li');//jq对象
+
+            //jq对象本质是伪数组。可以遍历的
+            for(var i = 0;i< $li.length;i++){
+
+                var li = $li[i];// dom对象
+                console.log(li);
+                if(i % 2 == 0){//单数行
+                    li.style.backgroundColor = 'green';
+                }else{//双数行
+                    $(li).css('backgroundColor','yellow');
+                };
+                
+            };
+
+        });
+    </script>
+</body>
+</html>

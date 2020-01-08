@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="one" id="one"></div>
+    
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        //事件触发 ： 主动触发事件
+
+        //1.复习原生主动触发
+
+        // var one = document.getElementById('one');
+        /* 
+        1.注册事件本质 ： 给对象的属性赋值
+        2.触发事件触发 ： 调用对象的方法
+            当我们点击元素的时候，浏览器会自动帮我们执行语法啊  one.onclick()
+         */
+        // one.onclick = function(){
+        //     console.log('单击事件');
+            
+        // };
+
+        //程序员主动触发
+        // one.onclick();
+
+        //2. jq事件触发
+        $('#one').on('click',function(){
+            console.log('我是jq事件');
+        });
+
+        //事件触发 : $().trigger()
+
+        $('#one').trigger('click');
+    </script>
+</body>
+</html>

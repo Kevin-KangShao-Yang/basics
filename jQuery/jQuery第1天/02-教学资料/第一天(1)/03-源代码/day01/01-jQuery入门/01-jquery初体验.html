@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div,p{
+            margin-top: 10px;
+            height: 50px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <!-- 导入jq -->
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        体会jq好处 ：
+        1.代码简洁
+        2.api好记
+        3.隐式迭代 ： 底层偷偷的遍历
+        */
+
+        //需求：给div和p标签设置 border ，设置文字
+
+        //1.原生DOM
+        //1.1 获取元素
+        var divList = document.getElementsByTagName('div');
+        var pList = document.getElementsByTagName('p');
+        //1.2 遍历元素，设置样式
+        for(var i = 0;i<divList.length;i++){
+            divList[i].style.border = '10px solid green';
+            divList[i].innerText = '班长喜欢这个颜色';
+        };
+        
+        for(var i = 0;i<pList.length;i++){
+            pList[i].style.border = '10px solid skyblue';
+            pList[i].innerText = '坤哥喜欢这个颜色';
+        };
+
+        //2.jq写法
+        $('div,p').css('border','10px solid yellowgreen').text('这是班长和坤哥都喜欢的颜色');
+    
+    </script>
+</body>
+</html>

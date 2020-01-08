@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+    <script src="vendor/jquery.js"></script>
+    <script>
+        //入口函数
+        $(window).ready(function () {
+            //点击第一个按钮，body的背景色变白；
+            //点击第二个按钮，body的背景色黑白；
+
+
+            var btnArr = document.getElementsByTagName("button");
+            //点击第一个按钮，body的背景色变白；
+                //把dom对象转换成jq对象进行事件绑定
+            $(btnArr[0]).click(function () {
+                //把jq对象转换成dom对象，操作背景色；
+                $("body")[0].style.background = "#fff";
+            });
+
+            //点击第二个按钮，body的背景色黑白；
+            $(btnArr[1]).click(function () {
+                //把jq对象转换成dom对象，操作背景色；
+                $("body").get(0).style.background = "rgba(0,0,0,0.6)";
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+    <button>开灯</button>
+    <button>关灯</button>
+    <img src="images/coder.jpg"/>
+
+</body>
+</html>

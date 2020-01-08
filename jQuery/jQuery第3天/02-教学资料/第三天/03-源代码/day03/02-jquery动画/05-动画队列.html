@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        div {
+            width: 200px;
+            height: 300px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="开始动画" id="start" />
+    <input type="button" value="停止动画" id="stop" /> <br /><br />
+    <div></div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //1.开始动画
+        $('#start').click(function () {
+            //手动模拟动画队列
+            $('div').slideDown(2000).slideUp(2000);
+        });
+        //2.结束动画
+        $('#stop').click(function () {
+            /* 
+            $().stop(true,false) : 相当于之前的每一次动画之前先清除以前的定时器，以本次为准
+
+            第一个参数 ： 是否结束动画队列   （后面的动画还要不要执行 true：结束 false：不结束）
+            第二个参数：是否立即跳转动画结果 （这一次动画的最终效果要不要看一眼 true：看一眼 false:不看）
+            */
+            //    $('div').stop(true,true);
+            //$('div').stop(true,false);
+            //    $('div').stop(false,true);
+            //    $('div').stop(false,false);
+
+            //如果没有传，则默认参数是 false,false
+            $('div').stop();
+
+        });
+    </script>
+</body>
+
+</html>

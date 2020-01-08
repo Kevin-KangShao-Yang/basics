@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    var id = 5;
+
+    function sayHi() {
+      var id = 9;
+
+      setTimeout(function () {
+        console.log(this.id); // window.id
+      }, 200);
+    }
+
+
+    function sayHi2() {
+
+      var id = 9;
+
+      setTimeout(() => {
+        console.log(this);
+        console.log(this.id); // 9
+      }, 200);
+    }
+
+
+    
+    var obj = {
+      id: 7,
+
+      sayHi2: function () {
+        var id = 9;
+        setTimeout(function() {
+          console.log(this); // window
+          console.log(this.id); // 5
+        }, 200);
+      }
+    };
+
+    obj.sayHi2();
+
+    // ---------------------------------------------
+    var obj2 = {
+      id: 7,
+
+      sayHi2: function () {
+        console.log(this); // obj2
+        var id = 9;
+        setTimeout(() => { // "箭头函数中的 this 是在声明时 确定的！"
+          console.log(this); // obj2
+          console.log(this.id); // 7
+        }, 200);
+      }
+    };
+
+    obj2.sayHi2();
+
+    // 箭头函数中的 this 原理：箭头函数中 没有  this 属性！！！ 访问时，是直接 去它所在的 上下文 中 找 别人的this 来使用！
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

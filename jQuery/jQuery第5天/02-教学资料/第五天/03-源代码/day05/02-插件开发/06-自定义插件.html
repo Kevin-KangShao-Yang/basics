@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script src="./jquery.bgColor.js"></script>
+    <script>
+        //需求： 给div设置宽度width,height,颜色
+
+        //1.jq原生语法 : 麻烦
+        //$('div').css('width','200px').css('height','200px').css('backgroundColor','red');
+
+        //2. 如果jq对象能有这个方法设置宽高和颜色就好了
+        //理想很美好，现实很骨感
+        // $('div').w(200).h(200).bgc('red');
+
+        /* 
+        插件本质 ： 给jq原型添加方法
+            给原型添加 ：每一个jq对象都能访问
+        */
+
+        // $.prototype.w = function(width){
+        //     //this : 调用这个方法的每一个jq对象
+        //     this.css('width',width+'px');
+        //     //返回自身：可以链式调用
+        //     return this;
+        // };
+
+        // $.prototype.h = function(height){
+        //     //this : 调用这个方法的每一个jq对象
+        //     this.css('height',height+'px');
+        //     //返回自身：可以链式调用
+        //     return this;
+        // };
+
+        // $.prototype.bgc = function(bgc){
+        //     //this : 调用这个方法的每一个jq对象
+        //     this.css('backgroundColor',bgc);
+        //     //返回自身：可以链式调用
+        //     return this;
+        // };
+
+
+        $('div').w(200).h(200).bgc('red');
+    </script>
+</body>
+</html>

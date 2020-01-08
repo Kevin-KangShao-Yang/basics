@@ -1,0 +1,61 @@
+[{
+  "id": 1,
+  "name": "瑞琪",
+  "skill": "撒娇",
+  "icon": "72bab65585b19702d82f34adefa06e4f",
+  "isDelete": false
+}, {
+  "id": 2,
+  "name": "孙悟空",
+  "skill": "变~~",
+  "icon": "72bab65585b19702d82f34adefa06e4f",
+  "isDelete": true
+}, {
+  "id": 3,
+  "name": "陈真1",
+  "skill": "阿达1",
+  "icon": "b507bd0e87b29cc33917b7e9d1d1faff",
+  "isDelete": true
+}, {
+  "id": 4,
+  "name": "陈真2",
+  "skill": "阿达2",
+  "icon": "011195bcf53c26092fc11c290a434ce9",
+  "isDelete": false
+}, {
+  "id": 5,
+  "name": "播求大爷",
+  "skill": "连续鞭腿提到你死",
+  "icon": "18644a189c14f86f2201fbd64d2078b9",
+  "isDelete": false
+}, {
+  "id": 6,
+  "name": "Linux",
+  "skill": "一周写出操作系统内核",
+  "icon": "b89faa50fe248b1403aeddc237de9876",
+  "isDelete": true
+}, {
+  "id": 7,
+  "name": "末梢都",
+  "skill": "拳法林立，天马流星拳",
+  "icon": "5801f608fc9a4b339bc7fb2b31c61dcf",
+  "isDelete": true
+}, {
+  "id": 8,
+  "name": "哈士奇不3",
+  "skill": "拆家，溜主人",
+  "icon": "2ce107fefe81aeb5bd5a41b4b3fdd3e4",
+  "isDelete": false
+}, {
+  "id": 9,
+  "name": "2",
+  "skill": "2",
+  "icon": "383e48604d2d2e0af49626328288b643",
+  "isDelete": true
+}, {
+  "id": 10,
+  "name": "小白你们好1",
+  "skill": "上课就睡觉 下课开玩笑",
+  "icon": "417485e0a9fbb64f8608f5dbc1da82a1",
+  "isDelete": false
+}]

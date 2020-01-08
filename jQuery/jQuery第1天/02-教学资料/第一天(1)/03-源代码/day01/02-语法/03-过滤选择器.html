@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">我是骚群</div>
+    <div>我是正紧坤</div>
+    <ul>
+        <li>我是黑马李宗盛1</li>
+        <li>我是黑马李宗盛2</li>
+        <li>我是黑马李宗盛3</li>
+        <li>我是黑马李宗盛4</li>
+        <li>我是黑马李宗盛5</li>
+        <li>我是黑马李宗盛6</li>
+        <li>我是黑马李宗盛7</li>
+        <li>我是黑马李宗盛8</li>
+        <li>我是黑马李宗盛9</li>
+        <li>我是黑马李宗盛10</li>
+    </ul>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+
+
+            /* 
+            过滤选择器 ： jq独有的选择器 (以冒号开始)
+
+            $('选择器:odd') : 获取下标为奇数的元素
+            $('选择器:even') : 获取下标为偶数的元素
+            $('选择器:eq(下标)') : 获取指定下标的元素
+
+            */
+
+            //1.双数行显示黄色
+            $('li:odd').css('backgroundColor','yellow');
+
+            //2.单数行显示绿色(下标为偶数)
+            $('li:even').css('backgroundColor','green');
+
+            //3. 第一个li元素红色
+
+            
+            $('li:eq(0)').css('backgroundColor','red');
+            $('li:eq(1)').css('backgroundColor','red');
+
+            var index = 5;
+            //这种写法好处 ： 可以取变量的值
+            $('li').eq(index).css('backgroundColor','red');
+        });
+    </script>
+</body>
+
+</html>

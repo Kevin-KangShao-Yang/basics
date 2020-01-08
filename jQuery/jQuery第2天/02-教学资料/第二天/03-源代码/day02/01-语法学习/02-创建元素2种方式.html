@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="html()" id="btnHtml1" />
+    <input type="button" value="$()" id="btn1" /> <br /><br />
+    <div id="div1">
+        <p>p1
+            <span>span1</span>
+        </p>
+    </div>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        1.复习原生DOM操作创建元素 3种方式   
+            document.write()   : 不推荐
+            innerHTML         : 少用
+            document.createElement() : DOM推荐
+
+        2. jq创建元素两种方式
+            $().html()       ->innerHTML
+            $('字符串')      -> document.createElement()
+         */
+
+        //1. $().html()  
+        $('#btnHtml1').click(function () {
+            $('#div1').html('<p>我是pppp</p><a href="#">我是链接</a>');
+        });
+
+        //2. $('字符串')
+        $('#btn1').click(function () {
+            $('#div1').append($('<a href="">我爱你们</a>'));
+            
+            // //(1)创建一个标签(在内存创建)
+            // var $p =  $('<p>我是pppp</p><a href="#">我是链接</a>');
+            // console.log($p);
+            // //（2）设置样式
+            // $p.css('color','red');
+            // //(3)添加到父元素
+            // $('#div1').append($p);
+        });
+    </script>
+</body>
+
+</html>

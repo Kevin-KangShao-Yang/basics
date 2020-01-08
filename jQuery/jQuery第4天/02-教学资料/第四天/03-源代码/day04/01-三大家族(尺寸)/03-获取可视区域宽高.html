@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        1.jq获取页面可视区域大小
+            $(window).width()
+            $(window).height()
+        
+        2.响应式布局
+         */
+
+        //响应式布局
+        //1.给页面注册大小变化事件 onresize
+        $(window).resize(function(){
+            //2.获取页面可视区域大小
+            console.log($(window).width(),$(window).height());
+            //页面宽度（1） >1200 body红色 （2）992-1200 body黄色 （3）768-992 绿色 （4）<768粉色
+            if($(window).width() >= 1200){
+                $(document.body).css('backgroundColor','red');
+            }else if($(window).width() >= 992){
+                $(document.body).css('backgroundColor','yellow');
+            }else if($(window).width() >= 768){
+                $(document.body).css('backgroundColor','green');
+            }else{
+                $(document.body).css('backgroundColor','pink');
+            };
+
+            //横竖屏适配
+            if($(window).width() >= $(window).height()){
+                alert('横屏');
+            }else{
+                alert('竖屏');
+            }
+
+        });
+        
+    </script>
+</body>
+</html>

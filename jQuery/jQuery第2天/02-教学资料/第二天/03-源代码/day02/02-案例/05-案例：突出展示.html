@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background: #000;
+        }
+
+        .wrap {
+            margin: 100px auto 0;
+            width: 630px;
+            height: 394px;
+            padding: 10px 0 0 10px;
+            background: #000;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+
+        .wrap li {
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+
+        .wrap img {
+            display: block;
+            border: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li><a href="#"><img src="images/01.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/02.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/03.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/04.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/05.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/06.jpg" alt="" /></a></li>
+        </ul>
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        /*需求分析 
+        （1）鼠标移入li ： 自己透明度opacity为1，其他兄弟元素透明度为0.4
+        （2）鼠标移出wrap ： 所有的li元素透明度变成1
+         */
+
+         //（1）鼠标移入li ： 自己透明度opacity为1，其他兄弟元素透明度为0.4
+         $('.wrap li').mouseenter(function(){
+             $(this).css('opacity',1).siblings().css('opacity',0.4);
+         });
+
+         //（2）鼠标移出wrap ： 所有的li元素透明度变成1
+         $('.wrap').mouseleave(function(){
+             /* 
+             注意点：
+             $().children(‘li’) :只能找到第一代li元素
+             $().find(‘li’) :只能找到所有后代li元素
+              */
+             $(this).find('li').css('opacity',1);
+         });
+    </script>
+    
+</body>
+</html>

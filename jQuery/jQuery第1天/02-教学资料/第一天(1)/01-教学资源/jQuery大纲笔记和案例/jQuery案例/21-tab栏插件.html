@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/tab.css">
+  <script src="vendor/jquery.js"></script>
+  <script src="js/jQuery.tab.js"></script>
+  <script>
+    $(function () {
+      $.tab({
+        tabMenu: '#tab-menu'
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <div class="wrapper" id="wrapper">
+    <ul class="tab" id="tab-menu">
+      <li class="tab-item active">国际大牌<span>◆</span></li>
+      <li class="tab-item">国妆名牌<span>◆</span></li>
+      <li class="tab-item">清洁用品<span>◆</span></li>
+      <li class="tab-item">男士精品</li>
+    </ul>
+    <div class="products" id="tab-main">
+      <div class="main selected">
+        <a href="###"><img src="images/guojidapai.jpg" alt=""/></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/guozhuangmingpin.jpg" alt=""/></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/qingjieyongpin.jpg" alt=""/></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/nanshijingpin.jpg" alt=""/></a>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

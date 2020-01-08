@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+
+        .bgc {
+            background-color: green;
+        }
+
+        .fontSize30 {
+            font-size: 30px;
+        }
+
+        .width200 {
+            width: 200px;
+        }
+
+        .height200 {
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="添加类" id="addClass" />
+    <input type="button" value="移除类" id="removeClass" />
+    <input type="button" value="判断类" id="hasClass" />
+    <input type="button" value="切换类" id="toggleClass" />
+    <div id="div1" class="bgc ">div1</div>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        /* 
+        1.复习原生DOM 类名操作
+            获取类名 ： 元素.className
+            修改类名： 元素.className = 值
+                * 修改类名样式也会修改
+        
+        2.jq类名操作
+            添加类名 ： $().addClass('类名')
+            移除类名 ： $().removeClass('类名')
+            判断类 ：   $().hasClass('类名')
+            切换类 ：   $().toggleClass(‘类名’)
+         */
+
+        //1.添加类名 ： $().addClass('类名')
+        $('#addClass').click(function(){
+            $('#div1').addClass('fontSize30 width200');
+            // $('#div1').addClass('width200');
+        });
+        //2.移除类名 ： $().removeClass('类名')
+        $('#removeClass').click(function(){
+            $('#div1').removeClass('width200');
+            
+        });
+        //3.判断类 ：   $().hasClass('类名')
+        $('#hasClass').click(function(){
+            console.log($('#div1').hasClass('width200'));
+            
+        });
+        //4.切换类 ：   $().toggleClass(‘类名’)
+        $('#toggleClass').click(function(){
+            /* 
+            如果有 ： 则移除
+            如果没有： 则添加
+             */
+            $('#div1').toggleClass('height200');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            margin-top: 10px;
+        }
+
+        .one {
+            border: 1px solid red;
+        }
+
+        .two {
+            border: 1px solid green;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn" /> <br /><br />
+    <div class="one" id="one"></div>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        //1. $().click(function(){})
+
+        /* 
+        1.不支持同时注册 ： 不能一次性注册多个事件，要想注册多个事件就要写多个方法
+        2.不支持动态注册 ： 如果页面动态添加一个元素，所有的事件需要重新注册
+         */
+        // $('.one').click(function () {
+        //     console.log('点击事件');
+        // });
+
+        // $('.one').mouseenter(function () {
+        //     console.log('移入事件');
+        // });
+
+        // $('#btn').click(function () {
+        //     $(document.body).append($('<div class="one"></div>'));
+        // });
+
+        //2. $().bind()
+        /* 
+        1.支持同时注册
+        2.不支持动态注册
+         */
+        //(1)第一种写法 ： 多个事件处理函数一样得
+        // $('.one').bind('click mouseenter',function(){
+        //     console.log('我是点击事件');
+        // });
+
+        //(2)第二种写法： 多个事件处理函数不同
+        // $('.one').bind({
+        //     click:function(){
+        //          console.log('单击事件');
+        //     },
+        //     mouseenter:function(){
+        //         console.log('鼠标移入事件');  
+        //     }
+        // });
+
+        //  $('#btn').click(function () {
+        //     $(document.body).append($('<div class="one"></div>'));
+        // });
+        
+
+        //3. $().delegate()
+        /* 
+        (1)支持同时注册
+        (2)支持动态注册
+        
+        事件委托 : 事件冒泡
+         */
+        
+        // $('body').delegate('div','click mouseenter',function(){
+        //     console.log('我是委派事件');
+        // });
+
+         $('#btn').click(function () {
+            $(document.body).append($('<div class="one"></div>'));
+        });
+
+        // document.body.onclick = function(e){
+        //     //事件处理函数体代码只有当你点击类名为one才需要触发
+        //     // if(e.target.className == 'one'){
+        //     //     console.log('点击事件');
+        //     // }
+
+        //     // if(e.target.nodeName == 'DIV'){
+        //     //     console.log('点击事件');
+        //     // }
+            
+        //     //
+            
+        // };
+
+        //4. $().on('click',function(){})
+        /* 
+        jq从1.7版本之后，使用on方式统一所有的事件注册
+        (1)支持同时注册
+        (2)支持动态注册（由用户决定）
+            不需要动态：给元素注册
+            需要动态：给body注册
+         */
+
+         //(1)基本用法：注册非委派事件 ， 给元素注册
+        //  $('.one').on({
+        //      click:function(){
+        //          console.log('点击事件');
+                 
+        //      },
+        //      mouseenter:function(){
+        //          console.log('移入事件');
+                 
+        //      }
+        //  });
+
+         //(2)注册委派事件 ： 给body注册
+        //  $('body').on('click','.one',function(){
+        //      console.log('点击事件');
+        //  })
+
+         $('body').on({
+             click:function(){
+                 console.log('点击');     
+             }
+         },'.one');
+
+
+    </script>
+
+</body>
+
+</html>

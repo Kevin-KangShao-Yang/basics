@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="box">我是坤哥</div>
+    <ul>
+        <li>我爱你们1</li>
+        <li>我爱你们2</li>
+        <li>我爱你们3</li>
+        <li>我爱你们4</li>
+        <li>我爱你们5</li>
+    </ul>
+    <!-- 导包 -->
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        //入口函数
+        $(function(){
+            /* 
+            1.DOM对象 : 使用DOM原生语法获取的元素对象
+            2.JQ对象  : 使用jq语法获取的元素对象
+                *** jq对象的本质是伪数组 ***
+            3.JQ与DOM对象区别
+                a. jq对象只能用jq的语法，不能使用dom语法
+                b. dom对象只能用原生语法， 不能使用jq语法
+            4.JQ与DOM互转
+                a. DOM->JQ :  $(DOM对象)
+                b. JQ->DOM : $()[下标]
+            */
+
+            //1.DOM对象 : 使用DOM原生语法获取的对象
+            var box = document.getElementById('box');
+            console.log(box);
+
+            //2.JQ对象  : 使用jq语法获取的元素对象
+            var $box =  $('#box');
+            console.log($box);
+
+            /*3. JQ与DOM对象区别
+                a. jq对象只能使用jq的语法
+                b. DOM对象只能使用DOM语法
+            
+            */
+
+            //a. jq对象只能使用jq的语法
+            $box.css('backgroundColor','red');
+            // $box.style.backgroundColor = 'green';//报错
+
+            //b. DOM对象只能使用DOM语法
+            box.style.backgroundColor = 'green';
+
+            // box.css('backgroundColor','pink');;//报错
+
+            //4.JQ与DOM互转
+
+            //4.1 DOM->JQ 
+            //唯一方式：  $(DOM对象)
+            $(box).css('backgroundColor','pink');
+
+            //4.2 JQ->DOM 
+            //第一种 ，伪数组取下标： $('选择器')[下标]
+            $('#box')[0].style.backgroundColor = 'green';
+            //第二种，jq自己的语法 ： $().get(下标)
+            var box1 = $('#box').get(0);
+            console.log(box1);
+            
+
+
+
+
+            
+            
+        });
+    </script>
+</body>
+</html>

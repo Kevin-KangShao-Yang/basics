@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="注册事件" id="btn1" />
+    <input type="button" value="解绑事件" id="btn2" /> <br /><br />
+    <div class="one" id="one"></div>
+    <script src="./jquery-1.12.4.js"></script>
+
+    <script>
+        /* 
+        1.原生的事件解绑（移除事件）
+            a. 点语法注册事件  ： 事件源.事件类型 = 事件处理函数
+                移除： box.onclick = null
+            b. addEventListener() 
+                removeEventListener()
+
+        2.jq事件解绑
+            注册： $().on()
+            移除 ： $().off() 
+         */
+
+        //1.注册事件
+        $('#btn1').on('click',function(){
+            //给one注册单击和移入
+            $('.one').on({
+                click:function(){
+                    console.log('单击事件');
+                    
+                },
+                mouseenter:function(){
+                    console.log('移入事件');
+                    
+                }
+            });
+        });
+
+        //2.解绑事件
+        $('#btn2').on('click',function(){
+            //1.移除单击事件
+            // $('.one').off('click');
+            //2.移除所有事件
+            $('.one').off();
+        });
+    </script>
+</body>
+</html>

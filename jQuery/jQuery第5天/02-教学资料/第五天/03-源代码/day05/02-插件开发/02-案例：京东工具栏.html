@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: "Microsoft YaHei";
+        }
+
+        ul {
+            list-style: none;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -90px;
+        }
+
+        ul li {
+            height: 35px;
+            line-height: 35px;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 1px;
+            position: relative;
+        }
+
+        ul li.last {
+            margin-bottom: 0;
+        }
+
+        ul li span {
+            display: inline-block;
+        }
+
+        ul li .text {
+            width: 76px;
+            height: 35px;
+            background: #7a6e6e;
+            /*background: #db192a;*/
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 2px 0 0 2px;
+            color: white;
+        }
+
+        ul li .icon {
+            width: 34px;
+            height: 35px;
+            position: relative;
+            left: 0;
+            right: 0;
+            background: #7a6e6e url("images/toolbars/toolbars.png") no-repeat;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul class="toolbar">
+        <li><span class="text">京东会员</span><span class="icon" style="background-position: -88px -175px;"></span></li>
+        <li><span class="text">购物车</span><span class="icon" style="background-position: -50px 0;"></span></li>
+        <li><span class="text">我的关注</span><span class="icon" style="background-position: -50px -50px;"></span></li>
+        <li><span class="text">我的消息</span><span class="icon" style="background-position: -190px -150px;"></span></li>
+        <li class="last"><span class="text">咨询JIMI</span><span class="icon jm"
+                style="background-position: -50px -150px;"></span></li>
+    </ul>
+    <script src="jquery-1.12.4.js"></script>
+    <script src="plugin/jquery.color.js"></script>
+    <script>
+        $(function () {
+            /*
+                需求1:给每一个li设置鼠标移入事件:
+                    * 上面是文字的span更改定位的left值为-76(宽)以及颜色,
+                    * 下面的图标span更改颜色.
+                需求2:给每一个li设置鼠标移出事件:还原
+            */
+
+            //动画延迟
+            //delay();
+
+            $('.toolbar>li').on('mouseenter', function () {
+                $(this).find('.text').stop(true, false).delay(200).animate({
+                    left: -76,
+                    backgroundColor: '#db192a'
+                }, 500);
+
+                $(this).find('.icon').stop(true, false).delay(200).animate({
+                    backgroundColor: '#db192a'
+                }, 500);
+
+            }).on('mouseleave', function () {
+                $(this).find('.text').stop(true, false).animate({
+                    left: 0,
+                    backgroundColor: '#7a6e6e'
+                }, 200);
+
+                $(this).find('.icon').stop(true, false).animate({
+                    backgroundColor: '#7a6e6e'
+                }, 200);
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

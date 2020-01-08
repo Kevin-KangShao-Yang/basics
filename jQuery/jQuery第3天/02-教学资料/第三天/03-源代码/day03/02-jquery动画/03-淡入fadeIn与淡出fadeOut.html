@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="淡入" id="fadeIn" />
+    <input type="button" value="淡出" id="fadeOut" />
+    <input type="button" value="切换" id="fadeToggle" />
+    <input type="button" value="淡入到指定透明度" id="fadeTo" /><br /><br />
+    <div id="div1"></div>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+
+        //1.淡入  $().fadeIn()
+        $('#fadeIn').click(function () {
+            //淡入淡出用法与滑入滑出一致
+
+            $('div').fadeIn(function(){
+                alert('淡淡的我来了');
+            });
+
+        });
+
+        //2.淡出  $().fadeOut()
+        $('#fadeOut').click(function () {
+            $('div').fadeOut(function(){
+                alert('正如我淡淡的走');
+            })
+        });
+
+        //3.切换  $().fadeToggle()
+        $('#fadeToggle').click(function () {
+            /* 
+            透明度 ： 0  淡入
+            透明度不为0   淡出
+            */
+           $('div').fadeToggle();
+        });
+
+        //4.淡入到指定透明度  $().fadeTo()
+        $('#fadeTo').click(function () {
+            //第一个参数：时间 第二个参数：目标透明度  第三个参数：完成回调
+            $('div').fadeTo('',0.5,function(){
+                alert('我完事了');
+            });
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>我是坤哥</div>
+    <!-- 导包 -->
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+
+        
+        /* 
+        1.jq入口函数两种写法
+        2.jq入口函数和原生入口函数区别
+            a. 数量不同
+                jq入口函数可以写多个，原生只能一个
+            b. 加载时机不同
+                jq等DOM树加载完毕
+                原生等DOM树 + 所有外部资源路径加载完毕
+        */
+
+        
+        
+        //1.jq入口函数 
+        //1.1 $(document).ready(事件处理函数)
+        $(document).ready(function(){
+            console.log('1111');
+            
+        }); 
+
+        //1.2 $(事件处理函数)
+        $(function(){
+            console.log('2222');
+            
+        });
+        
+        //2.原生入口函数 : 注册事件本质是对对象的属性赋值
+        // window.onload = function(){
+        //     console.log('DOM树 + 所有外部资源路径');
+            
+        // };
+
+        window.onload = function(){
+            console.log('我是原生入口函数'); 
+        };
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 2000px;
+            height: 2000px;
+
+        }
+
+        .one {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            /*margin-top: 10px;*/
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="one" class="one">
+        <a href="https://www.baidu.com">百度一下，你就知道</a>
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        /* 
+        1.jq事件对象用法与原生完全一致
+            唯一区别 ： jq处理了浏览器的兼容性
+         */
+
+        //1.单击事件
+        $('.one').on('click',function(e){
+            console.log(e);
+            console.log(e.pageX,e.pageY);
+        });
+
+        //2.键盘事件
+        $(window).on('keydown',function(e){
+            console.log(e.keyCode);//键盘按键
+        });
+
+        //3. e.preventDefault() 和 return false区别
+        /* 
+        e.preventDefault() : 阻止默认行为
+        return false: 阻止默认行为 + 阻止事件冒泡    e.preventDefault() + e.stopPropagation()
+        */ 
+        $('a').on('click',function(e){
+            //阻止默认行为 只能阻止默认行为
+            // e.preventDefault();
+            console.log('aaaaa');
+            //阻止a标签默认跳转  同时阻止默认行为与事件冒泡 e.preventDefault(); +  e.stopPropagation();
+            return false;
+        });
+        
+    </script>
+</body>
+</html>

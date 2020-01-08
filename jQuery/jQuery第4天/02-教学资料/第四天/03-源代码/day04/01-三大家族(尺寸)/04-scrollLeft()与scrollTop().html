@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+            width: 3000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        1.jq中的scroll家族 ：
+            scrollTop() : 相当于原生元素.scrollTop
+            scrollLeft() : 相当于原生元素.scrollLeft
+        2.应用场景 ：固定导航
+         */
+
+        //固定导航
+
+        //1.给网页注册滚动条事件  onscroll
+        $(window).scroll(function(){
+             //2.获取网页滚动的距离
+             console.log($(window).scrollLeft(),$(window).scrollTop());
+             
+        });
+
+       
+    </script>
+</body>
+</html>

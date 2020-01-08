@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>复制</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background: pink;
+            text-align: center;
+            line-height: 200px;
+            margin: 0 20px 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ulList">
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+    </ul>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        /* 
+        1.隐式迭代 ： jq默认行为，底层偷偷的遍历
+            特点 ： 每一个元素设置的值相同
+         */
+        $('#ulList>li').css('opacity',0.5);
+
+        /* 
+        需求:每一元素设置不同的值。 li元素透明度 0.1 - 1
+        2.显式迭代 ： 程序员主动的遍历
+            特点 ： 每一个元素设置不同的值
+         */
+
+        //2.1 原生语法
+        // for(var i = 0;i<$('#ulList>li').length;i++){
+        //     var li =  $('#ulList>li')[i]//DOM对象
+        //     console.log(li);
+        //     $(li).css('opacity',(i+1)/10);  
+        // };
+
+        //2.2 jq语法 显示迭代 ： each
+        $('#ulList>li').each(function(index,elem){
+            console.log(index);//下标
+            console.log(elem);//DOM对象
+            $(elem).css('opacity',(index+1)/10);
+        });
+    </script>
+    
+</body>
+</html>

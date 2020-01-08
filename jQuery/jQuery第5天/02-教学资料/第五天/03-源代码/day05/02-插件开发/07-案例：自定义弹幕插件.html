@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .container .video {
+            width: 1000px;
+            height: 600px;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container .content {
+            background: #333;
+            height: 30px;
+            padding: 10px;
+        }
+
+        .container .content input {
+            float: right;
+            border: none;
+            outline: none;
+            padding: 0 15px;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="video">
+            <video width="1000" height="600" src="images/video/1.mp4" controls></video>
+        </div>
+        <div class="content">
+            <input type="button" value="发射" id="btn">
+            <input type="text" id="txt">
+        </div>
+    </div>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script src="./jquery.danmu.js"></script>
+
+    <script>
+
+        $('#btn').click(function () {
+            $('.video').fashe($('#txt').val());
+            //清空输入框
+            $('#txt').val('');
+        });
+
+        // //使用插件
+        // $('.video').fashe('这个插件真牛逼');
+
+
+        // /* 
+        // 插件本质 ： 给jq原型添加方法
+        // */
+        // $.prototype.fashe = function (text) {
+        //     //this : 调用这个方法的父元素
+        //     /* 
+        //     1.创建span标签 ： 文本就是形参
+        //     2.设置样式 
+        //     3.添加到页面
+        //     */
+        //     $('<span>' + text + '</span>')
+        //         .css({
+        //             position: 'absolute',
+        //             right: -200,
+        //             top: getRandomTop(),
+        //             width: '200px',
+        //             fontSize: '20px',
+        //             color: getRandomColor()
+        //         })
+        //         .animate({ right: this.width() + 200 }, 10000, function () {
+        //             //动画结束之后移除span，提高代码性能
+        //             //this : 调用这个方法的span标签
+        //             this.remove();
+        //         })
+        //         .appendTo(this);
+        // };
+
+        // function getRandomTop() {
+        //     return Math.floor(Math.random() * 100);
+        // };
+
+        // function getRandomColor() {
+        //     var r = Math.floor(Math.random() * 256);
+        //     var g = Math.floor(Math.random() * 256);
+        //     var b = Math.floor(Math.random() * 256);
+
+        //     return 'rgb(' + r + ',' + g + ',' + b + ')';
+        // };
+    </script>
+
+</body>
+
+</html>

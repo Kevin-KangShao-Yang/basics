@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "罗伯特",
+    "skill": "飞起来",
+    "icon": "/imgs/盖伦.png",
+    "isDelete": false
+  }
+]

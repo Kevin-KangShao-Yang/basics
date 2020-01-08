@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="我是表单元素" disabled>
+    <br>
+    <input type="password" value="请输入我的生日">
+    <br>
+    <input type="checkbox" value="商品1">
+    <input type="checkbox" value="商品2">
+    <br>
+    <input type="radio" value="男" name="gender">男
+    <input type="radio" value="女" name="gender" checked>女
+
+    <select name="" id="">
+        <option value="">安卓</option>
+        <option value="">前端</option>
+        <option value="" selected>UI</option>
+    </select>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        1.原生表单元素属性操作
+            a.文本 
+                元素.value
+            b.布尔类型属性
+                disabled : 禁用状态
+                checked ： 选中状态 （checkbox radio）
+                selected : 选中状态 （option）
+        
+        2.jq表单元素属性操作
+            a.文本
+                $().val()
+            b.布尔类型属性
+                $().prop('disabled',true)
+        */
+
+        //1.文本
+        console.log($('input:eq(0)').val());
+        $('input:eq(0)').val('祝大家学的开心');
+
+        //2. 布尔类型
+        console.log($('input:eq(2)').prop('checked'));//false
+        $('input:eq(2)').prop('checked',true);
+        
+        
+
+    </script>
+</body>
+</html>

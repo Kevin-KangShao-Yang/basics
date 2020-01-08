@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li id="slg">国共联合司令官</li>
+        </ul>
+        <!-- 独立团 -->
+        <ul id="dlt">
+            <li class="tz">独立团团长-李云龙</li>
+            <li>狙击手</li>
+            <li>士兵</li>
+            <li>士兵</li>
+            <li>士兵</li>
+            <li class="hf">伙夫</li>
+            <li class="wsy">卫生员</li>
+        </ul>
+        <!-- 358团 -->
+        <ul id="t358">
+            <li class="tz">358团团长-楚云飞</li>
+            <li>狙击手</li>
+            <li class="nj">士兵</li>
+            <li>士兵</li>
+            <li>士兵</li>
+            <li class="hf">伙夫</li>
+            <li class="wsy">卫生员</li>
+        </ul>
+    </div>
+    <div>
+        <p class="nj">老百姓</p>
+
+        <p class="nj">老百姓</p>
+
+        <p>老百姓</p>
+
+        <p>老百姓</p>
+
+        <p>老百姓</p>
+
+        <p>老百姓</p>
+
+        <p>老百姓</p>
+    </div>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        //入口函数
+        $(function () {
+            /* 
+            基本选择器 ： 与css一致  
+              id选择器     : $('#id')
+              类选择器     : $('.one')
+              标签选择器   : $('li')
+              并集选择器   : $('.one,.two')
+              交集选择器   : $('li.one')
+            */
+
+            //1.八年抗战开始了，首先司令官发表讲话 （最大的官，文字改成40px）
+            // 语法： $('#slg')
+            $('#slg').css('fontSize','40px');
+
+            //2.司令讲完了，团长回去讲话打鸡血 （团长比司令小，文字设置30px）
+            // $('.tz')
+            $('.tz').css('fontSize','30px');
+
+            //3.团长讲完了，开始全军出击 （颜色改成红色）
+            // $('li')
+            $('li').css('backgroundColor','red');
+
+            //4.上万战场之后，发现有人背着锅，有人扛着药箱。发现是伙夫和卫生员
+            //这些人不能打仗，退出前线。他们也想为抗日做贡献， 修改他们的颜色为蓝色
+            // $('.wf,.wsy')
+            $('.hf,.wsy').css('backgroundColor','skyblue');
+
+            //5. 打了几场战争，发现没赢过。 开会分析原因，部队出现内奸
+            //为了不惊扰百姓，只想找出军队的内奸 枪毙
+            // $('li.nj')
+            $('li.nj').css('backgroundColor','#222');
+
+        });
+    </script>
+</body>
+
+</html>

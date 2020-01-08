@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            width: 200px;
+            background-color: teal;
+            height: 200px;
+            font-size: 20px;
+        }
+
+        .btn-box {
+            width: 30px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+    <script src="vendor/jquery.js"></script>
+    <script>
+        $(function () {
+
+            //全部向右功能
+            $("#btn-sel-all").click(function () {
+                // 1. 获取左边所有的option
+                var options = $("#src-city>option");
+                // 2. 添加到右边
+                $("#tar-city").append(options);
+            });
+
+            //全部向左
+            $("#btn-sel-none").click(function () {
+                var options = $("#tar-city>option");
+                $("#src-city").append(options);
+            });
+
+            //让左边选中的元素移动到右边
+            $("#btn-sel").click(function () {
+                // 1. 获取到左边选中的option
+                // :selected 过滤选择器，获取到选中的部分
+                var options = $("#src-city>option:selected");
+                // 2. 添加到右边
+                $("#tar-city").append(options);
+            });
+
+            $("#btn-back").click(function () {
+                var options = $("#tar-city>option:selected");
+                $("#src-city").append(options);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<h1>城市选择：</h1>
+<select id="src-city" name="src-city" multiple>
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">深圳</option>
+    <option value="4">广州</option>
+    <option value="5">西红柿</option>
+</select>
+<div class="btn-box">
+    <!--实体字符-->
+    <button id="btn-sel-all"> &gt;&gt; </button>
+    <button id="btn-sel-none"> &lt;&lt; </button>
+    <button id="btn-sel"> &gt;</button>
+    <button id="btn-back"> &lt; </button>
+</div>
+<select id="tar-city" name="tar-city" multiple>
+</select>
+</body>
+
+</html>

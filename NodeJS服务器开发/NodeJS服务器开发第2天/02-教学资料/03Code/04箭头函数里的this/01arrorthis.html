@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+    //this 口诀：调用方法时，谁 . 出方法，方法里的 this 就是谁！ ------------
+
+    function showLove() {
+      console.log(this); // window
+    }
+
+    // window.showLove(); // window
+    showLove();
+
+    // 对象方法里的this -------------------------
+    let dog = {
+      name: 'ruiky',
+      age: 2,
+      sayHi: function () {
+        console.log(this); // dog
+      }
+    };
+
+    dog.sayHi(); // dog
+
+    // 箭头函数里的 this ------------------------------
+    // a.全局箭头函数 中的 this 木有东西
+    let showLove2 = () => {
+      console.log(this);
+    }
+
+
+    let dog2 = {
+      name: 'ruiky',
+      age: 2,
+      sayHi: () => {
+        console.log('dog2~~');
+        console.log(this); // window
+      }
+    };
+
+    dog2.sayHi();
+
+
+    setTimeout(() => {
+      console.log('setTimeout:');
+      console.log(this); // window
+    }, 200);
+
+
+    // 1.箭头函数中的 this 不是 调用时 绑定的，而是 创建 箭头函数时 绑定的！
+    // 2.创建 箭头函数时 ，代码 所在作用域 就是 箭头函数里的 this
+
+    let dog3 = {
+      name: 'ruiky',
+      age: 2,
+
+      sayHi: function () {
+        console.log('dog3.1~~');
+        console.log(this); // dog3
+
+        return () => {
+          console.log('dog3.2~~');
+          console.log(this); // dog3
+        };
+      }
+    };
+
+    let sayHiFunc = dog3.sayHi();
+    sayHiFunc(); 
+
+
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

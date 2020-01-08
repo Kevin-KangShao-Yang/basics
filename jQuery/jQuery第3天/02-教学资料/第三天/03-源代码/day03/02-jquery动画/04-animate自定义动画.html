@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+        }
+
+        #div1 {
+            top: 50px;
+        }
+
+        #div2 {
+            left: 300px;
+            top: 200px;
+            background-color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="从左到右800" id="lr800" />
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        $('#lr800').click(function(){
+            /**
+            * @description:jq自定义动画（ 相当于webpi的缓动动画animationSlow  ）
+            * @param {type} 属性对象
+            * @param {type} 动画时间
+            * @param {type} 动画速度  默认 缓动 ，swing  匀速：linear
+            * @param {type} 完成回调
+            * @return: 
+            */
+            // $('div').animate({
+            //     left:200,
+            //     top:200,
+            //     width:400,
+            //     height:400,
+            //     opacity:0.2
+            // },2000,'linear',function(){
+            //     alert('1111');
+            // });
+
+            //常见用法 ： 一般传第一个参数 和 第四个参数
+            $('div').animate({
+                left:200,
+                top:200,
+                width:400,
+                height:400,
+                opacity:0.2
+            });
+        });        
+    </script>
+</body>
+
+</html>

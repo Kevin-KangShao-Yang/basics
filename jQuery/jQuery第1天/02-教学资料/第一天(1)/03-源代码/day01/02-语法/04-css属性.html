@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .one {
+            height: 200px;
+            background-color: pink;
+            margin-top: 10px;
+        }
+
+        #box {
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="btn1">获取样式属性</button>
+    <button id="btn2">设置样式属性</button>
+    <div id="box" class="one" style="width: 100px"></div>
+    <div class="one" style="width: 200px"></div>
+    <div class="one" style="width: 300px"></div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            /* 
+             1.原生DOM语法操作css样式     -> 本质是对象的属性操作
+                获取： 元素.style.样式
+                设置： 元素.style.样式 = '值'
+                特点：
+                    （1）只能获取行内，无法获取行外
+                    （2）获取的是string，带单位
+                    （3）可以获取也可以修改
+            
+            2. jq操作css样式    ->  $().css()
+                获取： $().css('属性名')
+                设置： $().css('属性名'，'属性值')
+                特点： 可以操作一切样式.底层 window.getComputedStyle()
+            
+            */
+
+            //1.获取样式 : $().css('属性名')
+            /* 
+            原生DOM对象注册事件本质 ： 对象赋值   box.onclick = 事件处理函数
+            jq注册事件本质 ： 调用方法   $(box).click(事件处理);
+            */
+            $('#btn1').click(function () {
+                //1.1 一个元素
+                console.log($('#box').css('width'));
+                console.log($('#box').css('height'));
+
+                //1.2 多个元素  ： 只能获取第一个
+                console.log($('div').css('width'));
+
+
+            });
+
+            //2.设置样式 ： $().css('属性名'，‘属性值’)
+            $('#btn2').click(function () {
+                //2.1 一个元素
+                $('#box').css('width', '500px');
+                //2.2 多个元素 : 隐式迭代： 偷偷的遍历
+                $('div').css('width', '500px');   
+            });
+        });
+    </script>
+</body>
+
+</html>

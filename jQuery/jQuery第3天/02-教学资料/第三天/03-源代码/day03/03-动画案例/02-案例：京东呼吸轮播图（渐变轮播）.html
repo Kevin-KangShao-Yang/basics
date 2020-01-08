@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动画-案例《轮播图》</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .slider {
+            height: 340px;
+            width: 790px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .slider li {
+            position: absolute;
+            display: none;
+        }
+
+        .slider li:first-child {
+            display: block;
+        }
+
+
+        .arrow {
+            display: none;
+        }
+
+        .slider:hover .arrow {
+            display: block;
+        }
+
+        .arrow-left,
+        .arrow-right {
+            font-family: "SimSun", "宋体";
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 60px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+        }
+
+        .arrow-left:hover,
+        .arrow-right:hover {
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .arrow-left {
+            left: 0;
+        }
+
+        .arrow-right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <!--图片容器  6图 -->
+        <ul>
+            <li><a href="#"><img src="images/jd/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/jd/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/jd/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/jd/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/jd/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/jd/6.jpg" alt=""></a></li>
+        </ul>
+        <!--箭头-->
+        <div class="arrow">
+            <span class="arrow-left">&lt;</span>
+            <span class="arrow-right">&gt;</span>
+        </div>
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        需求分析
+            当前现实的图片淡入，其他兄弟元素淡出
+
+        自动轮播思路
+            一：页面一加载，开启定时器，间隔时间执行下一页代码
+            二：鼠标移入盒子：切换到手动模式 （清除定时器）
+            三： 鼠标移出大盒子，切换自动模式 （开启定时器）
+        */
+
+        //0.声明变量记录当前显示图片的下标
+        var index = 0;
+
+        //一：页面一加载，开启定时器，间隔时间执行下一页代码
+        var timeID = setInterval(function () {
+            nextPage();
+        }, 3000);
+
+        //二：鼠标移入盒子：切换到手动模式 （清除定时器）
+        $('.slider').mouseenter(function () {
+            clearInterval(timeID);
+        });
+        //三： 鼠标移出大盒子，切换自动模式 （开启定时器）
+        $('.slider').mouseleave(function () {
+            timeID = setInterval(function () {
+                nextPage();
+            }, 3000);
+        });
+
+        //下一页代码封装
+        function nextPage() {
+            //1.1 下一页
+            index == $('.slider li').length - 1 ? index = 0 : index++;
+            //1.2 开始动画
+            $('.slider li').eq(index).fadeIn().siblings().fadeOut();
+        };
+
+
+        //1.下一页
+        $('.arrow-right').click(function () {
+            nextPage();
+        });
+
+        //2.上一页
+        $('.arrow-left').click(function () {
+            //2.1 上一页
+            index == 0 ? index = $('.slider li').length - 1 : index--;
+            console.log(index);
+            //2.2 开始动画
+            $('.slider li').eq(index).fadeIn().siblings().fadeOut();
+        });
+
+
+    </script>
+
+</body>
+
+</html>

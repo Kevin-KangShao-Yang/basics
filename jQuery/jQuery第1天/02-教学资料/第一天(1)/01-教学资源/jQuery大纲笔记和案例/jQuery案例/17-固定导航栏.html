@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>固定导航栏</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top, .nav {
+            width: 1423px;
+            margin: 0 auto;
+        }
+
+        .main {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        img {
+            display: block;
+            vertical-align: middle;
+        }
+
+    </style>
+
+    <script src="vendor/jquery.js"></script>
+    <script>
+        //涉及到检测图片的宽高一般我们都用window.onload;
+        window.onload = function () {
+            //页面滚动以后，被圈去的头部超过第一个盒子的高，给第二个盒子添加固定定位；
+            //    (第一个或者第三个盒子改变margin或者padding，为了给第二个盒子占位置)
+//            console.log(top);   //不要用top做变量；
+//            console.log(location);
+//            console.log(history);
+//            console.log(navigator);
+//            console.log(screen);
+
+            //绑定屏幕/页面滚动事件
+            $(window).scroll(function () {
+                //console.log($(document).scrollTop());//是方法，不是属性
+                //判断：页面被卷去的头部，是否大于第一个盒子的高；
+                //alert($(".top").height());
+                if($(document).scrollTop() > $(".top").height()){
+                    //给第二个盒子添加固定定位；
+                    $(".nav").css({"position":"fixed","left":0,"top":0,});
+                    //给第一个盒子或者第三个添加padding/margin；
+                    $(".main").css("padding-top",$(".nav").height());
+                }else{
+                    //小于第一个盒子的高的时候，第二个去掉定位，第三个去掉padding；
+                    $(".nav").css({"position":"static","left":0,"top":0,});
+                    $(".main").css("padding-top",0);
+                }
+            });
+
+
+        };
+    </script>
+</head>
+
+<body>
+
+    <div class="top">
+        <img src="images/top.png"/>
+    </div>
+    <div class="nav">
+        <img src="images/nav.png"/>
+    </div>
+    <div class="main">
+        <img src="images/main.png"/>
+    </div>
+
+
+</body>
+</html>

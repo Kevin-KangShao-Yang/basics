@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script src="./jquery-3.0.0.js"></script>
+    
+    
+    <script>
+        /* 
+        1.多库共存 ：同时导入多个jq文件
+        2.如何实现 ：释放$控制权。  $.noConflict()
+        3.注意点   ： 使用闭包实现一个$同时表示多个版本
+         */
+
+        /* 
+        复习第一天jq有三个大版本
+        1.x  : 兼容IE5678 不更新
+        2.x  : 不兼容IE5678 不更新
+        3.x  : 不兼容IE5678 正在更新，增加了新语法
+
+        问题 ： 开发中希望使用1.x来解决兼容性问题，也希望使用3.x新语法。 需要导入多个jq文件
+        导入1.x，也是$,导入3.x也是$. 到底代表谁？
+            结论： 谁后导入，$就是哪个文件的
+         */
+
+        //如何·查看当前jq的版本号
+        // console.log($.prototype.jquery);//1.12.4
+        // console.log($.fn.jquery);//1.12.4 
+        // console.log(jQuery.fn.jquery);//1.12.4 
+
+
+        //2. 释放$的控制权
+        var $3 =  $.noConflict(); //释放 3.x版本的控制权，交给$3
+
+        console.log($3.fn.jquery);//3.0
+        console.log($.fn.jquery);//1.12
+
+
+        //3. 释放$控制权之后。 使用1.x方法，使用$. 使用3.x版本，使用$3
+
+        //问题 ： $3用不习惯，就希望一个$,能够同时代表1.x 和 3.x
+        //解决方案 ： 有困难找闭包
+
+        (function($){// $ = $3
+
+            //开辟独立作用域
+            console.log('闭包内' + $.fn.jquery);// 3.x            
+
+        })($3);
+
+        console.log('函数外' + $.fn.jquery);//1.12
+        
+    </script>
+</body>
+</html>

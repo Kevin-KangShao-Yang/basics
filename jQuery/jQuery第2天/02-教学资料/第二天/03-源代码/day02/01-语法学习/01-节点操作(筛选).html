@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是班长1</li>
+        <li>我是班长2</li>
+        <li>我是班长3</li>
+        <li>我是班长4</li>
+        <li>我是班长5</li>
+        <p>我是班长的女朋友</p>
+        <div>
+            <ol>
+                <li>我是后代li元素</li>
+            </ol>
+        </div>
+    </ul>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            /* 
+            1.复习原生DOM语法 节点操作     -> 属性操作
+                a.获取子元素 ：       元素.children
+                b.获取上一个兄弟元素： 元素.previousElementSibling
+                c.获取下一个兄弟元素： 元素.nextElementSibling
+                d. 获取父节点         元素.parentNode
+            
+            2.jq语法   ->方法
+                a.获取子元素   ：    $().children()
+                b.获取上一个兄弟元素: $().prev()
+                c.获取下一个兄弟元素： $().next()
+                d. 获取父节点         $().parent()
+                e. 获取所有的兄弟元素： $().siblings()
+                    * 除我之外的所有同辈元素
+                f.获取后代元素 ：   $().find()    
+             */
+
+            //a.获取子元素   ：    $().children()
+            console.log($('ul').children());
+            
+            //b.获取上一个兄弟元素: $().prev()
+            console.log($('li:eq(1)').prev());
+            
+            //c.获取下一个兄弟元素： $().next()
+            console.log($('li:eq(1)').next());
+            //d. 获取父节点         $().parent()
+            console.log($('li:eq(1)').parent());
+            //e. 获取所有的兄弟元素： $().siblings()
+            //    * 除我之外的所有同辈元素
+            console.log($('li:eq(1)').siblings());//获取除班长之外的同辈元素
+            console.log($('li:eq(1)').siblings('li'));
+            //f.获取后代元素 ：   $().find()    
+            /* 
+            $('ul').children('li') : 获取第一代li元素  
+            $('ul').find('li') :    获取所有后代 li元素  
+             */
+            console.log($('ul').children('li'));//5
+            console.log($('ul').find('li'));//6
+            
+        });
+    </script>
+</body>
+
+</html>

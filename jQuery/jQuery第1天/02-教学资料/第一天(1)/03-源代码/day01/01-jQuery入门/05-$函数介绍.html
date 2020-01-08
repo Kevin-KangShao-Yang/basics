@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 导包 : 给window添加一个属性 $ -->
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+
+        /* 
+        1. $本质是一个函数对象
+
+        2. jQuery 和 $ 完全等价
+            * 意味着凡是用$的地方，全部可以替换成jQuery
+
+        3. $函数对象传递的参数不同，作用也不同
+            a. 传递的是选择器字符串  : 获取元素对象 $('li')
+            b. 传递的是DOM对象      ： DOM->JQ    $(box)
+            c. 传递的是回调函数      ： 入口函数
+        */
+        console.log($ === jQuery);//true
+
+        
+        $(function(){
+            console.log('111');
+        });
+
+
+        jQuery(function(){
+            console.log('2222');
+        });
+        
+        
+    </script>
+</body>
+</html>
