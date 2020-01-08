@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+    <div id="app">
+        <h2 v-once>{{msg}}</h2>
+        <h2>{{msg}}</h2>
+        <p><button @click="changeMsg">点我试试</button></p>
+    </div>
+<body>
+
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            msg:"学会使用vue完成基本的增删改查"
+        },
+        methods:{
+            changeMsg(){
+                this.msg = "这些指令只要了解即可"
+            }
+        }
+    })
+</script>

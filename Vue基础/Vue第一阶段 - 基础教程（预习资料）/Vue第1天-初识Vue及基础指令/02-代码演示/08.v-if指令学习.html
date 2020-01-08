@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <p v-if="age>30">{{age}} 如果我的年龄大于30岁就显示</p>
+        <p v-else-if="age>18">{{age}} 如果我的年龄小于30岁就显示这个</p>
+        <p v-else>{{age}} 你还没有成年呢</p>
+
+    </div>
+</body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            age:18
+        }
+    })
+</script>

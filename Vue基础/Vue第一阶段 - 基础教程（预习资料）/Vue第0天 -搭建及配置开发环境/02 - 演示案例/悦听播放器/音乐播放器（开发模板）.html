@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    body,
+    ul,
+    dl,
+    dd {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .wrap {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/bg.jpg') no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .play_wrap {
+      width: 800px;
+      height: 544px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      margin-left: -400px;
+      margin-top: -272px;
+      /* background-color: #f9f9f9; */
+    }
+
+    .search_bar {
+      height: 60px;
+      background-color: #1eacda;
+      overflow: hidden;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 11;
+    }
+
+    .search_bar img {
+      margin-left: 23px;
+    }
+
+    .search_bar input {
+      margin-right: 23px;
+      width: 296px;
+      height: 34px;
+      border-radius: 17px;
+      border: 0px;
+      background: url('') 265px center no-repeat rgba(255, 255, 255, 0.45);
+      text-indent: 15px;
+      outline: none;
+    }
+    .search-icon{
+      position: absolute;
+      right:35px;
+      cursor: pointer;
+    }
+
+    .center_con {
+      height: 435px;
+      background-color: rgba(255, 255, 255, 0.5);
+      display: flex;
+    }
+
+    .song_wrapper {
+      width: 200px;
+      height: 435px;
+      box-sizing: border-box;
+      padding: 10px;
+      list-style: none;
+      background: url('images/line.png') right center no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .song_list li {
+      font-size: 12px;
+      color: #333;
+      line-height: 36px;
+      width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .song_list .active {
+      color: #da651e;
+    }
+
+    .player_con {
+      width: 400px;
+      height: 435px;
+      position: relative;
+    }
+
+    .disc {
+      position: absolute;
+      left: 73px;
+      top: 60px;
+      z-index: 9;
+    }
+
+    .cover {
+      position: absolute;
+      left: 125px;
+      top: 112px;
+      width: 150px;
+      height: 150px;
+      border-radius: 75px;
+      z-index: 8;
+    }
+
+    .comment_list {
+      width: 200px;
+      height: 435px;
+      box-sizing: border-box;
+      padding: 10px;
+      list-style: none;
+      background: url('images/line.png') left center no-repeat;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .comment_list dl {
+      padding-left: 55px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .comment_list dt {
+      position: absolute;
+      left: 4px;
+      top: 0px;
+    }
+
+    .comment_list dt img {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+    }
+
+    .comment_list dd {
+      font-size: 12px;
+    }
+
+    .comment_list .name {
+      font-weight: bold;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    .comment_list .detail {
+      color: #666;
+      margin-top: 5px;
+      line-height: 18px;
+    }
+
+    .audio_con {
+      height: 50px;
+      background-color: #f1f3f4;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    .myaudio {
+      width: 800px;
+      height: 40px;
+      margin-top: 5px;
+      outline: none;
+      background-color: #f1f3f4;
+    }
+
+    /* 旋转的动画 */
+    @keyframes Rotate {
+      from {
+        transform: rotateZ(0);
+      }
+
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    /* 旋转的类名 */
+    .autoRotate {
+      animation-name: Rotate;
+      animation-iteration-count: infinite;
+      animation-play-state: paused;
+      animation-timing-function: linear;
+      animation-duration: 5s;
+    }
+
+    /* 是否正在播放 */
+    .playing {
+      animation-play-state: running;
+    }
+
+    .play_bar {
+      position: absolute;
+      left: 200px;
+      top: -10px;
+      z-index: 10;
+      transform: rotate(-25deg);
+      transform-origin: 12px 12px;
+      transition: 1s;
+    }
+
+    /* 播放杆 转回去 */
+    .play_bar.playing {
+      transform: rotate(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="play_wrap" id="player">
+      <!-- 顶部歌曲搜索 -->
+      <div class="search_bar">
+        <img src="images/player_title.png" alt="" />
+        <!-- 搜索输入框 -->
+        <input type="text" placeholder="请输入你想听的歌曲"/>
+        <!-- 搜索按钮 -->
+        <img src="images/zoom.png" class="search-icon" alt="" />
+      </div>
+      <!-- 中间部分，歌曲播放整个面板 -->
+      <div class="center_con">
+        <!-- 歌曲列表 -->
+        <div class="song_wrapper">
+          <ul class="song_list">
+            <li>让泪化作相思雨 - 南合文斗</li>
+            <li>让泪化作相思雨 - 北合文斗</li>
+            <li>让泪化作相思雨 - 蜡笔小新</li>
+            <li>让泪化作相思雨 - 黑猫警长</li>
+            <li>让泪化作相思雨 - 葫芦娃</li>
+            <li>让泪化作相思雨 - 帅哥是你</li>
+            <li>让泪化作相思雨 - 美女还是你</li>
+          </ul>
+        </div>
+        <!-- 歌曲播放 -->
+        <div class="player_con">
+          <!-- 播放触杆 -->
+          <img src="images/player_bar.png" class="play_bar playing"/>
+          <!-- 黑胶碟片 -->
+          <img src="images/disc.png" class="disc autoRotate playing"/>
+          <!-- 歌曲封面 -->
+          <img src="images/cover.png" class="cover autoRotate playing"/>
+        </div>
+        <!-- 歌曲评论 -->
+        <div class="comment_list">
+          <div>
+            <dl>
+              <dt><img src="https://p3.music.126.net/2cwPUmMgb6XImVwNy-FcIw==/109951163863553426.jpg" alt="" /></dt>
+              <dd class="name">网络快嘴</dd>
+              <dd class="detail">能不能好好的听歌啦？</dd>
+            </dl>
+            <dl>
+              <dt><img src="https://p3.music.126.net/2cwPUmMgb6XImVwNy-FcIw==/109951163863553426.jpg" alt="" /></dt>
+              <dd class="name">水军无敌</dd>
+              <dd class="detail">好听，还不错！</dd>
+            </dl>
+            <dl>
+              <dt><img src="https://p3.music.126.net/2cwPUmMgb6XImVwNy-FcIw==/109951163863553426.jpg" alt="" /></dt>
+              <dd class="name">音乐小生</dd>
+              <dd class="detail">汪老师无敌！</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <!-- 底部歌曲播放 -->
+      <div class="audio_con">
+        <audio controls="controls" autoplay="autoplay" loop="loop" class="myaudio"></audio>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

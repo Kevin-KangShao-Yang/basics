@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        width: 200px;
+    }
+    .box-red{
+        border:5px solid red;
+    }
+    .myimg{
+        box-shadow: 0 0 5px 10px red;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h2>使用v-bind将数据绑定到html元素DOM节点的属性上</h2>
+        <p>
+            <img v-bind:src="imgSrc">
+            <p v-bind:title="imgSrc">
+                {{imgSrc}}
+            </p>
+        </p>
+        <h2>使用数组的方式定义数据并渲染</h2>
+        <p>
+            <img :src="imgArr[4]" v-bind:alt="imgSrc">
+        </p>
+        <h2>使用对象对class进行操作</h2>
+        <p>
+            <img :src="imgArr[0]" v-bind:class="bc" class="myimg">
+        </p>
+        <p>
+            <img :src="imgArr[1]" v-bind:class="true ? bc :''">
+        </p>
+        <p>
+            <img :src="imgArr[2]" v-bind:class="{ 'box-red' : true }">
+        </p>
+        <h2>使用对象对style进行操作</h2>
+        <p>
+            <img :src="imgArr[3]" alt="" v-bind:style="ms">
+        </p>
+
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            imgSrc: "./img/3.jpg",
+            imgArr: [
+                "./img/1.jpg",
+                "./img/2.jpg",
+                "./img/3.jpg",
+                "./img/4.jpg",
+                "./img/5.jpg"
+            ],
+            bc:"box-red",
+            ms:{
+                'border':"10px solid green"
+            }
+        }
+    })
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>直接显示数据</h2>
+        <p>当前的秒数为：{{timeNum}}秒</p>
+        <h2>之前学到的知识进行时间转换</h2>
+        <p><button @click="timeChange">点击转换时间</button></p>
+        <h2>使用过滤器的方法实现时间格式转换</h2>
+        <p>当前的秒数为：{{ timeNum | timeFormate }}秒</p>
+        <h2>使用计算属性来实现时间格式的转换</h2>
+        <p>当前的事件为：{{formateTime}}</p>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            timeNum: 528
+        },
+        methods: {
+            // 转换时间格式
+            timeChange(){
+                this.timeNum = 888
+            }
+        },
+        // 定义一个过滤器，可以通过过滤器格式化我们想要的数据
+        filters:{
+            timeFormate(val){
+                return ~~(val/60)+"分"+val%60
+            }
+        },
+        //定义计算属性，可以通过计算属性来处理我们的数据，拿到新的数据
+        computed:{
+            formateTime(){
+                return ~~(this.timeNum/60)+"分"+this.timeNum%60+"秒"
+            }
+        }
+    })
+</script>

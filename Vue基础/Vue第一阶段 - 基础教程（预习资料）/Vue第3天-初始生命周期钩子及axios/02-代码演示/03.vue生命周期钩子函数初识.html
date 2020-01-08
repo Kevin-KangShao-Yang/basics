@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>vue生命周期钩子函数初识</h1>
+        <p>{{msg}}</p>
+        <p>{{hmsg}}</p>
+        <p><button @click="changeMsg">点我试试</button></p>
+    </div>
+</body>
+
+</html>
+<!-- 导包，导入相关脚本文件 -->
+<script src="./lib/vue.js"></script>
+<!-- 用包，调用相关方法规则 -->
+<script>
+    // 使用构造函数，传入一个特定的参数，创建一个vue实例
+    const app = new Vue({
+        // 挂载到html文档的对应节点
+        el: "#app",
+        // 定义数据
+        data: {
+            msg:"生命周期钩子函数其本质就是一个啥？回调函数",
+            hmsg:"updated是在数据更新并且渲染页面上后执行的操作"
+        },
+        //updated
+        updated(){
+            console.log("我被调用了");
+            //this.hmsg=Math.random()
+        },
+        // 定义方法
+        methods: {
+            changeMsg(){
+                this.msg= Math.random()
+            }
+        }
+    })
+</script>

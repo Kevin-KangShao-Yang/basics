@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>过滤器和计算属性复习</h1>
+        <h2>使用过滤器来将时间改成我们想要的格式</h2>
+        <p>你输入的num是:{{timenum}}</p>
+        <p>你输入的num是:{{timenum | timeFormate}}</p>
+        <p><button @click="changeNum">点我试试</button></p>
+        <h2>使用计算属性来完成我们想要的结果</h2>
+        <p>{{myTime}}</p>
+    </div>
+</body>
+
+</html>
+<!-- 导包，导入相关脚本文件 -->
+<script src="./lib/vue.js"></script>
+<!-- 用包，调用相关方法规则 -->
+<script>
+    // 使用构造函数，传入一个特定的参数，创建一个vue实例
+    const app = new Vue({
+        // 挂载到html文档的对应节点
+        el: "#app",
+        // 定义数据
+        data: {
+            timenum:888
+        },
+        // 定义方法
+        methods: {
+            changeNum(){
+                this.timenum = 999
+            }
+        },
+        //定义过滤器
+        filters:{
+            timeFormate(val){
+                return ~~(val/60) +"分"+val%60+"秒"
+            }
+        },
+        // 计算属性
+        computed:{
+            myTime(){
+                return ~~(this.timenum/60) +"分"+this.timenum%60+"秒"
+            }
+        }
+    })
+    console.log(app)
+</script>

@@ -1,0 +1,22 @@
+.video{
+  width: 900px;
+}
+.video .title-wrapper{
+  margin-bottom: 10px;
+}
+.video .title-wrapper .tag{
+  padding:0 5px;
+  color:#e77077;
+  border: 1px solid #e77077;
+}
+.video .title-wrapper .title{
+  font-size: 28px;
+  margin-right: 10px;
+}
+.video .title-wrapper .artist{
+  color:#0c73c2;
+  font-size: 13px;
+}
+.video video{
+  width: 650px;
+}

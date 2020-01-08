@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #wrapper {
+        height: 100px;
+        border: 1px solid #111;
+        overflow: hidden;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <p><button>点击添加元素</button></p>
+        <div id="wrapper">
+            <ul>
+                <li>这是第1个元素</li>
+                <li>这是第2个元素</li>
+                <li>这是第3个元素</li>
+                <li>这是第4个元素</li>
+                <li>这是第5个元素</li>
+                <li>这是第6个元素</li>
+                <li>这是第7个元素</li>
+                <li>这是第8个元素</li>
+                <li>这是第9个元素</li>
+                <li>这是第10个元素</li>
+                <li>这是第11个元素</li>
+                <li>这是第12个元素</li>
+                <li>这是第13个元素</li>
+                <li>这是第14个元素</li>
+                <li>这是第15个元素</li>
+                <li>这是第16个元素</li>
+                <li>这是第17个元素</li>
+                <li>这是第18个元素</li>
+                <li>这是第19个元素</li>
+                <li>这是第20个元素</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./lib/iscroll.js"></script>
+<script>
+    // 直接获取DOM元素，并作为参数直接传给IScroll
+    //const wrapper = document.querySelector('#wrapper')
+    //const myScroll = new IScroll(wrapper)
+    const myScroll = new IScroll("#wrapper", {
+        mouseWheel: true,
+        scrollbars: true
+    })
+
+    window.document.getElementsByTagName("button")[0].onclick = function () {
+        const li = document.createElement("li");
+        li.innerHTML = "我是动态新添加的li元素";
+        document.getElementsByTagName("ul")[0].appendChild(li);
+        myScroll.refresh();
+    }
+</script>

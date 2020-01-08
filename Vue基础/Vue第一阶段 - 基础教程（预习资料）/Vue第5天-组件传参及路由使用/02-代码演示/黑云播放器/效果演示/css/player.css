@@ -1,0 +1,63 @@
+.player {
+  width: 900px;
+  display: flex;
+}
+.player h3,ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+.player .left {
+  width: 300px;
+  justify-content: center;
+  position: relative;
+}
+.player .left img.disc {
+  margin-top: 40px;
+}
+.player .left img.cover {
+  position: absolute;
+  top: 97px;
+  width: 140px;
+  left: 58px;
+  border-radius: 50%;
+}
+.player .right {
+  flex: 1;
+}
+.player .right .title {
+  margin-top: 40px;
+  display: flex;
+  align-content: center;
+  height: 40px;
+}
+.player .right .title img {
+  margin-right: 10px;
+  height: 25px;
+  margin-top: 6px;
+}
+.player .right .title span {
+  font-size: 25px;
+}
+.player .right .singer,
+.player .right .album {
+  color:#999999;
+  font-size: 13px;
+  margin-top: 15px;
+}
+.player .right .singer span,
+.player .right .album span {
+  font-size: 14px;
+  color:#0c73c2;
+}
+
+.player .right .audio {
+  width: 100%;
+  margin-top:15px;
+}
+.player .right .lyric-container {
+}
+.player .right .lyric-container .lyric {
+  font-size: 12px;
+  margin-top: 5px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+            <h2>使用胡子语法将数组数据显示在页面上</h2>
+            <p>
+                {{arr[0]}}
+            </p>
+            <p>
+                {{arr[1]}}
+            </p>
+            <p>
+                {{arr[2]}}
+            </p>
+            <p>
+                {{arr[3]}}
+            </p>
+            <h2>使用v-for指令来显示数据</h2>
+            <p v-for="(item,index) in arr">{{index}} · {{item}}</p>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            msg:"买手机",
+            arr:[
+                '吃饭',
+                '睡觉',
+                '打豆豆',
+                '敲代码'
+            ]
+        }
+    })
+</script>

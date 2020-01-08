@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>vue自定义指令的基础使用</h2>
+        <p>您输入的内容是：<input type="text" v-hm></p>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            msg:""
+        },
+        directives:{
+            //声明一个自定义指令，命名规则使用驼峰式
+            hm:{
+                //钩子函数，这个回调函数回调的时机是什么时候呢？
+                //el这个参数就是代表调用这个自定义指令dom元素
+                inserted(el){
+                    console.log(el);
+                    el.focus();
+                }
+            }
+        }
+    })
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    #app {
+      width: 100%;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .title {
+      color: #333;
+    }
+
+    img {
+      height: 500px;
+      box-shadow: 0 0 20px #ccc;
+    }
+
+    button {
+      margin: 20px 5px 0;
+      border-radius: 3px;
+      cursor: pointer;
+      border: none;
+      padding: 5px 10px;
+    }
+
+    button:hover {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 模板 -->
+  <div id="app">
+    <h2 class="title">图片循环切换</h2>
+    <!-- 显示图片 -->
+    <img src="./img/1.jpg" alt="" />
+    <p>
+      <!-- 点击上一张按钮，显示上一张图片，如果是第一张则显示最后一张 -->
+      <button>上一张</button>
+      <!-- 点击下一张按钮，显示下一张图片，如果是最后一张则显示第一张 -->
+      <button>下一张</button>
+    </p>
+  </div>
+</body>
+
+</html>

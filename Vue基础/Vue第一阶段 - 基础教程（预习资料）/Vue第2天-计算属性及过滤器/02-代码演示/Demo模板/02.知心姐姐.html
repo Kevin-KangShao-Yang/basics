@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML5模拟微信聊天界面</title>
+  <style>
+    /**重置标签默认样式*/
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: '微软雅黑';
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+    }
+
+    #container {
+      width: 450px;
+      height: 90%;
+      background: #eee;
+      margin: 0 auto 0;
+      top: 5%;
+      position: relative;
+      box-shadow: 20px 20px 55px #777;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .header {
+      background: #000;
+      height: 40px;
+      color: #fff;
+      line-height: 40px;
+      font-size: 16px;
+      padding: 0 10px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .footer {
+      width: 430px;
+      height: 50px;
+      background: #666;
+      position: absolute;
+      bottom: 0;
+      padding: 10px;
+      border-radius: 0 0 5px 5px;
+      font-size: 16px;
+    }
+
+    .footer input {
+      width: 285px;
+      height: 45px;
+      outline: none;
+      font-size: 16px;
+      text-indent: 10px;
+      position: absolute;
+      border-radius: 6px;
+      right: 80px;
+    }
+
+    .footer span {
+      display: inline-block;
+      width: 62px;
+      height: 48px;
+      background: #ccc;
+      font-weight: 900;
+      line-height: 45px;
+      cursor: pointer;
+      text-align: center;
+      position: absolute;
+      right: 10px;
+      border-radius: 6px;
+    }
+
+    .footer span:hover {
+      color: #fff;
+      background: #999;
+    }
+
+    #user_face_icon {
+      display: inline-block;
+      background: red;
+      width: 50px;
+      height: 50px;
+      border-radius: 30px;
+      position: absolute;
+      bottom: 10px;
+      left: 14px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+    }
+
+    .content {
+      font-size: 20px;
+      width: 435px;
+      height: 662px;
+      overflow: auto;
+      padding: 5px;
+      word-wrap: break-word;
+      text-align: justify;
+    }
+
+    .content li {
+      margin-top: 10px;
+      padding-left: 10px;
+      width: 412px;
+      display: block;
+      clear: both;
+      overflow: hidden;
+    }
+
+    .content li img {
+      float: left;
+    }
+
+    .content li span {
+      background: #7cfc00;
+      padding: 10px;
+      border-radius: 10px;
+      float: left;
+      margin: 6px 10px 0 10px;
+      max-width: 310px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 3px #ccc;
+    }
+
+    .content li img.imgleft {
+      float: left;
+    }
+
+    .content li img.imgright {
+      float: right;
+    }
+
+    .content li span.spanleft {
+      float: left;
+      background: #fff;
+    }
+
+    .content li span.spanright {
+      float: right;
+      background: #7cfc00;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div class="header">
+      <span style="float: left;">知心姐姐</span>
+      <span style="float: right;"></span>
+    </div>
+    <ul class="content">
+      <!-- 循环遍历输出对应的数据 -->
+      <li v-for="msg in msgList">
+        <!-- 使用当前信息的类型进行判断显示不同的左右位置 -->
+        <template v-if="msg.self"> 
+            <img src="./img/right.png" class="imgright">
+            <span class="spanright">{{msg.info}}</span>
+        </template>
+        <template v-else> 
+            <img src="./img/left.png" class="imgleft">
+            <span class="spanleft">{{msg.info}}</span>
+        </template>
+
+      </li>
+    </ul>
+    <div class="footer">
+      <div id="user_face_icon">
+        <img src="./img/right.png" alt="" />
+      </div>
+      <input id="text" type="text" placeholder="说点什么吧..." v-model="msg" @keyup.enter="sendMsg"/>
+      <span id="btn" @click="sendMsg">发送</span>
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="./js/vue.js"></script>
+<script src="./js/jquery-1.12.4.min.js"></script>
+<script>
+  const app = new Vue({
+    el: "#container",
+    data: {
+      // 输入框输入的数据信息
+      msg: "",
+      // 显示在页面上的数据信息
+      msgList: [{
+          info: "你好吗？",
+          self: true
+        },
+        {
+          info: "不好",
+          self: false
+        },
+        {
+          info: "不好就不好，我脾气也不小",
+          self: true
+        }
+      ]
+    },
+    methods: {
+      // 发送数据的方法
+      sendMsg() {
+        this.msgList.push({
+          info: this.msg,
+          self: true
+        });
+        $.ajax({
+          url:"http://www.tuling123.com/openapi/api",
+          type:"POST",
+          data:{
+            key:"d7c82ebd8b304abeacc73b366e42b9ed",
+            info:this.msg
+          },
+          success:(data)=>{
+            this.msgList.push({
+              info: data.text,
+              self: false
+            });
+          }
+        })
+        this.msg="";
+      }
+    }
+  })
+</script>

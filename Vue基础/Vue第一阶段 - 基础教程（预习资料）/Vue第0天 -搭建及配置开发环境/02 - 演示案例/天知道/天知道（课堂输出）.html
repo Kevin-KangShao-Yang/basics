@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>天知道</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/iconfont.css" />
+    <link rel="stylesheet" href="css/main2.css" />
+    <style>
+      .tem .iconfont {
+        font-size: 50px;
+      }
+      .list-enter-active,
+      .list-leave-active {
+        transition: all 1s;
+      }
+      .list-enter, .list-leave-to{
+        opacity: 0;
+        transform: translateY(30px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="">
+      <!-- 顶部输入查询 -->
+      <div class="search_form">
+        <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+        <div class="form_group">
+          <input type="text" class="input_txt" placeholder="请输入查询的天气" />
+          <button class="input_sub loading">搜 索</button>
+        </div>
+        <div class="hotkey">
+          <a href="javascript:;">北京</a>
+          <a href="javascript:;">上海</a>
+          <a href="javascript:;">广州</a>
+          <a href="javascript:;">深圳</a>
+        </div>
+      </div>
+      <!-- 天气查询结果显示 -->
+      <ul class="weather_list">
+        <li>
+          <div class="info_type">
+            <span class="iconfont">&#xe932;</span>
+          </div>
+          <div class="info_temp">高 <b>32℃</b><br />低 32℃</div>
+          <div class="info_date"><b>深圳</b><span>5月19日</span></div>
+        </li>
+        <li>
+          <div class="info_type">
+            <span class="iconfont">&#xe932;</span>
+          </div>
+          <div class="info_temp">高 <b>32℃</b><br />低 32℃</div>
+          <div class="info_date"><b>深圳</b><span>5月19日</span></div>
+        </li>
+      </ul>
+      <!-- 天气种类模板 -->
+      <div class="tem" style="display: none">
+        <h2>模板</h2>
+        <!-- 雨 -->
+        <span class="iconfont">&#xe931;</span>
+        <!-- 晴 -->
+        <span class="iconfont">&#xe933;</span>
+        <!-- 阴 -->
+        <span class="iconfont">&#xe92d;</span>
+        <!-- 雪 -->
+        <span class="iconfont">&#xeb87;</span>
+        <!-- 云 -->
+        <span class="iconfont">&#xeb79;</span>
+        <!-- 雷 -->
+        <span class="iconfont">&#xeb77;</span>
+        <!-- 雹 -->
+        <span class="iconfont">&#xeb76;</span>
+        <!-- 雾 -->
+        <span class="iconfont">&#xeb75;</span>
+      </div>
+    </div>
+  </body>
+</html>

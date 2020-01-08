@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @-webkit-keyframes flash {
+
+            from,
+            50%,
+            to {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes flash {
+
+            from,
+            50%,
+            to {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }
+
+        .flash {
+            -webkit-animation-name: flash;
+            animation-name: flash;
+        }
+
+        @-webkit-keyframes fadeOutUpBig {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -200px, 0);
+                transform: translate3d(0, -200px, 0);
+            }
+        }
+
+        @keyframes fadeOutUpBig {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -200px, 0);
+                transform: translate3d(0, -200px, 0);
+            }
+        }
+
+        .fadeOutUpBig {
+            -webkit-animation-name: fadeOutUpBig;
+            animation-name: fadeOutUpBig;
+        }
+
+        .haha-enter-active,
+        .haha-leave-active {
+            animation: fadeOutUpBig 5s;
+        }
+
+        .haha-enter,
+        .haha-leave-to {
+            opacity: 0;
+        }
+
+        .haha-enter-to,
+        .haha-leave {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>vue单个元素过渡动画</h1>
+        <p><button @click="isShow = !isShow">点我切换显示</button></p>
+        <transition name="haha">
+            <img v-show="isShow" src="./知心姐姐/img/left.png">
+        </transition>
+    </div>
+</body>
+
+
+</html>
+<!-- 导包，导入相关脚本文件 -->
+<script src="./lib/vue.js"></script>
+<!-- 用包，调用相关方法规则 -->
+<script>
+    // 使用构造函数，传入一个特定的参数，创建一个vue实例
+    const app = new Vue({
+        // 挂载到html文档的对应节点
+        el: "#app",
+        // 定义数据
+        data: {
+            isShow: false
+        },
+        // 定义方法
+        methods: {
+
+        }
+    })
+</script>

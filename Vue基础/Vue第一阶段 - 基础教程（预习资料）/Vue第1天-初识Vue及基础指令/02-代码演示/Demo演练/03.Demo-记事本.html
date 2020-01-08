@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    h2 {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 300px;
+      height: 30px;
+      border-radius: 5px;
+      font-size: 16px;
+      padding-left: 10px;
+      outline: none;
+      border: 1px solid #000;
+    }
+
+    button {
+      width: 32px;
+      height: 32px;
+      border-radius: 5px;
+      box-shadow: none;
+      border: none;
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    p {
+      color: #aaa;
+    }
+
+    .items {
+      list-style: none;
+      padding: 0;
+      width: 350px;
+      margin: 20px auto;
+    }
+
+    .items .item {
+      font-size: 16px;
+      line-height: 32px;
+      text-align: left;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+
+    button.sub {
+      width: 25px;
+      height: 25px;
+      font-size: 12px;
+      float: right;
+      margin-top: 5px;
+    }
+
+    button.sub:hover {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 模板 -->
+  <div id="app">
+    <h2>小黑记事本</h2>
+    <input type="text" v-model.trim="todo" placeholder="请输入非空内容，点击加号记录" />
+    <button @click="addList">+</button>
+    <ul class='items'>
+      <li @dblclick="delOne(index)" v-for="(item,index) in list" class='item'>{{index+1}}. {{item}} <button
+          @click="delOne" class="sub">X</button></l>
+    </ul>
+    <p>双击栏目删除对应数据</p>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 编码 -->
+<script>
+  // 创建Vue实例
+  var app = new Vue({
+    el: "#app",
+    data: {
+      todo: '',
+      list: [
+        '吃饭饭',
+        '睡觉觉'
+      ]
+    },
+    methods: {
+      addList() {
+        if (this.todo == ""){
+          this.todo = "";
+          return;
+        }
+        this.list.push(this.todo);
+        this.todo = "";
+      },
+      delOne(index) {
+        this.list.splice(index, 1)
+      }
+    },
+  })
+</script>

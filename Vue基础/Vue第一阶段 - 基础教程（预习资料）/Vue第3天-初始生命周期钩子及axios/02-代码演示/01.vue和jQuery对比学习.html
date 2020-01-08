@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>vue和jquery对比学习</h1>
+        <p id="myp">aaa</p>
+    </div>
+</body>
+
+</html>
+<!-- 导包，导入相关脚本文件 -->
+<script src="./lib/vue.js"></script>
+<script src="./lib/jquery.min.js"></script>
+<!-- 用包，调用相关方法规则 -->
+<script>
+    $("#myp").html("bbbb")
+    // 使用构造函数，传入一个特定的参数，创建一个vue实例
+    const app = new Vue({
+        // 挂载到html文档的对应节点
+        el: "#app",
+        // 定义数据
+        data: {
+
+        },
+        // 定义方法
+        methods: {
+
+        }
+    })
+</script>

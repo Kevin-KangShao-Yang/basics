@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-box mymsg="辣酱油很辣，其实我不爱吃，其实我骗你的"></my-box>
+        <my-box :mymsg="msg" :myarr="arr"></my-box>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script type="text/x-component" id="mybox">
+    <div>
+        <h2>组件的基础定义及使用</h2>
+        <p>{{msg}}</p>
+        <p>----------------</p> 
+        <p>{{mymsg}}</p>
+        <p>----------------</p> 
+        <p v-for="item in myarr">{{item}}</p>
+    </div>
+</script>
+<script>
+    Vue.component("my-box", {
+        template:"#mybox",
+        data(){
+            return {
+                msg:"辣椒酱"
+            }
+        },
+        // 接收从父组件中传递过来的数据
+        props:{
+           // 对象名和组件内部定义的标签属性保保持一致
+           mymsg:{
+               type: String,
+               default:()=>{
+                  return "这是一个很伤心的蜡笔小新"
+               }
+           },
+           myarr:{
+               type:Array,
+               default:()=>{
+                    return []
+               }
+           }
+        }
+    })
+    const app = new Vue({
+        el: "#app",
+        data:{
+            msg:"这是一个很寂寞的辣椒油",
+            arr:[
+                "辣椒油",
+                "辣椒酱",
+                "蜡笔小新"
+            ]
+        }
+    })
+</script>

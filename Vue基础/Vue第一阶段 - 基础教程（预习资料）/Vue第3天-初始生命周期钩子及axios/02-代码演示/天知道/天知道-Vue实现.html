@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>天知道</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/iconfont.css" />
+    <link rel="stylesheet" href="css/main2.css" />
+    <style>
+      .tem .iconfont {
+        font-size: 50px;
+      }
+      .list-item {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .list-enter-active,
+      .list-leave-active {
+        transition: all 1s;
+      }
+      .list-enter, .list-leave-to{
+        opacity: 0;
+        transform: translateY(30px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="app">
+      <div class="search_form">
+        <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+        <div class="form_group">
+          <input
+            type="text"
+            class="input_txt"
+            placeholder="请输入查询的天气"
+            v-model.trim="city"
+            @keyup.enter="searchWeather"
+          />
+          <button class="input_sub " :class="{loading:isLoading}">搜 索</button>
+        </div>
+        <div class="hotkey">
+          <a href="javascript:;" @click="city='北京';searchWeather()">北京</a>
+          <a href="javascript:;" @click="city='上海';searchWeather()">上海</a>
+          <a href="javascript:;" @click="city='广州';searchWeather()">广州</a>
+          <a href="javascript:;" @click="city='深圳';searchWeather()">深圳</a>
+        </div>
+      </div>
+      <!-- <ul class="weather_list"> -->
+      <transition-group
+        name="list"
+        tag="ul"
+        class="weather_list"
+        v-on:after-enter="afterEnter"
+      >
+        <li
+          v-for="(item,index) in weatherList"
+          :key="index"
+          :style="{transitionDelay:index*100+'ms'}"
+        >
+          <div class="info_type">
+            <!-- 雨 -->
+            <span v-if="item.type.indexOf('雨')!=-1" class="iconfont"
+              >&#xe931;</span
+            >
+            <!-- 晴 -->
+            <span v-else-if="item.type.indexOf('晴')!=-1" class="iconfont"
+              >&#xe933;</span
+            >
+            <!-- 阴 -->
+            <span v-else-if="item.type.indexOf('阴')!=-1" class="iconfont"
+              >&#xe92d;</span
+            >
+            <!-- 雪 -->
+            <span v-else-if="item.type.indexOf('雪')!=-1" class="iconfont"
+              >&#xeb87;</span
+            >
+            <!-- 云 -->
+            <span v-else-if="item.type.indexOf('云')!=-1" class="iconfont"
+              >&#xeb79;</span
+            >
+            <!-- 雷 -->
+            <span v-else-if="item.type.indexOf('雷')!=-1" class="iconfont"
+              >&#xeb77;</span
+            >
+            <!-- 雹 -->
+            <span v-else-if="item.type.indexOf('雹')!=-1" class="iconfont"
+              >&#xeb76;</span
+            >
+            <!-- 雾 -->
+            <span v-else class="iconfont">&#xeb75;</span>
+          </div>
+          <div class="info_temp">
+            高 <b>{{ item | highTem }}</b
+            ><br />{{ item.low }}
+          </div>
+          <div class="info_date">
+            <b>{{ item.date }}</b
+            ><span>{{ item.type }}</span>
+          </div>
+        </li>
+      </transition-group>
+      <!-- </ul> -->
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <script src="./js/moment.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          // 城市
+          city: '',
+          // 天气
+          weatherList: [],
+          // 是否正在加载
+          isLoading: false
+        },
+        // 计算属性
+        computed: {
+          currentDay() {
+            console.log('执行了')
+            return moment().format('MM月DD日')
+          }
+        },
+        // 过滤器
+        filters: {
+          highTem(v) {
+            console.log(v)
+            return v.high.split(' ')[1]
+          }
+        },
+        methods: {
+          searchWeather() {
+            // 开始加载
+            this.isLoading = true
+            // 清空
+            this.weatherList = []
+            axios
+              .get(`http://wthrcdn.etouch.cn/weather_mini?city=${this.city}`)
+              .then(res => {
+                console.log(res)
+
+                // 还原
+                setTimeout(() => {
+                  this.isLoading = false
+                  // 获取天气
+                  this.weatherList = res.data.data.forecast
+                }, 500)
+              })
+          },
+          // 动画播放完毕 钩子
+          afterEnter(e) {
+            e.style = ''
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

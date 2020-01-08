@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>v-text指令的使用</h2>
+        <p v-text="msg"></p>
+        <p>{{msg}}，后面不会被覆盖，推荐使用这个</p>
+        <h2>v-html指令的使用</h2>
+        <p v-html="hmsg"></p>
+        <h2>v-bind指令的使用</h2>
+        <p><img v-bind:src="imgSrc" alt=""></p>
+        <p><img :src="imgSrc" alt=""></p>
+        <h2>v-on指令使用</h2>
+        <p><button v-on:click="sayHello">点我试试</button></p>
+        <p><button @click="sayHello">点我看看</button></p>
+        <h2>v-model指令的使用</h2>
+        <p><input type="text" v-model="msg"></p>
+        <h2>v-for指令的使用</h2>
+        <p v-for="(name,index) in arr">{{index}} - {{name}}</p>
+        <h2>v-if指令的使用</h2>
+        <p v-if="tag">我显示了</p>
+        <p v-else>新的显示</p>
+        <h2>v-show指令的使用</h2>
+        <p v-show="tag">我是show出来的</p>
+    </div>
+</body>
+</html>
+<!-- 导包 -->
+<script src="./lib/vue.js"></script>
+<!-- 用包 -->
+<script>
+const app = new Vue({
+    el:"#app",
+    data:{
+        msg:"学好vue，进阶大神",
+        hmsg:"<i>学好vue，忘记vue，创造vue</i>",
+        imgSrc:"./Demo模板/img/girl.png",
+        arr:[
+            '蜡笔小新',
+            '海绵宝宝',
+            '犬夜叉',
+            '黑猫警长',
+            '葫芦娃'
+        ],
+        tag:true
+    },
+    methods:{
+        sayHello(){
+            this.imgSrc="./Demo模板/img/boy.png"
+        }
+    }
+})
+</script>

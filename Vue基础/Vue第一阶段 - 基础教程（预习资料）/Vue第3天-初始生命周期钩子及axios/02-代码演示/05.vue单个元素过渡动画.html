@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @-webkit-keyframes wobble {
+            from {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            15% {
+                -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+                transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+            }
+
+            30% {
+                -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+                transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+            }
+
+            45% {
+                -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+                transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+            }
+
+            60% {
+                -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+                transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+            }
+
+            75% {
+                -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+                transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+            }
+
+            to {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes wobble {
+            from {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            15% {
+                -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+                transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+            }
+
+            30% {
+                -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+                transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+            }
+
+            45% {
+                -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+                transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+            }
+
+            60% {
+                -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+                transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+            }
+
+            75% {
+                -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+                transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+            }
+
+            to {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .wobble {
+            -webkit-animation-name: wobble;
+            animation-name: wobble;
+        }
+
+        .haha-enter-active,
+        .haha-leave-active {
+            animation: wobble 5s;
+        }
+
+        .haha-enter,
+        .haha-leave-to {
+            opacity: 0;
+        }
+
+        .haha-enter-to,
+        .haha-leave {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>vue单个元素过渡动画</h1>
+        <p><button @click="isShow = !isShow">点我切换显示</button></p>
+        <transition name="haha">
+            <p v-show="isShow">
+                <img src="./知心姐姐/img/left.png">
+                <img src="./知心姐姐/img/left.png">
+            </p>
+        </transition>
+    </div>
+</body>
+
+
+</html>
+<!-- 导包，导入相关脚本文件 -->
+<script src="./lib/vue.js"></script>
+<!-- 用包，调用相关方法规则 -->
+<script>
+    // 使用构造函数，传入一个特定的参数，创建一个vue实例
+    const app = new Vue({
+        // 挂载到html文档的对应节点
+        el: "#app",
+        // 定义数据
+        data: {
+            isShow: false
+        },
+        // 定义方法
+        methods: {
+
+        }
+    })
+</script>

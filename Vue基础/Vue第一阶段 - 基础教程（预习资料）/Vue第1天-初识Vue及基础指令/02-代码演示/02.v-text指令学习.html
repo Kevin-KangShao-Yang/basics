@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <h2>使用v-text指令的方式将内容渲染到页面上</h2>
+        <p v-text="msg"></p>
+        <p v-text="msg">我已经有女朋友了</p>
+        <p v-text="hmsg"></p>
+        <h2>使用{{}}胡子语法来简写v-text指令</h2>
+        <p>{{msg}}，我已经有女朋友了</p>
+        <p>{{hmsg}}</p>
+        <h2>字符串、数字、数组、对象、布尔等都能够被解析</h2>
+        <p>{{arr}}{{arr[2]}}</p>
+        <p>{{obj}}{{obj.name}}</p>
+        <h2>可以在{{}}中使用js表达式进行简单的逻辑运算</h2>
+        <p>{{ arr[1] + "+++++++" + arr[2] }}</p>
+        <p>{{ false?arr[1]:arr[2] }}</p>
+    </div>
+</body>
+</html>
+<!-- 导包 -->
+<script src="./lib/vue.js"></script>
+<!-- 用包 -->
+<script>
+const app = new Vue({
+    el:"#app",
+    data:{
+        msg:"学好Vue，不愁女友",
+        // v-text 不能解析html的语义标签
+        hmsg:"<h1>今天早饭忘记吃了</h1>",
+        arr:[
+            '蜡笔小新',
+            '樱桃小丸子',
+            '犬夜叉',
+            '海绵宝宝',
+            '黑猫警长',
+            '天线宝宝'
+        ],
+        obj:{
+            name:"班长",
+            age:"21",
+            city:'阿富汗'
+        }
+    }
+})
+</script>

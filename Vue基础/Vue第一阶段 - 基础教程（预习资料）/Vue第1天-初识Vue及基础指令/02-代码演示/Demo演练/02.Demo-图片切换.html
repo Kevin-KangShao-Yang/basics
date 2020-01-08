@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width= , initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #app{
+        width:100%;
+        margin:50px auto;
+        text-align: center;
+      }
+      .title {
+        color:#333;
+      }
+      img {
+        height: 500px;
+        box-shadow: 0 0 20px #ccc;
+      }
+      input{
+        margin:20px 5px 0;
+        border-radius:3px;
+        cursor: pointer;
+        border:none;
+        padding: 5px 10px;
+      }
+      input:hover{
+        color:green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 模板 -->
+    <div id="app">
+      <h2 class="title">图片循环切换</h2>
+      <img v-bind:src="imgList[index]" alt="" />
+      <br />
+      <input type="button" value="上一张" @click="pre" />
+      <input type="button" value="下一张" @click="next" />
+    </div>
+  </body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 编码 -->
+<script>
+  // 创建Vue实例
+  var app = new Vue({
+    el: '#app',
+    data: {
+      imgList: [
+        './img/1.jpg',
+        './img/2.jpg',
+        './img/3.jpg',
+        './img/4.jpg',
+        './img/5.jpg'
+      ],
+      index: 0
+    },
+    methods: {
+      pre() {
+        this.index--
+        if (this.index < 0) {
+          this.index = this.imgList.length - 1
+        }
+      },
+      next() {
+        this.index++
+        if (this.index > this.imgList.length - 1) {
+          this.index = 0
+        }
+      }
+    }
+  })
+</script>

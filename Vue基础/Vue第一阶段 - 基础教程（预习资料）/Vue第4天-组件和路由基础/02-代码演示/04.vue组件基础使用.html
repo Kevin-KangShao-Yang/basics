@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-box info="this is my info"></my-box>
+        <my-box></my-box>
+        <my-box></my-box>
+        <my-box></my-box>
+        <my-box></my-box>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script type="html/text" id="mybox">
+    <div>
+        <h2>这个是比较酷的定义方式，也是我们推荐的方式</h2>
+        <p>
+            <img src="./Demo演练/黑云播放器/基础模板/img/cover.png" alt="">
+        </p>
+        <p>{{msg}}</p>
+        <p>
+            <button @click="sayHi">点我试试？试试就试试</button>
+        </p>
+    </div>
+</script>
+<script>
+    Vue.component("my-box", {
+        data() {
+            return {
+                msg: "学好vue"
+            }
+        },
+        props: {
+            info: {
+                type: String,
+                default: 'hello world'
+            }
+        },
+        methods: {
+            sayHi() {
+                this.msg = this.info
+            }
+        },
+        template: "#mybox"
+    })
+    const app = new Vue({
+        el: "#app",
+        data: {
+
+        }
+    })
+</script>

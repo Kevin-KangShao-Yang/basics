@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .haha-enter-active,
+    .haha-leave-active {
+        transition: opacity 5s;
+    }
+
+    .haha-enter,
+    .haha-leave-to {
+        opacity: 0;
+    }
+
+    .haha-enter-to,
+    .haha-leave {
+        opacity: 1;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h1>vue列表过渡动画</h1>
+        <button @click="add">添加</button>
+        <button @click="remove">移除</button>
+        <transition-group name="haha" tag="ul">
+            <li v-for="(item,index) in arr" :key="index">{{item}}</li>
+        </transition-group>
+    </div>
+</body>
+
+</html>
+<!-- 导包，导入相关脚本文件 -->
+<script src="./lib/vue.js"></script>
+<!-- 用包，调用相关方法规则 -->
+<script>
+    // 使用构造函数，传入一个特定的参数，创建一个vue实例
+    const app = new Vue({
+        // 挂载到html文档的对应节点
+        el: "#app",
+        // 定义数据
+        data: {
+            arr: [
+                '蜡笔小新',
+                '犬夜叉',
+                '海绵宝宝',
+                '奥特曼',
+                '葫芦娃',
+                '老夫子',
+                '辣椒酱',
+                '辣椒油'
+            ]
+        },
+        // 定义方法
+        methods: {
+            add() {
+                this.arr.push("老干妈");
+            },
+
+            remove() {
+                this.arr.splice(-1, 1);
+            }
+        }
+    })
+</script>

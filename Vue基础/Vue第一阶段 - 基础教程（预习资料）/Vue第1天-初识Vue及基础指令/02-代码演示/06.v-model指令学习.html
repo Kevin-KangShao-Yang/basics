@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>我们动态的监听一个input输入框输入的内容，并显示在页面上</h2>
+        <p>
+            <input type="text" :value="msg" @input="myInput">
+        </p>
+        <p>
+            你输入的内容是：{{msg}}
+        </p>
+        <h2>使用v-model的方法实现我们刚刚达到的数据双向绑定的结果</h2>
+        <p>
+            <input type="text" v-model="nmsg">
+        </p>
+        <p>
+            上面输入的内容是：{{nmsg}}
+        </p>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            msg:"boy",
+            nmsg:"girl"
+        },
+        methods:{
+            myInput(){
+                this.msg = event.target.value
+            }
+        }
+    })
+</script>

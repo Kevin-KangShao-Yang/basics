@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=div#app, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+const app = new Vue({
+    el:"#app",
+    data:{
+        msg:"努力，就一定有出路！"
+    },
+    // vue实例被创建，但是传入的data参数还没有设置到vue实例上，还无法被调用
+    beforeCreate() {
+        console.log("beforeCreate : "+this.msg)
+    },
+    // vue实例被创建，传入的data参数也已经设置给了这个vue实例，要操作数据，最早也得在这里
+    created() {
+        console.log("created : "+this.msg)
+    },
+    beforeMount() {
+        console.log("beforeMount : "+this.msg)
+    },
+    mounted() {
+        console.log("mounted : "+this.msg)
+    },
+})
+</script>

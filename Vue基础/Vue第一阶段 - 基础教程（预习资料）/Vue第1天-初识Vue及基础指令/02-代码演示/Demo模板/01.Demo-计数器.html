@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .input-num {
+      width: 180px;
+      height: 40px;
+      margin: 50px auto;
+      border: 1px solid gray;
+      display: flex;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .input-num button {
+      width: 50px;
+      height: 100%;
+      font-size: 25px;
+      color: gray;
+      cursor: pointer;
+    }
+
+    .input-num button:hover {
+      color: red;
+    }
+
+    .input-num span {
+      height: 100%;
+      border: 1px solid gray;
+      flex: 1;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .input-num button.disabled {
+      cursor: not-allowed;
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 计数器 -->
+    <div class="input-num">
+      <!-- 点击按钮实现减法操作，当减到0后就禁止点击操作 -->
+      <button>
+        -
+      </button>
+      <!-- 显示当前点击操作对应显示的数据 -->
+      <span>8</span>
+      <!-- 点击按钮实现加法操作，当加到10后就禁止点击操作 -->
+      <button>
+        +
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>

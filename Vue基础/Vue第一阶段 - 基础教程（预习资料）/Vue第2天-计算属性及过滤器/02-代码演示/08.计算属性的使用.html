@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>直接显示数据</h2>
+        <p>当前数组的内容是：{{arr}}</p>
+        <p>当前数组的长度是：{{arr.length}}</p>
+        <p>当前数组中有几个包含 “花” ：{{carr}}</p>
+        <h2>修改数据后计算属性的实现</h2>
+        <p>
+            <input type="text" v-model="name" @keyup.enter="addArr">
+        </p>
+        
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            name:"",
+            arr:[
+                '蜡笔小新',
+                '西蓝花',
+                '韭菜花',
+                '椰菜花',
+                '海绵宝宝',
+                '犬夜叉',
+                '玫瑰花'
+            ]
+        },
+        //定义计算属性，可以通过计算属性来处理我们的数据，拿到新的数据
+        computed:{
+            carr(){
+                console.log("我被运行了")
+                let num = 0;
+                for(let i=0;i<this.arr.length;i++){
+                    if(this.arr[i].indexOf('花')>-1){
+                        num++;
+                    }
+                }
+                return num
+            }
+        },
+        methods:{
+            addArr(){
+                this.arr.push(this.name)
+            }
+        }
+    })
+</script>

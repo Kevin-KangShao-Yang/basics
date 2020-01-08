@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ secrect | formateSecrect }}</p>
+        <p>{{ arr |formateArr | formateSecrect}}</p>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            secrect: "今天，你对我爱答不理！等我前端学成归来，我让你高攀不起！",
+            arr:[
+                '蜡笔小新',
+                '犬夜叉',
+                '黑猫警长',
+                '樱桃小丸子'
+            ]
+        },
+        filters: {
+            formateSecrect(val) {
+                return "我有一个小秘密，就不告诉你！"
+            },
+            formateArr(val){
+                return "我喜欢的动漫人物有："+ val.join("，")
+            }
+        }
+    })
+</script>

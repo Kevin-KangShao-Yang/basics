@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .input-num {
+        width: 180px;
+        height: 40px;
+        margin:50px auto;
+        border: 1px solid gray;
+        display: flex;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .input-num button {
+        width: 50px;
+        height: 100%;
+        font-size: 25px;
+        color: gray;
+        cursor: pointer;
+      }
+      .input-num button:hover{
+        color:red;
+      }
+      .input-num span {
+        height: 100%;
+        border: 1px solid gray;
+        flex: 1;
+        text-align: center;
+        line-height: 40px;
+      }
+      .input-num button.disabled {
+        cursor: not-allowed;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 计数器 -->
+      <div class="input-num">
+        <button
+          @click="sub"
+          :disabled="num<=min"
+          :class="num<=min?'disabled':''"
+        >
+          -
+        </button>
+        <span>{{ num }}</span>
+        <button
+          @click="add"
+          :disabled="num>=max"
+          :class="num>=max?'disabled':''"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 编码 -->
+<script>
+  // 创建Vue实例
+  var app = new Vue({
+    el: '#app',
+    data: {
+      num: 0,
+      min: 0,
+      max: 10,
+    },
+    methods: {
+      sub() {
+        if (this.num > this.min) {
+          this.num--;
+        }
+      },
+      add() {
+        if (this.num < this.max) {
+          this.num++;
+        }
+      },
+    },
+  });
+</script>

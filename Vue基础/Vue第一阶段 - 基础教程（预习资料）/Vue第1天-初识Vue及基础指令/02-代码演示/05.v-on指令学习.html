@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <p>{{msg}}</p>
+        <button v-on:click = "sayHello" :title="msg">点我试试</button>
+        <button @click = "sayHello" :title="msg">点我试试</button>
+
+        <h2>给v-on指令调用的方法传递参数</h2>
+        <p>{{gb}}</p>
+        <p><button @click="sayGb('我还是你忠实的粉丝')">----1-----</button></p>
+
+        <h2>v-on指令使用简单修饰符</h2>
+        <p>
+            <button @click="gogo()">----2---</button>
+        </p>
+        <p>
+            <a href="http://baidu.cn" @click.prevent="gogo">baidu</a>
+        </p>
+        <p>
+            <input type="text" @keyup.enter="gogo">
+        </p>
+
+        <h2>在v-on指令定义的方法中使用箭头函数声明</h2>
+        <p>
+            <button @click="sayHi">---3---</button>
+        </p>
+        <p>
+            <button @click="msg='hhhhhh'">----4----</button>
+            <button @click="console('11111')">----4----</button>
+        </p>
+
+    </div>
+</body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    
+    const app = new Vue({
+        el :"#app",
+        data:{
+            msg:'Hello Vue',
+            gb:"GoodBye Vue"
+        },
+        methods:{
+            //这个方法将会被 v-on 定义的事件绑定使用
+            sayHello(){
+                //alert("say hello ")
+                this.msg = "好好学习啊，同学们"
+            },
+            sayGb(str){
+                //this.gb = "赶紧回来吧，我还是喜欢你的"
+                this.gb = str
+                console.log(event)
+
+            },
+            gogo(){
+                //this.gb = "赶紧回来吧，我还是喜欢你的";
+                console.log(this === app)
+                this.sayHello()
+                //alert("aaaaa")
+            },
+            //在vue方法声明的时候，不要使用箭头函数
+            sayHi:()=>{
+                app.msg = "app new msg"
+                console.log(this)
+            },
+            console(str){
+                console.log(str)
+            }
+        }
+    })
+</script>

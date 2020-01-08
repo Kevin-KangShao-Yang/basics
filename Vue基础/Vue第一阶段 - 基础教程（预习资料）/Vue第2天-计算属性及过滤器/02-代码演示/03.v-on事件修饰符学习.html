@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p><button @click="gogo('新的信息')">点我试试</button></p>
+        <h2>vue事件修饰符的使用</h2>
+        <div @click.self="gogo('你好，帅哥！')" style="width: 300px;height:100px;background:red;">
+            <p><button @click.stop="say">Hello Girl</button></p>
+            <p><a href="http://baidu.cn" @click.prevent.stop="say">百度</a></p>
+            <p>我就是为了点击使用的</p>
+            <p>
+                <input type="text" @keyup.enter="kup">
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            msg: "这是一个寂寞的天，下着有点伤心的雨"
+        },
+        methods: {
+            // 定义一个方法，可以被v-on @ 事件的方法进行调用
+            gogo(str) {
+                console.log(this)
+                this.msg = str
+            },
+            /*
+            gogo:function(){
+                
+            }
+            gogo:()=>{
+                app.msg="这是一个孤独的我，留着有点伤心的泪"
+            }
+            */
+            say(){
+                this.msg="美女，你你好！"
+            },
+            kup(){
+                console.log(event.keyCode)
+            }
+        }
+    })
+</script>

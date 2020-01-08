@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('./font/iconfont.eot?t=1553433672048');
+  /* IE9 */
+  src: url('./font/iconfont.eot?t=1553433672048#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOYAAsAAAAAB8gAAANLAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqDCIJ3ATYCJAMQCwoABCAFhG0HQxvkBhHVm5PIfiTGtmjyRc6qaB+NmeB5rKtekl89GSxEV6+sk3CCCmse96RanPPARkWokZw9efSFlEdpTgFgxOG4BR7OtyyXOSZHXYBpAQU41qJAAi6QEuQesgkzMrH63w8FJJGbkqiGjVt2xCLYwxSgRg4b0g9bCCCImLYoYg1zBbUaB6uX6LvAqujz6gfllQWNY7DHth3caCB1K574ls64kUvPwMSD+WyAuAgMUBIQUEMbHf0xSaIkhiT9N0JlwGLRUPHE5/7f0kURis6isM5fHig0BlQMuzQFgIpMbm5M6LGh4HN/NjR8S1eCAfhBBlsgARgPXGSanPO8kkanpJi8mRKzzfA+dvQ/dQq/dAk+Tw2CzmHYxfc7ed7wfn1nbL9U0POWBp0PXsm+M4iHeXZdLRKGy/xOBy5n2+G7XufOG5euXw9ed0OmDfYlm7J02bQpvnVCPFjquf6ycJB7aWnxzl7S0iAYxx/DZWNxO3Y6ktcUDSV3bgkkDGShwMt4yMWqVBPWnZIvX8SXnhR4yOe4KD2Fa5SaNOPVjNdUKXun7ecnTRJXmdUuN8z2vvVcZnr1xRbLVl+82XDuu0NvFnRMs2V6UobEGQ3KVlzdT54uaDg9Qzou7h+2YaOH1CcbNnjrFBiX+2itSjdvDGo8u/36OiNG1F6/D7gcN1XuVy5qN7vxoJs3GzEWgKic+bMsCmDier2Ucs1LU+X/+w5dovTn+qSp+dsmCwBPLx9oGvmicgJNyZ8gJAv/LSGxTgyxbRTRJJ7AdAmVnjmmgSTHDP9RBtLzeg5VJnIpKCyZMmgSyAWDpSBBKCXhkExFxLDUQRIlaLI4mQyMx6AkESjOAoAiLaegSc1VGNJyjyCUV3DIzC/ESKsMkuisMqyZTGGF+8ORUDBqkH/wauiNa+ZDXH5D+06C8uKI9kLKPgx1UZXTV+yR5piQP7ZhNmBo6OACh2FKA4w0BFRcOOaxLUvT9KRCDd3swJFQMGqQf/Bq6E3QnA+V99/QvpOgjpo65wsp+86hLioC4aroSTX38kj+2IbZgKGhgwvYMDmJAcbmXgEVF25EbGxL1shQFcX6qu4LtwFJ2JuJ0sooUQ6rsUn896g9d34XsckoSLnZDAA=') format('woff2'),
+    url('./font/iconfont.woff?t=1553433672048') format('woff'),
+    url('./font/iconfont.ttf?t=1553433672048') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('./font/iconfont.svg?t=1553433672048#iconfont') format('svg');
+  /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play:before {
+  content: '\34ad';
+}
+
+.icon-editmedia:before {
+  content: '\e662';
+}
+
+.icon-search:before {
+  content: '\e911';
+}

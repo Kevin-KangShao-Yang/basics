@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/haha">哈哈</router-link>
+            <router-link to="/hehe">呵呵</router-link>
+            <router-link to="/xixi">嘻嘻</router-link>
+            <router-link to="/lala">啦啦</router-link>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script src="./lib/vue-router.js"></script>
+<script>
+    // 定义 (路由) 组件
+    const MyBox1 = {
+        data() {
+            return {
+                msg: "学好vue"
+            }
+        },
+        template: "<div><p>{{msg}}</p><img src='./images/1.png'></div>"
+    }
+    const MyBox2 = {
+        template: "<div><img src='./images/2.png'></div>"
+    }
+    const MyBox3 = {
+        template: "<div><img src='./images/3.png'></div>"
+    }
+    const MyBox4 = {
+        template: "<div><img src='./images/3.png'></div>"
+    }
+
+    // 2. 定义路由 每个路由应该映射一个组件
+    const routes = [{
+        path: '/haha',
+        component: MyBox1
+    }, {
+        path: '/hehe',
+        component: MyBox2
+    }, {
+        path: '/xixi',
+        component: MyBox3
+    }, {
+        path: '/lala',
+        component: MyBox4
+    }]
+
+
+    // 3. 创建 router 实例，然后传 `routes` 配置
+    const router = new VueRouter({
+        routes // (缩写) 相当于 routes: routes
+    })
+
+
+    // 4. 创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    // 从而让整个应用都有路由功能
+    const app = new Vue({
+        el: "#app",
+        router
+    })
+</script>

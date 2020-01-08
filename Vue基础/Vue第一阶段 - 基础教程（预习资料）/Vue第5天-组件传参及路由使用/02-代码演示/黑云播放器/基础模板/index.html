@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/iconfont.css" />
+  <link rel="stylesheet" href="./css/results.css">
+  <link rel="stylesheet" href="./css/player.css">
+  <link rel="stylesheet" href="./css/video.css">
+  <link rel="stylesheet" href="./css/comment.css">
+</head>
+
+<body>
+  <div id="player">
+    <h2 class="title">黑云音乐</h2>
+    <div class="search">
+      <input type="text" v-model="search" @keyup.enter="searchMusic" />
+      <button @click="searchMusic">
+        <span class="iconfont icon-search"></span>
+      </button>
+    </div>
+    <div class="tab-wrapper">
+      <!-- tab栏 
+      <div class="tab-bar">
+        <router-link class="bar-item" active-class='active' :to="'/results/'+search">搜索结果</router-link>
+        <router-link class="bar-item" active-class='active' to="/player">歌曲播放</router-link>
+        <router-link class="bar-item" active-class='active' to="/video">MV</router-link>
+        <router-link class="bar-item" active-class='active' to="/comment">歌曲评论</router-link>
+      </div>
+      -->
+      <!-- 对应的内容区域 -->
+      <div class="tab-content">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<!-- 导包，导入基础文件 -->
+<script src="./lib/vue.js"></script>
+<script src="./lib/vue-router.js"></script>
+<script src="./lib/axios.js"></script>
+
+<!-- 搜索结果模板 -->
+<script type="text/html" id="results">
+  <div class="result-wrapper">
+    <div class="song" v-for="music in musicList">
+      <div class="name">
+        <span class="iconfont icon-play" @click="playMusic(music.id)"></span>
+        {{music.name}}
+        <span class="iconfont icon-editmedia" n v-if="music.mvid != 0" @click="playMV(music.mvid)"></span>
+        <span style="color:blue;" @click="showComment(music.id)">评论</span>
+      </div>
+      <div class="singer">{{music.artists | getNames}}</div>
+      <div class="album">《{{music.album.name}}》</div>
+      <div class="time">{{music.duration | getTime}}</div>
+    </div>
+  </div>
+</script>
+<!-- 音乐播放模板 -->
+<script type="text/html" id="mplayer">
+  <div class="player">
+    <div class="left">
+      <img class='disc' src="./img/disc.png" alt="">
+      <img class='cover' :src="coverUrl" alt="">
+    </div>
+    <div class="right">
+      <div class="title"><img :src="coverUrl" alt=""><span>{{songName}}</span> </div>
+      <div class="singer">歌手: <span>{{singerName}}</span></div>
+      <div class="album">所属专辑: <span>{{albumName}}</span></div>
+      <audio class='audio' controls :src="msrc" autoplay loop></audio>
+      <ul class='lyric-container'>
+        <li class='lyric' v-for="liy in lyric">{{liy}}</li>
+      </ul>
+    </div>
+  </div>
+</script>
+<!-- 视频播放模板 -->
+<script type="text/html" id="video">
+  <div class="video">
+    <div class="title-wrapper">
+      <span class='tag'>MV</span>
+      <span class='title'>冲动的惩罚</span>
+      <span class='artist'>刀郎</span>
+    </div>
+    <video src="" controls></video>
+  </div>
+</script>
+<!-- 评论列表模板 -->
+<script type="text/html" id="comment">
+  <div class="comment-wrapper">
+    <div class="items">
+      <div class="item">
+        <div class="left">
+          <img src="./img/icon.jpg" alt="">
+        </div>
+        <div class="right">
+          <div class="top">
+            <span class='user'>阿木木:</span>
+            <span
+              class='content'>写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心</span>
+          </div>
+          <div class="bottom">
+            <div class="time">2016年9月18日</div>
+            <div class="like-wrapper">
+              <span>👍</span>(6666)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="left">
+          <img src="./img/icon.jpg" alt="">
+        </div>
+        <div class="right">
+          <div class="top">
+            <span class='user'>阿木木:</span>
+            <span
+              class='content'>写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心</span>
+          </div>
+          <div class="bottom">
+            <div class="time">2016年9月18日</div>
+            <div class="like-wrapper">
+              <span>👍</span>(6666)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="left">
+          <img src="./img/icon.jpg" alt="">
+        </div>
+        <div class="right">
+          <div class="top">
+            <span class='user'>阿木木:</span>
+            <span
+              class='content'>写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心写歌的人假正经，唱歌的人最矫情，听歌的人最用心</span>
+          </div>
+          <div class="bottom">
+            <div class="time">2016年9月18日</div>
+            <div class="like-wrapper">
+              <span>👍</span>(6666)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script>
+  // 搜索结果路由组件定义
+  const results = {
+    template: "#results",
+    data() {
+      return {
+        musicList: []
+      }
+    },
+    filters: {
+      //定义个获取多个名字的过滤器
+      getNames(val) {
+        let names = "";
+        for (let i = 0; i < val.length; i++) {
+          names += val[i].name + " | "
+        }
+        return names.slice(0, -2);
+      },
+      //定义过滤器获取歌曲长度时间
+      getTime(val) {
+        return ~~(~~(val / 1000) / 60) + "分" + ~~(val / 1000) % 60 + "秒"
+      }
+    },
+    // 一般我们在初始化页面的时候，需要异步请求数据的时候，都建议使用created，这样效率更高
+    created() {
+      console.log(this.$route.params.keyword)
+      axios.get("https://autumnfish.cn/search?keywords=" + this.$route.params.keyword)
+        .then(data => {
+          console.log(data.data.result.songs)
+          this.musicList = data.data.result.songs
+        })
+        .catch(err => {
+
+        })
+    },
+    // 我们获取页面上的DOM元素，使用ref属性来获取，至少要放在这个生命周期钩子里，因为，只有在这个时候页面的内容才真正的被渲染完成得到真实的节点
+    mounted() {
+
+    },
+    // 数据更新了，并且数据也渲染上页面上了，咱们还有逻辑要执行的话就写在这个逻辑里面
+    updated() {
+
+    },
+    methods: {
+      // 点击按钮播放音乐
+      playMusic(id) {
+        router.push({
+          path: '/player/' + id
+        });
+      },
+      // 点击播放mv
+      playMV(mvid) {
+        router.push({
+          path: '/video/' + mvid
+        });
+      },
+      // 点击查看评论
+      showComment(id) {
+        router.push({
+          path: '/comment/' + id
+        });
+      }
+    }
+  };
+  // 音乐播放路由组件定义
+  const player = {
+    template: "#mplayer",
+    data() {
+      return {
+        //保存歌曲地址
+        msrc: "",
+        //保存基础url地址
+        baseUrl: "https://autumnfish.cn/",
+        // 封面地址
+        coverUrl: '',
+        // 专辑名
+        albumName: '',
+        // 歌手名
+        singerName: '',
+        // 歌名
+        songName: '',
+        // 歌词数组
+        lyric:[]
+      }
+    },
+    created() {
+      // 获取当前歌曲url地址
+      axios.get(this.baseUrl + "song/url?id=" + this.$route.params.id).then(data => {
+        console.log(data)
+        this.msrc = data.data.data[0].url
+      }).catch(err => {
+
+      })
+      //获取当前歌曲的相关信息
+      axios.get(`${this.baseUrl}/song/detail?ids=${this.$route.params.id}`)
+        .then(backData => {
+          console.log(backData)
+          // 封面地址
+          this.coverUrl = backData.data.songs[0].al.picUrl;
+          // 专辑名
+          this.albumName = backData.data.songs[0].al.name;
+          // 歌手名
+          this.singerName = backData.data.songs[0].ar[0].name;
+          // 歌名
+          this.songName = backData.data.songs[0].name;
+        });
+      //获取当前歌曲的歌词
+      axios
+        .get(`${this.baseUrl}/lyric?id=${this.$route.params.id}`)
+        .then(backData => {
+          // console.log(backData)
+          // 保存歌词为数组
+          this.lyric = backData.data.lrc.lyric.split('\n');
+          // 循环数组 切掉 [00:00.000]
+          for (let i = 0; i < this.lyric.length; i++) {
+            this.lyric[i] = this.lyric[i].slice(11);
+          }
+        });
+    }
+  };
+  // 视频播放路由组件定义
+  const video = {
+    template: "#video"
+  };
+  // 评论列表路由组件定义
+  const comment = {
+    template: "#comment"
+  };
+
+  // 定义路由，每个路由应该映射一个组件
+  const routes = [{
+    path: '/results/:keyword',
+    component: results
+  }, {
+    path: '/player/:id',
+    component: player
+  }, {
+    path: '/video/:mvid',
+    component: video
+  }, {
+    path: '/comment/:id',
+    component: comment
+  }]
+
+  // 3. 创建 router 实例，然后传 `routes` 配置
+  const router = new VueRouter({
+    routes // (缩写) 相当于 routes: routes
+  })
+
+  // 4. 创建和挂载根实例，记得要通过 router 配置参数注入路由，从而让整个应用都有路由功能
+  const app = new Vue({
+    el: "#player",
+    router,
+    data: {
+      search: ""
+    },
+    methods: {
+      searchMusic() {
+        //console.log(this.search);
+        //router.push('results')
+        router.push({
+          path: '/results/' + this.search
+        });
+        window.location.reload();
+      }
+    }
+  })
+</script>

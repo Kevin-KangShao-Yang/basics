@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #box {
+        height: 200px;
+        border: 2px solid red;
+        overflow: hidden;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div id="box" ref="mybox">
+            <ul>
+                <li v-for="num in arr">{{num}}</li>
+            </ul>
+        </div>
+        <p><button @click="addLi">{{msg}}</button></p>
+    </div>
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script src="./lib/iscroll.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            msg: "学好vue",
+            arr:[
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素",
+                "这是一个li元素"
+            ],
+            myScroll:null
+        },
+        //回调的时机是：在数据更新并且渲染到页面上以后会自动调用这个钩子函数
+        updated() {
+            this.myScroll.refresh();
+        },
+        //回调的时机是：在vue的数据挂载到页面上并且渲染完成以后
+        mounted() {
+            //调用平滑滚动插件
+            //const wrapper = document.querySelector('#box')
+            this.myScroll = new IScroll(this.$refs.mybox)
+        },
+        methods:{
+            addLi(){
+                this.arr.push("这是新的li元素")
+            }
+        }
+    })
+</script>
