@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 需求: 帮群主写一份个人信息 -->
+    <!-- input是一个非常重要的表单控件 -->
+    昵称: <input type="text" placeholder="请输入你的昵称">
+    <!-- type: 类型 -->
+    <!-- text: 文本输入框 -->
+    <!-- value: 默认值---记住账号密码 -->
+    <!-- placeholder: 占位符 -->
+    <br>
+    密码: <input type="password" placeholder="请输入六位密码" maxlength="6">
+    <!-- password: 密码框 -->
+    <!-- maxlength: 限制最大字符数 -->
+    <br>
+    性别: <input type="radio" name="sex" checked>男 <input type="radio" name="sex">女
+    <!-- radio: 单选框 -->
+    <!-- 为什么没有单选互斥的效果---没有设置分组---name -->
+     <br>
+    食物: <input type="checkbox" name="food" checked>烤生蚝 <input type="checkbox" name="food">烤番薯 <input type="checkbox" name="food">烤土豆
+    <!-- checkbox:多选框 -->
+    <!-- name:给数据设置一个关键字,方便存储数据 单选:设置分组,形成组内互斥----多选:方便后台数据存储跟读取-->
+    <!-- checked:默认选中状态 -->
+    <br>
+    游戏: <input type="checkbox" name="game" checked>玩着农药 <input type="checkbox" name="game">峡谷一日游 <input type="checkbox" name="game">守望屁股
+</body>
+</html>

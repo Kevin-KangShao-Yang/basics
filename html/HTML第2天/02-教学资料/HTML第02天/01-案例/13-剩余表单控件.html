@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <!-- form表单域 -->
+        姓名: <input type="text" placeholder="请输入你的名字">
+        <br>
+        密码: <input type="password" placeholder="请输入六位密码" maxlength="6">
+        <br>
+        性别: <input type="radio" name="sex" checked> 男 <input type="radio" name="sex"> 女
+        <br>
+        食物: <input type="checkbox" name="food" checked> 烤榴莲 <input type="checkbox" name="food"> 烤榴莲 <input
+            type="checkbox" name="food"> 烤榴莲
+        <!-- checked: 单选以及多选的默认选中 -->
+        <br>
+        <input type="button" value="普通按钮">
+        <br>
+        <input type="submit">
+        <!-- 提交按钮 -->
+        <br>
+        <input type="reset">
+        <!-- 重置按钮   注意:为什么点击重置按钮没有效果,原因在于你没有告诉它重置哪一张表单---form表单域--><只能配合form表单域使用>
+        <!-- 按钮类在最下面的话,可以用align="左中右"来移动  操作方式:<p align="方向代码">按钮代码<p> -->
+        <br>
+        <input type="image" src="../../HTML第02天/04-预习资料/01-案例/button.png">
+        <!-- 按钮图片 --><!-- 类似a标签包含img标签 -->
+        <br>
+        <button>新版本的按钮</button> <!-- 现在一般方便用于操作按钮代码,可以省去input type="内容"  注意:这操作只适用于按钮类 -->
+        <br>
+        <input type="file">
+        <!-- 文件域:用来提供给单文件上传的功能 -->
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+@import "normalize";
+@import "base";
+
+.w(@width) {
+    width: @width;
+    margin: 0 auto;
+}
+
+.aBlock() {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.layout {
+    min-width: 320px;
+    width: 100%;
+
+    .topBar {
+        width: 100%;
+        height: 42px;
+        background-color: #222;
+
+        .topContent {
+           .w(1170px);
+           height: 100%;
+
+           ul {
+               float: left;
+               margin-left: 10px;
+
+               li {
+                   float: left;
+                   line-height: 42px;
+                   margin-right: 30px;
+                   font-size: 14px;
+
+                   &:first-child {
+                    //  &清除前面的空格
+                    font-size: 18px;
+                   }
+
+                   a {
+                       color: #9d9d9d;
+                   }
+               }
+           }
+
+           .about {
+               float: right;
+               font-size: 14px;
+               color: #9d9d9d;
+               line-height: 42px;
+               margin-right: 10px;
+           }
+
+           .menu {
+               float: right;
+               width: 44px;
+               height: 34px;
+               border: 1px solid #333;
+               border-radius: 6px;
+               margin-top: 8px;
+               padding-top: 9px;
+               margin-right: 10px;
+               display: none;
+
+               .line {
+                   display: block;
+                   width: 22px;
+                   height: 2px;
+                   background-color: #fff;
+                   margin: 0 auto;
+                   margin-bottom: 4px;
+               }
+           }
+        }
+    }
+
+    .bg {
+        width: 100%;
+        height: 465px;
+        background: linear-gradient(45deg,#020027,#6a3351);
+        position: relative;
+
+        &::after {
+            position: absolute;
+            top: 0;
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: url("../imgs/bs.png") center center;
+        }
+        .main {
+            position: relative;
+            z-index: 1;
+            .w(1170px);
+            height: 100%;
+            text-align: center;
+            padding-top: 96px;
+
+            h1 {
+                font-size: 100px;
+                color: #fff;
+            }
+
+            .desc {
+                font-size: 28px;
+                margin-top: 30px;
+                color: #fff;
+            }
+
+            .button {
+                width: 290px;
+                height: 54px;
+                background-color: #337ab6;
+                margin: 0 auto;
+                border-radius: 10px;
+                margin-top: 35px;
+
+                a {
+                    .aBlock();
+                    line-height: 54px;
+                    color: #fff;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    .show {
+        .w(1170px);
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            li {
+                width: 262px;
+                height: 336px;
+                border: 1px solid red;
+                margin-bottom: 30px;
+
+                a {
+                    .aBlock();
+                    padding: 4px;
+
+                    img {
+                        width: 100%;
+                    }
+
+                    .title {
+                        font-size: 24px;
+                        color: #337ab7;
+                        margin-top: 30px;
+                    }
+                    .name {
+                        font-size: 16px;
+                        color: #887777;
+                        margin-top: 10px;
+                    }
+                    .content {
+                        font-size: 14px;
+                        color: #555;
+                        line-height: 20px;
+                        margin-top: 12px;
+                        padding: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 大于992 小于1200
+@media screen and (min-width:992px) and (max-width:1200px) {
+    .layout {
+        .topBar {
+            .topContent {
+               .w(970px);
+               ul {
+                   li:nth-child(2) {
+                        display: none;
+                   }
+               }
+
+            }
+        }
+
+        .bg {
+            .main {
+                .w(970px);       
+            }
+        }
+
+        .show {
+            .w(970px);
+    
+            ul {
+                li {
+                    width: 293px;
+                    height: 352px;
+                }
+            }
+        }
+    }
+}
+
+// 大于768 小于992
+@media screen and (min-width:768px) and (max-width:992px) {
+    .layout {
+        .topBar {
+            .topContent {
+               .w(720px);
+               ul {
+                   li:nth-child(1),
+                   li:nth-child(2) {
+                        display: none;
+                   }
+               }
+               .about {
+                   display: none;
+               }
+
+            }
+        }
+
+        .bg {
+            height: 445px;
+            .main {
+                .w(720px);   
+                h1 {
+                    font-size: 90px;
+                }
+                .desc {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .show {
+            .w(720px);
+    
+            ul {
+                li {
+                    width: 310px;
+                    height: 360px;
+                }
+            }
+        }
+    }
+}
+
+// 大于320 小于768
+@media screen and (min-width:320px) and (max-width:768px) {
+    .layout {
+        .topBar {
+            height: 50px;
+            .topContent {
+               .w(100%);
+               ul {
+                   li {
+                       display: none;
+                       line-height: 50px;
+                   }
+                   li:nth-child(1) {
+                        display: block;
+                   }
+               }
+               .about {
+                   display: none;
+               }
+               .menu {
+                   display: block;
+               }
+
+            }
+        }
+
+        .bg {
+            height: 384px;
+            .main {
+                .w(100%);   
+                padding-top: 70px;
+                h1 {
+                    font-size: 70px;
+                }
+                .desc {
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+            }
+        }
+
+        .show {
+            .w(100%);
+    
+            ul {
+                li {
+                    width: 310px;
+                    height: 360px;
+                }
+            }
+        }
+    }
+}

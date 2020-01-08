@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            background-color: red;
+        }
+        .son {
+            width: 200px;
+            height: 50px;
+            background-color: pink;
+            border: 2px solid green;
+            float: left;
+        }
+        /* 在一开始的时候,元素都是标准流,所以父元素的高度由子元素撑开 */
+        /* 如果此刻所有的子元素都浮动了!!!!! */
+        /* 当所有的子元素都浮动了,父元素失去了高度?????????? */
+
+        /* 分析: */
+        /* 1.为什么一开始父元素有高度: 因为父子元素都是标准流,子元素撑开父元素的高度 */
+        /* 2.为什么子元素浮动了,父元素就没有高度: 浮动不占据标准流的位置所以没有办法帮父元素撑开高度 */
+
+
+        /* 清除浮动影响----帮助父元素找回高度 */
+    </style>
+</head>
+<body>
+    <!-- 1.浮动的最初目的: 文字环绕图片 -->
+    <!-- 只是因为他的特点很适合做布局,所以被程序员拿来做布局 -->
+    <!-- 一定会有瑕疵----浮动的影响 -->
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+</body>
+</html>

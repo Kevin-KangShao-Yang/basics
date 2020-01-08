@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            background-color: red;
+        }
+        .son {
+            width: 200px;
+            height: 50px;
+            border: 2px solid green;
+            background-color: pink;
+            float: left;
+        }
+
+        /* 额外标签法: 在子元素的最后,添加一个额外标签,并且设置属性clear:both即可 */
+
+        .clear {
+            clear: both;
+        }
+        /* 为什么不推荐使用: 会添加很多没有意义的结构代码 */
+        /* 思考: 有没有一种方法,可以不添加标签,但是还可以使用clear属性 */
+    </style>
+
+
+</head>
+<body>
+    <!-- 浮动影响: 当所有的子元素都浮动了,父元素有可能失去高度 -->
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

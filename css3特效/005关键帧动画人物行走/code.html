@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width:120px;
+            height:182px;
+            margin:100px auto 0;
+            border: 1px solid #666;
+            overflow: hidden;            
+        }
+        .wrap img{
+            animation: walking 1s steps(8) infinite;
+        }
+
+        @keyframes walking{
+            from{
+                transform:translateX(0px);
+            }
+
+            to{
+            transform:translateX(-960px);
+            }
+        }
+
+
+    
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img src="images/walking.png" alt="">
+    </div>
+</body>
+</html>

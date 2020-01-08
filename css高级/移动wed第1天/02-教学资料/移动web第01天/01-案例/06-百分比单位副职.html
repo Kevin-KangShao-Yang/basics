@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            height: 200px;
+            background-color: red;
+            overflow: hidden;
+        }
+        .son {
+            width: 25%;
+            /* 参考父元素的宽度 */
+            height: 25%;
+            /* 参考父元素的高度 */
+            background-color: pink;
+            margin-top: 25%;
+            /* 很多同学认为是垂直方向,所以是参考父元素的高度 */
+            /* 在margin与padding的百分比赋值中,只会参考父元素的宽度!!!!!!!!!! */
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            color: red;
+        }
+        div {
+            color: pink;
+            color: skyblue;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            background: blue;
+        }
+
+        /* 层叠性: 当有相同选择器(权重相同),作用在同一元素身上,发生属性冲突,后面的属性会覆盖前面的属性 */
+        /* 后来者居上 */
+    </style>
+</head>
+<body>
+    <div>
+        这是一个寂寞的天
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            background: url("吴彦祖.jpeg") no-repeat center;
+
+            /* 层叠性,有些连写属性层叠性你是看不见的 */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

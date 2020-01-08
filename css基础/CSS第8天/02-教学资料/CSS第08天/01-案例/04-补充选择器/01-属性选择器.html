@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* []:属性选择器 */
+        li[type] {
+            /* 找到一个li标签,并且这个标签拥有属性type */
+            color: red;
+        }
+        li[type="blue"] {
+            /* 找到一个li标签,并且这个标签拥有type属性以及属性值blue */
+            color: blue;
+        }
+        /* 以上的两种方式要求掌握 */
+
+        li[type^="www"] {
+            /* 属性值以某个字段开头 */
+            color: gold;
+        }
+        li[type^="http"] {
+            color: green;
+        }
+
+        li[type$="cn"] {
+            /* 属性值以某个字段结尾 */
+            color: pink;
+        }
+
+        li[type$="net"] {
+            color: purple;
+        }
+
+        li[type*="liqun"] {
+            /* 属性值中拥有某个字段在任意位置 */
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li type="">这是一个寂寞的天1</li>
+        <li type="blue">这是一个寂寞的天2</li>
+        <li type="www.baidu.com">这是一个寂寞的天3</li>
+        <li type="http.baidu.com">这是一个寂寞的天4</li>
+        <li type="baidu.cn">这是一个寂寞的天5</li>
+        <li type="baidu.net">这是一个寂寞的天6</li>
+        <li type="linliqunlaoshihenshuaihenshuai">这是一个寂寞的天7</li>
+    </ul>
+</body>
+</html>

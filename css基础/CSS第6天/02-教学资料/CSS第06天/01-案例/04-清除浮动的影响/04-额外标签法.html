@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            background-color: red;
+        }
+        .son {
+            width: 200px;
+            height: 50px;
+            background-color: pink;
+            border: 2px solid green;
+            float: left;
+        }
+
+        /* 官方推荐: 额外标签法 */
+        /* 在子元素的最后,添加一个额外标签,并且给这个标签设置一个属性: clear:both; */
+        .clear {
+            clear: both;
+            /* 不允许我的旁边有浮动元素,如果有,我走 */
+        }
+        /* 一定要掌握,但是还是不能用 */
+        /* 一个盒子要清除浮动影响,就必须添加一个额外标签! */
+        /* 如果有一千个盒子要清除浮动影响呢??? */
+        /* 程序员不希望自己的代码,存在没有意义的结构 */
+
+        /* 牛逼的程序员,没有条件,就创造条件 */
+        /* 不添加额外标签(伪元素),还能用clear属性----不给钱,还可以白嫖 */
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

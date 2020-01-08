@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .menu{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width:800px;
+            height:50px;
+            margin:50px auto 0;
+        }
+        .menu li{
+            width:100px;
+            height:50px;
+            float: left;
+            perspective:200px;         
+        }
+        .menu li div{
+            height:50px;
+            position: relative;
+            transform-style: preserve-3d;           
+            transition:all 500ms ease; 
+        }
+        .menu li div:hover{
+            transform:translateY(-25px) translateZ(-25px) rotateX(90deg);
+        }
+        .menu li a{
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:100px;
+            line-height:50px;
+            text-align:center;
+            text-decoration:none;
+            background:#3366cc;
+            color:#fff;
+            font-size:14px;        
+        }
+        .menu li a:nth-child(1){
+            background:#234b9a;
+            transform:translateY(25px) translateZ(-25px) rotateX(-90deg);
+        }
+    
+    
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li><div><a href="#">首页</a><a href="#">HOME</a></div></li>
+        <li><div><a href="#">公司简介</a><a href="#">RESUME</a></div></li>
+        <li><div><a href="#">产品介绍</a><a href="#">PRODUCT</a></div></li>
+        <li><div><a href="#">公司新闻</a><a href="#">NEWS</a></div></li>
+        <li><div><a href="#">行业新闻</a><a href="#">INDUSTRY</a></div></li>
+        <li><div><a href="#">加入我们</a><a href="#">JOINUS</a></div></li>
+        <li><div><a href="#">联系方式</a><a href="#">CONTACT</a></div></li>
+        <li><div><a href="#">网站地图</a><a href="#">WEBMAP</a></div></li>
+    </ul>
+</body>
+</html>

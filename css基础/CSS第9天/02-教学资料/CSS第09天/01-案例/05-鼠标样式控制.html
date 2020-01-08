@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left;
+            margin-right: 20px;
+        }
+        /* cursor: 只是单纯的控制鼠标的样式,并没有其他的任何效果 */
+        div:nth-child(1) {
+            cursor: default;
+            /* 默认光标 */
+        }
+        div:nth-child(2) {
+            cursor: pointer;
+            /* 点击光标 */
+        }
+        div:nth-child(3) {
+            cursor: text;
+            /* 文本光标 */
+        }
+        div:nth-child(4) {
+            cursor: move;
+            /* 移动光标 */
+        }
+        div:nth-child(5) {
+            cursor: not-allowed;
+            /* 禁止光标 */
+        }
+        div:nth-child(6) {
+            cursor: wait;
+            /* 加载光标 */
+        }
+        div:nth-child(7) {
+            cursor: help;
+            /* 帮助光标 */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 50px;
+        }
+        .red {
+            height: 300px;
+            background-color: red;
+            position: fixed;
+            top: 300px;
+        }
+        .blue {
+            height: 200px;
+            background-color: blue;
+            position: absolute;
+            /* 绝对定位 */
+            /* 问一个问题: 父元素有没定位???? */
+            left: 50px;
+            top: 50px;
+        }
+        .yellow {
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            /* 父元素有没有定位 */
+            left: 50px;
+            top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="red">
+        <div class="blue">
+            <div class="yellow"></div>
+        </div>
+    </div>
+</body>
+</html>

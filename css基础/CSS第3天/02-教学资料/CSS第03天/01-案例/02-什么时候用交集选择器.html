@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 任何时候都不需要主动使用其他选择器(除了后代) -->
+    <!-- 拿起一个项目,什么都不用管,直接用后代 -->
+    <!-- 如果后代没有办法解决问题,那么可以配合其他选择器使用 -->
+    <!-- 控制一下文字对应的颜色,不能影响到别的标签 -->
+    <style>
+        /* div .head .nav {
+            color: red;
+        } */
+
+         /* div {}
+         p {} */
+
+        /* 1.标签名与类名的结合---交集选择器 */
+         /* div.nav {
+             color: red;
+         }
+
+         p.nav {
+             color: pink;
+         } */
+
+         /* 2.后代与交集的配合----项目中经常出现的结构 */
+         div .head div.nav {
+             /* 先找到一个div标签,再找到里面的head类名标签,最后再找到一个div标签并且拥有类名nav */
+             color: red;
+         }
+
+         div .head p.nav {
+             color: pink;
+         }
+    </style>
+    <div>
+        <div class="head">
+            <div class="nav">红色</div>
+            <div>文字</div>
+            <p class="nav">粉色</p>
+            <p>文字</p>
+        </div>
+    </div>
+</body>
+</html>

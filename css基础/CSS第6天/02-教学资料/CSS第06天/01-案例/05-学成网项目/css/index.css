@@ -1,0 +1,107 @@
+/* 初始化代码 */
+
+body,
+div,
+span,
+p,
+a,
+ul,
+li,
+input,
+img,
+h1,
+h2,
+h3,
+h4,
+strong,
+em,
+del,
+ins,
+i {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+li {
+    list-style: none;
+}
+input {
+    border: none;
+    outline: none;
+}
+img {
+    border: none;
+    vertical-align: middle;
+    /* 清除图片底部的空白间隙 */
+}
+i {
+    font-style: normal;
+}
+body {
+    font-size: 12px;
+    line-height: 1;
+    background-color: #f3f6f6;
+}
+
+.header {
+    width: 1366px;
+    height: 100px;
+    background-color: pink;
+    margin: 0 auto;
+}
+
+.header .logo {
+    float: left;
+    margin-top: 30px;
+}
+
+.header .logo a {
+    width: 195px;
+    height: 42px;
+    display: block;
+    background: url("../imgs/logo.png");
+}
+
+.header .nav {
+    float: left;
+    margin-left: 45px;
+}
+.nav li {
+    float: left;
+    font-size: 18px;
+    line-height: 38px;
+    margin-top: 32px;
+    padding: 0 8px;
+    margin-right: 28px;
+}
+
+.nav li:first-child {
+    border-bottom: 2px solid #00a8fd;
+}
+
+.header .searchBar {
+    width: 409px;
+    height: 38px;
+    border: 1px solid #00a3ff;
+    float: left;
+    margin-top: 30px;
+    margin-left: 122px;
+}
+
+.searchBar input {
+    float: left;
+    width: 360px;
+    height: 38px;
+    text-indent: 18px;
+    /* 首行缩进对盒子的大小没有影响 */
+}
+
+.searchBar a {
+    float: right;
+    width: 49px;
+    height: 38px;
+    background: url("../imgs/fangdajin.png")no-repeat center #00a3ff;
+}

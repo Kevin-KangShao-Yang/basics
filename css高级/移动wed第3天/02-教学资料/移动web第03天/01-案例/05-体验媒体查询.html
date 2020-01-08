@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 1.在320px的屏幕下,显示: 我 */
+        /* 2.在375px的屏幕下,显示: 爱 */
+        /* 3.在414px的屏幕下,显示: 你 */
+
+        /* 思路: 在页面一加载的时候先判断当前设备屏幕的宽度.然后显示不同的内容 */
+        @media screen and (width: 320px) {
+            /* 当屏幕宽度等于320px的时候,执行以下代码 */
+            body {
+                text-align: center;
+                background-color: red;
+            }
+            div::before {
+                content: "我";
+                font-size: 30px;
+                
+            }
+        }
+        @media screen and (width: 375px) {
+            /* 当屏幕宽度等于375px的时候,执行以下代码 */
+            body {
+                text-align: center;
+                background-color: blue;
+            }
+            div::before {
+                content: "爱";
+                font-size: 30px;
+            }
+        }
+        @media screen and (width: 414px) {
+            /* 当屏幕宽度等于414px的时候,执行以下代码 */
+            body {
+                text-align: center;
+                background-color: green;
+            }
+            div::before {
+                content: "你";
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        
+    </div>
+</body>
+</html>

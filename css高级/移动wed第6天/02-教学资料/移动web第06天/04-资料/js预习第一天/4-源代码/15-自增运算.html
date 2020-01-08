@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //自增是什么意思: 在原来的基础上自己增加1
+        //前自增,后自增
+        //++num前自增
+        //num++后自增
+
+        //var num1 = 10,num2 = 20;
+        //++num1;
+        //num2++;
+        //console.log(num1,num2);//11 11
+
+        //var res = ++num1 + num2++;
+        //console.log(num1,num2);//11 21
+        //console.log(res);//31???
+
+        //前自增与后自增区别
+        //前自增,在式子运算之前,先加1,然后再参与到式子中运算,先己后人
+        //后自增,先参与式子的运算,然后再加1,先人后己
+
+        // var res2 = num1++ + ++num2 + ++num1 - ++num2 * num1++;
+        //上面这句代码,是辣鸡
+
+        var a = 12;
+        var b = 10;
+        var c = 5;
+        var d = a++; // d = 12  a = 13
+        var e = ++b; // e = 11  b = 11
+        var f = c + d++;// f = 5 + 12 = 17  d = 13
+        var g = c + ++d;// g = 5 + 14 = 19  d = 14
+        //算出d,e,f,g的值。 14,11,17,19
+        console.log(d,e,f,g);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

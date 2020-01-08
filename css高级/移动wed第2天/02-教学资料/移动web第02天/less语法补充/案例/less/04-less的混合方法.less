@@ -1,0 +1,39 @@
+
+.baseSize() {
+   width: 200px;
+   height: 200px; 
+}
+// 以上是声明一个混合方法
+.marginAuto() {
+    margin: 0 auto;
+}
+.aBlock() {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+// 混合的语法结构
+// .混合方法名() {
+//      封装的属性等   
+// }
+div {
+    .baseSize();
+}
+p {
+    .baseSize();
+    // 调用混合方法
+    background-color: pink;
+}
+.red {
+    background-color: red;
+    .marginAuto();
+}
+.green {
+    background-color: green;
+    .aBlock();
+}
+
+.blue {
+    background-color: blue;
+}
+

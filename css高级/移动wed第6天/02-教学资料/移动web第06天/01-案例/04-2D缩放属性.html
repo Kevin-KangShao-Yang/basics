@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: red;
+            margin: 200px auto;
+            transition: all 2s;
+        }
+        div:hover {
+            /* transform: scale(-1,-1); */
+            /* 缩放属性,赋值是宽高的倍数,先写宽,再写高 */
+            transform: scaleY(2);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

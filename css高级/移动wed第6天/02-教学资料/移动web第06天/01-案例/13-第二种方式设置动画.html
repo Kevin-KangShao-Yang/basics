@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes godCar {
+            0% {
+                transform: translateX(0);
+            }
+            49% {
+                transform: translateX(1200px);
+            }
+            50% {
+                transform: translateX(1200px) rotateZ(180deg);
+            }
+            99% {
+                transform: translateX(0px) rotateZ(180deg);
+            }
+            100% {
+                transform: translateX(0px) rotateZ(0deg);
+            }
+        }
+        img {
+            width: 200px;
+            animation: godCar 2.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <img src="./imgs/car.png" alt="">
+</body>
+</html>

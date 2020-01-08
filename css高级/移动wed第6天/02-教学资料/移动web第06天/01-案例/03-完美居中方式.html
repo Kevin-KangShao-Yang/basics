@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+
+            /* 传统方式居中 */
+            /* left: 50%;
+            margin-left: -100px;
+            top: 50%;
+            margin-top: -100px; */
+            /* 每次都需要进行重新计算,不是很优雅 */
+
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            /* 在平移属性中百分比参考的是自己本身 */
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

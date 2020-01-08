@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var num = window.devicePixelRatio;
+        console.log(num);
+        // pc端默认的比例是 1
+        //通过ctrl+滚轮可以修改比例
+    </script>
+    <style>
+        body {
+            background-color: red;
+        }
+        .one {
+            width: 57px;
+            height: 21px;
+            background: url("./img/img_1x.png");
+        }
+        .two {
+            width: 57px;
+            height: 21px;
+            background: url("./img/img_2x.png");
+            background-size: 57px;
+        }
+        /* 为什么要用多倍图? */
+        /* 手机屏幕的比例有2倍屏幕 以及 3倍屏幕 */
+        /* 如果不同比例的屏幕显示同样的图片,可能会有失真的效果 */
+        /* 就必须事先准备好不同比例的图片,所谓多倍图: 2倍图 3倍图 */
+        /* 在页面一加载的时候,先获取屏幕的倍数,再加载对应的图片即可 */
+        /* 保证在不同的屏幕下,显示的图片都是清晰可见的 */
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+</html>

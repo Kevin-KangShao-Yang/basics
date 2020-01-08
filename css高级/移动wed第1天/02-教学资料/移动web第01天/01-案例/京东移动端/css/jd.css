@@ -1,0 +1,311 @@
+/* 因为提供的图片是375的二倍图,而且还没有学习其他布局单位,所以我们只兼容375px的手机屏幕 */
+.layout {
+    max-width: 414px;
+    min-width: 320px;
+    /* 限定最大的宽度以及最小的宽度 */
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ccc;
+}
+
+header {
+    max-width: 414px;
+    min-width: 320px;
+    width: 100%;
+    height: 40px;
+    background-color: #c91523;
+    position: fixed;
+    z-index: 1;
+}
+
+header .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+header .logo a {
+    display: block;
+    width: 56px;
+    height: 20px;
+    /* 背景图片的大小也需要手动压缩一半 */
+    background: url("../img/jd-sprites.png") 0 -109px;
+    background-size: 200px;
+    /* 对应的背景图片也要压缩一半 */
+}
+header .login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 40px;
+    right: 18px;
+}
+
+header .login a {
+    color: #fff;
+}
+
+header .searchBar {
+    height: 30px;
+    background-color: #fff;
+    margin-left: 90px;
+    margin-right: 59px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    top: 5px;
+}
+
+.searchBar .icon {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    background: url("../img/jd-sprites.png") -60px -109px;
+    background-size: 200px;
+    top: 5px;
+    left: 14px;
+}
+
+.searchBar input {
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+    text-indent: 36px;
+}
+
+.banner img {
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+    height: 152px;
+    background-color: #fff;
+}
+
+nav ul {
+    width: 100%;
+    height: 100%;
+}
+
+nav ul li {
+    float: left;
+    width: 25%;
+    height: 50%;
+}
+
+nav li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    color: #666;
+}
+
+nav li a img {
+    width: 40px;
+    display: block;
+    margin: 10px auto 8px;
+}
+
+.seckill {
+    width: 100%;
+    height: 195px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+.seckill .sec-hd {
+    width: 100%;
+    height: 35px;
+    position: relative;
+}
+
+.sec-hd .clock {
+    position: absolute;
+    width: 17px;
+    height: 21px;
+    background: url("../img/jd-sprites.png") -84px -109px;
+    background-size: 200px;
+    top: 3px;
+    left: 22px;
+}
+
+.sec-hd span {
+    position: absolute;
+    font-size: 14px;
+    color: #ca1327;
+    left: 45px;
+    top: 11px;
+}
+
+.sec-hd .time {
+    position: absolute;
+    top: 10px;
+    left: 111px;
+}
+.sec-hd .time li {
+    float: left;
+}
+
+.sec-hd .time li:nth-child(odd) {
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 4px;
+}
+
+.sec-hd .more {
+    position: absolute;
+    right: 40px;
+    top: 11px;
+    color: #666;
+}
+
+.sec-hd .more .gengduo {
+    position: absolute;
+    width: 9px;
+    height: 15px;
+    background: url("../img/jd-sprites.png") -184px -50px;
+    background-size: 200px;
+    right: -14px;
+    top: -1px;
+}
+
+.seckill .sec-bd {
+    width: 100%;
+    height: 160px;
+}
+
+.sec-bd ul {
+    height: 100%;
+}
+
+.sec-bd li {
+    float: left;
+    width: 33.33%;
+    height: 100%;
+}
+
+.sec-bd li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.sec-bd li img {
+    width: 115px;
+    display: block;
+    margin: 0 auto;
+}
+
+.sec-bd li .price-now {
+    font-size: 14px;
+    font-weight: bold;
+    color: #f00;
+    display: block;
+    margin-bottom: 7px;
+}
+
+.sec-bd li del {
+    font-size: 14px;
+}
+
+.sec-bd li .flag {
+    position: absolute;
+    width: 34px;
+    height: 36px;
+    background-color: orange;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 17px;
+    color: #fff;
+    bottom: 44px;
+    right: 8px;
+}
+
+.coupon {
+    width: 100%;
+    height: 193px;
+    background: url("../uploads/banner_bg.jpg");
+    background-size: 100%;
+    position: relative;
+}
+
+.coupon ul {
+    width: 100%;
+    padding: 0 5px;
+    height: 134px;
+    position: absolute;
+    bottom: 5px;
+}
+
+.coupon li {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.coupon li img {
+    width: 100%;
+}
+
+
+
+.img-show ul:nth-child(1) li {
+    width: 33.33%;
+
+}
+
+.img-show li {
+    float: left;
+    width: 50%;
+}
+
+.img-show li a {
+    display: block;
+    width: 100%;
+}
+
+.img-show li a img {
+    width: 100%;
+}
+
+.img-banner {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 49px;
+}
+
+.img-banner img {
+    width: 100%;
+}
+
+.homeBar {
+    position: fixed;
+    max-width: 414px;
+    min-width: 320px;
+    width: 100%;
+    height: 44px;
+    background-color: #fff;
+    bottom: 0;
+}
+
+.homeBar a {
+    float: left;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+.homeBar a img {
+    height: 100%;
+}

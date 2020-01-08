@@ -1,0 +1,110 @@
+/* 独立的通用css文件 */
+/* 因为网站某些模块在很多页面都会使用,所以为了代码简洁,将通用的模块单独抽取成为一个css文件 */
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+.topBar {
+    height: 30px;
+    background-color: #ccc;
+}
+.topBar .w {
+    height: 100%;
+}
+.topBar .welcome {
+    float: left;
+    line-height: 30px;
+}
+.welcome span {
+    float: left;
+    color: #616161;
+}
+.welcome a {
+    float: left;
+    margin-left: 12px;
+    color: #616161;
+}
+.welcome a:last-child {
+    color: #ca1324;
+}
+
+.topBar .links {
+    float: right;
+}
+.links li {
+    float: left;
+    line-height: 30px;
+}
+.links a {
+    color: #646464;
+}
+.links li.line {
+    width: 1px;
+    height: 12px;
+    background-color: #646464;
+    margin: 9px 12px 0;
+}
+
+.links li i.iconfont {
+    line-height: 27px;
+    margin-left: 8px;
+}
+
+.header {
+    height: 105px;
+    background-color: pink;
+    position: relative;
+}
+.header .logo {
+    position: absolute;
+    top: 25px;
+}
+.header .logo a {
+    display: block;
+    width: 175px;
+    height: 56px;
+    background: url("../img/logo.png");
+}
+.header .searchBar {
+    width: 534px;
+    height: 32px;
+    border: 2px solid #b21a1a;
+    position: absolute;
+    top: 25px;
+    left: 347px;
+}
+.header .searchBar input {
+    float: left;
+    width: 454px;
+    height: 32px;
+    text-indent: 8px;
+}
+.header .searchBar a {
+    float: right;
+    width: 80px;
+    height: 32px;
+    background-color: #b21a1a;
+    color: #fff;
+    text-align: center;
+    line-height: 32px;
+    font-size: 18px;
+}
+
+.header .hotWord {
+    position: absolute;
+    top: 68px;
+    left: 360px;
+}
+
+.hotWord li {
+    float: left;
+    margin-right: 24px;
+}
+
+.hotWord a {
+    color: #646464;
+}
+
+.hotWord li:first-child a {
+    color: #b21a1a;
+}

@@ -1,0 +1,160 @@
+// 先导入别人的文件,再导入自己的文件
+@import "normalize";
+@import "base";
+
+// 设置一个变量存储设计稿rem
+@rootRem: 75;
+
+// 将宽度封装为混合方法:程序员传入测量数据,方法将px转换成rem,进行赋值
+.width(@size){
+    width: @size/@rootRem*1rem;
+}
+.height(@size){
+    height: @size/@rootRem*1rem;
+}
+.font-size(@size) {
+    font-size: @size/@rootRem*1rem;
+}
+
+.padding-top(@size){
+    padding-top: @size/@rootRem*1rem;
+}
+.padding-bottom(@size){
+    padding-bottom: @size/@rootRem*1rem;
+}
+.padding-left(@size){
+    padding-left: @size/@rootRem*1rem;
+}
+.padding-right(@size){
+    padding-right: @size/@rootRem*1rem;
+}
+.padding(@all){
+    padding: @all/@rootRem*1rem;
+}
+.padding(@vertical,@horizontal){
+    padding: @vertical/@rootRem*1rem @horizontal/@rootRem*1rem;
+}
+.padding(@top,@horizontal,@bottom){
+    padding: @top/@rootRem*1rem @horizontal/@rootRem*1rem @bottom/@rootRem*1rem;
+}
+.padding(@top,@right,@bottom,@left){
+    padding: @top/@rootRem*1rem @right/@rootRem*1rem @bottom/@rootRem*1rem @left/@rootRem*1rem;
+}
+
+.margin-top(@size){
+    margin-top: @size/@rootRem*1rem;
+}
+.margin-bottom(@size){
+    margin-bottom: @size/@rootRem*1rem;
+}
+.margin-left(@size){
+    margin-left: @size/@rootRem*1rem;
+}
+.margin-right(@size){
+    margin-right: @size/@rootRem*1rem;
+}
+.margin(@all){
+    margin: @all/@rootRem*1rem;
+}
+.margin(@vertical,@horizontal){
+    margin: @vertical/@rootRem*1rem @horizontal/@rootRem*1rem;
+}
+.margin(@top,@horizontal,@bottom){
+    margin: @top/@rootRem*1rem @horizontal/@rootRem*1rem @bottom/@rootRem*1rem;
+}
+.margin(@top,@right,@bottom,@left){
+    margin: @top/@rootRem*1rem @right/@rootRem*1rem @bottom/@rootRem*1rem @left/@rootRem*1rem;
+}
+
+.line-height(@size){
+    line-height: @size/@rootRem*1rem;
+}
+
+.bgImage(@x,@y) {
+    background: url("../img/jd-sprites.png") @x/@rootRem*1rem @y/@rootRem*1rem;
+    background-size: 400/@rootRem*1rem;
+}
+
+.aBlock() {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.imgMargin(@top,@bottom){
+    display: block;
+    margin: @top auto @bottom;
+}
+
+.layout {
+    max-width: 414px;
+    min-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+
+    header {
+        position: fixed;
+        max-width: 414px;
+        min-width: 320px;
+        width: 100%;
+        height: 80/75rem;
+        background-color: #c91523;
+        display: flex;
+        align-items: center;
+        .logo {
+            width: 1.493333rem;
+            height: .533333rem;
+            .bgImage(0,-218);
+            .margin-left(20);
+            .margin-right(28);
+        }
+
+        .searchBar {
+            .height(60);
+            flex: 1;
+            background-color: #fff;
+            border-radius: 30/75rem;
+        }
+
+        .login {
+            .margin(0,20);
+            a {
+                color: #fff;
+                .font-size(24);
+            }
+        }
+    }
+
+    .banner {
+        img {
+            width: 100%;
+        }
+    }
+
+    nav {
+        width: 100%;
+        .height(304);
+        background-color: pink;
+        
+        ul {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                width: 25%;
+                height: 50%;
+
+                a {
+                    .aBlock();
+
+                    img {
+                        .width(80);
+                        .imgMargin(.266667rem,.213333rem);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 1000px;
+            height: 800px;
+            margin: 0 auto;
+            background-color: skyblue;
+            display: flex;
+            justify-content: center;
+            /* 侧轴默认是竖直从上到下 */
+            align-items: stretch;
+            /* 默认值,拉伸适应父盒子高度,必须子盒子没有设置高度*/
+            align-items: flex-start;
+            /* 在侧轴的开始位置 */
+            align-items: flex-end;
+            /* 在侧轴的结束位置 */
+            align-items: center;
+            /* 在侧轴的居中位置: 垂直居中 */
+        }
+        .box>div {
+            width: 200px;
+            height: 200px;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .pink {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="red"></div>
+        <div class="green"></div>
+        <div class="blue"></div>
+        <div class="pink"></div>
+    </div>
+</body>
+</html>

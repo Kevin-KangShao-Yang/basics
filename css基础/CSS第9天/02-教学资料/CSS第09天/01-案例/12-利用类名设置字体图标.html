@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <!-- 1. 先导入iconfont.css文件 -->
+    <style>
+        /* i {
+            font-size: 400px;
+            color: red;
+        } */
+        /* 优先级不够,无法生效 */
+        i.icon-bijiniyongzhuang- {
+            font-size: 400px;
+            color: pink;
+            /* font-weight: bold;
+            font-style: italic; */
+        }
+
+        i.icon-shatanku {
+            font-size: 400px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <i class="iconfont icon-bijiniyongzhuang-"></i>
+    <!-- 2.准备一个标签,并且给这个标签设置类名:iconfont -->
+    <!-- 3.获取相对应的图标类名,设置给目标元素 -->
+    <i class="iconfont icon-shatanku"></i>
+</body>
+</html>

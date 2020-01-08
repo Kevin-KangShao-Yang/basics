@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 800px;
+            height: 600px;
+            background-color: pink;
+            margin: 0 auto;
+            display: flex;
+
+            align-items: flex-start;
+        
+        }
+        .box>div {
+            height: 200px;
+            flex: 1;
+            font-size: 50px;
+            text-align: center;
+            line-height: 200px;
+        }
+        .red {
+            background-color: red;
+        }
+        .blue {
+            background-color: blue;
+            /* align-self: center; */
+            /* 单独控制子元素的侧轴对齐方式 */
+
+            order: -2;
+            /* 控制子元素的排布顺序,数值越小,位置越靠前,默认是0 */
+        }
+        .green {
+            background-color: green;
+            /* align-self: flex-end; */
+
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="red">1</div>
+        <div class="blue">2</div>
+        <div class="green">3</div>
+    </div>
+</body>
+</html>

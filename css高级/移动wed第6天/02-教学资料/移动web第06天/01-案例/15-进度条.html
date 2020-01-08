@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes animationA {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60%;
+            }
+        }
+        .progress {
+            width: 500px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 15px;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+
+        .hd {
+            width: 12%;
+            height: 100%;
+            float: left;
+            background-color: red;
+            text-align: center;
+            color: #fff;
+            line-height: 30px;
+        }
+
+        .bd {
+            float: left;
+            height: 100%;
+            background-color: pink;
+            animation: animationA 2s forwards;
+        }
+
+        .num {
+            float: right;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress">
+        <div class="hd">HTML</div>
+        <div class="bd"></div>
+        <div class="num">90%</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* .sun {
+            color: red;
+        } */
+        /* 在复杂结构中,单纯的类选择器已无法满足使用条件 */
+        /* 后代选择器------工作中最常用的选择器,没有之一 */
+        /* 1.多个选择器名之间用空格隔开 */
+        /* 2.后面的元素是前面的后代 */
+        /* 3.最终效果作用在最后一个元素身上 */
+        .father .son .sun {
+            /* 先找到father,再找到里面的son,最后找到sun */
+            color: red;
+        }
+        /* 简写方式:中间的辈分可以省略---不要超过3-5个---前 中 后留着 */
+        .mother .sun {
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        父亲
+        <div class="son">
+            儿子
+            <div class="sun">
+                红色孙子
+            </div>
+        </div>
+    </div>
+    <div class="mother">
+        母亲
+        <div class="son">
+            儿子
+            <div class="sun">
+                粉色孙子
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

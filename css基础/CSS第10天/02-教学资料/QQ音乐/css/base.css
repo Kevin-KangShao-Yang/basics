@@ -1,0 +1,62 @@
+/* 因为一个网站会有很多个页面需要用到初始化代码 */
+/* 我们不可能每次都重新编写初始化代码 */
+/* 单独设置一个base.css文件,将初始化代码独立出来成为一个文件 */
+/* 哪里要用,直接导入即可 */
+
+body,
+div,
+span,
+p,
+a,
+ul,
+li,
+input,
+img,
+strong,
+em,
+ins,
+del,
+h1,
+h2,
+h3,
+h4,
+i {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+li {
+    list-style: none;
+}
+input {
+    border: none;
+    outline: none;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+i {
+    font-style: normal;
+}
+
+textarea {
+    resize: none;
+}
+body {
+    font-size: 12px;
+    line-height: 1;
+}
+.clearfix::after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    *zoom: 1;
+}

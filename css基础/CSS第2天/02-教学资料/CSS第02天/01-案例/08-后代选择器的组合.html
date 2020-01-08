@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div p a {
+            color: red;
+        }
+        /* 纯标签组合 */
+
+        .head .logo .items {
+            color: blue;
+        }
+        /* 纯类名组合-----用得比较多 */
+
+        #list #nav #banner {
+            color: skyblue;
+        }
+        /* 纯id名组合 */
+
+        div .demo #test {
+            color: pink;
+        }
+        /* 混合结构-----用得比较多 */
+
+    </style>
+</head>
+<body>
+    
+    <div>
+        <p>
+            <a href="#">
+                红色文字
+            </a>
+        </p>
+    </div>
+
+    <div class="head">
+        <div class="logo">
+            <div class="items">
+                蓝色文字
+            </div>
+        </div>
+    </div>
+
+    <div id="list">
+        <div id="nav">
+            <div id="banner">
+                天蓝色的文字
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <ul class="demo">
+            <li id="test">粉色的文字</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            color: red !important;
+            /* !important对继承本身是没有作用的 */
+        }
+        * {
+            color: pink;
+        }
+        div {
+            color: gold !important;
+        }
+        .son {
+            color: skyblue !important;
+        }
+        #box {
+            color: darkgreen;
+        }
+        /* 优先级顺序 */
+        /* 继承性  <  通配符  <  标签选择器  <  类选择器  <  id选择器  <  行内式  <  !important */
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son" id="box" style="color: deeppink;">
+            猜猜我是谁
+        </div>
+    </div>
+</body>
+</html>

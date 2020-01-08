@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;  
+            
+        }
+        .red {
+            background-color: red;
+            margin-bottom: 300px;
+        }
+
+        .blue {
+            background-color: blue;
+            margin-top: 200px;
+        }
+        /* 垂直塌陷: 当垂直排布的盒子,添加相对应的margin,距离不是相加,而是取最大值 */
+        /* 如何解决: 避免就好 */
+        /* 垂直方向的margin不会相加 */
+    </style>
+</head>
+<body>
+    <div class="red"></div>
+    <div class="blue"></div>
+</body>
+</html>

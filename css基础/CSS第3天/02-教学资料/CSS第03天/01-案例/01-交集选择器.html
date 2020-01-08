@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.father.son.sun {
+            /* 找到一个元素,这个元素同时拥有三个类名: father son  sun */
+            /* 条件一定是缺一不可,但是多多益善 */
+            color: pink;
+        }
+        /* 交集选择器 */
+        /* 选择器名之间没有任何链接符号 */
+        /* 找到一个元素,这个元素拥有所有的条件 */
+    </style>
+</head>
+<body>
+    <div class="father">
+        父亲
+        <div class="son">
+            儿子
+            <div class="sun">
+                粉色孙子
+            </div>
+        </div>
+    </div>
+    <div class="father son sun">
+        控制的我,你说气不气
+    </div>
+    <p class="father son sun">
+        你猜我是什么颜色啊?
+    </p>
+    <div class="father mother son sun">你猜我是什么颜色?</div>
+
+
+    <style>
+        /* 使用交集,通过标签与类名同时判断进行控制 */
+        div.logo {
+            color: green;
+        }
+
+        p.logo {
+            color: pink;
+        }
+    </style>
+    <div class="logo">绿色</div>
+    <p class="logo">粉色</p>
+</body>
+</html>

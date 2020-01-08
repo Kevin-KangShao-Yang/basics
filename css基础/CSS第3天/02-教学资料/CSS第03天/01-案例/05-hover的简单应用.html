@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        /* 当鼠标悬停的时候,宽高变大,背景颜色变成粉色 */
+        div:hover {
+            /* 当鼠标悬停的时候,以下代码才会生效 */
+            /* 如果鼠标离开,那么代码立刻失效 */
+            /* 鼠标移入事件,鼠标移出事件 */
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

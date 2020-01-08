@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--js的书写位置,三个位置-->
+    <script>
+        //内嵌式,将js代码写在script标签中
+        alert("我是一个内嵌式的js代码");
+    </script>
+    <!--<link rel="stylesheet" href="外链式js.js">-->
+    <!--以上的链接方式是错误的-->
+    <!--如果要链接外部的js文件,请使用script标签src属性中存放js文件的路径-->
+    <script src="外链式js.js">
+        alert("这是一个寂寞的天,下着有些伤心的雨!");
+    //    如果script标签已经链接了外部的js文件,那么以上代码不会执行.
+    </script>
+</head>
+<body>
+    <input type="button" value="按钮" onclick="alert('警告警告,三秒后,你即将爆炸!')">
+    <!--1. 行内式js,使用得并不是很多
+        三层分离,结构,样式,行为,独立存在
+    -->
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        div {
+           
+        }
+
+        .red {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+        }
+        .red .son {
+            height: 50px;
+            background-color: pink;
+            /* 没有设置宽度的块级盒子,宽度等于父元素 */
+        }
+        .blue {
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+        }
+        .green {
+            background-color: green;
+            height: 200px;
+        }
+        /* 块级元素特点 */
+        /* 1.独自占据一整行 */
+        /* 2.可以设置宽高 */
+        /* 3.如果没有设置宽度的块级盒子,那么宽度继承父盒子的宽度 */
+    </style>
+</head>
+<body>
+    <!-- 常见的块级元素: div p h1-h6 table ul li........ -->
+    <div class="red">
+        <div class="son"></div>
+    </div>
+    <div class="blue"></div>
+    <div class="green"></div>
+</body>
+</html>

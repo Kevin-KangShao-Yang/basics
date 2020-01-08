@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            background-color: red;
+            overflow: hidden;
+            /* 触发BFC机制,让盒子的内部布局不影响外部 */
+            /* 你要懂,但是不建议使用 */
+            /* 是因为人家的本职工作不是为了清除浮动影响 */
+        }
+        .son {
+            width: 200px;
+            height: 50px;
+            background-color: pink;
+            border: 2px solid green;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+</body>
+</html>

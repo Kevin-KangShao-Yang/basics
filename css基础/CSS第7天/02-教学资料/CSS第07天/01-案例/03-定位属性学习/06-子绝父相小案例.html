@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            width: 935px;
+            height: 580px;
+            background: url("./奥黛丽赫本.jpg");
+            /* position: absolute; */
+            /* 1.如果该盒子脱标,那么下面的内容会被覆盖 */
+            /* 2.实现水平居中 */
+            position: relative;
+            margin: 0 auto;
+            /* 有宽度的块级盒子使用 */
+        }
+        img {
+            position: absolute;
+            /* 子元素绝对定位了,就应该思考父元素是什么定位 */
+        }
+        .left {
+            left: 0;
+            top: 200px;
+        }
+        .right {
+            right: 0;
+            top: 200px;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img class="left" src="./left.jpg" alt="">
+        <img class="right" src="./right.jpg" alt="">
+    </div>
+    <div class="box"></div>
+</body>
+</html>

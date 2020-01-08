@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 子代选择器-----用得不多 */
+        /* 选择器名使用>链接,后面的元素是前面的子代 */
+        .father>.son>.sun {
+            color: red;
+        }
+
+        /* 子代选择器中间的辈分不能省略 */
+        .mother>.sun {
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        父亲
+        <div class="son">
+            儿子
+            <div class="sun">
+                红色孙子
+            </div>
+        </div>
+    </div>
+    <div class="mother">
+        母亲
+        <div class="son">
+            儿子
+            <div class="sun">
+                粉色孙子
+            </div>
+        </div>
+    </div>
+</body>
+</html>

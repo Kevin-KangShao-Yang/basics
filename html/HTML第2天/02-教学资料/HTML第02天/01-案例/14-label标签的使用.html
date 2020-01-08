@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 提高用户体验 -->
+    <!-- 原理: 把控件与文件绑定到一起 -->
+    <!-- label标签 -->
+    <!-- 第一种方案,for属性必须要清除 -->
+    <label>
+        <input type="checkbox"> 记住密码
+    </label>
+    <hr>
+    <!-- 第二种方案 -->
+    <input id="psw" type="checkbox"> 
+    <label for="psw">忘记密码</label>
+
+    <!-- 1.通过label标签的for属性,找到对应的id元素 -->
+    <input type="radio" name="love" id="yes"><label for="yes">喜欢</label>
+    <br>
+    <!-- 2.直接使用label标签嵌套目标元素 -->
+    <!-- 注意:for属性必须清除 -->
+    <label>
+        <input type="radio" name="love">不喜欢
+    </label>
+<br>
+<!-- 也适用于填写框 -->
+<label>
+    你的名字:<input type="text">
+</label>
+
+    
+</body>
+
+</html>

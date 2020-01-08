@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //三元表达式/三目表达式
+        //语法结构
+        //表达式 ? 值1 : 值2;
+        //判断
+        //如果表达式成立,那么结果是值1,如果表达式不成立,那么结果是值2
+
+        //var num = 10;
+        //var res = num < 20 ? 100 : 200;
+        //console.log(res);
+
+        //让用户输入一个数字,判断是否大于10.如果大于10.请打印"大啦",
+        //var num = prompt("请输入一个数字");
+        //var res = num > 10 ? "大啦" : "小啦";
+        //console.log(res);
+
+        //让用户输入姓名,年龄,询问用户是否是男孩子
+        //输出:大家好,我的名字是....,我今年..岁,我是..生.
+
+        var userName = prompt("请输入你的名字:");
+        var age = prompt("请输入你的年龄:");
+        var sex = confirm("请问你是一个男孩子嘛?");
+        //sex只会是两个值,true/false
+        alert("大家好,我的名字是"+userName+",我今年已经"+age+"岁了,我是一个"+(sex ? '男' : '女')+"生");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

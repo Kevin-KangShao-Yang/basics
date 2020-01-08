@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 100px;
+            font-family: "楷体"; */
+            /* 以上的代码,太冗余了 */
+            /* font的连写方式,将多个属性集合到一起 */
+            font: 100px "楷体";<注意:这个操作是简写的>
+            /* 将多个属性,集合到一起,使用空格隔开即可 */
+            /* 1.前面两个属性可以调换位置,可以省略(加粗,倾斜) */
+            /* 2.后面两个属性不能调换位置,也不能省略(必须先写字体大小,再写字体库) */
+        }
+           操作: div {
+               color: blue;
+              font: bold italic 100px "楷体"   
+           }
+    </style>
+</head>
+<body>
+    <!-- 连写只是为了节省代码,让代码看起来更加简洁 -->
+    <div>
+        这是一个寂寞的天
+    </div>
+</body>
+</html>

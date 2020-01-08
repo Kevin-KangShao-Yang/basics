@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .con{
+            width:350px;
+            height:385px;
+            margin:50px auto 0;
+            perspective:600px;
+        }
+
+        .card{
+            width:350px;
+            height:385px;          
+            position: relative;           
+            transform-style: preserve-3d;
+            transition:all 1s ease;
+        }
+        .card img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform:translateZ(1px);
+        }
+        .card div{
+            position: absolute;
+            left:0;
+            top: 0;
+            padding:20px;
+            width:310px;
+            height:345px;
+            background-color: #333;
+            color:#fff;
+            transform:translateZ(-1px) rotateY(-180deg);
+        }
+
+        .con:hover .card{
+            transform: rotateY(180deg);
+        }
+    
+    
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="card">
+            <img src="images/bg001.png" alt="html5">
+            <div>
+                <h3>HTML5</h3>
+                <p>html5介绍</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

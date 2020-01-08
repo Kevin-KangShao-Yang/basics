@@ -1,0 +1,27 @@
+/* 当前有一个设置稿640px,盒子测量是100*100 */
+/* 目的,兼容三个屏幕320 375 414 */
+/* 测量 / 64 * rem */
+/* 1.通过媒体查询,设置不同屏幕的rem */
+@media (width: 320px) {
+  /* 设定rem为32px */
+  html {
+    font-size: 32px;
+  }
+}
+@media (width: 375px) {
+  /* 设定rem为37.5px */
+  html {
+    font-size: 37.5px;
+  }
+}
+@media (width: 414px) {
+  /* 设定rem为41.4px */
+  html {
+    font-size: 41.4px;
+  }
+}
+div {
+  width: 1.5625rem;
+  height: 1.5625rem;
+  background-color: red;
+}

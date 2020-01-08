@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h2{
+            text-align:center;
+        }
+        .con_wrap {
+            width: 402px;
+            height: 202px;
+            margin: 80px auto 0;
+            perspective: 800px;
+            border: 1px solid #f00;
+        }
+        .con {
+            width: 400px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            /* transform:translateZ(-100px) translateY(-100px) rotateX(90deg); */
+        }
+        .con a {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 400px;
+            line-height: 200px;
+            background-color: rgba(51, 102, 204, 0.5);
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #000;
+        }
+
+        .con a:nth-child(1) {
+            background: rgba(240, 190, 34, 0.5);
+            /* transform: translateZ(-100px) translateY(100px) rotateX(-90deg); */
+        }
+
+        .btns {
+            text-align: center;
+            margin-top: 250px;
+        }
+
+        @keyframes setBottom {
+            0% {
+                transform: translateZ(0px) translateY(0px) rotateX(0deg);
+            }
+
+            30% {
+                transform: translateZ(0px) translateY(0px) rotateX(-90deg);
+            }
+
+            60% {
+                transform: translateZ(0px) translateY(100px) rotateX(-90deg);
+            }
+
+            100% {
+                transform: translateZ(-100px) translateY(100px) rotateX(-90deg);
+            }
+        }
+
+        @keyframes hoverRotate {
+            0% {
+                transform:translateZ(0px) translateY(0px) rotateX(0deg);
+            }
+
+            30% {
+                transform:translateZ(0px) translateY(0px) rotateX(90deg);
+            }
+
+            60% {
+                transform:translateZ(0px) translateY(-100px) rotateX(90deg);
+            }
+
+            100% {
+                transform:translateZ(-100px) translateY(-100px) rotateX(90deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>翻转导航制作原理动画<br>(注意！！此文件只作为原理演示讲解，不作为练习内容！)</h2>
+    <div class="con_wrap">
+        <div class="con">
+            <a href="#">底面</a>
+            <a href="#">前面</a>
+        </div>
+    </div>
+    <div class="btns">
+        <button>将底面摆放到底部</button>
+        <button>鼠标悬停时的效果</button>
+    </div>
+
+    <script>
+        var oBottom = document.querySelectorAll('.con a')[0];
+        var oCon = document.querySelector('.con');
+        var oBtn01 = document.querySelectorAll('.btns button')[0];
+        var oBtn02 = document.querySelectorAll('.btns button')[1];
+
+        oBtn01.onclick = function () {
+            oBottom.style.animation = 'setBottom 3s linear 0s 1 forwards';
+        }
+
+        oBtn02.onclick = function () {
+            oCon.style.animation = 'hoverRotate 3s linear 0s 1 forwards';
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+/* 初始化代码 */
+/* 是为了清除标签在默认情况下的样式,而这些样式会影响到我们布局的准确性 */
+/* 所以在项目一开始,会对标签进行初始化 */
+
+* {
+    margin: 0;
+    padding: 0;
+    /* 清除标签的默认内外边距 */
+}
+
+a {
+    text-decoration: none;
+    /* 清除下划线 */
+    color: #000;
+}
+
+input {
+    border: none;
+    /* 清除input标签的边框 */
+    outline: none;
+    /* 清除input的外轮廓线---点击高亮的效果 */
+}
+
+body {
+    font-size: 12px;
+    line-height: 1;
+    /* 1: 当前字体大小的一倍 */
+    /* 在默认情况下,很多的标签都自带行高,而这个行高会对布局产生影响 */
+    background-color: #ccc;
+}
+
+.login {
+    width: 400px;
+    height: 400px;
+    background-color: #fafcff;
+    margin: 0 auto;
+    padding-top: 75px;
+    padding-left: 43px;
+}
+
+.login .userInfo input {
+    width: 340px;
+    height: 42px;
+    border: 1px solid #e5e6e8;
+    padding-left: 19px;
+    /* 真实宽高 = 设置宽高 + border + padding */
+    margin-bottom: 30px;
+}
+
+.login .tools {
+    font-size: 14px;
+}
+
+.login .tools input {
+    vertical-align: middle;
+    /* 控制行内块元素与文字中线对齐 */
+    margin-right: 10px;
+}
+
+.login .tools span {
+    margin-right: 216px;
+}
+
+.login .button {
+    margin-top: 30px;
+}
+
+.login .button a {
+    width: 360px;
+    height: 43px;
+    background-color: #000;
+    display: block;
+    color: #fff;
+    text-align: center;
+    line-height: 43px;
+    font-size: 14px;
+}
+
+.login .text {
+    font-size: 14px;
+    width: 360px;
+    text-align: right;
+    /* 文本右对齐 */
+    margin-top: 30px;
+}
+
+.login .text span {
+    color: #ccc;
+}
+
+.login .otherLogin {
+    margin-top: 40px;
+}
+
+.login .otherLogin a {
+    width: 60px;
+    height: 60px;
+    /* a是行内元素,无法设置宽高 */
+    display: inline-block;
+    background: url("../login_icons.png");
+    margin-right: 40px;
+}
+
+.otherLogin a.sina {
+    background-position: -60px 0;
+}
+.otherLogin a.alipay {
+    background-position: -120px 0;
+}
+.otherLogin a.wechat {
+    background-position: -180px 0;
+}
+
+.login .otherLogin a:hover {
+    background-position-y: -60px;
+}

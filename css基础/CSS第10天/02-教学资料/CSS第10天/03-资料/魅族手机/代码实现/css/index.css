@@ -1,0 +1,332 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+img {
+    vertical-align: middle;
+    display: block;
+    border: 0 none;
+
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    border: 0 none;
+    outline: none;
+}
+
+i {
+    font-style: normal;
+}
+
+body {
+    font: 12px/100% "微软雅黑";
+
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+
+.w {
+    width: 1240px;
+    margin:0 auto;
+}
+
+
+.top {
+    height: 80px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+}
+
+.top h1 a {
+    display: block;
+    width: 115px;
+    height: 20px;
+    background: url("../../需要的图片/logo.png");
+}
+.top .header {
+    height: 80px;
+    position: relative;
+}
+.top .logo {
+    top: 25px;
+    position: absolute
+}
+.top .header .links {
+    position: absolute;
+    left: 437px;
+
+}
+.top .header .links li {
+    float: left;
+    line-height: 80px;
+    font-size: 14px;
+    margin-right: 30px;
+}
+.top .icon {
+    position: absolute;
+    right: 75px;
+    bottom: 26px;
+}
+
+.top .icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.main {
+    height: 480px;
+    background-color: #7086af;
+}
+
+.main .banner {
+    height: 480px;
+    background: url("../../需要的图片/banner.png");
+    position: relative;
+}
+
+.main .banner .shop-list {
+    width: 244px;
+    height: 480px;
+    background-color: #dce0e8;
+    float: left;
+}
+.main .banner .shop-list li {
+    line-height: 58px;
+    font-size: 14px;
+}
+.main .banner .shop-list ul {
+    margin-top: 13px;
+    padding-left: 30px;
+}
+.main .banner .point {
+    position: absolute;
+    bottom: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.main .banner .point i {
+    float: left;
+    width: 8px;
+    height: 8px;
+    border: 1px  solid #ccc;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.main .point i:last-child {
+    border-color: #00c3f5;
+    background-color: #00c3f5;
+}
+.main .banner .left-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 254px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+}
+.main .banner .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+section.w {
+    
+    height: 140px;
+    margin-top: 6px;
+}
+section ul {
+    overflow: hidden;
+}
+section ul.section-list>li {
+    float: left;
+    width: 244px;
+    height: 140px;
+    background-color: #f9f9f9;
+    margin-right: 5px;
+}
+section ul li:last-child {
+    margin-right: 0;
+}
+section .section-list .help li {
+    float: left;
+    width: 122px;
+    height: 55px;
+    padding-top: 15px;
+}
+section .section-list .help li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+}
+section .help li a i{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("../../需要的图片/sq.png");
+    margin: 0 auto;
+}
+section .help li a span {
+    display: block;
+    text-align: center;
+    line-height: 20px;
+    color: #666;
+}
+section .help li:nth-child(2) a i {
+    background-position: 0 -40px;
+}
+section .help li:nth-child(3) a i {
+    background-position: 0 -80px;
+}
+section .help li:nth-child(4) a i {
+    background-position: 0 -120px;
+}
+
+section ul.section-list>li a img {
+    width: 244px;
+}
+
+.recommend {
+    height: 93px;
+}
+
+.recommend h1 {
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 400;
+    float: left;
+    margin-top: 45px;
+}
+.recommend .arrow {
+    float: right;
+    margin-top: 40px;
+}
+.recommend .arrow i {
+    float: left;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #bdbdbd;
+    text-align: center;
+    line-height: 28px;
+    font-size: 18px;
+    color:#bdbdbd;
+}
+.recommend .arrow i.right {
+    margin-left: 5px;
+    border-color: #efefef;
+    color: #efefef;
+}
+
+.shop {
+    height: 338px;
+    border: 1px  solid #efefef;
+}
+.shop ul li {
+    float: left;
+    width: 247px;
+    height: 338px;
+    border-right: 1px  solid #efefef;
+}
+.shop ul li:last-child {
+    border: 0  none;
+}
+.shop ul li a {
+    display: block;
+    width: 247px;
+    height: 330px;
+   
+    text-align: center;
+
+}
+.shop ul li a .img {
+    width: 247px;
+    height: 260px;
+    overflow: hidden;
+}
+.shop ul li a img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.shop ul li a span {
+    display: block;
+}
+.shop ul li a span.desc {
+    margin-top: 8px;
+    color: #999999;
+}
+.shop ul li a span.price {
+    color: red;
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 10px;
+}
+
+.shop-banner {
+    margin-top: 40px;
+}
+
+.border {
+    border-top: 1px solid #ccc;
+}
+.copy-right {
+    height: 111px;
+    position: relative;
+}
+.copy-right ul {
+    height: 18px;
+    margin-top: 25px;
+}
+.copy-right ul li {
+    float: left;
+    line-height: 18px;
+    border-right: 1px solid #ccc;
+    margin-right: 15px;
+    padding-right: 15px;
+}
+
+.copy-right a.copy {
+    margin-top:22px;
+    display: block;
+    font-size: 14px;
+}
+
+.copy-right .ohter-login {
+    position: absolute;
+    right: 0;
+    bottom: 34px;
+}
+.copy-right .ohter-login a {
+    float: left;
+    width: 36px;
+    height: 18px;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+}
+.copy-right .ohter-login a:nth-child(2) {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="./lib/css/bootstrap.css" rel="stylesheet">
+    <!-- 将路径本地化 -->
+    <style>
+
+      .items {
+        height: 300px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 栅格系统将显示区域分割为12列 -->
+    <!-- 在1200屏幕中,每个div是3份 -->
+    <!-- 在992屏幕中,每个div是4份 -->
+    <!-- 在768屏幕中,每个div是6份 -->
+    <div class="container">
+      <div class="row">
+          <div class="items col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+          <div class="items col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+          <div class="items col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+          <div class="items col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+      </div>
+    </div>
+
+
+    <script src="./lib/js/jquery-1.12.4.min.js"></script>
+    <script src="./lib/js/bootstrap.js"></script>
+  </body>
+</html>

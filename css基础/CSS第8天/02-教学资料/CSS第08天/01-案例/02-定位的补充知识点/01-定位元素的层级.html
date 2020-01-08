@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            /* 绝对定位: 定位的盒子 本身就有层级关系 */
+        }
+        .red {
+            background-color: red;
+            z-index: 3;
+        }
+        .blue {
+            background-color: blue;
+            left: 100px;
+            z-index: 3;
+        }
+        .yellow {
+            background-color: yellow;
+            top: 100px;
+            z-index: 3;
+        }
+        /* 定位盒子本身存在层叠关系,默认结构代码越往后,层级越高 */
+        /* 属性: z-index可以控制定位元素的层级,用数字赋值,
+        数字越大层级越高*/
+        /* z-index只能给定位元素 */
+    </style>
+</head>
+<body>
+    <!-- 
+        标准流 最低
+        浮动流 居中
+        定位流 最高
+     -->
+     <div class="red"></div>
+     <div class="blue"></div>
+     <div class="yellow"></div>
+</body>
+</html>

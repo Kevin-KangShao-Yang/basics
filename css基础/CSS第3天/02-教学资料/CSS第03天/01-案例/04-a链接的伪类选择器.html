@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a:link {
+            /* 控制a标签未被访问时的样式(浏览器没有访问记录) */
+            color: red;
+        }
+
+        a:visited {
+            /* a标签被访问过的样式(浏览器有访问记录) */
+            color: yellow;
+        }
+
+        a:hover {
+            /* 当鼠标悬停时的样式----这是最常用的伪类选择器 */
+            color: skyblue;
+        }
+
+        a:active {
+            /* 当鼠标点击的那一瞬间的样式 */
+            color: green;
+        }
+        /* 如果一个a标签同时拥有四个伪类选择器: 爱恨原则: love hate */
+     </style>
+</head>
+<body>
+    <a href="#">我是一个a标签</a>
+</body>
+</html>
