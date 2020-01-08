@@ -1,0 +1,12 @@
+div>p {
+    color: red;
+}
+// 选中 div 下的第一级子元素中的 p 标签
+div {
+    &>p {
+        color: red;
+    }
+    &:hover {
+        color: pink;
+    }
+}

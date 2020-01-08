@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 对象
+    var objA = {
+        name: 'xjj',
+        age: 18
+    }
+    var objB = {
+        height: 180,
+        weight: 180
+    }
+    // 将 objA 与 objB 中的属性进行组合生成一个新的对象
+    // var newObj = objA;
+    // for (var key in objB) {
+    //     newObj[key] = objB[key]
+    // }
+    // console.log(newObj)
+    // ES6 新增了一个运算符 ...
+    var newObj = {
+        ...objA,
+        ...objB
+    }
+    console.log(newObj)
+
+    // 数组
+    var a = [1, 2, 3, 4, 5]
+    var b = [6, 7, 8, 9, 10]
+    // 三点运算符
+    var newArr = [...a, ...b]
+    console.log(newArr)
+
+</script>
+
+</html>

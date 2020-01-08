@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>localStorage 和 sessionStorage</title>
+</head>
+
+<body>
+    <button id="add">新增localstorage和sessionStorage</button>
+    <button id="del">删除localstorage和sessionStorage</button>
+    <button id="upd">修改localstorage和sessionStorage</button>
+    <button id="que">查询localstorage和sessionStorage</button>
+    <button id="saveobj">使用localstorage和sessionStorage保存一个js对象</button>
+</body>
+<script>
+    var add = document.querySelector('#add');
+    var del = document.querySelector('#del');
+    var upd = document.querySelector('#upd');
+    var que = document.querySelector('#que');
+    var saveobj = document.querySelector('#saveobj');
+
+    add.onclick = function () {  // 新增
+        window.localStorage.setItem('name', 'xjj')
+        window.sessionStorage.setItem('name1', 'xjj1')
+    }
+    del.onclick = function () {  // 删除
+        window.localStorage.removeItem('name')
+        window.sessionStorage.removeItem('name1')
+    }
+    upd.onclick = function () {  // 没有修改只有覆盖
+        window.localStorage.setItem('name', 'dpg')
+        window.sessionStorage.setItem('name1', 'dpg1')
+    }
+    que.onclick = function () { // 获取保存的数据
+        console.log(window.localStorage.getItem('name'))
+        console.log(window.sessionStorage.getItem('name1'))
+    }
+    saveobj.onclick = function () { // 保存对象
+        var girlFriend = {
+            name: '沈佳宜',
+            age: 16
+        }
+        // 将对象转为字符中中
+        window.localStorage.setItem('obj', JSON.stringify(girlFriend))
+        window.sessionStorage.setItem('obj1', JSON.stringify(girlFriend))
+    }
+</script>
+
+</html>

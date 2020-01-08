@@ -1,0 +1,9 @@
+div > p {
+  color: red;
+}
+div > p {
+  color: red;
+}
+div:hover {
+  color: pink;
+}
