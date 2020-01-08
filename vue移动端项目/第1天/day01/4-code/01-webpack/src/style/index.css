@@ -1,0 +1,10 @@
+#t1 {
+    background-color: red;
+}
+.myimg {
+    width: 200px;
+    height: 200px;
+    background-color: skyblue;
+    background-image: url('../img/tim1.jpg');
+    background-size: cover;
+}

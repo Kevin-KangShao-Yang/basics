@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 重复数组
+    var arr = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
+    // js 方式
+    // 定义一个空的数组
+    var newArr = []
+    // 遍历数组
+    this.arr.forEach(item => {
+        // 判断：item 在 newArr 中是否存在 
+        if (!newArr.includes(item)) {
+            newArr.push(item)
+        }
+    })
+    console.log(newArr)
+</script>
+
+</html>

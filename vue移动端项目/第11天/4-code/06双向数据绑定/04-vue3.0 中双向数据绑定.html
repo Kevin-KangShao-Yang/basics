@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        - 当 数据 改变时，视图 也会跟着改变
+        - 当 视图 改变时，数据 也会跟着改变
+     -->
+    <div id="show" v-bind></div>
+    <input type="text" id="ipt" v-model>
+</body>
+<script>
+    var data = {}
+    // 创建一个代理
+    var p = new Proxy(data, {
+        get: function (target, prop) {
+            return target[prop]
+        },
+        set: function (target, prop, value) {
+            target[prop] = value
+            document.querySelector('[v-bind]').innerHTML = value
+        }
+    })
+
+    document.querySelector('[v-model]').oninput = function (event) {
+        p.name = event.target.value
+    }
+
+</script>
+
+</html>

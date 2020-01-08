@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客户端渲染的静态页面</title>
+</head>
+<body>
+    <h1>客户端渲染的静态页面</h1>
+    <button id="btn">点我发送异步请求</button>
+    <ul id="content">
+        
+    </ul>
+</body>
+<!-- 导入 jquery -->
+<script src="./jquery.min.js"></script>
+<script>
+    $('#btn').on('click', async function() {
+        // 发送异步请求
+        let res = await $.ajax({
+            url: 'http://ttapi.research.itcast.cn/app/v1_0/user/channels',
+            method: 'GET'
+        })
+        // 使用 js 动态渲染
+        // 遍历数据源 res.data.channels
+        res.data.channels.forEach(item => {
+            $('#content').append($('<li>').text(item.name))
+        })
+    })
+</script>
+</html>

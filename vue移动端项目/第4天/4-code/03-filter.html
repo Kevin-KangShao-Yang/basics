@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter</title>
+</head>
+<body>
+    <!-- 
+        filter: 过滤器：
+            从数组中筛选满足条件的元素，并且将其返回成为一个新的数组
+     -->
+</body>
+<script>
+    // 需求： 有一个数组，请将数组中 age < 20 岁的选项单独提取为一个数组
+    var arr = [
+        { id: 1, name: 'zm', age: 18 },
+        { id: 2, name: 'ts', age: 22 },
+        { id: 3, name: 'wq', age: 19 },
+        { id: 4, name: 'lx', age: 20 },
+    ]
+    // 以前：
+    // // 定义一个新的数组用来放结果
+    // let newArr = []
+    // // 遍历数组，筛选满足条件的元素
+    // arr.forEach(item => {
+    //     // 判断 age < 20
+    //     if (item.age < 20) {
+    //         newArr.push(item)
+    //     }
+    // })
+    // console.log(newArr)
+    
+    // filter
+    let newArr = arr.filter(item => {
+        return item.age < 20
+    })
+    console.log(newArr)
+
+</script>
+</html>

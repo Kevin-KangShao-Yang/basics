@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>forEach</title>
+</head>
+
+<body>
+    <!-- 
+        forEach:
+            遍历数组
+     -->
+</body>
+<script>
+    // 定义一个数组
+    var arrA = [1, 2, 3, 4, 5,]
+    // 以前：
+    // for (var i = 0; i < arrA.length; i++) {
+    //     console.log(arrA[i])
+    // }
+    // 今天：
+    //  item: 数组中的每一项
+    //  index：每项的下标
+    arrA.forEach((item, index) => {
+        console.log(`${item} ---- ${index}`)
+    })
+    //可以省略index的参数,需要再加
+    arrA.forEach(item => {
+        console.log(item)
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 自己的频道
+    var mych = [
+        { id: 0, name: 'a' },
+        { id: 2, name: 'c' },
+        { id: 4, name: 'e' }
+    ]
+    // 全部频道数据
+    var allch = [
+        { id: 0, name: 'a' },
+        { id: 1, name: 'b' },
+        { id: 2, name: 'c' },
+        { id: 3, name: 'd' },
+        { id: 4, name: 'e' },
+        { id: 5, name: 'f' },
+        { id: 6, name: 'g' },
+        { id: 7, name: 'h' },
+        { id: 8, name: 'i' },
+    ]
+    // 需求：从全部频道中取出自己频道中没有的数据
+    // 步骤：
+    // 1.0 得到自己频道所有数据的 id
+    let ids = mych.map(item => {
+        return item.id
+    })
+    // console.log(ids) // [0, 2, 4]
+    // 2.0 遍历全部频道数据，判断：如果当前数据的 id 在 ids 中，就不理会，如果不在 就返回
+    let noch = allch.filter(item => {
+        return !ids.includes(item.id)
+    })
+    console.log(noch)
+</script>
+</html>

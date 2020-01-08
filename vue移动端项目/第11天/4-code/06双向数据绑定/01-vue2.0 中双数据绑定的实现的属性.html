@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        - 当 数据 改变时，视图 也会跟着改变
+        - 当 视图 改变时，数据 也会跟着改变
+     -->
+
+</body>
+<script>
+    // 作用：可以用来给对象的属性设置两个方法：
+    //  get
+    //      当取出这个属性时触发 
+    //  set
+    //      当给这个属性赋值时触发
+    // 定义一个对象
+    var obj = {}
+    // 给对象的添加设置两个方法
+    Object.defineProperty(obj, 'name', {
+        // 取值
+        get: function() {
+            console.log('get')
+            return myname
+        },
+        // 赋值
+        set: function(value) {
+            console.log('set')
+            myname = value
+        }
+    })
+</script>
+</html>

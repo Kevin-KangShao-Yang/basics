@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>map</title>
+</head>
+
+<body>
+    <!-- 
+        map：
+            遍历数组，在遍历每个元素时都会返回一个自定义的对象
+     -->
+
+</body>
+<script>
+    // 需求：有一个数组，得到 arr 中的所有元素的 name 属性的集合 [{ name: 'zm' }, { name: 'ts' }, { name: 'wx' }]
+    var arr = [
+        { id: 1, name: 'zm', age: 18 },
+        { id: 2, name: 'ts', age: 22 },
+        { id: 3, name: 'wq', age: 19 },
+        { id: 4, name: 'lx', age: 20 },
+    ]
+    // 以前：
+    // 定义一个新数组
+    // let newArr = []
+    // arr.forEach(item => {
+    //     newArr.push({
+    //         name: item.name
+    //     })
+    // })
+    // console.log(newArr)
+
+    // map
+    let newArr = arr.map(item => {
+        return { name: item.name }
+    })
+    // let newArr = arr.map(item => { name: item.name })
+    console.log(newArr)
+
+</script>
+
+</html>

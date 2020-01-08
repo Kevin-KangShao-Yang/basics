@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        - 当 视图 改变时，数据 也会跟着改变
+        - 当 数据 改变时，视图 也会跟着改变
+     -->
+    <!-- 视图 -->
+    <div id="show" v-bind></div>
+    <input type="text" id="ipt" v-model>
+</body>
+<script>
+    // 数据
+    var data = {}
+    // 使用 object.defineProperty 设置 name 属性的 get,set
+    Object.defineProperty(data, 'name', {
+        get: function () {
+            return myname
+        },
+        set: function (value) {
+            myname = value
+            // 改变数据 show
+            document.querySelector('[v-bind]').innerHTML = value
+        }
+    })
+
+    // 给 ipt 绑定一个 Input 事件，将来一旦事件被触发，修改 data 的值
+    document.querySelector('[v-model]').oninput = function (event) {
+        // console.log(event.target.value)
+        data.name = event.target.value
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js的节流</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 1000px;
+            margin: 0 auto;
+            border: 10px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 当持续触发事件时，我们依旧会每隔一段时间执行一次逻辑代码
+    // 结论：
+    //  当持续触发时，每隔一段时间需要执行一次
+    //      记录持续触发的开始时
+    //      记录当前时间
+    //          根据这两个时间计算时间差，
+    //              判断：如果时间差小于间隔，不用理解;如果时间差大于等于间隔，就执行一次逻辑
+
+    // 定义一个节流的函数
+    //  cb: 要执行的逻辑代码
+    //  wait: 时间间隔
+    function jieliu(cb, wait) {
+        // 记录一个开始的时间
+        let beginTime = Date.now() // 12:00:00 0000
+        return function () {
+            // 记录当前时间
+            let currentTime = Date.now()
+            // 计算两时间之间的差
+            let space = currentTime - beginTime
+            // 判断是否大于时间间隔
+            if (space >= wait ) {
+                // 要执行一次
+                cb()
+                // 重新记录开始时间
+                beginTime = Date.now() // 12:00:01 0000
+            }
+        }
+    }
+
+    // 执行过程：
+    // 1.0 第一次触发 onscroll 时
+    //   记录一个当前时间作为开始时间：beginTime
+    //   返回一个函数
+    //      记录一个当前时间用来计算时间间隔
+    //      判断时间间隔是否大于等待时间
+    // 2.0 第二次触发 onscroll 时  12:00:00  0001
+    //   得到当前时间与 beginTime 之间的时间间隔
+    //      判断
+    // 3.0 第三次触发 onscroll 时  12:00:00  0002
+    //   得到当前时间与 beginTime 之间的时间间隔
+    //      判断
+    // n.0 x 20                   12:00:01  0000
+    //   得到当前时间与 beginTime 之间的时间间隔
+
+
+    // 给页面添加滚动事件
+    window.onscroll = jieliu(() => {
+        console.log('哎呀，我滚了：eg:发送的是网络请求')
+    }, 1000)
+</script>
+
+</html>

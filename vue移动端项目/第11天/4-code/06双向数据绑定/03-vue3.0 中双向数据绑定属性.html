@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // Proxy 代理：跟 Object.definedprotype 是一样的
+    var data = {}
+    // 创建一个代理
+    var p = new Proxy(data, {
+        get: function (target, prop) {
+            console.log("get")
+            // console.log(prop) // 当前操作的对象的属性
+            // console.log(target) // data 对象
+            return target[prop]
+        },
+        set: function (target, prop, value) {
+            console.log("set")
+            // console.log(prop) // 属性
+            // console.log(target) // data 对象
+            target[prop] = value
+        }
+    })
+
+</script>
+
+</html>

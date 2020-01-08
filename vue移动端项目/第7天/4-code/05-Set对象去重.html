@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 在 ES6 中提出了一个新的对象 Set 可以用来给数组直接去重
+    // 重复数组
+    var arr = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
+    // // 使用 Set 对象进行去重: 返回的是一个伪数组
+    // var newArr = new Set(arr)
+    // // 将伪数组转为数组
+    // var endArr = [...newArr]
+    // console.log(endArr)
+    let newArr = [...new Set(arr)]
+    console.log(newArr)
+</script>
+</html>

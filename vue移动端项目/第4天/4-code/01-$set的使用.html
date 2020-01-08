@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01$set的使用</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>显示 Num</h3>
+        <div>{{ num }}</div>
+        <button @click="num++">点我让 Num + 1</button>
+        <hr>
+        <h3>显示 age</h3>
+        <div>{{ obj.age }}</div>
+        <button @click="obj.age++">点我让 age + 1</button>
+        <hr>
+        <h3>显示 name</h3>
+        <div>{{ obj.name }}</div>
+        <button @click="addname">点我动态给 obj 添加一个 name 属性</button>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            num: 0,
+            obj: {
+                age: 18
+            }
+        },
+        methods: {
+            addname() {
+                // this.obj.name = 'xjj'
+                // 通过 $set 给 obj 添加响应式的属性
+                this.$set(this.obj, 'name', 'xjj')
+            }
+        }
+    })
+
+</script>
+
+</html>

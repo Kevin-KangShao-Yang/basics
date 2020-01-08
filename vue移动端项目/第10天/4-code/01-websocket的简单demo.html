@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 创建一个 ws 对象：连接服务器
+    var ws = new WebSocket('wss://echo.websocket.org')
+
+    // 设置 ws 与服务器建立连接时触发的事件
+    ws.onopen = function(evt) {
+        console.log('连接成功')
+        // 发送信息给服务器
+        ws.send('hello websocket')
+    }
+    
+    // 设置服务器响应数据回来后触发的事件
+    ws.onmessage = function(evt) {
+        console.log('服务器响应数据为:' + evt.data)
+        // 关闭通道
+        ws.close()
+    }
+
+    // 设置了 ws 与服务器断开时的事件
+    ws.onclose = function(evt) {
+        console.log('连接关闭了')
+    }
+</script>
+</html>

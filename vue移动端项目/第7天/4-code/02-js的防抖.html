@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js的防抖</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 1000px;
+            margin: 0 auto;
+            border: 10px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 1.0 当触发停止一段时间后，我们才执行逻辑代码
+    // 2.0 当持续触发事件时，我们不执行逻辑代码，
+
+    // 定义一个防抖的函数
+    //  time：停止的这段时间
+    //  cb：要执行逻辑代码
+    function fangdou(cb, time) {
+        // 定义一个定时器
+        let timer; // 闭包
+        return function () {
+            // 进入函数：清除这前的定时器
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                // 逻辑代码
+                cb()
+            }, time) // 触发的时间
+        }
+    }
+
+    // 给页面添加滚动事件
+    // window.onscroll = function() {
+    //     console.log('哎呀，我滚了：eg:发送的是网络请求')
+    // }
+    window.onscroll = fangdou(() => {
+        console.log('我是逻辑代码')
+    }, 1000)
+
+    // 1.0 当在页面上滚动滚动条时，会触发 onscroll 很多次（12次）
+    // 2.0 当第一次进入 onscroll
+    //      会先清除定时器
+    //      重新开启一个新的定时器，保存到全局变量 timer 中
+    //          这个定时器会在 1s 后输出：我是逻辑代码
+    // 3.0 当第二次进入 onscroll
+    //      会先清除定时器
+    //      重新开启一个新的定时器，保存到全局变量 timer 中
+    //          这个定时器会在 1s 后输出：我是逻辑代码
+    // 4.0  x 12
+    //      会先清除定时器
+    //      重新开启一个新的定时器，保存到全局变量 timer 中
+    //          这个定时器会在 1s 后输出：我是逻辑代码
+
+</script>
+
+</html>
