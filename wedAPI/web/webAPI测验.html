@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    // 数组去重的几种方法
+    var array = [12,1,1,1,4,6,12,3,1,4,1,2]
+
+    // 方法1    利用indexOf判断  新数组内是否存在相同的数值   不存在才添加
+    function demo1(){
+        var newArr=[ ];
+        for (let i = 0; i < array.length; i++) {
+           if(newArr.indexOf(array[i]) == -1){
+               newArr.push(array[i])
+           }
+        }
+        return newArr;
+    }
+
+    console.log(demo1(array))
+
+    // 方法2  利用splice方法   相邻的数值两两对比
+    // function demo2(arr){        
+    //     for(var i=0; i<array.length; i++){
+    //         for(var j=i+1; j<array.length; j++){  
+    //             if(arr[i]==arr[j]){      
+    //                 arr.splice(j,1);
+    //                 j--;
+    //             }
+    //         }
+    //     }
+    //     return array;
+    // }
+
+    // console.log(demo2(array))
+
+
+    // 方法3   es6新语法   set数据结构   只接受数组   不能允许有重复存在的值
+    // function demo3(array){
+    //     return new Set(array)
+    // }
+    // console.log(demo3(array))
+
+
+    // 方法4   filter过滤   
+    // function demo4(array){
+    //     var newArr=[];
+    //     array.filter((item,index,value)=>{
+    //         console.log(item)    //拿到的是这个数组的每一项
+    //         console.log(index)   //下标
+    //         console.log(value)   //数组的内容
+    //         if(newArr.indexOf(item) == -1){
+    //             newArr.push(item)
+    //         }
+    //     })
+    //     return newArr
+    // }
+    // console.log(demo4(array))
+
+</script>

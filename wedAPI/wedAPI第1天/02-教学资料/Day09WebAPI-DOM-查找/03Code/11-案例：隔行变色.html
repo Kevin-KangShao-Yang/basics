@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <ul id='ulList'>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <input type="button" value="点击变色" id='btnChangeColor'>
+</body>
+
+<script>
+    // 目标：点击按钮后 将 奇数 li标签 设置为 蓝色背景，将 偶数 li标签 设置为 红色背景
+    // 思路：
+    //    a. 为按钮添加 点击事件，并绑定方法
+    //    b. 获取 所有的 li 标签
+    //    c. 遍历 li 标签，根据 i % 2 == 0 确定奇 偶数 ，并且设置 不同的 背景色
+
+    easyWay();
+
+    // 基础：0基础学员 必须会写
+    function easyWay() {
+        // 1.根据 id 获取 dom对象(元素)
+        var domBtn = document.getElementById('btnChangeColor');
+
+        // 1.1 为 按钮 添加 点击事件 方法
+        domBtn.onclick = function () {
+
+            // 2.获取 所有的li标签数组
+            var liDoms = document.getElementsByTagName('li');
+
+            // 3.遍历 li标签数组
+            for (var i = 0; i < liDoms.length; i++) {
+                if (i % 2 == 0) {
+                    liDoms[i].style.backgroundColor = '#0094ff';
+                } else {
+                    liDoms[i].style.backgroundColor = 'green';
+                }
+            }
+
+        }
+    }
+
+    // 扩展：有基础同学 可以 研究
+    function hardWay() {
+        // 1. 标志位 ：用来 记录  背景色 是否 已经 更换
+        var flag = false;// false 代表 没有更换，还是 默认色      true 代表 已经 更换，是 修改后的色
+
+        // 2.为 按钮 添加 点击事件
+        document.getElementById('btnChangeColor').onclick = function () {
+
+            //3. 获取 所有 li 标签
+            var liDoms = document.getElementsByTagName('li');
+
+            //4. 准备 背景色 变量
+            var bgColorStr = '#0094ff';
+
+            // 5. 循环遍历 所有 li 标签对象 ，改背景色
+            for (var i = 0; i < liDoms.length; i++) {
+                // 6. 根据 奇偶数 确认 要变更的 颜色 值
+                if (i % 2 == 0) {
+                    bgColorStr = '#0094ff'; // 偶数 蓝色
+                } else {
+                    bgColorStr = 'green'; // 奇数  绿色
+                }
+
+                // 7. 判断 设置 li标签 的背景色 是 给 颜色值 还是 白色
+                // 7.1 如果 flag ==false ，代表背景色 为 白色，现在 需要 改成 彩色
+                if (flag == false) {
+                    liDoms[i].style.backgroundColor = bgColorStr;
+                }
+                // 7.2 如果 flag == true ，代表背景色 为 彩色，要改成 白色
+                else {
+                    liDoms[i].style.backgroundColor = '#fff';
+                }
+            }
+
+            // 8.修改 标志位 
+            flag = !flag; // 第一次点击后 flag = true
+        }
+    }
+
+
+
+    // 自己敲的简单版
+    /* <ul>
+           <li>1</li>
+           <li>1</li>
+           <li>1</li>
+           <li>1</li>
+           <li>1</li>
+       </ul>
+       <button id="doms">点击变色</button> */
+
+    /* document.getElementById('doms').onclick = function () {
+        var li1 = document.getElementsByTagName('li');
+        for (var i in li1) {
+            if (i % 2 == 0) {
+                li1[i].style.backgroundColor = '#0094ff';
+            } else {
+                li1[i].style.backgroundColor = '#000';
+            }
+        }
+    }
+ */
+
+
+
+</script>
+
+</html>

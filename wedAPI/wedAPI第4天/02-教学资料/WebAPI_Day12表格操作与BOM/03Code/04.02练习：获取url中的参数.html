@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    /**
+     * @description: 1.获取 url参数 中 指定 的 参数值
+     * @param {string} key  要获取的 Url参数 名   id   ?id=1 
+     * @return: 对应参数的 值 1
+     */
+    function getQueryVariable(key) {
+      var query = window.location.search.substring(1);//window.location.search获取页面网址中的url参数(获取的是类似于(?id=1&gender:true)的字符串),substring(1)截取字符串中下标为1到结束的字符(截取到类似于(id=1&gender:true))
+      var vars = query.split("&");//split("&")分隔符,将字符串以&分隔成两个数组['id=1','gender:true']
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");//split("=")分隔符,将字符串以=分隔成两个数组['id','1']
+        if (pair[0] == key) { return pair[1]; } //判断如果下标为0的是id,那么返回下标为2的数1
+      }
+      return (false);//没有获取到则返回false
+    }
+
+    var a = getQueryVariable('id');
+    console.log(a);
+
+
+    // 2.要求 将 整个 url 参数 转成对象 返回 '?id=1&gender=true'  -> {id:1 , gender:true}
+    function getQueryObj() {
+      var searchStr = window.location.search;// window.location.search获取页面网址中的url参数(获取的是类似于(?id=1&gender:true)的字符串)
+      if (!searchStr) {//(2)	隐式转换,如果不是空字符串就为true,空字符串就为false
+        return null;  //!searchStr  空字符串的话为false,!是取相反值,就为true,所以获取的为空字符串就返回null值
+      }
+
+      var arr1 = searchStr.split('?'); //split("?")分隔符,将字符串以?分隔成两个数组 ['' , 'id=1&gender=true]
+      //                                    0        1
+      var arrStr = arr1[1].split('&'); //split("&")分隔符,将字符串以&分隔成两个数组['id=1', 'gender=true']
+
+      // 生成一个 空对象
+      var parObj = {};
+      // 遍历 参数字符串 数组  ['id=1', 'gender=true']
+      //                         0         1
+      for (var i = 0; i < arrStr.length; i++) {
+        var keyValueStr = arrStr[i]; // 获取到'id=1'  跟'gender=true'
+        var keyValueArr = keyValueStr.split('='); //split("=")分隔符,将字符串以=分隔成两个数组 ['id','1']  以及另个数组['gender','true']
+
+        // 将 键值数组 中 的 第一个元素 作为 对象的 属性名 ，第二个元素 作为 对象的 属性值 添加 到 对象中
+        // parObj.id = 1;
+        // parObjp['id'] = 1;
+        parObj[keyValueArr[0]] = keyValueArr[1]; // 相当云 parObj['id'] = 1; 和parObj['gender'] = true
+      }
+
+      return parObj; // 返回{id:1 ,gender : true}到parObj新数组中
+    }
+
+    var searchObj = getQueryObj();//调用封装函数并赋值给searchObjbl
+    console.log(searchObj); //打印出数组{id:'1' ,gender :' true'}
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

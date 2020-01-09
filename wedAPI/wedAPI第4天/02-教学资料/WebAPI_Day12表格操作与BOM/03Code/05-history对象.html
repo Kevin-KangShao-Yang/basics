@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <a href="./05-极乐世界.html">点我去极乐世界~~~~</a>
+
+    <button id="forward">还是 极乐世界 美好一点点，我要重新去~~！</button>
+    <script>
+        /* 1. history : 历史纪录
+              1.1 forward() : 下一页  必须要从第二个页面返回来,产生浏览记录,才能通过window.history.forward()进入到下个页面
+              1.2 back() : 上一页  设置在第二这个页面中,要先通过a标签进入第二个页面,产生浏览历史记录,才能通过window.history.back()返回到上一个页面
+         */
+
+         document.getElementById('forward').onclick = function () {
+            if (confirm('天上人间之美，你确定要回万恶的极乐世界吗？')) {
+                window.history.forward();
+            }
+        };
+    
+    </script>
+</body>
+</html>

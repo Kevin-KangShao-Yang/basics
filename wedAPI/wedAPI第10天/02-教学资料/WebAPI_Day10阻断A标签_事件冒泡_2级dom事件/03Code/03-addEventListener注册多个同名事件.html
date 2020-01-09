@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="点我" id="btn" />
+    <input type="button" value="点我，不要犹豫" id="btn2" />
+
+    <script>
+        //1.点语法注册事件
+        document.getElementById('btn').onclick = function () {
+            console.log('我是 0 级 dom事件~~~~');
+        }
+        // 0 级 dom 事件 属性 中 只能 保存 1 个函数，如果 在 同名的 事件属性中 保存 多个 函数，后面的回覆盖 前面的！！
+        document.getElementById('btn').onclick = function () {
+            console.log('今天是webapi中最简单的一天~~也是最后一天，要考试哦~~~~');
+        }
+
+
+        //2. 语法：对象.addEventListener(事件类型,函数,是否捕捉) - 2级dom事件可以给同名的事件，绑定多个事件处理程序
+        //       事件类型： 不带 on 的 事件名 - {string},例如：click  、 mouseover 、mouseout
+        //       事件处理函数： 事件触发时要执行的函数 - {Function}
+        //       是否使用捕捉阶段：默认 是 false
+        document.getElementById('btn2').onclick = function () {
+            alert('我是 0 级 dom事件哦~~~~');
+        }
+        document.getElementById('btn2').addEventListener('click',function () {
+            alert('我是伟大的 2级 dom 事件~~~！');
+        });
+
+        document.getElementById('btn2').addEventListener('click',function () {
+            alert('今天webapi 最后一天，大家的状态 有点困啊~~~~~');
+        });
+
+        // 鼠标移入
+        // document.getElementById('btn2').addEventListener('mouseover',function () {
+        //     alert('啊，你怎么跑到我上边去了~~~~');
+        // });
+
+
+        //3 IE8只支持  - attachEvent(事件名,函数)
+        //       事件类型： 事件名  需要 写全，包含 on - {string}
+        //       事件处理函数： 事件触发时要执行的函数 - {Function}
+        document.getElementById('btn2').attachEvent('onclick',function () {
+           alert('我是 ie 8 里面的 2级 dom 事件~~~'); 
+        });
+
+
+ /*兼容性封装*/
+
+    /** 给元素添加多个相同的事件
+    * @param obj：元素   eventName：事件名  fn：事件处理函数
+    * @return 无
+    */
+    function addEvent(obj, eventName, fn) {
+
+//能力检测
+if (obj.addEventListener) {//非IE8
+
+    obj.addEventListener(eventName, fn);
+
+} else if (obj.attachEvent) {//IE8
+
+    obj.attachEvent("on" + eventName, fn);
+
+} else {//默认方式
+
+    obj["on" + eventName] = fn;
+}
+}
+
+
+    </script>
+</body>
+
+</html>

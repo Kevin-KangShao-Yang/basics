@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <input type="button" value="关灯" id='btnLight'>
+</body>
+
+<script>
+    // 目标：
+    //     1.当 按钮的 value == '开灯' 时，点击按钮 ：将 页面背景颜色 改为 黑色，并将 按钮的 value 改成 '关灯'
+    //     2.当 按钮的 value == '关灯' 时，点击按钮 ：将 页面背景颜色 改为 白色，并将 按钮的 value 改成 '开灯'
+
+    // 思路：
+    //    a. 获取 按钮对象，添加 onclick 点击事件方法
+    //    b. 判断 value 值 是否等于 '开灯'，如果是，则 将 页面背景颜色 改为 黑色，并将 按钮的 value 改成 '关灯'
+    //    c. 判断 value 值 是否等于 '关灯'，如果是，则 将 页面背景颜色 改为 白色，并将 按钮的 value 改成 '开灯'
+
+    // 1. 获取 按钮对象
+    document.getElementById('btnLight').onclick = function () {
+        //2. 判断 按钮的 value 值 是否为 '开灯'
+        // console.log(this); // 事件处理函数中的 this，就是 事件所属的 事件源 dom 对象
+        
+        if (this.value == '关灯') {
+            // var arrDoms = document.getElementsByTagName('body');
+            // console.log(arrDoms);
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#000';
+            this.value = '开灯';
+        }else{
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#fff';
+            this.value = '关灯';
+        }
+    }
+</script>
+
+</html>

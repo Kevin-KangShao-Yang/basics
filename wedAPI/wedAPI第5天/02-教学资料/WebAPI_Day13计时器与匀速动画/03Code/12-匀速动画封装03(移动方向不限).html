@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: #0094ff;
+            position: absolute;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="移动到400" id="move400" />
+    <input type="button" value="移动到800" id="move800" />
+    <div class="one" id="box" style="left:10px;"></div>
+
+</body>
+
+<script>
+
+    /* 本小节封装目标
+    1.解决代码冗余   -函数
+    2.移动距离不限  -- 函数参数
+     */
+    // 移动到 400px
+    document.getElementById('move400').onclick = function () {
+        move(400);
+    }
+
+
+    // 移动到 800px
+    document.getElementById('move800').onclick = function () {
+        move(800);
+    }
+
+    /**
+     * @description: move 用来 移动 id='box'的元素
+     * @param {number} targetLeft 目标位置(数值) 
+     */
+    function move(targetLeft) {
+        // 1.获取 要移动的元素节点
+        var boxNode = document.getElementById('box');
+        // 1.1 获取 元素节点 的位置 -- 目的：一开始就判断移动方向
+        var curPos = parseInt(boxNode.style.left);
+
+        // 1.1 获取 移动方向 
+        //     如果 目标位置 > 元素位置  ，isToRight = true , 计时器中 位移 curPos++
+        //     如果 目标位置 < 元素位置  ，isToRight = false，计时器中 位移  curPos--
+        var isToRight = targetLeft > curPos; 
+
+        // 2. 开启 计时器
+        var timer = setInterval(function () {
+            // 2.1 获取 目标元素的 Left 值 - 目的：为了 位移
+            curPos = parseInt(boxNode.style.left);
+
+            // 2.进行"位移" ，根据 目标位置 和 元素位置 大小 进行判断 位移方向
+            //     如果 目标位置 > 元素位置  ， curPos++
+            //     如果 目标位置 < 元素位置  ， curPos--
+            if (isToRight) { // true
+                curPos += 7;
+            } else {
+                curPos -= 7; // false 
+            }
+
+
+            // 3.将 修改后的 位置 重新设置给 目标元素的 left 属性
+            boxNode.style.left = curPos + 'px';
+
+
+            // 4. 判断 ： 如果 到了 目标位置 400px ，要停止移动，清空 计时器
+            // 4.1 如果 是 向右边移动 ： 判断 元素位置 是否 >= 目标位置，如果是，就停止
+            if (isToRight && curPos >= targetLeft) {
+                // 4.1 关闭 计时器
+                clearInterval(timer);
+                // 4.2 元素复位
+                boxNode.style.left = targetLeft + 'px';
+            }
+            // 4.2 如果 是 向左边移动 ： 判断 元素位置 是否 <= 目标位置，如果是，就停止
+            if (!isToRight && curPos <= targetLeft) {
+                // 4.1 关闭 计时器
+                clearInterval(timer);
+                // 4.2 元素复位
+                boxNode.style.left = targetLeft + 'px';
+            }
+
+
+        }, 20);
+    }
+
+
+
+
+            // 问题: 当前 方向 会 出现 循环 true 和 false
+            // 原因：当 移动到 801 时，isToRight = false ，往左移动 7px -》 794px
+            //      下次 执行 时 800>794，isToRight = rue ,往右移动 7px -》 801px
+            //       后面的 定时工作，都再重复 这两个值
+            // 解决：将 判断 移动 方向  放到 定时器 的外面
+</script>
+
+</html>

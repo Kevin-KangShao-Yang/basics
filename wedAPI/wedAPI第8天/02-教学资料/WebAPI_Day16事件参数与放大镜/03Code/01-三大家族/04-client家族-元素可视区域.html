@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            /*设置auto可以添加滚动条，如果此时div没有设置宽高，就会变成和内容一样大小*/
+            overflow: auto;
+
+            border-left: 10px solid #0094ff;
+            border-top: 10px solid red;
+        }
+
+        img {
+            vertical-align: top;
+            /*width: 400px;*/
+            /*height: 400px;*/
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="one" id="box">
+        <img src="1.jpg" alt="" />
+    </div>
+
+
+    <script>
+
+        /*1.offset家族： 获取【元素自身】的真实宽高和位置 (width+padding+border)
+          2.scroll家族： 获取【元素内容】的真实宽高和位置  
+          3.client家族： 获取【元素可视区域】真实宽高和位置  
+                clientWidth / clientHeight ：获取元素可视区域的真实宽高
+                clientLeft / clientTop ： 不常用，其实就是左边框border-left和上边框border-top
+        */
+
+        var box = document.getElementById('box');
+        window.onload = function () {
+            console.log(box.clientWidth);
+            console.log(box.offsetWidth);
+            console.log(box.clientHeight);
+            console.log(box.offsetHeight);
+            console.log(box.clientLeft); // 左边框的 宽度
+            console.log(box.clientTop); // 上边框 的 宽度
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+
+
+    <style>
+        .blueDiv {
+            border: 1px solid #0094ff;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .blackSpan {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <span class="blackSpan">span outside </span>
+    <div id='d1' class='blueDiv'>
+        <input type="radio" name='gender' id='rdoMale'> <label for="rdoMale">男</label>
+        <input type="radio" name='gender' id='rdoFemale'>  <label for="rdoFemale">女</label>
+    </div>
+    <div id='d2' class='blueDiv'>div2</div>
+
+
+05-根据选择器获取页面元素
+    <script>
+    // 1. getElementsByName -- 根据 标签的 name 属性值 ，获取 dom对象，并转入 类数组 返回
+    var arrDoms = document.getElementsByName('gender');
+    console.log(arrDoms);
+    </script>
+</body>
+
+</html>

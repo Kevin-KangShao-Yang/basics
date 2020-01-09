@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            color: red;
+        }
+        div {
+            color: pink;
+        }
+        div div {
+            color: yellow;
+        }
+        .son {
+            color: blue;
+        }
+        .father .son {
+            color: gold;
+        }
+        #box2 {
+            color: deeppink;
+        }
+        #box1 #box2 {
+            color: deepskyblue !important;
+        }
+        /* 权重的计算 */
+        /* 1.先确定选择器是否直接作用到目标元素---排除继承 */
+        /* 2.再看看有没有行内式以及!important,那么他们权重最高 */
+        /* 3.开始数数 */
+        /* 4.先数id,谁的id数最多,那么权重最高 */
+        /* 5.如果id相同,再数类,类的数量最多的,那么权重最高 */
+        /* 6.如果类相同,最后数标签,标签数量最多的,那么权重最高 */
+        /* 7.权重相同时,考虑层叠性,后来者居上 */
+
+        /* 在项目中写代码的时候,尽量让自己的选择器权重高一点 */
+    </style>
+</head>
+<body>
+    <div class="father" id="box1">
+        <div class="son" id="box2" style="color: darkred;">
+            猜我是谁
+        </div>
+    </div>
+</body>
+</html>

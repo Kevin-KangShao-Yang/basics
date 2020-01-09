@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            vertical-align: middle;
+            /* 清除图片底部的空白间隙 */
+            width: 100%;
+            height: 100%;
+        }
+        .topBox {
+            width: 1220px;
+            height: 465px;
+            margin: 0 auto;
+        }
+        .t-left {
+            float: left;
+            width: 660px;
+            height: 100%;
+        }
+        .t-right {
+            width: 555px;
+            height: 100%;
+            float: right;
+        }
+
+        .r-items1,
+        .r-items2 {
+            width: 275px;
+            height: 240px;
+        }
+
+        .r-items3 {
+            width: 100%;
+            height: 220px;
+            float: left;
+            margin-top: 5px;
+        }
+
+        .bottomBox {
+            width: 1220px;
+            height: 460px;
+            margin: 2px auto;
+        
+        }
+
+        .b-left {
+            width: 220px;
+            height: 100%;
+            float: left;
+        }
+        
+        .b-center {
+            width: 690px;
+            height: 100%;
+            float: left;
+            margin-left: 18px;
+        }
+        .b-right {
+            width: 278px;
+            height: 100%;
+            float: right;
+        }
+
+        .left-top {
+            height: 318px;
+        }
+        .left-bottom {
+            height: 124px;
+            margin-top: 18px;
+        }
+
+        .center-items {
+            float: left;
+            width: 336px;
+            height: 222px;
+        }
+
+        .center-items:nth-child(odd) {
+            /* 位置伪类选择器 */
+            /* 找到第奇数个子元素 */
+            margin-right: 18px;
+        }
+        .center-items:nth-child(n + 3) {
+            /* 找到递增的某一个子元素 */
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topBox">
+        <div class="t-left">
+            <img src="./img/一加手机.jpg" alt="">
+        </div>
+        <div class="t-right">
+            <div class="r-items1" style="float:left;">
+                <img src="./img/夏普.jpg" alt="">
+            </div>
+            <div class="r-items2" style="float:right;">
+                <img src="./img/拆解.jpg" alt="">
+            </div>
+            <div class="r-items3">
+                <img src="./img/毕业季.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="bottomBox">
+        <div class="b-left">
+            <div class="left-top">
+                <img src="./img/官方视频.png" alt="">
+            </div>
+            <div class="left-bottom">
+                <img src="./img/zealer.jpg" alt="">
+            </div>
+        </div>
+        <div class="b-center">
+            <div class="center-items">
+                <img src="./img/黑衣男子一.jpg" alt="">
+            </div>
+            <div class="center-items">
+                <img src="./img/无人机.jpg" alt="">
+            </div>
+            <div class="center-items">
+                <img src="./img/水杯.jpg" alt="">
+            </div>
+            <div class="center-items">
+                <img src="./img/下面拆解图.jpg.png" alt="">
+            </div>
+        </div>
+        <div class="b-right">
+            <img src="./img/华为手机.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

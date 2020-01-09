@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #edf0ff;
+        }
+        .menu{
+            width:300px;
+            margin:40px auto 0;
+            overflow: hidden;
+        }
+        .level01{
+            display:block;
+            line-height:50px;
+            background-color: #3ca3ff;
+            color:#fff;
+            text-decoration:none;
+            overflow: hidden;
+            border-radius:4px;
+        }
+        .level01 span{
+            float: left;
+            font-size:18px;
+            margin-left:15px;
+        }
+
+        .level01 b{
+            float: right;
+            margin-right:15px;
+            font-family:'楷体';
+            font-size:18px;
+            font-weight:normal;
+            transform:rotate(180deg);
+            transition:all 300ms ease;
+        }
+
+        .level02{
+           margin:0px;
+           padding:0px;
+           list-style:none;
+           height:0px;
+           background-color: #fff;
+           overflow: hidden;          
+           border-bottom-left-radius:4px;
+           border-bottom-right-radius:4px;
+           transition:all 300ms ease;
+        }
+
+        .level02 li{
+            height:49px;
+            border-bottom:1px solid #e3eaf0;
+        }
+
+        .level02 li a{
+            display:block;
+            line-height:49px;
+            text-indent:15px;
+            color:#44a4f0;
+            text-decoration:none;
+        }
+        .level02 li a:hover{
+            color:#f80;
+        }
+
+        .menu:hover .level02{
+            height:250px;
+        }
+        .menu:hover .level01 b{
+            transform:rotate(90deg);
+        }
+
+        
+
+
+    
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="#" class="level01"><span>一级菜单文字</span><b>&gt;</b></a>
+        <ul class="level02">
+            <li><a href="#">二级菜单文字</a></li>
+            <li><a href="#">二级菜单文字</a></li>
+            <li><a href="#">二级菜单文字</a></li>
+            <li><a href="#">二级菜单文字</a></li>
+            <li><a href="#">二级菜单文字</a></li>
+        </ul>
+    </div>
+</body>
+</html>

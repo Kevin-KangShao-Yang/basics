@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: hotpink;
+            position: relative;
+        }
+
+        #son {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+
+            left: 350px;
+            top: 350px;
+
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" value="点我" id="btn" />
+        <div id="son"></div>
+    </div>
+
+    <script>
+        var divBig = document.getElementById('box');
+        var btnNode = document.getElementById('btn');
+        var divSmall = document.getElementById('son');
+        /*
+            1.事件冒泡： 如果一个元素的事件被触发 ，所有父级元素同名事件会被依次触发
+                btn -> div -> body -> html -> document -> window
+            2.事件冒泡一直就在我们身边，只是之前 我们没有 为 父元素 添加 同名事件而已~~~！
+         */
+         window.onclick = function () {
+            console.log('我是 window~~~');
+        }
+        //document是指整个页面
+        document.onclick = function () {
+            console.log('我是 document~~~');
+        }
+
+
+        //document.documentElement是指HTML
+         document.documentElement.onclick=function () {
+             console.log('我是 html，你也在点我吗？');
+         }
+
+         document.querySelector('body').onclick=function(){
+             console.log('我是body，谁在点我~~~~');
+         }
+
+         divBig.onclick = function () {
+             console.log('我是 粉红色的 大盒子，被点击了~~~');
+         }
+         btnNode.onclick = function () {
+             console.log('我是 按钮，被点击了~~~');
+         }
+         divSmall.onclick = function () {
+             console.log('我是 绿色的 小盒子，被点击了~~~');
+         }
+    </script>
+</body>
+
+</html>

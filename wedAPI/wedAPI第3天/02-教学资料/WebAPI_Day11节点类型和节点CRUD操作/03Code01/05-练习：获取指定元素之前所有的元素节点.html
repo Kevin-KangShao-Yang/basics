@@ -1,0 +1,116 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+  </script>
+</head>
+
+<body>
+
+  <ul id="ulList">
+    <!-- 偷偷躲在这的注释 -->
+    强势矗立在此的文本
+    <li>Java技术栈</li>
+    <li id='webFront' lover='linda'>大前端技术栈</li>
+    <li>Python技术栈</li>
+    <li>.Net技术栈</li>
+  </ul>
+
+</body>
+<script>
+
+  console.log('1.练习：获取 id="webFront" 的 li元素节点 前面 所有的兄弟 元素节点');
+  // 1. 练习：获取 id='webFront' 的 li元素节点 前面 所有的兄弟 元素节点
+  // 思路： 循环 获取 当前元素节点 的 previousElementSibling
+  //        直到  为 null 就停止循环
+
+  var liNode = document.getElementById('webFront');
+  console.log(liNode);
+
+  // 在 if 和 while 等 条件判断 表达式中，如果 数据 不为 null,undefined，就会当做 true
+  // 会自动 转为 false 的有：0 -0 NaN '' undefined null false document.all
+  //            true      ：其他所有值
+  // if(liNode){
+  // }
+  while (liNode) { // 当 liNode 找有 元素节点对象时，相当于 true ；如果 是 null ，则相当于 false
+    // 打印 节点 的 文本内容
+    console.log(liNode.innerText);
+    // 将 上一个 兄弟元素 对象  获取到 并设置给 变量 liNode
+    liNode = liNode.previousElementSibling;
+  }
+
+  // -----------------------------封装成方法 -------------------------------------
+  // 1.获取前面所有兄弟元素：getAllPreviousElements(eleObj)
+  // 2.获取后面所有兄弟元素：getAllNextElements(eleObj)
+  // 3.获取前后所有兄弟元素：getAllSiblingElements(eleObj)
+
+
+  /**
+   * @description: 1.获取 指定元素 节点 前面 所有的 兄弟元素节点
+   * @param {Node} eleObj 指定的元素节点 对象 
+   * @return: 包含了 前面 所有 兄弟元素节点 的 数组
+   */
+  function getAllPreviousElements(eleObj) {
+    // 准备一个 空数组
+    var siblings = [];
+    // 循环 通过 node.previousElementSibling 属性 获取 前一个 元素节点，直到  上一个 为 null 停止
+    while (eleObj) {
+      eleObj = eleObj.previousElementSibling;
+      if (eleObj != null) {
+        siblings.push(eleObj);
+      }
+    }
+    // 返回 数组
+    return siblings;
+  }
+
+
+  /**
+   * @description: 2.获取 指定元素 节点 后面 所有的 兄弟元素节点
+   * @param {Node} eleObj 指定的元素节点 对象 
+   * @return: 包含了 后面 所有 兄弟元素节点 的 数组
+   */
+  function getAllNextElements(eleObj) {
+    // 准备一个 空数组
+    var siblings = [];
+
+    // 循环 通过 node.nextElementSibling 属性 获取 前一个 元素节点，直到  上一个 为 null 停止
+    while (eleObj) {
+      eleObj = eleObj.nextElementSibling; // null
+      if (eleObj != null) {
+        siblings.push(eleObj);
+      }
+    }
+    // 返回 数组
+    return siblings;
+  }
+
+
+  /**
+   * @description: 3.获取 指定元素 节点 前后 所有的 兄弟元素节点
+   * @param {Node} eleObj 指定的元素节点 对象 
+   * @return: 包含了 所有 兄弟元素节点 的 数组
+   */
+  function getAllSiblingElements(eleObj) {
+    // 获取 指定元素 节点 的 父元素 中的 所有的 子元素节点
+    // 循环 遍历 子元素节点，判断 如果 不是 eleObj 的节点 就是 兄弟节点，然后添加到 新数组中
+    // 返回 新数组
+  }
+
+  // 调用方法 获取 前面的 所有 兄弟元素 ---------------------------------------------
+  var liDom = document.getElementById('webFront');
+  var liList = getAllPreviousElements(liDom);
+  console.log(liList);
+
+
+  // 调用方法 获取 后面的 所有兄弟元素 -----------------------------------------------
+  var liDom = document.getElementById('webFront');
+  var liList = getAllNextElements(liDom);
+  console.log(liList);
+
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 标签选择器 */
+        /* 
+            标签名 {
+                属性名: 属性值;
+                ......
+            }
+         */
+         /* 控制到的是当前同一类的标签元素 */
+         /* 但是,局限性很大 */
+         /* 如果现在有两个div标签,一个红色,一个绿色,请问怎么实现 */
+        div {
+            color: red;
+        }
+        div {
+            color: green;
+        }
+        /* 以上代码,具有层叠性,后面的属性会覆盖前面的,所以只有绿色生效 */
+
+        span {
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>这是一个寂寞的渣男</div>
+    <div>这是一个寂寞的渣男</div>
+    <div>这是一个寂寞的渣男</div>
+    <div>这是一个寂寞的渣男</div>
+    <div>这是一个寂寞的渣男</div>
+    <div>这是一个寂寞的渣男</div>
+    <div>这是一个寂寞的渣男</div>
+    <span>我是一个span标签</span>
+</body>
+</html>

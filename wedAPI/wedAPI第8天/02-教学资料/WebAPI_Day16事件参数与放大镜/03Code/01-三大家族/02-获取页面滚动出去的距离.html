@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            width: 3000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*获取网页滚动出去的距离
+            1.给网页注册滚动条事件 ： onscroll
+                window.onscroll
+            2.获取网页滚动出去的距离 
+                谷歌火狐IE11 - window.pageXOffset, window.pageYOffset
+                IE8 - document.documentElement.scrollLeft, document.documentElement.scrollTop
+                其他（可以不考虑） - document.body.scrollLeft, document.body.scrollTop
+         */
+
+        //1.给网页注册滚动条事件 ： onscroll
+        window.onscroll = function () {
+            var data = getPageScroll();
+            console.log(data);
+        };
+
+
+        console.log(document.documentElement); // document.documentElement 就是指的 html 元素节点
+        //浏览器兼容封装
+        /**
+         * @description: getPageScroll - 返回 页面滚动距离 
+         * @return: {x:0,y:0}
+         */
+        function getPageScroll() {
+            // // 1.谷歌浏览器(新式浏览器) window.pageXOffset  window.pageYOffset
+            // console.log(window.pageXOffset, window.pageYOffset);
+            // // 2.IE8 document.documentElement.scrollLeft document.documentElement.scrollTop
+            // console.log(document.documentElement.scrollLeft, document.documentElement.scrollTop);
+
+            //1.获取 left 滚动出去 的距离
+            var x1 = window.pageXOffset || document.documentElement.scrollLeft || 0;
+            //2.获取 top  滚动出去 的 距离
+            var y1 = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+            // 3. 返回 数据对象
+            return { x: x1, y: y1 };
+        };
+
+    </script>
+</body>
+
+</html>

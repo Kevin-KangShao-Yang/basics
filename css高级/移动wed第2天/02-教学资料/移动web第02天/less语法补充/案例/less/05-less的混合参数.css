@@ -1,0 +1,33 @@
+.red {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.blue {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+.pink {
+  width: 300px;
+  height: 300px;
+  background-color: pink;
+}
+.img1 {
+  width: 32px;
+  height: 32px;
+  background: url("../sprite.png") 0 0;
+  background-size: 32px;
+}
+.img2 {
+  width: 32px;
+  height: 32px;
+  background: url("../sprite.png") 0 -32px;
+  background-size: 32px;
+}
+.img3 {
+  width: 32px;
+  height: 32px;
+  background: url("../sprite.png") 0 -64px;
+  background-size: 32px;
+}

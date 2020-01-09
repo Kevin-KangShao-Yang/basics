@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+
+<body>
+    <input type="button" value="启动定时器，过2秒钟叫我起来~~~" id="btnWakeUp"><br/><br/><br/>
+    <input type="button" value="启动定时器，过5秒钟叫我起来~~~但是，3秒后我自己起来了，你就别叫我了" id="btnWakeUp2"><br/>
+    <input type="button" value="关闭定时器" id="btnStop"><br/>
+
+</body>
+
+<script>
+    document.getElementById('btnWakeUp').onclick = function () {
+        console.log('亲爱的，过2秒钟记得叫我起来哦~~~~亲');
+
+        // 1. 开启计时器
+        // var timerId = setInterval(function(){
+        //     alert('亲爱的，起床了哦~~~~ 等你哦~~~~去看电影哦~~~~');
+        //     // 2. 停止 计时器
+        //     clearInterval(timerId);
+        // },2000);
+
+
+        // 2. 定时器 - setTimeout 只执行一次！
+        setTimeout(function () { 
+            alert('亲爱的，起床了哦~~~~ 等你哦~~~~去看电影哦~~~~');
+        }, 5000);
+    }
+
+    var timerId;
+    document.getElementById('btnWakeUp2').onclick = function () {
+        // 启动 定时器 ，5秒后 叫醒
+        // 但是 在 第3秒时，要停止 叫醒
+        timerId = setTimeout(function () {
+            alert('亲爱的，起床了哦~~~~ 等你哦~~~~去看电影哦~~~~');
+        },5000);
+    }
+
+
+    // 3. clearTimeout 关闭 定时器！！！
+
+    document.getElementById('btnStop').onclick = function () {
+        clearTimeout(timerId);
+        console.log('计时器  已停止~~~~');
+    }
+</script>
+
+</html>

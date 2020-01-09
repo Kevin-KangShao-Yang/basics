@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./diyikuan.css">
+    <script src="./jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="turn">
+            <ul>
+                <li> <img src="./1.jpg" alt=""></li>
+                <li> <img src="./2.jpg" alt=""></li>
+                <li> <img src="./3.jpg" alt=""></li>
+                <li> <img src="./4.jpg" alt=""></li>
+                <li> <img src="./5.jpg" alt=""></li>
+                <li> <img src="./1.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function next() {
+            var i = 1;
+            var timer = setInterval(function () {
+                console.log(i);
+                $('.turn>ul').animate({
+                    left: -1420 * i
+                }, 300, function () {
+                    if (i >= 5) {
+                        $('.turn>ul').css('left', 0);
+                        i = 1;
+                    } else {
+                        i++;
+                    }
+                });
+            }, 1500);
+
+        }
+
+        $(function () {
+            next();
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .main,table {
+            width: 800px;
+            margin: 0 auto;
+        }
+        .main {
+            height: 40px;
+            line-height: 40px;
+        }
+        table , th ,td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .optd {
+            width: 200px;
+        }
+        .addTable {
+            width: 780px;
+            padding: 10px;
+            border: 1px solid green;
+            position: fixed;
+            top: 200px;
+            left: 50%;
+            margin-left: -400px;
+            background-color: #fff;
+            display: none;
+        }
+        .addTable table {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <input type="button" value="新增一行" id="add"/>
+    </div>
+    <table id="table">
+
+    </table>
+    <!--用于新增表格获取数据的模块-->
+    <div class="addTable" id="addRow">
+        <table>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="number"/></td>
+                <td><input type="text" id="name"/></td>
+                <td>
+                    <select id="gender">
+                        <option >男</option>
+                        <option >女</option>
+                    </select>
+                </td>
+                <td><input type="text" id="age"/></td>
+            </tr>
+        </table>
+
+        <div>
+            <input type="button" value="确定" id="sure"/>
+            <input type="button" value="取消" id="cancle"/>
+        </div>
+    </div>
+    <script src="common.js"></script>
+    <script>
+        var head = ["学号","姓名","性别","年龄","操作"];
+        var data = [
+            {"number":"001","name":"李狗蛋","gender":"男","age":16},
+            {"number":"002","name":"王大柱","gender":"女","age":17},
+            {"number":"003","name":"李葫芦","gender":"男","age":15},
+            {"number":"004","name":"小明","gender":"男","age":18},
+            {"number":"005","name":"小红","gender":"女","age":16}
+        ];
+
+        var table = id("table");
+//        1   创建表头
+        var headtr = document.createElement("tr");
+        table.appendChild(headtr);
+        for (var i = 0; i < head.length; i++) {
+            var th = document.createElement("th");
+            setText(th,head[i]);
+            headtr.appendChild(th);
+        }
+//        2   创建数据主体
+        for (var i = 0; i < data.length; i++) {
+            var tr = createRow(data[i]);
+            table.appendChild(tr);
+        }
+
+        /**
+         * 用于将某一行网上移动的函数
+         */
+        function moveUp() {
+            //获取按钮所在的行
+            var tr = this.parentNode.parentNode;
+            //获取当前行的上一行
+            var previous = tr.previousElementSibling;
+//            因为第一行的前一个元素节点是表头，所以再往前判断一次
+            if(previous.previousElementSibling){
+                //移动表格数据行
+                table.insertBefore(tr,previous);
+            }else{
+                alert("已经是第一行了！！")
+            }
+        }
+
+        /**
+         * 用于将某一行往下移的函数
+         */
+        function moveDown() {
+            var tr = this.parentNode.parentNode;
+            var next = tr.nextElementSibling;
+            //如果有下一行才继续往下移动
+            if(next){
+                //如果下一行还有下一个兄弟元素，插入这个兄弟元素之前
+                if(next.nextElementSibling){
+                    table.insertBefore(tr,next.nextElementSibling);
+                }else {
+                    //如果下一行已经没有兄弟元素了，直接把要移动的行放到table的最后
+                    table.appendChild(tr);
+                }
+            }else{
+                alert("已经是最后一行了！！")
+            }
+        }
+
+        /**
+         * 用于删除某一行的函数
+         */
+        function deleteRow() {
+            var res = confirm("确定要删除？");
+            if(res){
+                var tr = this.parentNode.parentNode;
+                table.removeChild(tr);
+            }
+        }
+
+        //为添加一行按钮注册事件
+        id("add").onclick = function () {
+            id("addRow").style.display = "block";
+        }
+
+        //为确定按钮注册事件
+        id("sure").onclick = function () {
+            //获取数据
+            var number = id("number").value;
+            var name = id("name").value;
+            var opts = id("gender").getElementsByTagName("option");
+            var gender;
+            for (var i = 0; i < opts.length; i++) {
+                if(opts[i].selected){
+                    gender = getText(opts[i]);
+                    break;
+                }
+            }
+            var age = id("age").value;
+            //构造json格式的数据结构
+            var obj = {
+                number:number,
+                name:name,
+                gender:gender,
+                age:age
+            };
+//            生成一行
+            var tr = createRow(obj);
+            //添加到表格中
+            table.appendChild(tr);
+            //并隐藏数据收集结构
+            id("addRow").style.display = "none";
+        }
+
+        /**
+         * 创建一行表格的函数
+         * @param obj json格式的数据
+         * @returns {Element}
+         */
+        function createRow(obj) {
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (var key in obj) {
+                var td = document.createElement("td");
+                setText(td,obj[key]);
+                tr.appendChild(td);
+            }
+//            创建操作用的td
+            var optd = document.createElement("td");
+            optd.className = "optd";
+            //上移按钮
+            var up = document.createElement("input");
+            up.type = "button";
+            up.value = "向上移动";
+            up.onclick = moveUp;
+            optd.appendChild(up);
+//            下移按钮
+            var down = document.createElement("input");
+            down.type = "button";
+            down.value = "向下移动";
+            down.onclick = moveDown;
+            optd.appendChild(down);
+//            删除按钮
+            var del = document.createElement("input");
+            del.type = "button";
+            del.value = "删除";
+            del.onclick = deleteRow;
+            optd.appendChild(del);
+            tr.appendChild(optd);
+            return tr;
+        }
+
+        //为取消按钮注册事件
+        id("cancle").onclick = function(){
+            id("addRow").style.display = "none";
+        }
+    </script>
+</body>
+</html>

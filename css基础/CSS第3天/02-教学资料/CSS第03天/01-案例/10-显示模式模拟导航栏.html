@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: #000;
+            width: 100px;
+            height: 30px;
+            /* 因为a标签本身是行内元素,所以不能设置宽高 */
+            display: inline-block;
+            /* 将a标签转换称为行内块元素 */
+            background-color: red;
+            text-align: center;
+            line-height: 30px;
+        }
+        a:hover {
+            background-color: pink;
+            color: #fff;
+        }
+    </style>
+    <!-- 功能实现的思路 -->
+    <!-- 1.完善html结构代码 -->
+    <!-- 2.分析元素需要什么样式 -->
+    <!-- 3.宽高 颜色 位置 效果 -->
+</head>
+<body>
+    <a href="#">优惠</a>
+    <a href="#">领劵</a>
+    <a href="#">秒杀</a>
+    <a href="#">优惠</a>
+    <a href="#">领劵</a>
+    <a href="#">秒杀</a>
+</body>
+</html>

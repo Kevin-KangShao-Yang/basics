@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <style>
+    #tbAdd {
+      width: 40%;
+    }
+
+    table {
+      margin: 20px auto;
+      border: 1px solid #0094ff;
+      width: 60%;
+      cursor: pointer;
+      border-collapse: collapse;
+    }
+
+    table td {
+      text-align: center;
+      padding: 3px 5px;
+      border: 1px solid #000;
+    }
+
+    table th {
+      background-color: #0094ff;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <table id='tbAdd'>
+    <tr>
+      <td>请输入姓名</td>
+      <td><input type="text" value="" id="uname" /></td>
+    </tr>
+    <tr>
+      <td>请输入邮箱</td>
+      <td><input type="text" value="" id="email" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="button" value="添加" id="btn" /></td>
+    </tr>
+  </table>
+
+
+  <table border="1" cellpadding="0" cellspacing="0" id="tb">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tbd">
+      <tr>
+        <td>小黑</td>
+        <td>xiaohei@126.com</td>
+        <td>
+          <a href='javascript:void(0)'>删</a>
+        </td>
+      </tr>
+      <tr>
+        <td>小黑</td>
+        <td>xiaohei@126.com</td>
+        <td>
+          <a href='javascript:void(0)'>删</a>
+        </td>
+      </tr>
+      <tr>
+        <td>小黑</td>
+        <td>xiaohei@126.com</td>
+        <td>
+          <a href='javascript:void(0)'>删</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    document.getElementById('btn').onclick = function () {
+      var unameValue = document.getElementById('uname').value;
+      var emailValue = document.getElementById('email').value;
+      var pushTr = document.createElement('tr');
+      var tbd = document.getElementById('tbd');
+
+      pushTr.innerHTML = ' <td>' + unameValue + '</td><td>' + emailValue + '</td><td><a href=' + 'javascript:void(0)' + '>删</a></td>';
+
+      document.getElementById('tbd').appendChild(pushTr);
+      var a = document.getElementById('tbd').getElementsByTagName('a');
+      console.log(a);
+      
+      for (var i = 0; i < a.length; i++) {
+        a[i].onclick = function () {
+          if (this.selected == true) {
+             var newTr = this.parentElement.parentElement;
+             console.log(newTr);
+             
+          }
+        }
+      }
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>

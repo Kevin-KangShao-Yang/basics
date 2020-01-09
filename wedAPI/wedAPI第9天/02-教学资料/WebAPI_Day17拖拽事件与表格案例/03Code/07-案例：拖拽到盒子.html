@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+        #container{
+            width: 500px;
+            height: 600px;
+            border: 2px solid black;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" draggable="true"></div>
+    <div id="container" ></div>
+
+    <script>
+        var boxNode = document.getElementById('box');
+        var containerNode = document.getElementById('container');
+
+        // 1.使用 容器的 ondragover 和 ondrop 事件
+        containerNode.ondragover = function (e) {
+            e = e || window.event;
+            e.preventDefault();
+        }
+
+        // 2. 使用 容器的 ondrop 事件，知道 被拖拽 元素 在 容器上方 松开鼠标了
+        containerNode.ondrop = function () {
+            // 讲 div 添加到 容器中
+            containerNode.appendChild(boxNode);
+        }
+    </script>
+</body>
+</html>

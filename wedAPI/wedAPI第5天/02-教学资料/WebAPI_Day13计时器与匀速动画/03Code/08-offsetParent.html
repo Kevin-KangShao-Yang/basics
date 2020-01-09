@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .one{
+              top: 50px;
+              left: 0px;
+              width: 100px;
+              height: 100px;
+              background: greenyellow;
+              /* position: fixed; */
+              position: relative;
+          }
+
+        .two{
+            top: 100px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: cyan;
+            /* position: relative; */
+        }
+
+        .three{
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: green;
+            position: relative; 
+        }
+    </style>
+</head>
+<body>
+<div class="three">
+    <div class="two">
+        <div class="one" id="box">1</div>
+    </div>
+</div>
+
+
+<script>
+    // 获取 父元素
+    //  获取 dom 树结构的 父节点： 子节点.parentNode  --  亲爹
+    //  获取 脱标 文档流的 父节点：子节点.offsetParent -- 干爹
+    //      如果 当前节点 在 脱标文档流
+    //           可以通过 offsetParent 获取 最近的一个 也处于 脱标文档流 的 "父"节点
+    //           可以通过 parentNode  获取  最近的一个 处于   标准文档流 的 父节点
+
+    // 1. 标准 文档流
+    // 2. 脱标 文档流
+
+
+    var boxDiv = document.getElementById('box');
+    boxDiv.onclick = function () {
+        console.log(this.offsetParent); // 获取 有定位的 第一个 父节点
+        console.log(this.parentNode);
+    }
+
+    /*
+    【定位父级】：有定位的 第一个 父节点
+    offsetParent : 获取最近的定位父级 （自己定位参照的父元素） 
+        1.如果一个元素是非固定定位（绝对，相对），并且所有的父元素都没有定位，定位父级就是body
+        2.如果一个元素的定位是固定定位（fixed），定位父级null
+        3.body 的 定位父级是null
+     */
+    
+    
+</script>
+</body>
+</body>
+</html>

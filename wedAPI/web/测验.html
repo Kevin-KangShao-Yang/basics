@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        th {
+            background-color: purple;
+        }
+
+        #one {
+            background-color: pink;
+        }
+
+        table,
+        th,
+        td {
+            padding: 3px 5px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        table {
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    请输入姓名: <input type="text" id="name">
+    <br>
+    请输入邮箱: <input type="text" id="email">
+    <br>
+    请输入手机: <input type="text" id="phone">
+    <br>
+    请输入地址: <input type="text" id="adress">
+    <br>
+    <input type="button" value="添加">
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>邮箱</th>
+            <th>手机</th>
+            <th>地址</th>
+        </tr>
+        <tr>
+            <td>小黑</td>
+            <td>xiaohei@126.com</td>
+            <td>19999009090</td>
+            <td>北京</td>
+        </tr>
+    </table>
+</body>
+
+</html>
+<script>
+
+
+    var inputList = document.getElementsByTagName('input');
+
+    var table = document.getElementsByTagName('table')[0]
+
+    inputList[4].onclick = function () {
+        // 创建行
+        var tr = document.createElement('tr');
+
+        for (var i = 0; i < inputList.length; i++) {
+            if (inputList[i].value == '') {
+                alert('请填写完全')
+                return;
+            } else {
+                // 创建每一格
+                var td = document.createElement('td');
+                // 拿到每一格input的内容   添加到格子里面
+                td.innerText = inputList[i].value;
+            }
+            tr.appendChild(td);
+        }
+
+        table.appendChild(tr);
+
+
+        var tr = document.getElementsByTagName('tr');
+
+
+        for (var i = 0; i < tr.length; i++) {
+            if (i % 2 == 0) {
+                tr[i].style.backgroundColor = 'yellow';
+            } else {
+                tr[i].style.backgroundColor = 'red';
+            }
+        }
+
+    }
+
+
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        #box1 {
+            width: 100px;
+            height: 100px;
+            left: 250px;
+            top: 250px;
+            background-color: #0094ff;
+            position: absolute;
+        }
+
+        #container {
+            width: 500px;
+            height: 600px;
+            border: 2px solid black;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" draggable="true"></div>
+    <div id="box1" draggable="true"></div>
+    <div id="container"></div>
+
+    <script>
+        /* 与容器盒子相关的事件 
+            【前提：】 被移动的元素 一定要有  draggable="true" 属性，才可以 触发 容器的 拖拽事件
+
+            ondragenter : 有元素拖到我里面来了
+            ondragleave : 元素拖拽离开
+                    注意： 是按照 鼠标 与 容器 表框的 进入和离开 来 触发事件的~~！
+
+            ondragover :  元素在我的区域里面拖拽移动（触发及其频繁,不常用）
+                这个事件注册的唯一意义就是能让ondrop事件触发
+            
+            ondrop : 元素结束拖拽的时候，在我的区域范围内
+         */
+        var boxNode = document.getElementById('box');
+        var containerNode = document.getElementById('container');
+
+        //1. ondragenter 有拖拽元素 到 容器中
+        containerNode.ondragenter = function () {
+            console.log('有 sb 来我家了~~~');
+        }
+
+        //2. ondragleave 有拖拽元素 离开 容器
+        containerNode.ondragleave = function () {
+            console.log(' sb 走了~~~~');
+        }
+
+
+        //3. 要触发 ondrop 事件，必须 给 ondragover事件 中 添加 阻断浏览器默认行为 的代码
+
+        // 3.1 ondragover有 拖拽 元素 在容器上方 停留
+        containerNode.ondragover = function (e) {
+            e = e|| window.event;
+            e.preventDefault(); // 阻断默认行为
+        }
+        // 3.2 ondrop 有 拖拽元素 在 容器上方 松开鼠标（投掷）
+        //     drop：投掷、扔东西 的意思 -- 跳伞
+        containerNode.ondrop = function () {
+            console.log('sb 留在我家了~~~');
+        } 
+
+
+
+    </script>
+</body>
+
+</html>

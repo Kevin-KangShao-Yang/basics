@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+</head>
+
+<body>
+  <!-- 在标签中 直接 为 事件属性 添加 js代码，本质上　是　创建一个　匿名函数！！！！ -->
+  <a href="#" onclick="alert('讨厌~~~');" id='aBtn1'>点我试试看</a> <!-- onclick="funtion(){ alert('讨厌~~~'); }"    -->
+
+  <a href="#" onclick="clickYou()" id='aBtn2'>再点我试试看</a>
+  <!--<a href="#" onclick="funtion(){ clickYou }">再点我试试看</a>   -->
+
+  <a href="#" id='aBtn'>再点我就亲你</a>
+</body>
+
+<script>
+  // 1. 标签中直接 为 onclick 属性 设置代码，本质上 是 添加了一个 匿名函数，将 标签中写的代码 封装到 了 匿名函数中之后，将匿名函数 设置给了 onclick 属性
+  // 2.     注意：onclick = '自定义函数名'   -> onclick = function(){ 自定义函数名 }
+  //              onclick = '自定义函数名()' -> onclick = function(){ 自定义函数名() }
+
+  document.getElementById('aBtn1').onclick = function () {
+    alert('死鬼~~~~');
+  };
+
+
+
+  document.getElementById('aBtn').onclick = function(){
+    clickYou;
+  };
+
+
+
+  // document.getElementById('aBtn2').onclick = funtion(){
+  //    clickYou
+  // };
+
+  // // 当 aBtn2 按钮被点击时，浏览器 相当于 执行了 下面这句代码：
+  // document.getElementById('aBtn2').onclick();
+
+  function clickYou() {
+    alert('死鬼~~~');
+  }
+</script>
+
+</html>

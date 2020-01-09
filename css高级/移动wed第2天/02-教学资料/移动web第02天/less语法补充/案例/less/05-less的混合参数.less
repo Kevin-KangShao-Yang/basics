@@ -1,0 +1,46 @@
+// 利用混合中的参数
+
+.baseStyle(@width,@height,@color) {
+    width: @width;
+    height: @height;
+    background-color: @color;
+}
+
+// 混合的参数
+// .混合方法名(@参数1,@参数2,.....) {
+//  属性名: @参数1;
+//  ......  
+// }
+
+// 调用混合方法
+// .混合方法名(参数值1,参数值2,....);
+
+
+.red {
+    .baseStyle(100px, 100px, red);
+}
+
+.blue {
+    .baseStyle(200px, 200px, blue);
+}
+
+.pink {
+    .baseStyle(300px, 300px, pink);
+}
+
+.bgImage(@x,@y) {
+    width: 32px;
+    height: 32px;
+    background: url("../sprite.png") @x @y;
+    background-size: 32px;
+}
+
+.img1 {
+   .bgImage(0, 0);
+}
+.img2 {
+    .bgImage(0,-32px);
+}
+.img3 {
+    .bgImage(0,-64px);
+}

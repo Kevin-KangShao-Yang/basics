@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        th {
+            border: 1px solid #000;
+            background-color: #0094ff;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+            height: 24px;
+        }
+
+        td {
+            border: 1px solid #000;
+            color: #404060;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>
+                <input type="checkbox" name="" id="checkAll" mylover='123123' />全选/全不选
+            </th>
+            <th>菜名</th>
+            <th>商家</th>
+            <th>价格</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="chkFood" />
+            </td>
+            <td>红烧肉</td>
+            <td>隆江猪脚饭</td>
+            <td>￥200</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="chkFood" />
+            </td>
+            <td>香酥排骨</td>
+            <td>隆江猪脚饭</td>
+            <td>￥998</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="chkFood" />
+            </td>
+            <td>北京烤鸭</td>
+            <td>隆江猪脚饭</td>
+            <td>￥88</td>
+        </tr>
+    </table>
+
+
+</body>
+<script>
+
+    // 0.1 获取 name = 'chkFood' 的 dom对象，并存入 类数组 返回
+    var chkList = document.getElementsByName('chkFood');
+    // 0.2 获取 全选复选框 dom对象
+    var chkAll = document.getElementById('checkAll');
+
+
+    // 1. 全选 全不选 -----------------------------------------------------------
+    // 思路：
+    //    a. 获取 全选按钮，添加 onclick 事件方法
+    //    b. 当 全选按钮 被点击时，遍历 所有的 name="chkFood" 复选框，将 他们的 checked = 全选按钮.checked
+
+    chkAll.onclick = function () {
+
+        // 遍历 所有的 下方的复选框，将 checked = 全选按钮.checked
+        for (var i = 0; i < chkList.length; i++) {
+            chkList[i].checked = this.checked;
+        }
+
+    }
+
+    // 2. 下方复选框 如果 选取选中，则 全选按钮 也 选中 ----------------------------
+    //               有一个没选中，则 全选按钮 也 没选中
+
+    // 思路：
+    //  a. 为每个 下方的 复选框 添加 onclick 事件方法
+    //  b. 在 下方 复选框的 onclick 事件方法中，遍历 所有 下方 复选框 的选中状态
+    //                                        如果 全都选中，则设置       全选复选框.checked = true
+    //                                        如果 有任意一个未选，则设置  全选复选框.checked = false
+    for (var i = 0; i < chkList.length; i++) {
+        // 为每个 下方 的 复选框 按钮添加 点击事件
+        chkList[i].onclick = function () {
+            //开关思想：
+            //  1.设置 开关(标志) var isAllChecked = true; 代表 默认认为 下方 复选框 都选中了
+            //  2.验证 开关条件 是否成立
+            //  3.根据 开关 设置 全选按钮的 选中状态
+
+            // 1.设置 开关变量 默认 为true，也就是 默认 认为 下方 复选框 全都选中了！！
+            var isAllChecked = true; // 开关变量
+
+            // 2.验证 假设 ：遍历 下方 每个 复选框 是否 有任意 一个 没有选中
+            for (var j = 0; j < chkList.length; j++) {
+                // 如果 下方 复选框 任意一个 没有选中，则 将 isAllChecked 设置为 false
+                if(chkList[j].checked == false){
+                    isAllChecked = false;
+                    break;
+                }
+            }
+
+            // 3.根据验证结果 设置 全选按钮的 选中状态
+            chkAll.checked = isAllChecked;
+        }
+    }
+
+</script>
+
+</html>

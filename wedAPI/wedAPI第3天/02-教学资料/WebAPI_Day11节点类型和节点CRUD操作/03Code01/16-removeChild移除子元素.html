@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>16-removeChild移除子元素</title>
+</head>
+
+<body>
+    <ul id="ulList1">
+        <li id='webFront' lover='linda'>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li>Python技术栈</li>
+        <li>.Net技术栈</li>
+    </ul>
+    <script>
+        /**
+         * @description: 移除子元素：  父元素.removeChild(子元素) 
+             1.父元素只能移除 自己的子元素
+             2.父元素不能移除 别人的子元素
+             3.元素不能自己移除自己
+         */
+
+        // 1.目标：点击任意 Li标签，删除 它
+        // 思路：
+        //     a.为 每个 li元素　添加　onclick 事件属性
+        //     b.点击事件中 将 被点击的 this 元素 从 父元素中移出
+        var ulNode = document.getElementById('ulList1');
+        for (var i = 0; i < ulNode.children.length; i++) {
+            ulNode.children[i].onclick = function () {
+                // 找到 被点击 li元素的 父亲，请它父亲 亲自 杀掉他！！！
+                // this.parentNode
+                this.parentElement.removeChild(this);
+            }
+        }
+    </script>
+</body>
+
+</html>

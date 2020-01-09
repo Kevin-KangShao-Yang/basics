@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /* overflow: hidden; */
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 2500px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all" id='box'>
+        <div class="screen" id="screen">
+            <ul id="imgGroup">
+                <li><img src="images/01.jpg" width="500" height="200" /></li>
+                <li><img src="images/02.jpg" width="500" height="200" /></li>
+                <li><img src="images/03.jpg" width="500" height="200" /></li>
+                <li><img src="images/04.jpg" width="500" height="200" /></li>
+                <li><img src="images/05.jpg" width="500" height="200" /></li>
+            </ul>
+            <ol id='pageGroup'>
+                <li class="current">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ol>
+        </div>
+        <div id="arr">
+            <span id="left">&lt;</span>
+            <span id="right">&gt;</span>
+        </div>
+    </div>
+</body>
+
+<!-- 注意点：要用动画需要导入js -->
+<script src="./animation.js"></script>
+
+<script>
+    // 1.目标：
+    //    1.1 显示和隐藏  左右箭头  -- 显示和隐藏 <div id="arr">
+    //    1.2 点击每个 页码，显示 当前页下标
+    // 2.思路：
+    //  2.1 显示和 隐藏 左右箭头
+    //      a.获取 左右箭头 所在的 div 
+    //      b.如果 移入 ，就 设置 箭头div.style.display = 'block'
+    //      c.如果 移出 ，就 设置                         'none'
+    //  2.2 点击页码，显示 当前页码下标
+    //      a.为 每个 页码 都添加点击事件
+    //      b.点击事件中 获取 当前 页码 的 自定义下标特性
+    //  2.3 点击页码，将 被点击 页码 设置为 选中，其他页码 设置为 未选中
+    //      a.将 被点击 页码.className = "current";
+    //      b.将 其他   页码.className = "";
+
+    // 3. 功能完成：
+    //    【------新------】
+    //    1.移入移出 事件方法
+    //    2.遍历 页码 添加 onclick
+    //    3.切换 当前页码 样式方法
+
+
+    // 一、获取 各种  需要使用的 元素对象
+    var allBoxNode = document.getElementById('box'); // 整个大盒子
+    var arrNode = document.getElementById('arr'); // 左右箭头容器
+    var screenNode = document.getElementById('screen'); // 获取 图片显示区
+    var imgGroupNode = document.getElementById('imgGroup'); // 获取图片组 - ul -> li
+    var pageGroupNode = document.getElementById('pageGroup'); // 获取 页码条 - ol -> li
+
+    // 二、显示和隐藏 左右箭头
+    // 1.为 大盒子 准备 移入移出事件
+    allBoxNode.onmouseover = function () {
+        arrNode.style.display = 'block';
+    }
+
+    allBoxNode.onmouseout = function () {
+        arrNode.style.display = 'none';
+    }
+
+    // 三、点击页码，显示页码下标
+    for (var i = 0; i < pageGroupNode.children.length; i++) {
+        pageGroupNode.children[i].setAttribute('data-index', i);
+
+        pageGroupNode.children[i].onclick = function () {
+            var pageIndex = this.dataset.index // this.getAttribute('data-index');
+            // alert(pageIndex);
+            switchPageIndex(pageIndex);
+        }
+    }
+
+    /**
+     * @description: switchPageIndex - 切换页码条 中的 页码选中状态
+     * @param {number} pageIndex - 要选中的 页码 下标 
+     */
+    function switchPageIndex(pageIndex) {
+        // a.将 被点击 页码.className = "current";
+        // b.将 其他   页码.className = "";
+
+        // 排他思想：
+        // 先 设置所有的 页码 为 未选中
+        for (var i = 0; i < pageGroupNode.children.length; i++) {
+            pageGroupNode.children[i].className = '';
+        }
+        // 单独 把 要选中的 页码 设置为 选中状态
+        pageGroupNode.children[pageIndex].className = 'current';
+    }
+</script>
+
+</html>

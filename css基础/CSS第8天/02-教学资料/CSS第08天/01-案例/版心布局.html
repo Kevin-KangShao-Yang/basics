@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *  {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 将版心属性,单独抽取封装成为一个类选择器 */
+        /* 哪个盒子是版心,就把w类名加上去就可以了 */
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+            /* 固定宽度,水平居中 */
+        }
+        .topBar {
+            height: 100px;
+            background-color: red;
+        }
+        .header {
+            height: 150px;
+            background-color: pink;
+        }
+        .main {
+            height: 400px;
+            background-color: skyblue;
+        }
+        .footer {
+            height: 300px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <!-- 版心布局: 将页面内容布局在浏览器的中心区域 -->
+    <!-- 1.固定宽度 -->
+    <!-- 2.水平居中 -->
+    <div class="topBar w"></div>
+    <div class="header w "></div>
+    <div class="main w"></div>
+    <div class="footer w"></div>
+</body>
+</html>

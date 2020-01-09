@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 41.4px;
+            /* 414px手机的rem */
+        }
+        div {
+            width: 5rem;
+            height: 5rem;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        
+    </div>
+</body>
+</html>
+<!-- 目的: 一份代码兼容所有的屏幕 -->
+<!-- 假定需要兼容三个屏幕,至少这份代码里面要有三个rem----三个html标签????? -->
+
+<!-- 思路: 当页面一开始加载的时候,立刻获得设备屏幕的宽度,就可以根据宽度来设定rem -->

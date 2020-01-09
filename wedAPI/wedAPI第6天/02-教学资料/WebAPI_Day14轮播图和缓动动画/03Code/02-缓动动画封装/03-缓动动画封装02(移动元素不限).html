@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 10px;
+            top: 150px;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #0094ff;
+            position: absolute;
+            left: 10px;
+            top: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="蓝色缓动到400" id="bluemove400" />
+    <input type="button" value="蓝色缓动到800" id="bluemove800" />
+    <br/>
+    <input type="button" value="红色缓动到400" id="redmove400" />
+    <input type="button" value="红色缓动到800" id="redmove800" />
+
+    <div id="box"></div>
+    <div id="box1"></div>
+
+</body>
+
+<script>
+    /*缓动动画 
+        概念：离目标越近，步长 越小
+        特点：
+            1.一定会 移动到指定的目标位置
+            2.不需要复位
+     */
+
+    /*缓动动画*/
+    
+
+    //小红缓动到400
+    document.getElementById('bluemove400').onclick = function () {
+        slowMove('box', 400);
+
+    };
+
+    //小红缓动到800
+    document.getElementById('bluemove800').onclick = function () {
+        slowMove('box', 800);
+    };
+
+    //小红缓动到400
+    document.getElementById('redmove400').onclick = function () {
+        slowMove('box1', 400);
+
+    };
+
+    //小红缓动到800
+    document.getElementById('redmove800').onclick = function () {
+        slowMove('box1', 800);
+    };
+
+ 
+    /**
+     * @description: slowMove - 缓动动画 方法
+     * @param {string} eleId - 要移动的元素 id 
+     * @param {number} targetPosition - 目标位置
+     */
+    function slowMove(eleId, targetPosition) {
+        // 1.获取 要移动的 元素节点对象
+        var boxNode = document.getElementById(eleId);
+
+        clearInterval(boxNode.timer); // 停止上一次 的计时器(有就停止，没有就什么也不做)
+        
+        // 2.启动定时器
+        boxNode.timer = setInterval(function () {
+            // 2.获取当前 元素的位置
+            var curPos = boxNode.offsetLeft;
+
+            // 3.计算 缓动步长
+            var step = (targetPosition - curPos) / 10; // 步长 根据 缓动公式 运算
+            step = Math.ceil(step); // 使用 向上 取整
+
+            // 4.累加
+            curPos += step;
+
+            // 5.修改 元素节点 位置
+            boxNode.style.left = curPos + 'px';
+
+            // 6.边界检测
+            if (curPos == targetPosition) {
+                // 7. 关闭 计时器
+                clearInterval(boxNode.timer);
+            }
+        },20);
+    }
+
+</script>
+
+</html>

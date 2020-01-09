@@ -1,0 +1,172 @@
+.layout {
+    width: 375px;
+    margin: 0 auto;
+}
+
+.content {
+    width: 100%;
+    padding: 0 5px;
+}
+
+.content nav {
+    height: 64px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.content nav ul {
+    height: 100%;
+    display: flex;
+}
+
+nav li {
+    flex: 1;
+}
+
+nav li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+nav li .icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url("../img/sprite.png");
+    background-size: 32px;
+    margin: 7px auto 4px;
+}
+
+.coupon {
+    width: 100%;
+    height: 270px;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: flex;
+    /* 将主轴从水平改成处置 */
+    flex-direction: column;
+
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.coupon .items {
+    height: 88px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 43px;
+    text-align: center;
+}
+
+.coupon .items a {
+    color: #fff;
+}
+
+.hotel {
+    background: linear-gradient(to right, #fa5956, #f99b4d);
+}
+.air {
+    background: linear-gradient(to right, #4b8fed, #53bced);
+}
+.travel {
+    background: linear-gradient(to right, #33c2aa, #6dd557);
+}
+
+
+
+.items div {
+    flex: 1;
+}
+
+.items .title a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("../img/hotel.png") no-repeat bottom;
+    background-size: 100%;
+}
+.items .nav {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #fff;
+}
+
+.items .nav a {
+    flex: 1;
+}
+
+.items .nav a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+
+.navLinks {
+    height: 116px;
+    background-color: #fff;
+    margin-top: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px -8px deeppink;
+    /* 水平位移  垂直位移 模糊程度 影子大小  颜色 */
+}
+
+.navLinks ul {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.navLinks ul li {
+    width: 20%;
+    height: 50%;
+}
+
+.navLinks li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.navLinks li a .icon {
+    display: block;
+    width: 22px;
+    height: 18px;
+    background: url("../img/subnav.png");
+    background-size: 24px;
+    margin: 10px auto 9px;
+}
+
+.homeBar {
+    width: 375px;
+    height: 51px;
+    background-color: #fff;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    position: fixed;
+    bottom: 25px;
+    display: flex;
+}
+.homeBar a {
+    flex: 1;
+    text-align: center;
+}
+
+.homeBar a .icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url("../img/ico_home.png") -60px -154px;
+    background-size: 104px;
+    margin: 7px auto;
+}
+
+
+.homeBar a:nth-child(2) .icon {
+ 
+    background-position-y: -173px;
+   
+}

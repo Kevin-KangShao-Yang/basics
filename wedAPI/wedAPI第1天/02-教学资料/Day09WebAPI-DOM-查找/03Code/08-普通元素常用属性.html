@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        #divBox {
+            border: 1px solid #0094ff;
+            min-height: 100px;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='divBox'>
+
+    </div>
+    <img id='img1' src="./images/002.jpg" />
+    <a href="http://www.baidu.com">我要去百度买药~~~</a>
+</body>
+
+<script>
+    var divDom = document.getElementById('divBox');
+
+    //标签名返回的是数组，如果希望得到dom对象，应该取下标
+    var divDom2 = document.getElementsByTagName('div')[0]; // 把返回的 dom类数组 中的 第0个元素取出
+
+    //1. css属性： 样式属性 元素.style.样式名
+    divDom2.style.backgroundColor = '#0094ff';
+
+    //2. 标签属性
+
+    //2.1 文本内容 innerText 与 代码内容 innerHTML
+    //    强调：只有　双标签　才能使用　，但标签　无法使用！！因为　单标签内容　在　value 属性中
+    // divDom2.innerText = '我最喜欢吃的 是 咖喱鸡~~~';
+    // divDom2.innerText = '<h1>我最喜欢你哦~~小狗狗</h1>'; // 不会 识别 html 标签，只是 但字符串使用
+
+    divDom2.innerHTML = '<h1>我最喜欢你哦~~小狗狗</h1>'; // 能够解析识别 html标签！！！
+
+    //2.2 src : 路径 常用于img标签
+    var imgDom = document.getElementById('img1');
+    imgDom.src = './images/001.jpg';
+
+    //2.3 href : 链接  常用于a标签
+    var aDom = document.getElementsByTagName('a')[0];
+    aDom.innerText = '我要去传智学习编程~~友情提示：不退票';
+    aDom.href = 'http://www.itcast.cn';
+
+
+</script>
+
+</html>

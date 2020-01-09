@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 350px;
+      height: 350px;
+      margin: 100px;
+      border: 1px solid #000;
+      position: relative;
+    }
+
+    .big {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 0;
+      left: 360px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      display: none;
+    }
+
+    .mask {
+      width: 175px;
+      height: 175px;
+      background: rgba(255, 255, 0, 0.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: move;
+      display: none;
+    }
+
+    .small {
+      position: relative;
+    }
+
+    .box img {
+      vertical-align: top;
+    }
+
+    #bigBox>img {
+      /*是让里面的图片脱标，为的就是让里面的图片进行一个移动*/
+      position: absolute;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="box" id="box">
+    <div class="small" id="smallBox">
+
+      <img src="images/001.jpg" width="350" alt="" />
+
+      <div class="mask" id="mask"></div>
+    </div>
+
+    <div class="big" id="bigBox">
+      <img id="bigImg" src="images/0001.jpg" width="800" alt="" />
+    </div>
+  </div>
+
+  <script>
+    /*
+      1.分析需求(交互)：
+        (1)鼠标移入smallbox : 显示big大图片盒子和mask遮罩盒子
+        (2)鼠标移出smallbox : 隐藏big大图片盒子和mask遮罩盒子
+        (3)鼠标移动smallbox
+            a.遮罩mask跟随鼠标移动
+            b.鼠标在mask中心位置
+            c.mask边界检测（只能在小盒子中移动）
+            d.bigImg相应移动
+              假如mask遮罩大小 100*100， 大盒子200*200。 鼠标每移动1px，图片应该移动 1 * 200/100 = 2px
+      2.思路分析（事件三要素）
+        获取元素：事件源：
+        注册事件：事件类型
+        事件处理：
+    */
+
+    //1.获取元素
+    var smallBox = document.getElementById('smallBox');
+    var mask = document.getElementById('mask');
+    var bigBox = document.getElementById('bigBox');
+    var bigImg = document.getElementById('bigImg');
+    var box = document.getElementById('box');//最外面box box的offsetLeft才是到body的距离
+
+    // 2. 注册事件
+    smallBox.onmouseover = function () {
+      mask.style.display = 'block';
+      bigBox.style.display = 'block';
+    }
+
+    smallBox.onmouseout = function () {
+      mask.style.display = 'none';
+      bigBox.style.display = 'none';
+    }
+
+    // 鼠标 移动事件
+    smallBox.onmousemove = function (e) {
+      var e = e || window.event;
+      
+      //1.让 mask 中心点 跟着 鼠标一起移动 --------------------------------
+      var maskX = e.pageX - box.offsetLeft;
+      var maskY = e.pageY - box.offsetTop;
+
+      //1.2 设置 mask 中间原点
+      maskX -= mask.offsetWidth / 2;  // mask 向左移动
+      maskY -= mask.offsetHeight / 2; // mask 向上移动
+
+      //1.3 mask 边界 检测 
+      // 0 <= x <= 小盒子的宽度 - mask宽度    -》 0 <= x <= 350 - 175   -> 0<= x <= 175
+      // 检测 左边距 ： >=0
+      maskX = maskX < 0 ? 0 : maskX;
+      // 检测 右边距： <= 175
+      maskX = maskX > 175 ? 175 : maskX;
+      // 检测 上边距： >= 0
+      maskY = maskY < 0 ? 0 : maskY;
+      // 检测 下边距： <= 175
+      maskY = maskY > 175 ? 175:maskY;
+
+      // 1.4 设置 mask 位置
+      mask.style.left = maskX + 'px';
+      mask.style.top = maskY + 'px';
+
+
+      //2.大图片 移动 -----------------------------------------------------------
+      // 2.1 让大图片移动 方向： 向左     -距离
+      //                        向上     -距离
+      // 2.2 移动的步长： 要和 mask 移动步长 等比方法 
+      //                 大图片要移动的步长 需要 放大的比例 ：bigImg.offsetWidth / smallBox.offsetWidth
+      //                 【大图要移动步长的公式： mask移动距离 * (大图宽 / 小图宽)】
+      // 小盒子 是 100  大盒子是200      ， 小盒子中移动 1个像素 ，大盒子 移动 2个像素
+
+      // 【大盒子 中 要移动的 距离 = 小盒子中移动的距离 * （大盒子/ 小盒子）】
+      bigImg.style.left = - (maskX * (bigImg.offsetWidth / smallBox.offsetWidth)) +'px';
+      bigImg.style.top = - (maskY * (bigImg.offsetHeight / smallBox.offsetHeight)) + 'px';
+    }
+  </script>
+</body>
+
+
+</html>

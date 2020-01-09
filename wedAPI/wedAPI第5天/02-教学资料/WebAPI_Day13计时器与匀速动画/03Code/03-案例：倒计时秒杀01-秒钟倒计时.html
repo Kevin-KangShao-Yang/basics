@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时秒杀</title>
+</head>
+
+<body>
+    <span id="spanHour">01</span>:
+    <span id="spanMin">01</span>:
+    <span id="spanSec">07</span>
+
+    <script>
+        // 1. 目标：每秒钟 秒数  -1 
+        //              当秒数  = 0 时，要 设置 秒数 = 59， 同时 分钟数 -1
+        //              当分钟数= 0 时，要 设置 分钟数= 59，同时 小时数 -1
+        // 2. 思路：
+        //    a.开启一个 计时器，每秒钟 对 秒钟数 -1 .....
+        //    b.秒钟数 可以 从 页面 的 第三个 span 标签中 获取
+        //              当秒数  = 0 时，要 设置 秒数 = 59， 同时 分钟数 -1
+        //              当分钟数= 0 时，要 设置 分钟数= 59，同时 小时数 -1
+
+        //0. 获取 秒钟数 span 节点对象
+        var spanMiao = document.getElementById('spanSec');
+
+        //1. 启动 计时器，并 获取 计时器 id(句柄)
+        var timeId = setInterval(function () { 
+            // 2. 到 第三个 span 中 获取 秒钟数
+            var secNum = parseInt(spanMiao.innerText);
+            secNum--; // 倒计时 -1 秒
+
+            // 3. 如果 时间数 < 0，那就需要 将 时间数 设置成 59
+            if(secNum < 0){
+                secNum = 59;
+            }
+
+            // 4.将 时间 放回 到 span 中之前，先检查一下 是否 为 个位数，如果 为个位数，在前面 +'0'
+            if(secNum < 10){
+                secNum = '0' + secNum; // '0' + 7 -> '07'
+            }
+
+            // 5. 将 秒钟数 放回 到 span 中
+            spanMiao.innerText= secNum;
+        }, 1000);
+    </script>
+</body>
+
+</html>

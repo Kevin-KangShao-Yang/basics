@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <ul id="ulList">
+        <!-- 偷偷躲在这的注释 -->
+        强势矗立在此的文本
+        <li id='webFront' lover='linda'>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li>Python技术栈</li>
+        <li>.Net技术栈</li>
+    </ul>
+</body>
+
+<script>
+/**
+ * @description:  获取 页面中 li标签 节点对象 (dom对象)
+ *  名称 nodeName   类型 nodeType   值 nodeValue
+ * 1.元素节点：根据 html 标签创建的 就是 元素节点
+ * 2.元素节点 的 nodeName  = 标签名 大写
+                nodeType  = 1
+                nodeValue = null
+ */
+ var liobj = document.getElementById('webFront');
+ console.log(liobj.nodeName); // LI
+ console.log(liobj.nodeType); // 1
+ console.log(liobj.nodeValue); // null
+
+ var ulObj = document.getElementById('ulList');
+ console.log(ulObj.nodeName); // UL
+ console.log(ulObj.nodeType); // 1
+ console.log(ulObj.nodeValue); // null
+
+ // 2. 获取 元素节点 中的 所有  属性节点 集合(数组)
+ console.log(liobj.attributes);
+
+ // 2.1 获取 元素节点 中的   id 【属性节点】
+ console.log(liobj.attributes.id);
+ console.log(liobj.attributes.lover);
+
+ // 2.2 获取 id 【属性节点 的 三要素】
+ var attrObj = liobj.attributes.id;
+ console.log(attrObj.nodeName); // 属性名： id
+ console.log(attrObj.nodeType); // 2
+ console.log(attrObj.nodeValue); // 属性值：webFront
+ 
+
+</script>
+
+</html>

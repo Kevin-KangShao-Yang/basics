@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 伪元素: 在不动结构代码的前提下,添加元素 */
+        /* content是必须的,哪怕是空也要写!!!!!!! */
+        div::before {
+            /* 在div的子元素之前添加伪元素 */
+            content: "你好吗?";
+            font-size: 30px;
+            color: red;
+        }
+        div::after {
+            /* 在div的子元素之后添加伪元素 */
+            content: "再见";
+        }
+    </style>
+</head>
+<body>
+    <!-- 伪元素: 假的标签----不存在于html的标签 -->
+    <!-- 
+        在不动结构代码的前提下,在所有a标签的前面加文字,后面也加文字
+     -->
+    <div>
+        <a href="#">传智播客</a>
+        <a href="#">黑马程序员</a>
+        <a href="#">博学谷</a>
+        <a href="#">酷丁鱼</a>   
+    </div>
+</body>
+</html>

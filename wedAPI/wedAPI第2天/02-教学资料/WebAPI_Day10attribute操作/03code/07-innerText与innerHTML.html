@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        div{
+            border:1px solid #0094ff;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='d1'>
+        我爱北京天安门~~~
+    </div>
+    <div id='d2'>
+        <h1>我爱北京天安门</h1>
+        <p>我也爱北京天安门，我们大家都爱北京天安门~~~</p>
+    </div>
+
+    <input type="text" name="" id="txtName" value='JamesZou' />
+</body>
+
+<script>
+    // 一、获取 双标签内容 ---------------------------------
+    // 1. innerText - 获取 标签中的 内容，不包括子标签，只拿内容
+    var str1 = document.getElementById('d1').innerText;
+    console.log(str1);
+
+    
+    var str2 = document.getElementById('d2').innerText;
+    console.log(str2);
+
+
+    // 2. innerHTML - 获取 标签中的 内容，包括子标签和字标签内容
+    var str1 = document.getElementById('d1').innerHTML;
+    console.log(str1);
+
+    
+    var str2 = document.getElementById('d2').innerHTML;
+    console.log(str2);
+
+
+    // 3. 注意：innerText 和 innerHTML 只能拿 双标签中间的内容
+    //          如果 获取 单标签的话，返回的是 空字符串 ''
+    // 重点:只能用getElementById获取dom对象才能实现innerText,innerHTML
+    //如果用getElementsByClassName 或者 getElementsByTagsName 是无法实现的,因为它们获取的是类数组
+    var str3 = document.getElementById('txtName').innerText;
+    console.log(str3.length);
+
+    //二、设置 双标签内容 -----------------------------------------
+    // 1. 如果 通过 innerText 设置 标签中间的内容 ，浏览器 不会 解析 内容里的 html标签
+    document.getElementById('d1').innerText = '<h1>我爱广州小蛮腰~~小蛮腰上没有刀</h1>';
+    
+    // 2. 如果 通过 innerHTML 设置 标签中间的内容 ，浏览器 会 解析 内容里的 html标签
+    document.getElementById('d2').innerHTML = '<h1>我爱广州小蛮腰~~小蛮腰上没有刀</h1>';
+
+
+
+</script>
+
+</html>

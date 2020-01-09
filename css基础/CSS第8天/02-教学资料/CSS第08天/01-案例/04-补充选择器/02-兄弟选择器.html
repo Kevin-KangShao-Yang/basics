@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 兄弟选择器 */
+        /* p+p{
+            color: red;
+        } */
+
+        /* 同辈选择器 */
+        /* 找到span后面的p标签 */
+        span~p {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>刘备</p>
+        <p>云长</p>
+        <p>张飞</p>
+        <span>诸葛亮</span>
+        <p>康启光</p>
+        <p>康启宗</p>
+        <p>康启耀</p>
+        <p>康启祖</p>
+    </div>
+</body>
+</html>

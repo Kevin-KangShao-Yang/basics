@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        /* 页面代码默认从上往下执行，如果js代码写在head中无法获取页面元素 */
+
+
+        /*window对象三个事件： 对应页面从加载到关闭的三个时刻 
+         */
+
+        //1. 网页所有内容加载完毕 （DOM树，所有的外部资源路径）
+        window.onload = function () {
+            //作用： js写在任意位置都可以获取页面元素
+            var box = document.getElementById('box');
+            console.log(box);
+            console.log('页面加载完毕');
+
+        };
+
+        //2. 页面在即将关闭会执行
+        window.onbeforeunload = function () {
+            //作用： 保存重要数据
+            alert('页面即将关闭');
+        };
+
+        //3. 页面正在关闭 ： 一走完页面就关闭了
+        window.onunload = function () {
+            //这个方法一走完页面就关闭了
+            alert('我正在关闭');
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box">我是班长</div>
+    <p>ppppppp</p>
+
+</body>
+
+</html>

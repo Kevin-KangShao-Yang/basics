@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>我是班长1</li>
+        <li>我是班长2</li>
+        <li>我是班长3</li>
+        <li>我是班长4</li>
+        <li>我是班长5</li>
+    </ul>
+
+    <script>
+        /* 
+        1.事件冒泡好处： 如果一个父元素中所有的子元素需要注册同名事件，只需要给父元素注册即可
+
+        2.事件对象的一些属性介绍
+            this: 谁调函数，函数中的this就代表谁 --- 事件源：指的 当前执行的事件处理函数 所属的 dom对象
+            e.currentTarget ： 和this一模一样，唯一的区别就是有兼容性。 以后用this是最多的
+            e.target : 真正的事件触发源 -- 真正触发这个事件的源头（子元素）  -- IE8 : e.srcElement 
+         */
+
+
+        //需求：给每一个li元素注册鼠标点击事件，弹出当前li元素文本
+
+        //1.以前的做法： 遍历每一个li元素，注册事件
+        // var liList = document.querySelectorAll('#ul1>li');
+        // for (var i = 0; i < liList.length; i++) {
+        //     liList[i].onclick = function () {
+        //         console.log(this.innerText);
+        //     }
+        // }
+
+
+        //2.使用事件冒泡：只需要给父元素注册同名事件即可
+        // e.target 可以 获取 触发事件的 元素
+
+        var ulNode = document.getElementById('ul1');
+        ulNode.onclick = function (e) {
+            e = e || window.event;
+            // console.log(this.innerText); // this -> ul
+            console.log(e.currentTarget.innerText);
+            console.log(this == e.currentTarget); // true
+
+            // console.log(e.target); // 真正触发 事件的 元素：鼠标 点击位置 最小的 那个 子元素
+
+            //IE8 中 e.srcElement
+        }
+    </script>
+</body>
+
+</html>

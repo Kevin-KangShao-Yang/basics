@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        height: 2000px;
+    }
+
+    #divBox{
+        height: 1900px;
+    }
+    </style>
+</head>
+<body>
+    <!-- 
+        1.html种a标签默认有两个特点 （1）鼠标放上去有小手  （2）点击会有默认跳转
+        2.某些情况下，只希望保留a标签放上去有小手，不希望点击默认跳转，这时需要阻止a标签的默认跳转
+        3.阻止a标签默认跳转
+     -->
+
+     <!-- 1.设置href属性为伪链接
+        javascript : 告诉浏览器不要跳转，而是帮我执行js代码
+        void(0) : 内置的空函数
+     -->
+     <a href="javascript:void(0)" onclick="alert('欢迎欢迎，走上了通往未来的康庄大道~~~');">我要去传智学习 "牛逼" 的IT技术~~~~</a>
+
+    <!-- 2. 在a标签的事件处理函数中 return false -->
+    <!-- 阻止a标签跳转行内写法 -->
+
+    <a href="http://www.itheima.com" onclick="return false">我要去黑马程序员 学习 技术~~~~</a>
+
+    <a href="http://www.itcast.com" id='aBtn'>去学IT</a>
+
+    <!-- 3. 在标签之中 的 href属性中 # ，这种 本质上 是 锚定语法，浏览器其实 是在本页面内跳转-->
+    <!--    注意：在地址栏最后面，已经多了一个 # -->
+    <!--          如果 此超链接 在第一屏，还不会有什么影响，但如果 在 后面几屏 就会跳到 第一屏！！！ -->
+    <!-- <div id='divBox'></div> -->
+    <a href="#">去学大前端IT开发</a>
+
+    <!-- 4.伪链接其他用法
+            tel:电话
+            mailto:邮箱
+    -->
+    <a href="mailto:oumind@qq.com">联系我啊~~~~~~~~~~</a>
+
+    <script>
+        document.getElementById('aBtn').onclick = doClick;
+
+
+        function doClick() {
+            alert('讨厌~~~');
+            return false;
+        }
+    </script>
+</body>
+</html>

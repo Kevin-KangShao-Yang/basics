@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        var divNode = document.getElementById('box');
+
+        window.onmousemove = function (e) {
+            var e = e || window.event;
+            var x = e.pageX;
+            var y = e.pageY;
+
+            // 设置 div 的left位置： 鼠标当前位置 -  div 的真实宽度/2 
+            divNode.style.left = (x - divNode.offsetWidth / 2) + 'px';
+            
+            // 设置 div 的top位置： 鼠标当前位置 -  div 的真实高度/2 
+            divNode.style.top = (y - divNode.offsetHeight /2) + 'px';
+
+        }
+    </script>
+</body>
+
+</html>

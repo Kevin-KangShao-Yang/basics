@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all" id='box'>
+        <div class="screen" id="screen">
+            <ul id="imgGroup">
+                <li><img src="images/01.jpg" width="500" height="200" /></li>
+                <li><img src="images/02.jpg" width="500" height="200" /></li>
+                <li><img src="images/03.jpg" width="500" height="200" /></li>
+                <li><img src="images/04.jpg" width="500" height="200" /></li>
+                <li><img src="images/05.jpg" width="500" height="200" /></li>
+                <li><img src="images/01.jpg" width="500" height="200" /></li>
+            </ul>
+            <ol id='pageGroup'>
+                <li class="current">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ol>
+        </div>
+        <div id="arr">
+            <span id="left">&lt;</span>
+            <span id="right">&gt;</span>
+        </div>
+    </div>
+</body>
+
+<!-- 注意点：要用动画需要导入js -->
+<script src="./animation.js"></script>
+
+<script>
+    // 1.目标：
+    //    a.当页面 加载时 自动 轮播
+    //    b.如果 鼠标 移入 allBox ，就 停止 自动轮播
+    //    c.如果 鼠标 移出 allBox ， 就 开始 自动轮播
+    // 2. 功能完成：
+    //    1.移入移出 事件方法
+    //    2.遍历 页码 添加 onclick
+    //    3.切换 当前页码 样式方法
+    //    ------------
+    //    4.右箭头 添加 onclick
+    //    5.左箭头 添加 onclick
+    //    6.toPage 跳转 页面方法 （动画跳转，并切换页码）
+    //    ------------
+    //    7.右箭头 最后一张图 切换 到 第一张图
+    //      7.1 在图片列表中 复制 第一张图片 添加到 最后
+    //      7.2 在 样式表中    -> screen ul 改 width: 3000px;
+    //      7.3 rightArr.onclick 中 做 "欺骗" 处理
+    //    8.左箭头 的第一张图 切换 到 最后一张图
+    //      8.1 leftArr.onclick 中 做 "欺骗" 处理
+    //    ------------
+    //    9.点击页码 切换图片 -- 在 上面的 第2个功能时添加：2.遍历 页码 添加 onclick
+    //    【------新------】
+    //    10.页面加载时 开启定时器，内部调用 rightArr.onclick();
+    //    11.鼠标移入 allBox 时，停止计时器
+    //    12.鼠标移出 allBox 时，重新开始计时器
+
+
+    // 一、获取 各种  需要使用的 元素对象
+    var allBoxNode = document.getElementById('box'); // 整个大盒子
+    var arrNode = document.getElementById('arr'); // 左右箭头容器
+    var rightArr = document.getElementById('right'); // 右箭头
+    var leftArr = document.getElementById('left'); // 左箭头
+    var screenNode = document.getElementById('screen'); // 获取 图片显示区
+    var imgGroupNode = document.getElementById('imgGroup'); // 获取图片组 - ul -> li
+    var pageGroupNode = document.getElementById('pageGroup'); // 获取页码条 - ol -> li
+
+    var curPageIndex = 0; // 当前正在显示的 页码变量
+
+    // 二、移入移出事件：显示和隐藏 左右箭头 ，启动和关闭 自动轮播 ---------------------------------
+    // 0. 开启一个 计时器- setInterval(函数,毫秒数);
+    var timer = setInterval(function () {
+        // 1.完成切换 -- 偷偷调用 右箭头 的 onclick 属性 中 保存的方法！
+        rightArr.onclick();
+    }, 2000);
+
+
+    // 1.为 大盒子 准备 移入移出事件
+    allBoxNode.onmouseover = function () {
+        arrNode.style.display = 'block';
+
+        // 停止 计时器
+        clearInterval(timer);
+    }
+
+    allBoxNode.onmouseout = function () {
+        arrNode.style.display = 'none';
+        // 重新开始
+        timer = setInterval(function () {
+            // 1.完成切换 -- 偷偷调用 右箭头 的 onclick 属性 中 保存的方法！
+            rightArr.onclick();
+        }, 2000);
+    }
+
+    // 三、点击页码，显示 图片 切换------------------------------------------------------------------
+    for (var i = 0; i < pageGroupNode.children.length; i++) {
+        // 为 每个页码li 设置一个 自定义属性 来保存 当前下标
+        pageGroupNode.children[i].setAttribute('data-index', i);
+
+        // 为 每个 页码li 设置一个 点击事件 - 实现 点击页码跳转 功能
+        pageGroupNode.children[i].onclick = function () {
+            var pageIndex = this.dataset.index // this.getAttribute('data-index');
+
+            // 根据页码 切换图片
+            toPage(pageIndex);
+
+            // 根据页码 切换 页码条
+            switchPageIndex(pageIndex);
+
+            //设置 当前页码为被点击的页码
+            curPageIndex = pageIndex;
+
+
+            if (pageIndex == 0) {
+                imgGroupNode.style.left = '0px';
+            }
+            if (pageIndex == 1) {
+                imgGroupNode.style.left = '-500px';
+            }
+            if (pageIndex == 2) {
+                imgGroupNode.style.left = '-1000px';
+            }
+            if (pageIndex == 3) {
+                imgGroupNode.style.left = '-1500px';
+            }
+            if (pageIndex == 4) {
+                imgGroupNode.style.left = '-2000px';
+            }
+        }
+    }
+
+    /**
+     * @description: switchPageIndex - 切换页码条 中的 页码选中状态
+     * @param {number} pageIndex - 要选中的 页码 下标 
+     */
+    function switchPageIndex(pageIndex) { // index = 5   -> pageGroupNode.children.length = 5 -> 最大下标 4
+        // a.将 被点击 页码.className = "current";
+        // b.将 其他   页码.className = "";
+
+        // 排他思想：
+        for (var i = 0; i < pageGroupNode.children.length; i++) {
+            if (i == pageIndex) { // i = 0 , 1 , 2, 3 , 4 
+                // 单独 把 要选中的 页码 设置为 选中状态
+                pageGroupNode.children[pageIndex].className = 'current';
+            } else {
+                pageGroupNode.children[i].className = '';
+            }
+        }
+    }
+
+    // 四、点击 右箭头 实现 图片的 切换---------------------------------------------------------
+    // a.为 右箭头 添加 onclick 事件
+    //   a1.判断 当前页码变量 如果 == 最后一个 图片的 下标，return
+    //   a2.页码变量++
+    //   a3.调用 切换页方法 toPage(index)
+    //      a3.1 实现 动画切换 - 昨天的 move(要移动的元素的id,目标位置)
+    //      a3.2 切换 页码条 - switchPageIndex(index)
+
+    rightArr.onclick = function () {
+        //1.判断 当前页码变量 如果 == 最后一个 图片的 下标 ，return
+        if (curPageIndex == imgGroupNode.children.length - 1) {
+            // 因为 把 第一张 复制到 了整个图片 列表 的最后面，所以 此时 看到的 最后一张，对用户来说 就是 第一张
+            // 当 用户 再点击 下一页的时候，我们需要 直接 切换到 第2张去
+
+            // 设置 图片ul 的位置 为 0px
+            imgGroupNode.style.left = '0px';
+            // 设置 当前图片 下标 为 0
+            curPageIndex = 0;
+
+        }
+
+        // 2.页码变量 ++
+        curPageIndex++;
+
+        // 3.调用 切换页方法
+        toPage(curPageIndex);
+
+        // 4. 判断是否为 最后一张图片 (强调：现在的最后一张 是 添加到最后的 第一张图片)
+        //    用户 以为 看到 了 第一张 ，其实 看到的 是 最后一张
+        //    但是 页码 需要 改成 1
+        if (curPageIndex == imgGroupNode.children.length - 1) {
+            switchPageIndex(0);
+        }
+    }
+
+    // 五、点击 左箭头 实现 图片的 切换---------------------------------------------------------
+    leftArr.onclick = function () {
+        //1.判断 是否 为 第一张图片了
+        if (curPageIndex == 0) {
+            // 将 图片 直接 显示到 最后一张
+            imgGroupNode.style.left = -(imgGroupNode.children[0].offsetWidth * (imgGroupNode.children.length - 1)) + 'px';
+            // 将 页码变量 改成
+            curPageIndex = imgGroupNode.children.length - 1;
+        }
+        //2.页面变量--
+        curPageIndex--;
+        //3.调用 跳转页面方法
+        toPage(curPageIndex);
+    }
+
+
+    // 跳转到 指定 页码 的 图片
+    /**
+     * @description: toPage - 跳转到 指定 页码 的 图片
+     * @param {number} pageIndex - 指定的页码 
+     */
+    function toPage(pageIndex) {
+        //1. 实现 动画切换 - 昨天的 move(要移动的元素的id,目标位置)
+        move('imgGroup', -(pageIndex * (imgGroupNode.children[0].offsetWidth)))
+        //2. 切换 页码条 - switchPageIndex(index)
+        switchPageIndex(pageIndex);
+    }
+
+
+</script>
+
+</html>

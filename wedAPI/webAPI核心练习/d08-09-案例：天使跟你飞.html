@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./tianshi.gif" alt="">
+
+    <script>
+        /*思路分析
+        1.给页面注册鼠标移动事件
+            onmousemove:鼠标移动
+            页面鼠标移动： document.onmousemove
+        2.获取事件对象的page坐标赋值给元素的定位 
+        
+        */
+
+        var imgNode = document.getElementsByTagName('img')[0];
+        
+        window.onmousemove = function (e) {
+            var e = e || window.event;
+            // console.log(e.pageX,e.pageY); // 跟踪 鼠标 当前移动的 位置
+            
+            imgNode.style.left = e.pageX + 'px';
+            imgNode.style.top = e.pageY + 'px';
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+</head>
+
+<body>
+  <div id='divMsg' alover='Linda' data-child='ruiky'>
+    <span>我是可爱的div1</span>
+    <span>我是可爱的div2</span>
+  </div>
+
+</body>
+
+<script>
+
+
+  // 1. 获取 页面上 唯一 的 div
+  var divDom = document.getElementsByTagName('div')[0];
+  // 1.1 直接 写在 标签中的 "属性"  其实 叫做 【特性 attribute】
+  console.log(divDom.id);
+
+  // 1.2 dom的对象 自带的 “属性” 其实 就是 浏览器 自动 为 dom 对象 【添加】 的 属性
+  console.log(divDom.children);
+
+  // 
+  console.log(divDom);
+
+
+  // 2. 访问 dom 对象的 属性 和 两种特性 的 方式
+  // 2.1 访问 dom对象的 属性 ： 对象.属性名
+  console.log('---2.1 访问 dom对象的 属性 ： 对象.属性名---');
+  console.log(divDom.children);
+  console.log(divDom.dataset);
+
+
+  // 2.2 访问 dom对象的 特性
+  console.log('---2.2 访问 dom对象的 特性---');
+  // 2.2.1 可以 使用 getAttribute 方法 获取 两种特性 -- 因为 两种特性 都在 dom对象的 attributes 属性中
+  console.log(divDom.getAttribute('id'));
+  console.log(divDom.getAttribute('alover'));
+
+  // 2.2.2 如果使用 对象 . 语法，只能 访问 标准特性
+  // a. 标准特性 -- 因为 标准特性 除了在 attributes 属性中，也在 dom对象中
+  console.log(divDom.id);
+  // b. 自定义特性 -- 只在 attributes 属性中，所以 通过 dom对象.语法 无法访找到
+  console.log(divDom.alover);
+</script>
+
+</html>

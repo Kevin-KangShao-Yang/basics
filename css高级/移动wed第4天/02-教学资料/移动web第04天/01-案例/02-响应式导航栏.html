@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .nav {
+                height: 80px;
+                width: 768px;
+                background-color: red;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+            }
+            .nav .logo {
+                width: 112px;
+                height: 40px;
+                background: url("./jd-sprites.png") 0 -218px;
+                margin:0 20px;
+            }
+
+            .nav .searchBar {
+                height: 60px;
+                flex: 1;
+                background-color: #fff;
+                border-radius: 30px;
+            }
+            .nav .login {
+                font-size: 24px;
+                margin: 0 20px;
+                color: #fff;
+            }
+        @media screen and (min-width:992px) and (max-width:1200px) {
+            .nav {
+                width: 640px;
+            }
+        }
+        @media screen and (min-width:768px) and (max-width:992px) {
+            .nav {
+                width: 414px;
+                justify-content: space-between;
+            }
+            
+            .nav .searchBar {
+                display: none;
+            }
+        }
+        @media screen and (min-width:320px) and (max-width:768px) {
+            .nav {
+                width: 375px;
+                justify-content: center;
+            }
+            .nav .searchBar {
+                display: none;
+            }
+            .nav .login {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="logo"></div>
+        <div class="searchBar"></div>
+        <div class="login">
+            登录
+        </div>
+    </div>
+</body>
+
+</html>

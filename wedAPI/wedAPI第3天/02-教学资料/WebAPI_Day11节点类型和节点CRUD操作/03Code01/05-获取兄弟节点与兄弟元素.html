@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+        <ul id="ulList"><!-- 偷偷躲在这的注释 -->
+            强势矗立在此的文本
+            <li>Java技术栈</li>
+            <li>Python技术栈</li>
+            <li>.Net技术栈</li>
+            <li id='webFront' lover='linda'>大前端技术栈</li>
+        </ul>
+
+    <script>
+        /**
+         * @description: 获取兄弟节点与兄弟元素
+            1.获取兄弟节点
+                获取上一个兄弟节点： 元素.previousSibling
+                获取下一个兄弟节点： 元素.nextSibling
+            2.获取兄弟元素（常用）
+                获取上一个兄弟元素:  元素.previousElementSibling
+                获取下一个兄弟元素:  元素.nextElementSibling
+         */
+
+        // 注意：获取 上一个 或 下一个 兄弟时，如果 已经 到头了，就 返回 null
+
+        var liNode = document.getElementById('webFront');
+        // 1.获取 上一个 兄弟节点 ：元素、文本、注释
+        console.log(liNode.previousSibling);
+
+        // 2. 获取 上一个 元素节点
+        console.log(liNode.previousElementSibling); 
+
+
+        // 3. 获取下一个 兄弟节点：元素、文本、注释
+        console.log(liNode.nextSibling);
+
+        // 4. 获取 下一个 元素节点
+        console.log(liNode.nextElementSibling);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>筋斗云动态效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        .nav {
+            width: 800px;
+            height: 42px;
+            margin: 100px auto;
+            /*background-color: red;*/
+            background: #fff url(images/rss.png) no-repeat right center;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .nav li {
+            width: 83px;
+            height: 42px;
+            /*background-color: red;*/
+            text-align: center;
+            line-height: 42px;
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            position: relative;
+        }
+
+        .nav span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+    </style>
+    <script src="./animation.js"></script>
+</head>
+
+<body>
+
+    <div class="nav">
+
+        <span id="cloud"></span>
+
+        <ul id="navBar">
+            <li>北京校区</li>
+            <li>上海校区</li>
+            <li>广州校区</li>
+            <li>深圳校区</li>
+            <li>武汉校区</li>
+            <li>关于我们</li>
+            <li>联系我们</li>
+            <li>招贤纳士</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    /*
+    1.分析需求(交互)：
+        (1)鼠标移入每一个li元素： 筋斗云缓动到当前移入li元素位置
+        (2)鼠标移出每一个li元素： 筋斗云缓动到主人身边
+        (3)鼠标单击每一个li元素： 筋斗云的主人变成了当前点击的li元素
+    2.思路分析（事件三要素）
+        获取元素：事件源：
+        注册事件：事件类型
+        事件处理：
+    */
+
+   var liList = document.getElementsByTagName('li');
+   var span = document.getElementById('cloud');
+   var juLi = liList[0].offsetLeft;
+for (var  i = 0 ; i<liList.length;i++ ){
+    liList[i].onmouseover = function () {
+        moveSlowly(span,{left:this.offsetLeft});
+    }
+    liList[i].onmouseout = function () {
+        moveSlowly(span,{left:juLi});
+    }
+    liList[i].onclick =function(){
+    juLi = this.offsetLeft;
+    }
+}
+
+
+</script>

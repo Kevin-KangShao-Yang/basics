@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>tab栏切换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .box {
+      width: 400px;
+      height: 300px;
+      border: 0px solid #ccc;
+      margin: 100px auto;
+    }
+
+    .hd {
+      height: 45px;
+    }
+
+    .hd span {
+      display: inline-block;
+      /*将行内元素转换成行内块元素，宽高才起作用*/
+      width: 94px;
+      background-color: pink;
+      line-height: 45px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bolder;
+      border: 1px solid #000;
+    }
+
+    .hd span.current {
+      /*交集选择器，标签指定式选择器*/
+      background-color: #0094ff;
+      /* 最美的颜色 */
+      color: #fff;
+    }
+
+    .bd li {
+      height: 255px;
+      background-color: #0094ff;
+      /* 最美的颜色 */
+      padding: 10px;
+      color: #fff;
+      display: none;
+      /*设置隐藏*/
+    }
+
+    .bd li.current {
+      display: block;
+      /*显示*/
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box" id="box">
+
+    <div class="hd" id="hd">
+      <span class="current">体育</span>
+      <span>娱乐</span>
+      <span>新闻</span>
+      <span>综合</span>
+    </div>
+
+    <div class="bd">
+      <ul id="list">
+        <li class="current">我是体育模块</li>
+        <li>我的娱乐模块</li>
+        <li>我是新闻模块</li>
+        <li>我是综合模块</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <script>
+    // 目标：点击 某个 span
+    //      1.设置 被点击 span 的 class = 'current' ，其他的 span 的 class = ''
+    //      2.设置 对应下标的 li class = 'current' ， 其他的 li   的 class = ''
+
+    //1.获取 两个 数组 -----------------------------------------
+    var spanList = document.getElementById('hd').getElementsByTagName('span'); // 获取 4个 按钮 span
+    var liList = document.getElementById('list').getElementsByTagName('li');  // 获取  4个 内容 li
+
+    //2.为 每个 span 添加 点击事件-------------------------------
+    for (var i = 0; i < spanList.length; i++) {
+      // 为 span 添加 点击事件
+      spanList[i].onclick = function () {
+
+        // 2.1 切换 span 的 className ------------------------
+        // 2.2 遍历所有 span
+        for (var j = 0; j < spanList.length; j++) {
+          // 如果 遍历的 span 等于 当前被点击 span ，同时 设置 span 与 相同下标 li 的 class='current'
+          if (spanList[j] == this) {
+            spanList[j].className = 'current';
+            liList[j].className = 'current';
+          } else {
+            spanList[j].className = '';
+            liList[j].className = '';
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
+<script>
+
+</script>

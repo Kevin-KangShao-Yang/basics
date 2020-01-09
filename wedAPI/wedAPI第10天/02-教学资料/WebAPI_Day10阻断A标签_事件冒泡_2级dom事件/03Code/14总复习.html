@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // 将 'abcde' 变成 'edcba'
+  // 方式一： 倒序遍历
+  var str = 'abcde';
+  var strNew = '';
+  for (var i = str.length - 1; i >= 0; i--) {
+    strNew += str[i];
+  }
+  console.log(str);
+  console.log(strNew);
+
+  // 方式二：使用 string 倒序的 api
+  var str = 'abcde';
+  // 字符串 -> 数组 -> 数组.reverse() -> 字符串
+  str = str.split('').reverse().join('');
+  console.log(str);
+
+
+  // // 
+  // div.appendChild();
+  // div.insertBefore(新增元素，老元素);
+
+  window.setInterval();
+
+
+  // dom 对象的 常见属性
+  // document.body.children // 子元素节点集合
+  // document.body.childNodes // 包含各种类型的 节点
+  // document.body.parentElement // 父节点
+  // document.body.previousElementSibling // 上一个 兄弟 元素节点
+  // document.body.nextElementSibling // 下一个 兄弟 元素节点
+  // document.body.firstElementChild // 第一个 子元素节点
+  // document.body.lastElementChild //  最后一个 子元素节点
+  // document.body.innerHTML // 获取 元素的 文本包含标签 
+  // document.body.innerText // 获取 元素的 文本
+
+  // dom 对象的 常见 标准特性　html标签的 标准特性
+  // id , name , class , style , value
+
+  // style 中 常见的 标准 样式：
+  // display , backgroundColor , left , top ,width ,height , position
+
+  // 三大家族： offset 真实宽高和距离  , 
+  //   client 可视区域的宽高，clientTop 和 clientLeft 边框的宽度 ,
+  //   scroll ：scrollTop 和 scrollLeft 滚动条超出的距离 ,  scrollWidth 和 scrollHeight 元素内容的 宽高
+
+  // 事件参数：event  e
+  //  e.pageX e.pageY  
+  //  阻断：e.stopPropagation(); - e.cancelBubble = true
+  //  e.target -- 在 冒泡过程中，获取 真实的事件源
+
+
+</script>
+
+</html>

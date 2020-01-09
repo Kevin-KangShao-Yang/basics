@@ -1,0 +1,41 @@
+body,
+div,
+span,
+p,
+ul,
+li,
+a,
+img,
+input,
+h1,
+h2,
+h3,
+h4,
+i {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 将所有的标签转换成内减模型的盒子 */
+}
+img {
+  vertical-align: middle;
+  border: none;
+}
+.box .turn {
+  width: 978px;
+  height: 528px;
+  background: aqua center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.box .turn ul {
+  width: 8526px;
+  height: 528px;
+  position: absolute;
+}
+.box .turn ul li {
+  widows: 1420px;
+  height: 528px;
+  float: left;
+}

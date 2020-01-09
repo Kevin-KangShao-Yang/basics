@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: red;
+        }
+        img {
+            /* 为什么会出现底部空白间隙
+                因为行内块元素默认与文字基线对齐
+             */
+            /* vertical-align: middle; */
+            /* 1.将基线对齐修改为中线对齐 */
+
+            display: block;
+            /* 2.将图片变为块级元素 */
+
+            /* 都是写在初始化代码中 */
+
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./我老公.jpg" alt="">
+    </div>
+</body>
+</html>

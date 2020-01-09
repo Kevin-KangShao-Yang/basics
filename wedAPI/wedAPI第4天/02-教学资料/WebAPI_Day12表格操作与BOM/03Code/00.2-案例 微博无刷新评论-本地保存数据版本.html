@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .father {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .content {
+            height: 120px;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        .commens {
+            padding: 10px;
+            border: 1px solid green;
+        }
+
+        .commens div {
+            padding: 5px 8px;
+            border-bottom: 1px dashed #666;
+        }
+
+        .commens div span {
+            /* border: 1px solid #0094ff; */
+            cursor: pointer;
+            float: right;
+            font-weight: bolder;
+        }
+
+        .add {
+            width: 780px;
+            margin: 0 auto;
+            margin-top: 10px;
+            border: 1px solid blue;
+            padding: 10px;
+            padding-bottom: 60px;
+        }
+
+        textarea {
+            display: block;
+            width: 760px;
+            margin: 0 auto;
+            height: 120px;
+            resize: none;
+        }
+
+        input[type="button"] {
+            float: right;
+            padding: 10px 14px;
+            margin-top: 10px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="content">
+            今天去了一个很神奇的地方，看照片能猜出来是哪里吗？<br />
+            今天去了一个很神奇的地方，看照片能猜出来是哪里吗？
+        </div>
+        <div class="commens" id="commens">
+            <div>评论：</div>
+        </div>
+    </div>
+
+    <div class="add">
+        <textarea name="" id="txtComment"></textarea>
+        <input type="button" value="发表" id="btnOk" />
+    </div>
+
+    <script>
+        // CRUD -- 增加(Create)、读取查询(Retrieve)、更新(Update)和删除(Delete)
+
+        // 1.读取 localStorage 数据，生成 之前的 评论div
+        initComment();
+
+        /** 
+         * @description: 1. initComment 读取 localStorage 评论数据,根据数据 生成 评论 div
+         * @return: 
+         */
+        function initComment() {
+            //1.读取 localStorage 中的 评论数据 commentData
+            //2.如果 commentData 数据 不为空，则 将 评论数组字符串 转成 数组对象 -- JSON.parse()
+            //    2.1 遍历 数组  里的 评论数据，为 每个 评论 都 添加一个 评论 div -- makeDiv(评论数据)
+            //3.如果                    为空，什么都不做
+
+            var commentStr = localStorage.getItem('commentData'); // '["讨厌~","死鬼~"]' 或者 null
+            // 如果 评论数据 不为空
+            if (commentStr != null) {
+                // 将 字符串转成 数组对象
+                var dataList = JSON.parse(commentStr); // JSON.parse('["讨厌~","死鬼~"]');
+                // 遍历数组
+                for (var i = 0; i < dataList.length; i++) {
+                    makeDiv(dataList[i]);
+                }
+            }
+        }
+
+        // 2.发表 评论 按钮
+        document.getElementById('btnOk').onclick = function () {
+
+            // a.获取 文本框 的 内容 (value) 
+            var commentStr = document.getElementById('txtComment').value;
+
+            // b.将 评论内容 添加到 页面
+            makeDiv(commentStr);
+
+            // e. 将 评论数据 保存 到 本地
+            saveData(commentStr);
+
+            // f.清空 文本框
+            document.getElementById('txtComment').value = '';
+        }
+
+        /**
+         * @description: 3.makeDiv 创建评论div 并添加到页面
+         * @param {String}  commentDataStr 评论内容字符串
+         */
+        function makeDiv(commentDataStr) {
+            // a.创建一个 新的 评论div
+            var newDiv = document.createElement('div');
+
+            // b.创建 一个 文本节点 ，将 评论内容 设置进去 *****************
+            var txtNode = document.createTextNode(commentDataStr);
+
+            // c.创建一个 新的 span
+            var newSpan = document.createElement('span');
+            newSpan.innerText = 'X';
+            newSpan.onclick = function () {
+                if (confirm('哥们，你确定要删除这条评论吗？')) {
+
+                    //1. 获取 被点击 span 前面的 文本节点 的 内容
+                    var commentString = this.previousSibling.nodeValue;
+                    // console.log(typeof commentString);
+                    //2. 调用方法 将 评论数据 从 localStoage 中删除
+                    deleteCommentData(commentString);
+
+                    // 被点击后，要把 span 所在的 div 删除
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                }
+            }
+
+            // d.设置 评论文本 和 span 给 新 div
+            newDiv.appendChild(txtNode);
+            newDiv.appendChild(newSpan);
+
+            // e.将 新 div　追加到　评论区中
+            document.getElementById('commens').appendChild(newDiv);
+        }
+
+        /**
+         * @description: 4.saveData 用来 将 数据 存入 localStorage
+         * @param {String} commentStr  要保存的 数据
+         * @return: null
+         */
+        function saveData(commentStr) {
+            //问题： 保存 评论的 关键思路：因为　评论　会有很多条，所以　不能直接　将　评论　保存到本地，因为　后面的评论 会 覆盖前面的评论，最终 只保存了最后一条评论
+            // 解决方案：用 数组 来保存 所有的 评论，然后 转成 JSON字符串 存入 本地
+            //      1. 先 从 localStroage 中 获取 评论数组
+            //         1.1 如果 localStroage 没有 保存过（之前没有评论过），创建新数组对象
+            //         1.2 如果               有                        ，直接 JSON.parse 转成数组，使用
+
+            var arrStr = localStorage.getItem('commentData');
+            // 如果 之前没有 保存过 评论数据，就创建一个 新数组
+            if (arrStr == null) {
+                var dataList = [];
+            }
+            else {// 如果 之前 保存过 评论数据，直接使用
+                var dataList = JSON.parse(arrStr); // var dataList = JSON.parse("['讨厌~~~']");
+            }
+
+            // 将 新的评论 添加到 数组中
+            dataList.push(commentStr); // ['讨厌~~~','死鬼~~~']
+
+            // 将 数组对象 转成 JONS 字符串
+            var arrStr = JSON.stringify(dataList);
+
+            // 将 JSON字符串  保存到本地
+            localStorage.setItem('commentData', arrStr);
+            console.log('保存成功~~！');
+        }
+
+        /**
+         * @description: 5.deleteCommentData 删除评论内容
+         * @param {String} commonStr 要删除的评论内容 
+         */
+        function deleteCommentData(commonStr) {
+            //思路：
+            //   a.读取 localStorage 中的 数组字符串
+            //   b.将 数组 字符串 通过 JSON.parse 转成 数组对象
+            //   c.遍历 数组元素，找 出 和 commonStr 相等 的元素，调用 splice 方法删除
+
+            // 1. 读取 localStorage 本地数据（数组字符串）
+            var commentStr = localStorage.getItem('commentData'); // '["讨厌~","死鬼~"]' 或者 null
+            if (commentStr != null) {
+                // 2. 将 数组 字符串 转成 数组 对象
+                var dataList = JSON.parse(commentStr); // var dataList = ["讨厌~","死鬼~"]
+
+                // 3.遍历 数组元素，找 出 和 commonStr 相等 的元素
+                for (var i = 0; i < dataList.length; i++) {
+                    if (dataList[i] == commonStr) {
+                        dataList.splice(i, 1); // 删除 数组中的 i 
+                        break;
+                    }
+                }
+
+                // 4. 将 数组 重新 保存到 localStorage 中
+                // 4.1 将 数组 对象 转成 字符串
+                var str = JSON.stringify(dataList);
+                localStorage.setItem('commentData', str);
+
+                console.log('localstorage 数据删除成功！！');
+            }
+        }
+    </script>
+</body>
+
+</html>

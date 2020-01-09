@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 许多的标签在默认情况下,都有自己的内外边距 */
+        /* 会影响到我们做布局的时候的准确性 */
+        /* 初始化: 将标签的默认状态清空 */
+        /* 清除标签默认的内外边距 */
+        /* 会在项目一开始的时候,就将这些默认的内外边距全部清除 */
+        * {
+            margin: 0;
+            padding: 0;
+            /* 简写:m0+p0 */
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 所有的标签其实都有自带一些样式属性,但是不一定是我们都需要的 -->
+    <div></div>
+    <p>这是一个寂寞的天</p>
+    <p>这是一个寂寞的天</p>
+</body>
+</html>

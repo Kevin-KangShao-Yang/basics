@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #0094ff;
+            position: absolute;
+            left: 10px;
+            top: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <input type="button" value="匀速移到400" id="move400" />
+
+    <div id="box"></div>
+
+</body>
+
+<script>
+
+    //复习匀速动画的特点
+    document.getElementById('move400').onclick = function () {
+        //思路：
+        //  1.获取 要移动 的元素
+        //  2.获取 要移动的 目标位置
+        //  3.启动 interver ，每20毫秒 移动一下距离
+        //    3.1 确定步长 ： 7　像素
+        //    3.2 累加到 元素.style.left 属性
+        //    3.3 如果 >= 目标位置，停止计时器，元素复位
+
+        var boxNode = document.getElementById('box');
+        
+        clearInterval(boxNode.timer);
+        
+        var targetPosition = 400;
+        boxNode.timer = setInterval(function () {
+            var curPos = boxNode.offsetLeft; // 获取当前 元素的位置
+            var step = 7; // 步长为 7 像素
+            curPos += step; //累加
+            boxNode.style.left = curPos + 'px';
+
+            if(curPos >= targetPosition){
+                clearInterval(boxNode.timer);
+                boxNode.style.left = targetPosition + 'px';
+            }
+        }, 20);
+    };
+</script>
+
+</html>

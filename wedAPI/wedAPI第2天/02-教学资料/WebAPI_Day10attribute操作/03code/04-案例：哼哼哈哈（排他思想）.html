@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        input {
+            border: 2px solid #0094ff;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="讨厌">
+    <input type="button" value="讨厌">
+    <input type="button" value="讨厌">
+    <input type="button" value="讨厌">
+    <input type="button" value="讨厌">
+</body>
+
+<script>
+    // 业务目标：点击 其中 一个 按钮， value改成 '死鬼' ，其他按钮 vlaue 都改成 '讨厌'
+    // 思路：
+    //     1. 遍历所有按钮，为 每个 按钮 都添加 同样 的 onclick 事件方法
+    //     2. 点击任何一个按钮
+    //            遍历 所有按钮，将 自己 的 value  改成  '死鬼'
+    //                          其他按钮的 value  改成 '讨厌'
+
+
+    //0.获取所有按钮dom对象的 类数组
+    var btnList = document.getElementsByTagName('input');
+
+    //1.遍历 按钮数组，为 每个 按钮 添加 onclick 事件方法
+    for (var i = 0; i < btnList.length; i++) {
+
+        //1.1 为 每个 按钮 添加 onclick 事件方法
+        btnList[i].onclick = changeValue; //  小优化：让 每个 按钮 的 onclick 属性 保存 同一个 方法（地址）
+    }
+
+    function changeValue() {
+        // dom对象的 事件处理函数中的 this 就是 事件源 按钮本身
+
+        this.value = '死鬼';
+
+        //遍历 所有按钮，将 自己 的 value  改成  '死鬼'
+        //     其他按钮的 value  改成 '讨厌'
+        for (var j = 0; j < btnList.length; j++) {
+
+            if (btnList[j] != this) {
+                btnList[j].value = '讨厌';
+            }
+        }
+
+    }
+
+
+
+    // //1.遍历 按钮数组，为 每个 按钮 添加 onclick 事件方法
+    // for (var i = 0; i < btnList.length; i++) {
+
+    //     //1.1 为 每个 按钮 添加 onclick 事件方法
+    //     btnList[i].onclick = function () {
+    //         // dom对象的 事件处理函数中的 this 就是 事件源 按钮本身
+
+    //         this.value = '死鬼';
+
+    //         //遍历 所有按钮，将 自己 的 value  改成  '死鬼'
+    //         //     其他按钮的 value  改成 '讨厌'
+    //         for (var j = 0; j < btnList.length; j++) {
+
+    //             if (btnList[j] != this) {
+    //                 btnList[j].value = '讨厌';
+    //             }
+    //         }
+
+    //     }
+    // }
+
+</script>
+
+</html>

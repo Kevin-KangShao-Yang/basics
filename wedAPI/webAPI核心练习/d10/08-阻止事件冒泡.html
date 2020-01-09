@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: hotpink;
+            position: relative;
+        }
+
+        #son {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+
+            left: 350px;
+            top: 350px;
+
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" value="点我" id="btn" />
+        <div id="son"></div>
+    </div>
+
+    <script>
+        /* 
+        1.事件冒泡： 如果一个元素的事件被触发 ，所有父级元素同名事件会被依次触发
+            元素->父元素->body->html->document->window
+        
+        2.事件冒泡一直都存在，只是以前我们没有给父元素注册同名事件而已
+
+        3.阻止事件冒泡 ： 不要触发父元素的同名事件
+            注意点：要想阻止事件冒泡，一定要先获取事件对象
+            e.stopPropagation()  -- IE8: e.cancelBubble = true;
+         */
+
+        document.getElementById('btn').onclick = function (e) {
+            alert('我是可爱的 按钮哦~~');
+            e.stopPropagation(); // 阻止事件冒泡   // e.cancelBubble = true;
+        }
+        document.getElementById('box').onclick = function () {
+            alert('我是可爱的 粉红色 div 哦~~');
+        }
+
+    </script>
+</body>
+</html>

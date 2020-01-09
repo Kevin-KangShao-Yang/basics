@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时秒杀</title>
+</head>
+
+<body>
+    <span id="spanHour">01</span>:
+    <span id="spanMin">01</span>:
+    <span id="spanSec">03</span>
+
+    <br />
+    <input type="button" value="暂停" id='btnPause'>
+    <input type="button" value="开始" id='btnContinue'>
+
+    <script>
+        // 1. 目标：每秒钟 秒数  -1 
+        //              当秒数  = 0 时，要 设置 秒数 = 59， 同时 分钟数 -1
+        //              当分钟数= 0 时，要 设置 分钟数= 59，同时 小时数 -1
+        // 2. 思路：
+        //    a.开启一个 计时器，每秒钟 对 秒钟数 -1 .....
+        //    b.秒钟数 可以 从 页面 的 第三个 span 标签中 获取
+        //              当秒数  = 0 时，要 设置 秒数 = 59， 同时 分钟数 -1
+        //              当分钟数= 0 时，要 设置 分钟数= 59，同时 小时数 -1
+
+        //0. 获取 秒钟数 span 节点对象
+        var spanMiao = document.getElementById('spanSec');
+        var spanFen = document.getElementById('spanMin');
+        var spanShi = document.getElementById('spanHour');
+
+        //1. 启动 计时器，并 获取 计时器 id(句柄)
+        var timeId = setInterval(countTime, 1000);
+
+        // 计时器 内部 会 每隔 1000 毫秒 执行 ：countTime();
+
+        // 2. 计时器方法
+        function countTime() {
+            // 2. 到 span 中 获取 秒钟数 、分钟数、小时数
+            var secNum = parseInt(spanMiao.innerText);
+            var minNum = parseInt(spanFen.innerText);
+            var hourNum = parseInt(spanShi.innerText);
+
+            // 2.1 秒数  -1 
+            secNum--; // 倒计时 -1 秒
+
+            // 2.2 分钟数 -1 ：条件  秒数 < 0 ，分钟数 -1
+            if (secNum < 0) {
+                minNum--;
+            }
+
+            // 2.3 小时数 - 1： 条件 分钟数 < 0，小时数 -1
+            if (minNum < 0) {
+                hourNum--;
+            }
+
+            // 3. 如果 时间数 < 0，那就需要 将 时间数 设置成 59
+            if (secNum < 0) {
+                secNum = 59;
+            }
+            if (minNum < 0) {
+                minNum = 59;
+            }
+            if (hourNum < 0) {
+                hourNum = 23;
+            }
+
+            // 4.将 时间 放回 到 span 中之前，先检查一下 是否 为 个位数，如果 为个位数，在前面 +'0'
+            if (secNum < 10) {
+                secNum = '0' + secNum; // '0' + 7 -> '07'
+            }
+            if (minNum < 10) {
+                minNum = '0' + minNum; // '0' + 1 -> '01'
+            }
+
+            if (hourNum < 10) {
+                hourNum = '0' + hourNum; // '0' + 1 -> '01'
+            }
+
+            // 5. 将 秒钟数 放回 到 span 中
+            spanMiao.innerText = secNum;
+            spanFen.innerText = minNum;
+            spanShi.innerText = hourNum;
+
+
+            // 6. 如果 时间到了 00：00 ：00 要停止计时
+            if (hourNum == 0 && minNum == 0 && secNum == 0) {
+                clearInterval(timeId);
+                alert('计时停止，开始秒杀，请欢乐抢购~~~~！');
+            }
+        }
+
+        // 3. 暂停按钮的点击事件
+        document.getElementById('btnPause').onclick = function () {
+            // 关闭 计时器
+            clearInterval(timeId);
+            alert('停止计时~~~');
+        }
+
+        
+        // 4. 开始按钮的点击事件
+        document.getElementById('btnContinue').onclick = function () {
+            // 启动 新的计时器
+            timeId = setInterval(countTime, 1000);
+        }
+    </script>
+</body>
+
+</html>

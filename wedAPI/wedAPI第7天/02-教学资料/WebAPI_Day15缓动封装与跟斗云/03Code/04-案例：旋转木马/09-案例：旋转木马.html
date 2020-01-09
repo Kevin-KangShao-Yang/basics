@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>旋转木马轮播图</title>
+  <style>
+    /*初始化  reset*/
+    blockquote,
+    body,
+    button,
+    dd,
+    dl,
+    dt,
+    fieldset,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    input,
+    legend,
+    li,
+    ol,
+    p,
+    pre,
+    td,
+    textarea,
+    th,
+    ul {
+      margin: 0;
+      padding: 0
+    }
+
+    body,
+    button,
+    input,
+    select,
+    textarea {
+      font: 12px/1.5 "Microsoft YaHei", "微软雅黑", SimSun, "宋体", sans-serif;
+      color: #666;
+    }
+
+    ol,
+    ul {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+
+    fieldset,
+    img {
+      border: 0;
+      vertical-align: top;
+    }
+
+    a,
+    input,
+    button,
+    select,
+    textarea {
+      outline: none;
+    }
+
+    a,
+    button {
+      cursor: pointer;
+    }
+
+    .wrap {
+      width: 1200px;
+      margin: 100px auto;
+      border: 1px solid red;
+    }
+
+    .slide {
+      height: 500px;
+      position: relative;
+    }
+
+    .slide li {
+      position: absolute;
+      left: 200px;
+      top: 0;
+    }
+
+    .slide li img {
+      width: 100%;
+      /*让图片的大小和父盒子一样的大，要不然会出问题，会撑出父盒子*/
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .prev,
+    .next {
+      width: 76px;
+      height: 112px;
+      position: absolute;
+      top: 50%;
+      margin-top: -56px;
+      /*background-color: red;*/
+      background: url(images/prev.png) no-repeat;
+      z-index: 99;
+    }
+
+    .next {
+      right: 0;
+      background-image: url(images/next.png);
+    }
+
+
+    .slide .one {
+      width: 400px;
+      top: 20px;
+      left: 50px;
+      opacity: 0.2;
+      z-index: 2
+    }
+
+    .slide .two {
+      width: 600px;
+      top: 70px;
+      left: 0px;
+      opacity: 0.8;
+      z-index: 3
+    }
+
+    .slide .three {
+      width: 800px;
+      top: 100px;
+      left: 200px;
+      opacity: 1;
+      z-index: 4
+    }
+
+    .slide .four {
+      width: 600px;
+      top: 70px;
+      left: 600px;
+      opacity: 0.8;
+      z-index: 3
+    }
+
+    .slide .five {
+      width: 400px;
+      top: 20px;
+      left: 750px;
+      opacity: 0.2;
+      z-index: 2
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+      <ul id="ul1">
+        <li class="one"><a href="#"><img src="images/bingbing.jpg" alt="" /></a></li>
+        <li class="two"><a href="#"><img src="images/lingengxin.jpg" alt="" /></a></li>
+        <li class="three"><a href="#"><img src="images/yuanyuan.png" alt="" /></a></li>
+        <li class="four"><a href="#"><img src="images/slidepic4.jpg" alt="" /></a></li>
+        <li class="five"><a href="#"><img src="images/slidepic5.jpg" alt="" /></a></li>
+      </ul>
+      <div class="arrow" id="arrow">
+        <a href="javascript:;" class="prev" id="arrLeft"></a>
+        <a href="javascript:;" class="next" id="arrRight"></a>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./animation.js"></script>
+  <!-- 调用缓动动画封装函数 -->
+  <script>
+
+    //0.将每一个元素样式放入数组中
+    var config = [
+      {
+        "width": 400,
+        "top": 20,
+        "left": 50,
+        "opacity": 0.2,
+        "zIndex": 2
+      },//0
+      {
+        "width": 600,
+        "top": 70,
+        "left": 0,
+        "opacity": 0.8,
+        "zIndex": 3
+      },
+      {
+        "width": 800,
+        "top": 100,
+        "left": 200,
+        "opacity": 1,
+        "zIndex": 4
+      },
+      {
+        "width": 600,
+        "top": 70,
+        "left": 600,
+        "opacity": 0.8,
+        "zIndex": 3
+      },//3
+      {
+        "width": 400,
+        "top": 20,
+        "left": 750,
+        "opacity": 0.2,
+        "zIndex": 2
+      }
+    ];
+
+    var boxNode = document.getElementById('wrap');
+    var arrBoxNode = document.getElementById('arrow');
+    var liList = document.querySelectorAll('#ul1>li');
+    var arrRight = document.getElementById('arrRight');
+   //设置计时器,用于轮播图片
+   var timer = setInterval(function () {
+    arrRight.onclick();//调用右击事件
+    }, 3000);
+
+    //1.移入大盒子显示 左右两个箭头
+    boxNode.onmouseover = function () {
+      arrBoxNode.style.display = 'block';
+      clearInterval(timer);//鼠标移入盒子中停止计时器
+    }
+
+
+    //2.移出大盒子隐藏 左右两个箭头
+    boxNode.onmouseout = function () {
+      arrBoxNode.style.display = 'none';
+      timer = setInterval(function () {  //鼠标移出盒子后开启计时器
+        arrRight.onclick();
+    }, 3000);
+    }
+
+
+    //3.点击 左右两个箭头 切换 整个
+    arrRight.onclick = function () {
+      //3.1 将 样式套装 数组 里的 元素 做 修改，将 最后一个 元素 放到  第一个位置
+      // a. 拿出 样式套装数组 中的 最后一个 元素
+      var lastEle = config.pop();
+      // b. 将 取出的 最后一个 元素 再重新 追加到 数组 的 最前面
+      config.unshift(lastEle);
+
+      //3.2 按照 样式套装数组 的下标，将 对应 下标的套装 设置给 对应下标的 li 标签
+      for (var i = 0; i < liList.length; i++) {
+        moveSlowly(liList[i], config[i]);
+      }
+    }
+
+    document.getElementById('arrLeft').onclick = function () {
+      //3.1 将 样式套装 数组 里的 元素 做 修改，将 第一个 元素 还到 最后一个 位置
+       // a. 拿出 样式套装数组 中的 第一个 元素
+       var firstEle = config.shift();
+      // b. 将 取出的 第一个 元素 再重新 追加到 数组 的 最后面
+      config.push(firstEle);
+
+      //3.2 按照 样式套装数组 的下标，将 对应 下标的套装 设置给 对应下标的 li 标签
+      for (var i = 0; i < liList.length; i++) {
+        moveSlowly(liList[i], config[i]);
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

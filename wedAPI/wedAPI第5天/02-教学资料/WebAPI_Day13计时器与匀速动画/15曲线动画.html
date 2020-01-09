@@ -1,0 +1,64 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <style type="text/css">
+    #box {
+      width: 100px;
+      height: 600px;
+      position: relative;
+      margin: 0px auto;
+      top: 300px;
+      left: 0px;
+      border: 0px solid #000;
+    }
+
+    .dogH {
+      /* background: #0094ff; */
+      width: 70px;
+      height: 70px;
+      border-radius:35px;
+      position: relative;
+      left: 50px;
+      top: 50px;
+      color: #fff;
+      /* border: 1px solid #000; */
+      text-align: center;
+      font-size: 40px;
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div id="dog" class="dogH">
+      <img src='data:image/png;base64,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'/>
+    </div>
+  </div>
+  <script type="text/javascript">
+    // 温馨提示：看看就好，不要深究，也不要问我~~~~~ ：）
+
+    var outer = document.getElementById('box');
+    var dogDiv = document.getElementById('dog');
+
+    var timer = null;
+    var l = 200; // 圆型宽度
+    var t = 150; // 圆型高度
+    var n = 6.2; // 基数
+
+    timer = setInterval(function () {
+      if (n < 0) clearInterval(timer);
+      var x = Math.sin(n);
+      var y = Math.cos(n);
+      // console.log(x, y);
+      dogDiv.style.left = (l * x) + 'px';
+      dogDiv.style.top = (t * y) + 'px';
+      n -= 0.05;
+    }, 20);
+  </script>
+
+</body>
+
+</html>

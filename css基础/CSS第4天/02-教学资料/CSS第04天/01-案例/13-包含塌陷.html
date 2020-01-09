@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: red;
+            /* border-top: 5px solid blue; */
+            overflow: hidden;
+        }
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-top: 100px;
+            /* 包含塌陷: 存在父子关系的盒子,给子盒子添加margin-top,有可能会把父元素一起带跑 */
+            /* 解决方法: */
+            /* 1.给父盒子添加上边框 */
+            /* 2.给父盒子添加上内边距 */
+            /* 以上的方法,你要知道,但是不能用----会添加很多我们并不需要的结构 */
+            /* 3.给父盒子设置overflow:hidden属性 */
+            /* 触发BFC机制-----块级格式化上下文----千万不要去看 */
+            /* 让盒子的内部布局不影响外部 */
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

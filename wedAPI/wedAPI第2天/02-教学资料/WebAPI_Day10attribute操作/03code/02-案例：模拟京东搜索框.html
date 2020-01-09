@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        div {
+            text-align: center;
+        }
+
+        input {
+            margin: 100px auto;
+            border: 3px solid #000;
+            width: 300px;
+            height: 32px;
+            font-size: 16px;
+            text-indent: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="txtProName" value='请输入要搜索的男朋友的名字'> <br>
+        <!-- <input type="text" id="txtProName" placeholder='请输入要搜索的男朋友的名字'> -->
+    </div>
+
+</body>
+<script>
+    // 1.获取焦点  和 失去焦点 事件
+    // 1.1 获取焦点  onfocus  -- 获取光标，此时可以输入 文本
+    // 1.2 失去焦点  onblur   -- 失去光标，此时不可以输入 文本
+
+    //思路：
+    // 1. 设置 文本框的 获取焦点 事件， 将 value 清空
+    // 2. 设置 文本框的 失去焦点 事件， 将 value 还原
+
+    document.getElementById('txtProName').onfocus = function () {
+        if (this.value.trim() == '请输入要搜索的男朋友的名字') {
+            this.value = '';
+        }
+    }
+    
+    document.getElementById('txtProName').onblur = function () {
+        // 如果 失去焦点时 文本框内容 为空，则 还原
+        if (this.value.trim() == "") {
+            this.value = '请输入要搜索的男朋友的名字';
+        }
+    }
+
+</script>
+
+</html>

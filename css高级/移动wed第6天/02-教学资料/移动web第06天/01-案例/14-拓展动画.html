@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes moving {
+            from {
+                transform: translateX(0px);
+            }
+            to {
+                transform: translateX(1200px);
+            }
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            animation: moving 2s;
+            animation-fill-mode: forwards;
+            /* 动画结束的位置停止 */
+        }
+
+        div:hover {
+            animation-play-state: paused;
+            /* 当鼠标悬停的时候动画停止 */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <div id='divMsg'>我是快乐的 webapi ~~~ </div>
+</body>
+
+
+
+<script>
+
+    // var a = new Object();
+    // var a = {};
+
+
+    // 0. 标签 -> dom对象 -> 元素 ， 根据标签 生成的 【dom对象】 也叫做 【元素】
+
+    // 1. getElementById  -- get  获取  Element 元素  by 根据   id 标识
+    //    注意：返回的 是 在dom树中 找到 的 dom对象 的 【内存地址】
+    var domDiv = document.getElementById('divMsg');
+
+    // var i = 1;
+    // domDiv.onclick = function () {
+    //     domDiv.innerHTML = '我爱北京天安门~~' + i;
+    //     i++;
+    // };
+
+
+    //2.如果页面没有这个id，则返回 null
+    var dom2 = document.getElementById('divMsg2');
+    console.log(dom2); // null
+
+    //3. id具有唯一性，某些浏览器可以直接使用id来表示dom对象
+    // 少用  （1）代码阅读性不高  （2）有些浏览器不支持
+
+    // console.log(divMsg.innerHTML); // 相当于  document.getElementById('divMsg2').innerHTML;
+</script>
+
+</html>

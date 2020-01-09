@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li:first-child {
+            /* 找到第一个元素,并且这个子元素是li标签 */
+            color: red;
+        }
+
+        li:last-child {
+            /* 找到最后一个子元素 */
+            color: gold;
+        }
+
+        li:nth-child(3) {
+            color: pink;
+        }
+
+        /* 以上三种要求掌握 */
+
+        /* 以下四种要求了解 */
+        li:nth-child(odd) {
+            /* 找到第奇数个子元素 */
+            color: yellow;
+        }
+
+        li:nth-child(even) {
+            /* 找打到偶数个子元素 */
+            color: rgb(192, 248, 81);
+        }
+
+        li:nth-child(4n) {
+            /* 找到第倍数个子元素 */
+            color: purple;
+        }
+
+        li:nth-child(n + 5) {
+            /* 从5开始往后递增的子元素 */
+            color: skyblue;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 在不动以下代码的情况下,控制对应元素的颜色 -->
+    <ul>
+        <li>这是一个寂寞的天1</li>
+        <li>这是一个寂寞的天2</li>
+        <li>这是一个寂寞的天3</li>
+        <li>这是一个寂寞的天4</li>
+        <li>这是一个寂寞的天5</li>
+        <li>这是一个寂寞的天6</li>
+        <li>这是一个寂寞的天7</li>
+        <li>这是一个寂寞的天8</li>
+    </ul>
+</body>
+</html>

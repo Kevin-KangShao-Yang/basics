@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            position: absolute;
+            /* margin: 0 auto; */
+            /* 为什么margin: 0 auto没有效果----绝对定位元素实现了模式转换,行内块 */
+
+            /* 先走父元素的一半,再往回走自己的一半 */
+            /* margin-left: 50%;
+            margin-left: -250px; */
+            /* 层叠性错误 */
+
+            left: 50%;
+            margin-left: -250px;
+
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+            top: 50%;
+            margin-top: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

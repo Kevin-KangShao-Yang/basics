@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: #0094ff;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById('box');
+
+        box.onclick = function (e) {
+            // 兼容
+            var e = e || window.event;
+
+            //获取 鼠标原点 距离 div 原点的 x轴距离
+            var mouseX = e.pageX - box.offsetLeft;
+            //获取 鼠标原点 距离 div 原点的 Y轴距离
+            var mouseY = e.pageY - box.offsetTop;
+
+            box.innerText = mouseX + ',' + mouseY;
+        };
+    </script>
+
+</body>
+
+</html>

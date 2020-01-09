@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a {
+            display: block;
+            width: 60px;
+            height: 60px;
+            background: url("./login_icons.png");
+        }
+
+        .sina {
+            /* background: url("./login_icons.png") -60px 0; */
+            /* 性能浪费 */
+            background-position: -60px 0;
+        }
+
+        .alipay {
+            background-position: -120px 0;
+        }
+
+        .wechat {
+            background-position: -180px 0;
+        }
+
+        a:hover {
+            background-position-y: -60px;
+            /* 只修改y轴的位移 */
+        }
+
+
+        /* a:hover {
+            background-position: 0 -60px;
+        }
+        .sina:hover {
+            background-position: -60px -60px;
+        }
+        .alipay:hover {
+            background-position: -120px -60px;
+        }
+        .wechat:hover {
+            background-position: -180px -60px;
+        } */
+    </style>
+</head>
+<body>
+    <a href="#"></a>
+    <a class="sina" href="#"></a>
+    <a class="alipay" href="#"></a>
+    <a class="wechat" href="#"></a>
+</body>
+</html>

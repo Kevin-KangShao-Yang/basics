@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 所谓过渡,就是元素从状态A到状态B的变换区间可以被观察到 */
+            /* 哪个元素需要过渡,就将过渡属性直接赋值即可 */
+
+            /* transition: width 2s, height 2s, border-radius 2s , background-color 2s; */
+            /* 过渡属性名 过渡时间 运动曲线 延迟时间 */
+
+            /* 如果有多组过渡需要同时进行以及同时结束 */
+            transition: all 2s;
+            /* all:指的是所有的属性 */
+        }
+
+        div:hover {
+            width: 800px;
+            height: 800px;
+            border-radius: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

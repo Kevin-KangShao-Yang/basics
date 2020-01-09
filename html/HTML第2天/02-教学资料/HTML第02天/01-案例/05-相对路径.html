@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.图片与html在同一级目录 -->
+    <!-- 直接通过图片名找到 -->
+    <img src="你老公.png" alt="">
+
+    <!-- 2.图片在html的下一级目录 -->
+    <!-- 先进入下一级文件夹(文件夹名/) -->
+    <!-- 再通过图片名找到 -->
+    <img src="浴室/群主老公.png" alt="">
+
+    <!-- 3.图片在html的上一级目录 -->
+    <!-- 先返回到上一级(../) -->
+    <!-- 再通过图片名字找到 -->
+    <img src="../我老公.png" alt="">
+
+    <!-- 4.图片在另外一个文件夹 --列如:假设班长在407,我在408,如何找到班长 -->
+    <!-- 先从408出来,再进入407,最后再找到班长>
+    <img src="../另外一个房间/她老公.png" alt="">
+
+
+    <!-- 注意: 相对路径不能跨盘符 -->
+
+</body>
+</html>

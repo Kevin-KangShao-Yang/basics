@@ -1,0 +1,22 @@
+
+@baseColor: yellowgreen;
+
+@length: 100px;
+// 准备一个基本长度
+// less语法是支持运算的,css是不支持运算
+
+.box1 {
+    width: @length;
+    height: @length;
+    background-color: @baseColor;
+}
+.box2 {
+    width: @length * 3;
+    height: @length *3;
+    background-color: @baseColor;
+}
+.box3 {
+    width: @length * 4;
+    height: @length * 5;
+    background-color: @baseColor;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: hotpink;
+            position: relative;
+        }
+
+        #son {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+
+            left: 350px;
+            top: 350px;
+
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body id='bdy'>
+    <div id="box">
+        <input type="button" value="点我" id="btn" />
+        <div id="son"></div>
+    </div>
+
+    <script>
+        /* 
+        1.事件冒泡： 如果一个元素的事件被触发 ，所有父级元素同名事件会被依次触发
+            事件源->父元素->body->html->document->window
+        
+        2.事件捕获： 如果一个元素的事件被触发，会先触发最顶级的元素的同名事件，
+        然后一级一级往下触发，直到目标元素
+            window->document->html->body->父元素->事件源
+
+        3.事件捕获事件冒泡完全相反的过程
+
+        4.如何注册捕获阶段的事件:唯一方式：  addEventListener注册，第三个参数一定要是 true
+          IE8及以前没有捕获
+
+          addEventListener(事件名,事件处理函数，是否捕获阶段)
+
+        5.事件对象e.stopPropagation() 除了可以阻止冒泡还可以阻止捕获
+      
+         */
+         
+        window.addEventListener('click',function () {
+            console.log('我是 window~~~ 快来打开~~~');
+        },true);
+
+        document.addEventListener('click',function () {
+            console.log('我是 document~~~ 快来打开~~~');
+        },true);
+
+
+        document.documentElement.addEventListener('click',function () {
+            console.log('我是 html~~~ 快来打开~~~');
+        },true);
+
+        document.getElementById('bdy').addEventListener('click',function () {
+            console.log('我是 body~~~ 快来打开~~~');
+        },true);
+
+        document.getElementById('box').addEventListener('click',function () {
+            console.log('我是 粉红色 的 盒子哦~~~ 快来打开~~~');
+        },true);
+
+        document.getElementById('btn').addEventListener('click',function () {
+            console.log('我是 按钮~~~ 快来点我~~~');
+        },true);
+
+
+    </script>
+</body>
+</html>

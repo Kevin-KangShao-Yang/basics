@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            height: 100px;
+            background-color: red;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='box' style="border: 1px solid red" mylover="Linda"></div>
+    <div id='box2' mylover="Linda"></div>
+    <script>
+        var boxDom = document.getElementById('box');
+
+        //  dom对象 属性的3种形态： 
+        //  （1）行内标准属性  
+        //   (2) 行内自定义属性(显示在页面HTML中)
+        //  （3）点语法动态添加属性
+        boxDom.myDog = 'Whisky';
+
+        // 1.对象 . 语法 可以 访问 动态添加的 属性
+        console.log(boxDom.myDog);
+        console.log(boxDom.id);  // 行内标准属性
+
+        // 1.2 对象.语法 不可以 访问以下 几种属性
+        console.log(boxDom.mylover); // 行内 自定义 属性
+
+
+        // 2. 对象的 attribute 属性 -- 行内自定义属性 ---------------------
+        //   attribute 就是 指  标签的 自定义属性
+
+        // 2.1 setAttribute 为 dom 对象 添加 自定义属性
+        //    可以 为 对象 添加 attribute 属性，也可以 访问 或 移除 这种属性
+        var boxDom2 = document.getElementById('box2');
+        boxDom2.setAttribute('mycat', 'kittyone');
+
+        console.log(boxDom2);
+
+        // 2.2 getAttribute 获取 dom 对象的 自定义属性
+        var myAttr = boxDom2.getAttribute('mycat');
+        console.log(boxDom2.mycat);
+        console.log(myAttr);
+
+        var myL = boxDom2.getAttribute('mylover');
+        console.log(myL);
+
+        // 2.3 removeAttribute 移除 dom 对象的 自定义属性
+        boxDom2.removeAttribute('mylover');
+        console.log(boxDom2);
+
+
+
+
+
+
+
+
+
+        // 应用场景（总结） : 
+        //  1. 点语法 ： 标准属性
+        //  2. attribute语法： 自定义属性 
+
+
+        //1.点语法可以获取哪些属性
+        //  点语法不可以操作属性
+
+        //2. attribute
+        //  获取属性： 元素.getAttribute('属性名')
+        //  设置属性： 元素.setAttribute('属性名',属性值)
+        //  移除属性： 元素.removeAttribute('属性名')
+
+        //2.1 可以获取
+        //（1）行内标准属性
+        //（2）行内自定义属性(显示在页面HTML中)
+
+        //2.2 不可以获取
+        //（4）点语法动态添加属性
+
+        //3. 设置属性
+
+        //4. 移除
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

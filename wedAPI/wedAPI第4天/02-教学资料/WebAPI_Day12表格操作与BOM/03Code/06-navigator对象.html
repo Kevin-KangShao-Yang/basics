@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+ navigator对象：包含当前浏览器的信息
+ 工作中应用场景：用户信息统计（统计我这个网站平台的用户群体分布，什么浏览器，windows什么版本等）
+
+> 浏览器信息对象，保存了 浏览器的 很多信息 和 操作系统信息
+navigator.appVersion  -- 获取当前浏览器版本信息
+navigator.platform  -- 获取 当前浏览器的硬件平台
+navigator.userAgent -- 获取 浏览器版本信息
+        应用场景： 用户数据统计（大数据杀熟）
+        */
+        console.log(window.navigator) 
+
+        // 判断 当前是否为谷歌 浏览器
+        // window.navigator.userAgent 是一个 保存了 浏览器 各种信息的 字符串
+        if(window.navigator.userAgent.indexOf('Chrome') > -1){   //indexOf返回 对应 字符的 下标，如果 找不到 字符，就返回 -1 
+            //window.navigator.userAgent -- 获取 当前window的浏览器版本信息,indexOf('Chrome')寻找字符’Chrome’,并返回字符的下标
+            //判断当前window的浏览器版本信息中的存不存在谷歌内核Chrome,存在即为true
+            console.log('谷歌浏览器~~~~');
+        }else{
+            console.log('不是 谷歌浏览器~~~');
+        }
+
+        
+    </script>
+</body>
+</html>

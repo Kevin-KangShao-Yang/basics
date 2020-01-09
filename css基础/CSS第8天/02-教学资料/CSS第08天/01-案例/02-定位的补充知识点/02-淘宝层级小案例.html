@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 120px;
+            height: 200px;
+            border: 1px solid #000;
+            float: left;
+        }
+        .right {
+            margin-left: -1px;
+        }
+        div:hover {
+            /* 思路: 当鼠标悬停的时候,将当前盒子的层级提到最高
+            (将盒子从浮动变成定位),并且修改颜色 */
+            /* z-index: 1; */
+            /* z-index只能给定位元素使用 */
+            position: relative;
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="left"></div>
+    <div class="right"></div>
+</body>
+</html>

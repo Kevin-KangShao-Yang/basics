@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 2000px;
+            height: 2000px;
+        }
+
+        .one {
+            width: 200px;
+            height: 200px;
+            background-color: #0094ff;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one" id="box"></div>
+
+    <script>
+        //1.鼠标触发点 距离 用户电脑屏幕 左上角的距离 e.screenX  / e.screenY
+        //2.鼠标触发点 距离 页面可视区域左上角的距离  e.clientX / e.clientY
+        //3.鼠标触发点 距离 页面左上角距离（页面滚动了，也是左上角）  e.pageX / e.pageY
+        //      最常用： 元素定位坐标系与pageX/Y坐标系一致
+        var box = document.getElementById('box');
+
+        box.onclick = function (e1) {
+            var e = e1 || window.event; // 事件参数对象 兼容
+            // 1. 鼠标点击位置 距离 左屏幕 和 右屏幕边框 的 距离
+            console.log(e.screenX,e.screenY);
+
+            //2. 鼠标点击 可视区域的 距离 ，不包含超出滚动条的部分
+            console.log(e.clientX,e.clientY);
+
+            //3. 鼠标点击 页面的 距离
+            console.log(e.pageX, e.pageY);
+
+        }
+    </script>
+
+</body>
+
+</html>

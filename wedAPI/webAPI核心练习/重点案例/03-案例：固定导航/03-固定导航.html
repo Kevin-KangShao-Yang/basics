@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top" id="topPart">
+        <img id="pic" src="images/top.png" alt="" />
+    </div>
+
+    <div class="nav" id="navBar">
+        <img src="images/nav.png" alt="" />
+    </div>
+
+    <div class="main" id="mainPart">
+        <img src="images/main.png" alt="" />
+    </div>
+</body>
+
+<script>
+    /* 需求： 网页滚动的距离 超过 topPart高度则设置导航栏navBar为固定定位 */
+
+    var topPartNode = document.getElementById('topPart');
+    var navBarNode = document.getElementById('navBar');
+    var mainPartNode = document.getElementById('mainPart');
+
+    //1.页面滚动事件
+    window.onscroll = function () {
+        // 2. 判断 当前 页面 top超出 的距离(纵向滚动条 超出的距离)，如果 >= topPart.height
+        //    将 导航栏的 className = 'fixed'
+
+        // 3.获取 页面的 纵向滚动条 超出 距离
+        var topY = document.documentElement.scrollTop;
+        
+        // 4. 当 滚动 超出的 距离 >= topPart的高度时，就 设置 导航栏 脱标
+        if (topY >= topPartNode.offsetHeight) {
+            navBarNode.className = 'fixed'; // 设置 导航栏 脱标 position:fixed
+            mainPartNode.style.marginTop = 10  + navBarNode.offsetHeight + 'px'; // 设置 主div 的 marginTop ，因为 导航div 脱标 空出了一段距离
+        }else{
+            navBarNode.className = 'nav';  // 还原 导航栏 的 class
+            mainPartNode.style.marginTop = 10  + 'px'; // 还原 主div 的 marginTop
+        }
+    }
+
+</script>
+
+</html>

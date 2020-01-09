@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+            /* 清除li标签自带的小点点 */
+            float: left;
+            /* 1.让元素一行显示 */
+            /* 2.让元素可以设置宽高 */
+            /* 3.让元素之间没有空白间隙 */
+            width: 100px;
+            height: 30px;
+            background-color: red;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 15px;
+        }
+        li:hover {
+            background-color: pink;
+        }
+        li:hover a {
+            /* 当鼠标悬停在li标签身上的时候,找到后代a并且修改它的样式 */
+            color: gold;
+        }
+        /* a:hover {
+            color: #fff;
+        } */
+        a {
+            text-decoration: none;
+            color: #000;
+            /* 将a标签的点击范围变成与li标签一样大小 */
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏的正确结构 -->
+    <div class="nav">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">朋友圈</a></li>
+            <li><a href="#">微信</a></li>
+            <li><a href="#">新浪微博</a></li>
+            <li><a href="#">QQ空间</a></li>
+        </ul>
+    </div>
+</body>
+</html>

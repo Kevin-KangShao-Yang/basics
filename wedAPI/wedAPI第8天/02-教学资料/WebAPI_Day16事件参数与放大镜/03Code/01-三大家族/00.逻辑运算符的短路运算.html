@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+
+            左右两边是 比较大小表达式 ，则依据 结果bool值 ，返回 不同的 bool值
+            左右两边是 数据，则 根据规则 ，返回两边的某个数值
+        */
+
+        // 1. 左右两边 都是 比较表达式 ----------------------------------------------
+        //      > <  >= <=  == != === !== 
+        // && : 一假则假 -- 【找假】，先在左边 找 ，找到了 就结束 运行 返回 false
+        //                           左边没找到，就去 右边找，如果 找到了 就返回 false ，
+        //                        如果 左右两边都 没找到，则返回 true，
+        // || ：一真则真 -- 【找真】
+
+        // 1.1 逻辑与 &&
+        var res1 = 0 > 1 && 2 > 1; // false
+
+        var num = 1;
+        var res2 = 0 > 2 && num++;
+        console.log(num); // 1 -- 因为 左边运算结果 为 false，所以 不去执行 右边的 表达式了！！
+
+        // 1.2 逻辑或 || 
+        var res3 = 0 > 1 || 2 > 1; // 左边没找到，就去右边找
+        var res4 = 2 > 1 || 0 > 1; // 左边找到了，右边就不执行了！！
+
+        console.log('2. 左右两边 是 数据--------------------------------------------');
+        // 2. 短路运算：左右两边 是 数据，返回 两边某个 数据-----------------------------------------------------
+        // 2.1 && 检查 左边 是否 能被 转成 false，如果能，返回左边的值；
+        //                                       如果不能，则返回右边的值
+        //     Boolean(x) 转false  ： 0 -0 NaN  ''  false undefined null document.all
+        var res5 = 1 && 10;
+        console.log(res5); // 10
+
+        var res6 = null && 10;
+        console.log(res6); // null
+
+
+        // 2.2 || 检查 左边是否 能被转成 true，如果能，则返回 左边的值 
+        //                                    如果不能，则返回 右边的值
+        var num = null;
+        var res7 = num || 3747; // 检查 num 是否为空，如果为空，则 返回 3747，如果不为空，则返回 num 的值
+
+        function getLover(toName) {
+            toName = toName || '默认值'; // 如果 toName 形参 不能 转成 true，就返回 '默认值' ，如果 能转成 true , 就返回 toName 本身
+            console.log(toName);
+        }
+
+        getLover();
+        getLover('Linda');
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        div {
+            text-align: center;
+        }
+
+        input {
+            border: 2px solid #0094ff;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input class='chkInput' type="checkbox">
+        <input class='chkInput' type="checkbox">
+        <input class='chkInput' type="checkbox">
+        <input class='chkInput' type="checkbox">
+        <input class='chkInput' type="checkbox">
+        <br />
+
+        <input id="checkAll" type="button" value="全选">
+        <input id="unCheckAll" type="button" value="全不选">
+        <input id="reverseCheck" type="button" value="反选">
+    </div>
+</body>
+
+<script>
+    // 0. 获取 页面上 所有 class = 'chkInput' 的 dom对象 类数组 ------
+    var chkList = document.getElementsByClassName('chkInput');
+
+    // 1.全选功能 ----------------------------------------------------
+    // 思路：为 全选按钮 添加 一个 onclick 事件方法
+    //       遍历 所有 class = 'check' input对象，设置　checked = true
+    // 1.1 为 全选按钮 添加 onclick
+    document.getElementById('checkAll').onclick = function () {
+        for (var i = 0; i < chkList.length; i++) {
+            chkList[i].checked = true;
+        }
+    }
+
+    // 2. 全不选功能 ---------------------------------------------------
+    document.getElementById('unCheckAll').onclick = function () {
+        for (var i = 0; i < chkList.length; i++) {
+            chkList[i].checked = false;
+        }
+    }
+
+    // 3. 反选功能 ------------------------------------------------------
+    document.getElementById('reverseCheck').onclick = function () {
+        for (var i = 0; i < chkList.length; i++) {
+            // 注意：dom 的 checked 属性 就是一个布尔值 true / false
+            // 设置 当前遍历的 复选框 的 checked 属性 为 !checked 
+            //                                      -》 如果 check = true -> check = !true
+            chkList[i].checked = !chkList[i].checked;
+        }
+    }
+</script>
+
+</html>

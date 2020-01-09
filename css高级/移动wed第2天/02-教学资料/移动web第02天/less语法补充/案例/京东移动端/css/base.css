@@ -1,0 +1,52 @@
+body,
+div,
+span,
+p,
+ul,
+li,
+a,
+img,
+input,
+h1,
+h2,
+h3,
+h4,
+i {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 将所有的标签转换成内减模型的盒子 */
+}
+img {
+  vertical-align: middle;
+  border: none;
+}
+input {
+  border: none;
+  outline: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+i {
+  font-style: normal;
+}
+li {
+  list-style: none;
+}
+body {
+  font-size: 12px;
+  line-height: 1;
+  background-color: #f5f5f5;
+}
+.clearfix::after {
+  content: ".";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.clearfix {
+  *zoom: 1;
+}

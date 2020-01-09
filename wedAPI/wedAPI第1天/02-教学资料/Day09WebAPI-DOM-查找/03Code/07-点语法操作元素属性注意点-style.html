@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        .btn {
+            background-color: #0094ff;
+            color: #fff;
+        }
+        .btn2{
+            background-color: red;
+            color: #fff;
+        }
+
+        .bigBtn{
+            padding:10px 20px;
+            font-size: 18px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <input class="btn" style="border: 4px solid #0094ff; width:200px;" type="button"
+        value="点我啊" id='btnOrder'>
+    <input class="btn" type="button" value="点我啊2" id='btnOrder2'>
+</body>
+
+<script>
+    // dom对象 通过 . 语法 操作 style 属性时 需要注意 一些情况
+
+
+    //获取元素
+    var btnDom = document.getElementById('btnOrder');
+
+
+    /*点语法操作元素属性注意点 
+    1. 只能获取行内属性，无法获取行外属性
+    2. 获取的是 string类型 ，带单位
+    3. 既可以获取，也可以修改
+    4. 类名操作，需要className
+     */
+
+    //1. 只能获取行内属性，无法获取行外属性
+    console.log(btnDom.style); // 注意：style 属性值 ，也是一个 对象（ CSSStyleDeclaration ），所以 内部也保存了 很多 成员属性
+
+    console.log(btnDom.style.border); // 可以通过 . 语法，继续 访问 style对象中的 其他 属性
+    // console.log(btnDom.style.background-color); 错误：因为 属性名 就是 变量名，不能用 - 
+
+    console.log(btnDom.style.backgroundColor);// JS 为了 规避这个问题，就 将 多个 单词 构成的 样式属性名，修改成了 驼峰命名法
+
+    //2. 获取的是 string类型 ，带单位，如果 空，则返回空字符串
+    console.log(btnDom.style.width); // '200px' + 10 -> '200px10'
+
+    // 2.1 增加 按钮的 宽度 + 10px
+    var newWidth = parseInt(btnDom.style.width);
+    newWidth+= 100;
+    console.log(newWidth);
+
+    btnDom.style.width = newWidth; //  当直接 将 数值 设置给 宽度或高度 属性时， 会 自动加上 px
+    console.log(btnDom.style.width); // 300px
+
+
+    //4. 类名操作 使用className
+    var btnDom2 = document.getElementById('btnOrder2');
+    //4.1 因为class是js中的关键字
+    console.log(btnDom2.className); // 对应 标签中 的 class='btn'
+
+    //4.2 修改类名 元素的样式也会修改
+    btnDom2.className = 'btn2';
+    console.log(btnDom2.className); // 对应 标签中 的 class='btn'
+
+    //4.3 如何希望不覆盖原先的类名样式，而是新增.可以使用 连接符 +
+    //   注意：可以看出，className 属性 本质上 就是 一个 字符串！！！
+    btnDom2.className += ' bigBtn'; // 'btn' += ' bigBtn' ---> 'btn bigBtn'
+    console.log(btnDom2.className); // 对应 标签中 的 class='btn'
+
+
+
+
+
+
+</script>
+
+</html>

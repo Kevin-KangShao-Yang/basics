@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 200px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="移动到400" id="move400" />
+    <input type="button" value="移动到800" id="move800" />
+    <div class="one" id="box"></div>
+    <div class="one" id="box1"></div>
+
+</body>
+
+<script>
+
+    /* 本小节封装目标
+    1.解决移动元素不限
+
+     */
+
+
+
+    var box = document.getElementById('box');
+    var box1 = document.getElementById('box1');
+
+    //需求:绿色盒子移动到800
+    document.getElementById('move800').onclick = function () {
+        animationMove(box1, 800);
+
+    };
+
+    //需求：红色盒子移动到400
+    document.getElementById('move400').onclick = function () {
+        animationMove(box, 400);
+    };
+
+
+
+
+
+
+    /**
+     * @description: 匀速动画封装
+     * @param {object} ele :要移动的元素
+     * @param {number} target :要移动的目标距离
+     * @return: 
+     */
+    function animationMove(ele, target) {
+    /* 
+    1.发现问题 ： 多个元素不能同时移动
+    2.分析问题 : 一个变量只能存储一个定时器，多个元素移动需要存储多个定时器
+    3.解决问题 ： 使用对象来存储多个数据 。 谁要移动就给谁动态添加一个属性来存储自身的定时器
+     */
+        //1.清除以前的定时器,以本次为准
+        clearInterval(ele.timeID);
+        //2.开始本次动画
+        ele.timeID = setInterval(function () {
+            //2.1 获取当前位置
+            var currentLeft = ele.offsetLeft;
+            //2.2 开始移动
+            currentLeft += 10;
+            ele.style.left = currentLeft + 'px';
+            //2.3 边界检测
+            if (currentLeft >= target) {
+                //清除定时器
+                clearInterval(ele.timeID);
+                //元素复位
+                ele.style.left = target + 'px';
+            };
+        }, 50);
+    };
+
+
+
+</script>
+
+</html>

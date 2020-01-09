@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #0094ff;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="匀动到400" id="move400" />
+    <input type="button" value="缓动到800" id="move800" />
+    <input type="button" value="缓动到400" id="moveback400" />
+
+    <div id="box" style=""></div>
+
+
+</body>
+
+<script>
+    var box = document.getElementById('box');
+
+    /*缓动动画*/
+
+    //匀动到400
+    document.getElementById('move400').onclick = function () {
+        // 1.运动 思路：
+        // 1.1 启动 计时器 ( var timerId = setInterval(要执行的函数，间隔毫秒数) )
+        //   a.获取 目标元素 的 left  -- dom.offsetLeft  
+        //   b.设置 移动步长： 7px
+        //   c.重新设置给 元素的left
+        //   d.边界检测：判断 是否 到 了目标位置 >=
+        //         如果到了 就关闭 计时器
+
+        // 1. 启动 计时器
+        box.timerId = setInterval(function () {
+            // 2. 获取 目标元素 的 left
+            var current = box.offsetLeft; // 数值 ，只读
+            // 3. 设置 移动步长： 7px
+            var step = 7;
+            // 4. 计算和移动元素
+            current += step;
+            box.style.left = current + 'px';
+
+            // 5. 边界检测：判断 是否 到 了目标位置
+            if (current >= 800) {
+                clearInterval(box.timerId);
+                box.style.left = '800px';
+            }
+        }, 20);
+
+
+    };
+
+    //  800 , 790   --
+    //      800 - 790 = 10 / 10 = 1
+    //      800 - 791 = 9 / 10 = 0.9 -> ceil -> 1
+
+    //缓动到800
+    document.getElementById('move800').onclick = function () {
+        // 1.缓动 思路：
+        // 1.1 启动 计时器 ( var timerId = setInterval(要执行的函数，间隔毫秒数) )
+        //   a.获取 目标元素 的 left  -- dom.offsetLeft  
+        //   b.设置 移动步长： (目标位置 - 元素位置) / 10
+        //   c.重新设置给 元素的left
+        //   d.边界检测：判断 是否 到 了目标位置 ==
+        //         如果到了 就关闭 计时器
+        box.timerId = setInterval(function () {
+            // 2. 获取 目标元素 的 left
+            var current = box.offsetLeft; // 数值 ，只读
+            // 3. 设置 移动步长
+            var step = Math.ceil((800 - current) / 10);
+            // 4. 计算和移动元素
+            current += step;
+            box.style.left = current + 'px';
+
+            // 5. 边界检测：判断 是否 到 了目标位置
+            if (current == 800) {
+                clearInterval(box.timerId);
+            }
+        }, 20);
+
+    };
+
+    // 回到 400 的位置 （缓动）
+    // 解决 向做移动 的 bug ：
+    // bug 原因：
+    //         一定要 写完后 调试 检查 运行结果~~~！
+    //         因为 Math.ceil(-0.8) -> 0 ，也就意味着 最后的 距离 都是 移动 0px，永远都到不了 目标位置
+    // 解决方式：如果 向左边 移动 Math.floor(-0.8) -> -1，保证 最后距离 中 是1px 移动的
+    document.getElementById('moveback400').onclick = function () {
+        
+        box.timerId = setInterval(function () {
+            // 2. 获取 目标元素 的 left
+            var current = box.offsetLeft; // 数值 ，只读  -- 800
+            // 3. 设置 移动步长    (400 - 410) = -10 / 10 = -1
+            //                    (400 - 409) = - 9 / 10 = -0.9 -> ceil(-0.9) = -0
+            var step = 400 > current? Math.ceil((400 - current) / 10) : Math.floor((400 - current) / 10) ; // -40
+            console.log(step);
+            // 4. 计算和移动元素
+            current += step; // 800 - (40)
+            
+            box.style.left = current + 'px';
+
+            // 5. 边界检测：判断 是否 到 了目标位置
+            if (current == 400) {
+                clearInterval(box.timerId);
+            }
+        }, 20);
+    }
+
+</script>
+
+</html>

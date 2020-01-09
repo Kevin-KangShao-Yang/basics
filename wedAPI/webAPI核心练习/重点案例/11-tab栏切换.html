@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        .Box {
+            width: 240px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        .con {
+            width: 100%;
+            height: 200px;
+            background-color: #cccccc;
+            border: 1px solid #000;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .contentDisplay {
+            width: 100%;
+            height: 200px;
+            background-color: #cccccc;
+            border: 1px solid #000;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .current {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="Box" id="box">
+        <button class="">按钮1</button>
+        <button class="">按钮2</button>
+        <button class="current">按钮3</button>
+        <button class="">按钮4</button>
+
+        <div class="con">内容1</div>
+        <div class="con">内容2</div>
+        <div class="contentDisplay">内容3</div>
+        <div class="con">内容4</div>
+    </div>
+
+
+</body>
+<script>
+    // 目标：点击 某个 按钮
+    //           1.设置 被点击按钮 的 class = 'current' ，其他的 按钮 的 class = ''
+    //           2.设置 对应下标的 div class = 'contentDisplay' ， 其他的 div 的 class = 'con'
+
+
+    //1.获取 两个 数组 -----------------------------------------
+    var btnList = document.getElementsByTagName('button');
+    var divList = document.getElementById('box').getElementsByTagName('div');
+
+    //2.为 每个 按钮 添加 点击事件-------------------------------
+    for (var i = 0; i < btnList.length; i++) {
+        // 为 按钮 添加 点击事件
+        btnList[i].onclick = function () {
+            // 2.0 准备一个 变量 用来 保存 被点击 按钮的 下标 -----
+            var currentBtnIndex = -1;
+
+            // 2.1 切换 按钮的 className ------------------------
+            // 2.1.1 设置 当前点击按钮的 class 为 current
+            this.className = 'current';
+
+            // 2.1.2 遍历所有按钮，设置 其它按钮的 class 为 ''
+            for (var j = 0; j < btnList.length; j++) {
+                // 如果 遍历的 按钮 不等于 当前被点击按钮
+                if (btnList[j] != this) {
+                    btnList[j].className = '';
+                } else {
+                    // 将 被点击 按钮的 下标 存入 变量 currentBtnIndex
+                    currentBtnIndex = j;
+                }
+            }
+
+            // 2.2 切换 与 被点击 按钮 相同  下标 的 div 的 class -----
+            // 2.2.1 将 相同 下标的 div 的 class 设置为  contentDisplay -- 显示div
+            divList[currentBtnIndex].className = 'contentDisplay';
+
+            // 2.2.2 其它的 div 的 class 设置为 'con' -- 隐藏div
+            for (var j = 0; j < divList.length; j++) {
+                // 如果 遍历的 div 下标不等于 被点击按钮的 下标，就设置 className = 'con'
+                if(j != currentBtnIndex){
+                    divList[j].className = 'con';
+                }
+            }
+        }
+    }
+</script>
+
+</html>

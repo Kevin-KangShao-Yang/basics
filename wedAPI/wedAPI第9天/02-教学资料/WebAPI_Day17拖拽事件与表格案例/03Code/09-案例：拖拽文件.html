@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* body默认高度为0，设置宽度100%和页面(document)一样高 */
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            border: 5px dashed black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>拖拽图片到虚线内</h1>
+    <img id='imgShow' src="" alt="">
+    
+    <script>
+        // 1. 设置 页面的 body 为 拖拽容器
+        var bodyNode = document.querySelector('body');
+
+        // 2. ondragover 事件 内部 阻断 浏览器的默认行为
+        document.body.ondragover = function (e) {
+            e = e || window.event;
+            e.preventDefault(); // 阻断浏览器的默认行为 -- 目的：让 ondrop 事件 可以被触发
+        }
+
+        // 3.ondrop 中 如果 收到 硬盘 拖拽的 文件，就会 默认 用当前窗口 打开这个 硬盘文件
+        bodyNode.ondrop = function (e) {
+            e = e || window.event;
+            e.preventDefault(); // 阻断浏览器的默认行为 -- 阻止 浏览器 直接打开 被拖拽进来的 硬盘中的文件
+
+            // 3.2 获取 被拖拽到 浏览器中的硬盘文件的 非敏感信息
+            var file = e.dataTransfer.files[0];
+            console.log(file);
+
+            // 3.3 为被拖拽 到浏览器的 硬盘文件 生成 虚拟路径（既可以被 JS使用 ，也 不存在 安全问题）
+            var vitualPath = URL.createObjectURL(file); //浏览器创建的 虚拟 文件路径： blob:null/1d7af6c3-1c1a-4569-92eb-56982f8a27f0
+            console.log(vitualPath);
+
+            // 3.4 将 图片的虚拟 路径 设置给 图片显示
+            document.getElementById('imgShow').src = vitualPath;
+        }
+    </script>
+</body>
+
+</html>

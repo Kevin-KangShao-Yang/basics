@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            color: red;
+            font-size: 30px;
+        }
+        /* 继承性: 存在父子关系的盒子,子元素会继承父元素部分属性 */
+        /* 特殊的两个标签 */
+        /* 1.a标签不继承颜色 */
+        /* 2.h系列不继承字体大小 */
+    </style>
+</head>
+<body>
+    <div class="father">
+        父亲
+        <div class="son">
+            儿子
+            <div class="sun">
+                孙子
+            </div>
+            <a href="#">我是你的好兄弟</a>
+            <h1>我也是你的大兄嘚</h1>
+        </div>
+    </div>
+</body>
+</html>

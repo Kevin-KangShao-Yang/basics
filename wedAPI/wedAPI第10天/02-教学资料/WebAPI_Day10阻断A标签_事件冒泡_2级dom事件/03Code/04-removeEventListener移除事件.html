@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="点我" id="btn2" />
+
+    <script>
+        var btn = document.getElementById('btn2');
+
+        //1.0级dom事件：点语法移除事件 
+        btn.onclick = function () {
+            alert('讨厌~~~');
+        }
+
+        btn.onclick = null; // 将点击事件变为空,使其无效果
+
+
+
+
+        //  addEventListener : 注册多个同名事件
+        // 2.btn.removeEventListener('事件名 ', 函数,false); 
+        //事件名:事件名称
+        //函数:事件处理程序
+        //false:布尔类型的值,默认false,用不用都可以
+        //   注意点： 要想移除2级dom事件的处理函数，事件处理函数必须是【具名函数】
+        function dianwo() {
+            alert('我是伟大的 2级 dom 事件~~~！');
+        };
+
+        document.getElementById('btn2').addEventListener('click', dianwo);
+        // document.getElementById('btn2').removeEventListener('click', dianwo);
+
+
+ // 移出 第一个 2级 dom 事件 *****************
+        document.getElementById('btn2').addEventListener('click', function () {
+            alert('今天webapi 最后一天，大家的状态 有点困啊~~~~~');
+            document.getElementById('btn2').removeEventListener('click', dianwo);
+        });
+      
+
+        //3 IE8仅支持  - detachEvent(事件名，函数)
+       //事件名 ：事件名称  是加了on的方式
+    //函数：事件处理程序。
+    function test2(){
+       alert("哈哈哈哈哈哈啊....");
+     }
+     document.getElementById('btn2').attachEvent("onclick",test2);
+     btn2.detachEvent("onclick",test2);
+
+//4.移除事件，不同的添加方式，使用不同的方式移除，所以要做兼容处理。
+// Obj :  对象元素
+// Type:  事件名
+// Listener:  函数名
+
+function removeEventListener(obj,type,listener){
+        //能力检测
+        if(obj.removeEventListener){
+            obj.removeEventListener(type,listener,false);
+        }else if(obj.detachEvent){
+            obj.detachEvent("on"+type,listener);
+        }else {
+            obj["on"+type] = null;
+        }
+    }
+
+
+    //5.对封装的函数做一个测试
+    function ceshi(){
+        alert("呵呵呵嘻嘻嘻嘻....cs移出事件函数....");
+    }
+    addEventListener(btn,"click",ceshi);
+    removeEventListener(btn,"click",ceshi);
+
+
+
+    //4.给某一个元素注册多个相同的事件，不同的浏览器有不同的方式，所以要做兼容。
+    function addEventListener(obj,type,listener){
+        //能力检测
+        if(obj.addEventListener){
+            obj.addEventListener(type,listener,false);
+        }else if(obj.attachEvent){
+            obj.attachEvent("on"+type,listener);
+        }else {
+            obj["on"+type] = listener;
+        }
+    }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

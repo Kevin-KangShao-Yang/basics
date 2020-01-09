@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 800px;
+            height: 500px;
+            background-color: pink;
+            margin: 0 auto;
+            display: flex;
+        }
+        .box>div {
+            height: 200px;
+        }
+        .red {
+            background-color: red;
+            width: 200px;
+            /* 给子元素设置一个占比,数值越大,比例就越大 */
+        }
+        .blue {
+            background-color: blue;
+            flex: 1;
+            /* 将整个父盒子剩余的宽度都给了蓝色 */
+        }
+        .green {
+            background-color: green;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="red"></div>
+        <div class="blue"></div>
+        <div class="green"></div>
+    </div>
+</body>
+</html>

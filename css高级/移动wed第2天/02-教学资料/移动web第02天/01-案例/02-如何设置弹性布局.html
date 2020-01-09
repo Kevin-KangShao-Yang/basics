@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 700px;
+            height: 700px;
+            margin: 0 auto;
+            background-color: skyblue;
+            /* 将父盒子的内部布局修改为弹性 */
+            display: flex;
+            /* 所有的子盒子都会变成弹性子元素 */
+            /* 子元素拥有行内块的特点---中间没有间隙---不会让父元素丧失高度 */
+        }
+        .box>div {
+            width: 200px;
+            height: 200px;
+        }
+
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="red"></div>
+        <div class="green"></div>
+        <div class="blue"></div>
+    </div>
+</body>
+</html>

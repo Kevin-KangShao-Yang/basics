@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+            float: left;
+            height: 33px;
+            background: url("./weixin.png");
+            padding-left: 15px;
+            margin-right: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: red;
+            display: block;
+            height: 33px;
+            /* background: url("./weixin.png") right 0; */
+            background-color: skyblue;
+            padding-right: 15px;
+            line-height: 33px;
+        }
+
+        /* a标签的范围不等于li标签,并不是整个按钮都可以点击 */
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li class="left">
+                <a href="#" class="right">首页</a>
+            </li>
+            <li class="left">
+                <a href="#" class="right">首页1</a>
+            </li>
+            <li class="left">
+                <a href="#" class="right">首页12</a>
+            </li>
+            <li class="left">
+                <a href="#" class="right">首页123</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

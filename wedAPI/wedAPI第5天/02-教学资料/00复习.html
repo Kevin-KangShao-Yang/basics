@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+  // 【对象】一种 超级容器 ：可以存 变量，也可以存 数组，也可以存 方法
+
+  // 1.掌握  浏览器 生成 界面的 大致流程
+  //   1.1 浏览器 会 读取(请求) html 页面的内容(html  css Javascript)
+  //   1.2 根据 html 标签 生成 DOM 树，整个树  由  各种 节点 构成
+  //       a.遇到 每一个 标签 都会生成 一个 元素节点对象 ElementNode
+  //       b.遇到 每一个 文本 都会生成 一个 文本节点对象 TextNode
+  //       c.遇到 每一个 注释 都会生成 一个 注释节点对象 CommentNode
+  //       .................
+  //   1.3 浏览器 按照 DOM树 绘制 界面 给用户看
+  //   目的：生成界面给用户看
+
+  //   DOM树的好处：由于 浏览器 最后根据 DOM树内容 生成界面，所以 一旦 dom树节点 发生改变，就会重新绘制界面
+
+  // 2.DOM语法：就是 浏览器 提供 给程序员 对 DOM树 做 操作的 一套 API（别人写好的方法）
+  //   对 DOM 树 节点的 增啥改查
+  // 2.1 查询 节点对象 ---------------------------------------------------------------------
+  //   a.get....
+  //     a1.根据 节点 id   查找：getElementById('nodeId');  -- 根据身份证号码找人
+  //     a2.根据 节点 name  查找：getElementsByName('nodeName'); -- 类似 根据人名找人
+  //     a3.根据 节点 标签  查找：getElementsByTagName('tagName'); -- 类似 根据职业找人
+  //     a4.根据 节点 class 查找：getElementsByClassName('className'); -- 类似 根据 爱好找人
+  //     返回值： 根据id 查找 返回的  是 节点对象 或 null
+  //             另外三个 查找 返回的 是 类数组  或 空类数组
+  //   b.query....
+  //     选择器：#id选择器   .class选择器    tag选择器   父亲>儿子们    ....................
+  //     b1.根据 选择器 查找 匹配的 第一个节点： querySelector('选择器');
+  //        返回值：节点对象  或者  null
+
+  //     b2.根据 选择器 查找 匹配的 所有  节点：querySelectorAll('选择器');
+  //        返回值：类数组    或者 空的类数组
+
+  // 2.2 新增 节点对象
+  //   a.追加节点   父元素.appendChild( 子元素 ); -- 在最后一个子节点后面 再加一个
+  //   b.插入节点   父元素.insertBefore( 新元素节点，位置节点 ) -- 在位置节点 前面 插入一个 节点
+  
+  // 2.3 创建 节点对象
+  //   a.创建元素节点：var nodeObj = document.createElement('元素标签名');
+  //   b.创建文本节点：var textObj = document.createTextNode('文本内容');
+  //   c.创建代码片段：var fragObj = document.createDocumentFragment();
+
+  // 2.4 修改替换节点
+  //   父元素.replaceChild( 新节点 ，要换掉的节点);
+
+  // 2.5 删除节点
+  //   父元素.removeChild( 要删除的子节点 );
+
+  // 3. 修改 元素节点对象的 属性
+  // 3.1 DOM 规范的 属性
+  // 3.2 标签 特性
+  //     a. 标准特性
+  //     b. 自定义特性
+
+
+  // 4. 元素节点的 属性 
+  //    访问规则： 节点对象.属性名
+  // document.getElementById('bodyaa').childNodes  -- 所有子节点
+  // document.getElementById('bodyaa').children -- 所有子元素节点
+
+  // 5. 元素节点的 特性
+  // 5.1 HTML标准特性： id name .. 
+  //     访问规则：节点对象.特性名
+  //              节点对象.getAttribute('特性名')
+
+  // 5.2 自定义特性
+  //     访问规则：节点对象.getAttribute('特性名')
+
+  // 5.3 h5自定义特性 <div data-lover="小白"></div>
+  //     访问规则：节点对象.getAttribute('data-lover')
+  //              节点对象.dataset.lover  -- 不支持 老式浏览器
+
+  </script>
+</head>
+
+<body id='bodyaa' name='' class="" style="" data-lover="小白" data-bodyIndex="1">
+  阿斯顿发撒旦法
+</body>
+<script>
+
+</script>
+</html>

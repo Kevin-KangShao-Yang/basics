@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .main,
+        table {
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+
+        table th {
+            background-color: #0094ff;
+            color: #fff;
+        }
+
+        .main {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        table,
+        th,
+        td {
+            padding: 3px 5px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .optd {
+            width: 200px;
+        }
+
+        .addTable {
+            width: 780px;
+            padding: 10px;
+            border: 1px solid green;
+            /* 固定位置 */
+            position: fixed;
+            top: 200px;
+            left: 50%;
+            margin-left: -400px;
+            /* 标准流 */
+            /* margin: 0 auto; */
+            background-color: #fff;
+            display: none;
+        }
+
+        .addTable table {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="./DataHelper.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <input type="button" value="新增一行" id="add" />
+    </div>
+    <table id="table">
+
+    </table>
+    <!--用于新增表格获取数据的模块-->
+    <div class="addTable" id="addRow">
+        <table>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="txtId" /></td>
+                <td><input type="text" id="txtName" /></td>
+                <td>
+                    <select id="selGender">
+                        <option value='true'>男</option>
+                        <option value="false">女</option>
+                    </select>
+                </td>
+                <td><input type="text" id="txtAge" /></td>
+            </tr>
+        </table>
+
+        <div>
+            <input type="button" value="确定" id="sure" />
+            <input type="button" value="取消" id="cancle" />
+        </div>
+    </div>
+    <script>
+
+        // 0. 数据初始化 - 准备数据
+        var thData = ['学号', '姓名', '性别', '年龄', '操作'];
+        var trData = [
+            { sID: 1, sName: '妲己', sGender: false, sAge: 38 },
+            { sID: 2, sName: '大乔', sGender: false, sAge: 23 },
+            { sID: 3, sName: '曹操', sGender: true, sAge: 47 },
+            { sID: 4, sName: '吕布', sGender: true, sAge: 39 },
+        ];
+
+        //0.1 创建 本地数据操作对象 （本地键值对的 键，数据对象中的 主键 属性(sID) ）
+        var dataHelperObj = new DataHelper('stuData40', 'sID');
+
+        // 0.2 判断 trData 数组中 是否有数据
+        var trDataLocal = dataHelperObj.readData();
+        if (trDataLocal != null) {
+            trData = trDataLocal;// 将 本地数据 存入 缓存数组中 使用
+        } else {
+            dataHelperObj.saveData(trData); // 如果 本地没有数据，就将 初始化数据 存入本地
+        }
+
+
+
+        // 1.1 获取 表格 元素节点对象
+        var tbNode = document.getElementById('table');
+        // 1.2 调用 生成表格数据方法
+        makeTable(thData, trData);
+
+        //2. 根据  数据 生成 表格 方法
+        /**
+         * @description: makeTable - 根据  数据 生成 表格 方法
+         * @param {Array} ths - 表头数据 
+         * @param {Array} tds - 表格行数据 
+         */
+        function makeTable(ths, tds) {
+            // 2.1 创建 第一行 （表头） -----------------------------
+            var trObj = document.createElement('tr');
+
+            // 2.1.1 遍历 生成表头 列 th
+            for (var i = 0; i < ths.length; i++) {
+                // a. 创建新的 th 对象
+                var thObj = document.createElement('th');
+                // b. 设置 th的 innerText 文本内容 为 数组中的元素
+                thObj.innerText = ths[i];
+                // c. 将 th对象 追加到 行中
+                trObj.appendChild(thObj);
+            }
+
+            // 2.1.2 将 表头 行 加入到 表格中
+            tbNode.appendChild(trObj);
+
+            // 2.2 循环生成表格 行
+            for (var i = 0; i < tds.length; i++) {
+                makeRow(tds[i]);
+            }
+        }
+
+        /** 3. 根据 数据 生成 行
+         * @description: makeRow - 根据 数据 生成 行
+         * @param {Object}  trData - 当前行数据对象  { sID: 1, sName: '妲己', sGender: false, sAge: 38 }
+         */
+        function makeRow(trData) { // trData = { sID: 1, sName: '妲己', sGender: false, sAge: 38 }
+            // 3.1 创建 tr 对象
+            var trObj = document.createElement('tr');
+            // 3.2 将 行追加到 表格中
+            tbNode.appendChild(trObj);
+
+            // 3.3 根据 数据对象中的 属性  来生成 数据列
+            for (var key in trData) {
+
+                // 3.4 获取 属性值
+                var val = trData[key]; // trData.sID  ==  trData['sID']
+
+                var colObj = document.createElement('td');
+                if (key == 'sGender') {
+                    colObj.innerText = val ? '男' : '女';
+                } else {
+                    colObj.innerText = val;
+                }
+
+                // 3.5 将 单元格 追加到 表格行中
+                trObj.appendChild(colObj)
+            }
+
+            // 3.6 直接 追加一个 操作列
+            var colObj = document.createElement('td');
+            colObj.innerHTML = '<a href="#" onclick="moveUp(this)">上移</a>' // '<a href="#" onclick="function(){ moveUp(this) }">上移</a>
+                + ' <a href="#" onclick="moveDown(this)">下移</a>'
+                + ' <a href="#" data-id="' + trData.sID + '" onclick="remove(this)">删</a>'; // <a href="#" onclick="function(){ remove(this) }">删</a>
+            trObj.appendChild(colObj)
+
+        }
+
+        // 4.删除操作
+        //  参数 curBtn 是 被点击的 删除按钮
+        function remove(curBtn) {
+            // console.log(this);// window
+            // console.log(curBtn); // 被点击的 删除 按钮
+            // alert('删除')
+
+            // 1.询问是否要删除
+            if (confirm('您确定要删除此条 可爱的 数据吗？')) {
+                // 2. 找出要删除的行  a -> td -> tr
+                var trDel = curBtn.parentNode.parentNode
+                // 3. 找出表格对象
+                trDel.parentNode.removeChild(trDel);
+
+                // 4. 从数组中删除
+                for (var i = 0; i < trData.length; i++) {
+                    if (trData[i].sID == curBtn.dataset.id) {
+                        trData.splice(i, 1);
+                        break;
+                    }
+                }
+
+                // 5. 从本地删除
+                dataHelperObj.removeDataById(curBtn.dataset.id);
+            }
+        }
+
+        function moveUp(curBtn) {
+            // alert('上移')
+            // 1. 找当前 行 和 上一行(当前行的 前面的一个 兄弟节点)
+            var curRow = curBtn.parentNode.parentNode;
+            var prevRow = curRow.previousElementSibling;
+            // 2. 找 当前行的 父容器 - 表格
+            var tbList = curRow.parentNode;
+
+            if (prevRow == tbList.children[0]) {
+                alert('兄弟，已经到第一行了，你还想怎样~~！');
+                return;
+            }
+
+            // 3. 表格.insertBefore(当前行，上一行);
+            tbList.insertBefore(curRow, prevRow);
+        }
+
+        function moveDown(curBtn) {
+            //1.获取当前行 和 下一行
+            var curRow = curBtn.parentNode.parentNode;
+            var nextRow = curRow.nextElementSibling;
+            //2.找到父容器- 表格
+            var tbList = curRow.parentNode;
+            //3.判断是否最后一行，如果不是，就将 下一行 插入到 当前行 前面
+            if (curRow == tbList.children[tbList.children.length - 1]) {
+                alert('姐们，已经到最后一行了，你还想怎样~~~');
+                return;
+            }
+            tbList.insertBefore(nextRow, curRow);
+        }
+
+        //5.新增操作 -----------------------------------------------------------------------
+        document.getElementById('add').onclick = function () {
+            document.getElementById('addRow').style.display = 'block';
+        }
+
+        document.getElementById('cancle').onclick = function () {
+            document.getElementById('addRow').style.display = 'none';
+        }
+
+        // 5.2 执行新增操作
+        document.getElementById('sure').onclick = function () {
+            // a. 获取 4个 表单元素的 value 值
+            var strId = document.getElementById('txtId').value;
+            var strName = document.getElementById('txtName').value;
+            var strGender = document.getElementById('selGender').value;
+            var strAge = document.getElementById('txtAge').value;
+
+            // b. 封装到 对象中  { sID: 1, sName: '妲己', sGender: false, sAge: 38 }
+            var newDataObj = {
+                sID: parseInt(strId),
+                sName: strName,
+                sGender: strGender == 'true',//Boolean(strGender),
+                sAge: parseInt(strAge)
+            };
+
+            // c.添加到 数组 
+            trData.push(newDataObj);
+
+            // d.添加到 本地 localStorage
+            newDataObj = dataHelperObj.addData(newDataObj);
+
+            // e.添加到 表格
+            makeRow(newDataObj);
+
+            // f.关闭新增表格
+            document.getElementById('addRow').style.display = 'none';
+
+            // console.log(newDataObj);
+        }
+    </script>
+</body>
+
+</html>

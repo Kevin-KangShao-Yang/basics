@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>tab栏切换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .box {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+    }
+
+    .hd {
+      height: 45px;
+    }
+
+    .hd span {
+      display: inline-block;
+      /*将行内元素转换成行内块元素，宽高才起作用*/
+      width: 90px;
+      background-color: pink;
+      line-height: 45px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .hd span.current {
+      /*交集选择器，标签指定式选择器*/
+      background-color: purple;
+      /*紫色*/
+    }
+
+    .bd li {
+      height: 255px;
+      background-color: purple;
+      display: none;
+      /*设置隐藏*/
+    }
+
+    .bd li.current {
+      display: block;
+      /*显示*/
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="hd" id="box">
+      <span class="current">体育</span>
+      <span>娱乐</span>
+      <span>新闻</span>
+      <span>综合</span>
+    </div>
+    <div class="bd">
+      <ul id="list">
+        <li class="current">我是体育模块</li>
+        <li>我的娱乐模块</li>
+        <li id="li3">我是新闻模块</li>
+        <li>我是综合模块</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+<script>
+  var spanNode = document.getElementById('box').children;
+  // 获取box父元素中所有的span子元素
+  var liNode = document.getElementById('list').children;
+  // 获取list父元素中所有的li子元素
+
+  //遍历所有span子元素并添加点击事件
+  for (var i = 0; i < spanNode.length; i++) {
+    spanNode[i].onclick = function () {
+      this.className = 'current';
+      //当span元素一点击的时候将其添加类名,并使用类名中的代码效果
+
+      var kaiGuanArr = -1;
+      //设置一个开关变量,用来保存数组下标
+
+
+      // 再次遍历span数组元素,将其他没被点击的元素恢复最初始化,并保留被点击span的下标
+      for (var j = 0; j < spanNode.length; j++) {
+
+        //判断,将不是被点击的span元素找出来,被将其恢复原来状态
+        if (this != spanNode[j]) {
+          spanNode[j].className = '';
+        } else {
+          kaiGuanArr = j   //保存被点击span元素的下标
+        }
+      }
+
+      //将相同下标的li元素找出来,并将其打开
+      liNode[kaiGuanArr].className = 'current';
+
+      //遍历所有li元素,将不同于被点击span元素的下标中的li标签找出来,并将其隐藏
+      for (var k = 0; k < liNode.length; k++) {
+        if (k != kaiGuanArr) {
+          liNode[k].className = '';
+        }
+      }
+    }
+  }
+
+
+
+
+
+</script>
+
+</html>

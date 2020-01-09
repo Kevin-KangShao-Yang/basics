@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+  <script>
+
+    /**
+     * @description: 1.获取 url参数 中 指定 的 参数值
+     * @param {string} key  要获取的 Url参数 名   id   ?id=1 
+     * @return: 对应参数的 值 1
+     */
+    function getQueryVariable(key) {
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == key) { return pair[1]; }
+      }
+      return (false);
+    }
+
+    var a = getQueryVariable('id');
+    console.log(a);
+
+
+    // 2.要求 将 整个 url 参数 转成对象 返回 '?id=1&gender=true'  -> {id:1 , gender:true}
+    function getQueryObj() {
+      var searchStr = window.location.search;// '?id=1&gender=true'
+      if (!searchStr) {
+        return null;
+      }
+
+      var arr1 = searchStr.split('?'); // ['' , 'id=1&gender=true]
+      //                                    0        1
+      var arrStr = arr1[1].split('&'); // ['id=1', 'gender=true']
+
+      // 生成一个 空对象
+      var parObj = {};
+      // 遍历 参数字符串 数组  ['id=1', 'gender=true']
+      //                         0         1
+      for (var i = 0; i < arrStr.length; i++) {
+        var keyValueStr = arrStr[i]; // 'id=1'
+        var keyValueArr = keyValueStr.split('='); // ['id','1']
+
+        // 将 键值数组 中 的 第一个元素 作为 对象的 属性名 ，第二个元素 作为 对象的 属性值 添加 到 对象中
+        // parObj.id = 1;
+        // parObjp['id'] = 1;
+        parObj[keyValueArr[0]] = keyValueArr[1]; // parObj['id'] = 1;
+      }
+
+      return parObj; // {id:1 ,gender : true}
+    }
+
+    var searchObj = getQueryObj();
+    console.log(searchObj);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

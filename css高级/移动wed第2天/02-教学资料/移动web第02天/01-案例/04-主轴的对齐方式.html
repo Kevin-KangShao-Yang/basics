@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 1000px;
+            height: 1000px;
+            margin: 0 auto;
+            background-color: skyblue;
+            display: flex;
+
+            /* 主轴的对齐方式: 子元素在主轴方向的位置排布 */
+            justify-content: flex-start;
+            /* 默认在主轴的开始位置 */
+            /* 左对齐 */
+
+            justify-content: flex-end;
+            /* 在主轴的结束位置 */
+            /*子元素的顺序没有改变 */
+            /* 右对齐 */
+
+            justify-content: center;
+            /* 在主轴的居中位置 */
+
+            justify-content: space-between;
+            /* 平均排布子元素 */
+
+            justify-content: space-around;
+            /* 子元素两边有相等的间距 */
+        }
+        .box>div {
+            width: 200px;
+            height: 200px;
+        }
+
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .pink {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="red"></div>
+        <div class="green"></div>
+        <div class="blue"></div>
+        <div class="pink"></div>
+    </div>
+</body>
+</html>

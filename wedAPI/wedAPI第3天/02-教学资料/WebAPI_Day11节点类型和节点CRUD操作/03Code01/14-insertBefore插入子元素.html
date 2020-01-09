@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ulList1">
+        <li>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li>Python技术栈</li>
+        <li>.Net技术栈
+            <input type="text" name="" value="一别两宽，各生欢喜~~~" id="">
+        </li>
+    </ul>
+
+    <ul id="ulList2">
+        <li id='webFront' lover='linda'>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li>Python技术栈</li>
+        <li>.Net技术栈</li>
+    </ul>
+
+
+    <input type="button" value="新增li到Java技术栈前面" id='btnInsert' />
+    <input type="button" value="新增已存在的 里 到 Java技术栈前面" id='btnInsert2'>
+
+    <script>
+        /**
+        * @description: 添加子元素： 父元素.insertBefore(要插入的标签元素，插入到哪一个标签元素前面) 
+            1.新创建元素     :  添加到指定位置
+            2.已经存在的元素 :  移动到指定位置
+            3.元素有子元素   :  元素和子元素一起移动到指定位置
+        */
+
+        document.getElementById('btnInsert').onclick = function () {
+
+
+            //1.在 ulList1 的 下标为1 的 li 元素前面 新增 一个 li元素
+            var newLi = document.createElement('li');
+            newLi.innerText = '工业机器人技术栈';
+
+            //2. 找到 ulList1 ，并 找出 下标 为 1  的 元素对象
+            var ul1 = document.getElementById('ulList1');
+            var ul1Son1 = ul1.children[1]; // 获取 ulList1 里的 下标为1的 li 元素
+
+            ul1.insertBefore(newLi, ul1Son1);
+        }
+
+        // 父元素.insertBefore(新元素 ， 新增后面的元素) 
+        document.getElementById('btnInsert2').onclick=function(){
+            //1.获取 父元素
+            var ul1 = document.getElementById('ulList1');
+
+            //2.获取父元素 底下的 最后一个 子元素
+            var lastChild = ul1.lastElementChild;
+
+            //3.获取父元素 底下的 下标为 1 的 子元素
+            var targetChild = ul1.children[1];
+
+            // 4.调用 ul1.insertBefore方法，将 lastChild 插入到 targetChild 前面
+            ul1.insertBefore(lastChild,targetChild);
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

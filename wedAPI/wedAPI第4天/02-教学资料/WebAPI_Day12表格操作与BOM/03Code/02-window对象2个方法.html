@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    
+    <button id="open">打开open</button>
+    <button id="close">关闭close</button>
+    <script>
+
+        //1.打开窗口
+        document.getElementById('open').onclick = function () {
+            /**
+             * @description: 打开窗口
+             * @param {string} url:要打开的窗口网址
+             * @param {string} name:相当于a标签 target  是替换当前窗口还是新开一个窗口
+             * @param {string} features:新窗口的特征  位置 大小
+             * @param {boolean} replace:true - URL 替换浏览历史中的当前条目。 
+                                        false - URL 在浏览历史中创建新的条目。
+             * @return: 新打开的window对象
+             */
+            //  window.open('http://www.baidu.com','_blank');
+            
+            //  window.open('http://www.baidu.com','_blank',{width:500,height:500});
+            window.open('http://www.baidu.com','_blank','top=100,left=500,width=500,height=500');
+        };
+
+
+        //2.关闭窗口
+        document.getElementById('close').onclick = function () {
+            /* //参数就是你想要关闭的窗口对象，如果不写，默认就是关闭自己
+        //1.这样写如果关闭的是顶级窗口谷歌和火狐会失效，如果失效可以使用下面这种写法
+        //window.close( );
+
+        /*2.谷歌火狐为了安全起见会拦截我们的代码，js代码只能关闭用js代码打开的界面，
+        所以我们用js先假装在当前窗口打开自己，然后再关闭自己*/
+        //这里的url不是空字符串""，而是一个空格字符串  " " */
+        window.open(" ","_self").close();
+            window.close();
+        };
+    </script>
+</body>
+
+</html>

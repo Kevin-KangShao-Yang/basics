@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 800px;
+            height: 800px;
+            background: url("./你老公.jpg") no-repeat red;
+            /* 如果要控制背景图片的大小,background-size */
+            /* 1.以px单位 */
+            /* background-size: 100px 200px; */
+            /* 先写宽再写高 */
+            /* background-size: 200px; */
+            /* 如果只有一个,控制的是宽,高会等比例缩放 */
+
+            /* 2.以百分比单位 */
+            /* background-size: 50% 50%; */
+            /* 先写宽,再写高 */
+            /* 百分比参照当前的盒子宽高 */
+
+            /* 3.以属性作为单位 */
+            background-size: contain;
+            /* contain: 图片等比例放大,直到某一边到盒子的边框处停止 */
+            background-size: cover;
+            /* cover: 图片等比例放大,直到填满整个盒子 */
+
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

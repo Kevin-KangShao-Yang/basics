@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>创建元素的三种方式</title>
+    <style>
+    div{
+        border:1px solid #0094ff;
+        margin:20px auto;
+        padding: 20px;
+    }
+    </style>
+</head>
+
+<body id='bigBody'>
+    <div id='divMsg'>
+        我们是热爱学习的 好青年，和香港废材不一样！！他闹由他闹，反正我不闹。
+    </div>
+    
+    <script>
+        // 节点： 元素节点(html标签)、文本节点、注释节点
+
+
+        //1.document.write() ： 将 内容 输出到 body 中 慎用，可能会覆盖原本内容,js引擎解析字符串时也会识别标签,标签的效果会被显现----------------------------------
+        // document.write('<h1>知识可以当饭吃！！！</h1>');
+
+        // document.getElementsByTagName('body')[0].onclick=function(){
+        //     document.write('我说了我会 清空 前面body的内容，重新 生成 新的 body 内容');
+        // }
+
+        //2.  innerHTML ：少用 （性能问题，会导致 网页 运行较慢 ~~~ ） 会替换原本内容，如果不想替换使用 += 拼接---------------------
+        //    但是，在生成 100 个标签 以内 都可以使用它，因为 消耗的性能可以忽略不计
+        var divNode = document.getElementById('divMsg');
+        // 2.1 直接修改 元素里的 内容
+        // divNode.innerHTML = '<h1>中华帝国万古长青~~千秋万代！最终实现 共产主义~~~！</h1>';
+        // 2.2 向 元素 中 追加 新内容
+         divNode.innerHTML += '<h1>中华帝国万古长青~~千秋万代！最终实现 共产主义~~~！</h1>';
+
+
+        //3. dom推荐方式：  document.createElemnt() 动态创建一个dom对象（空标签，需要自己设置属性）在内存中,需要使用appendChild来添加到HTML ---------------------------------------
+        // 创建一个 指定 名称 的 元素节点 对象
+        var divNew = document.createElement('div');
+        divNew.innerHTML = '<h1>下午讲课的内容 非常 多的案例 ，很好玩 ~~~ </h1>';
+        
+        // 向 body 节点 中 追加 子节点
+        document.getElementById('bigBody').appendChild(divNew);
+    
+    </script>
+</body>
+</html>

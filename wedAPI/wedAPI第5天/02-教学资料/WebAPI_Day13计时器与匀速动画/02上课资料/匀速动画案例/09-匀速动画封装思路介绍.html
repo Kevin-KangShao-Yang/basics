@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="移动到400" id="move400" />
+    <input type="button" value="移动到800" id="move800" />
+    <div class="one" id="box"></div>
+  
+</body>
+
+<script>
+    //需求： 点击按钮移动盒子到800px
+
+    /* 目前代码存在的问题
+
+    1.代码冗余     ： 函数：代码存入变量中可以实现代码的复用
+    2.移动距离不限 ：  函数参数
+    3.移动元素不限 ：  函数参数
+    4.移动方向不限：
+    
+     */
+
+
+    var box = document.getElementById('box');
+
+    var timeID = null;
+
+    //需求： 点击按钮移动盒子到800px
+    document.getElementById('move800').onclick = function () {
+
+        //1.清除以前的定时器,以本次为准
+        clearInterval(timeID);
+        //2. 开始本次移动
+        timeID = setInterval(function () {
+            //1.获取元素的当前位置
+            var currentLeft = box.offsetLeft;
+            //2.开始移动
+            currentLeft += 10;
+            box.style.left = currentLeft + 'px';
+            //3.边界检测
+            if (currentLeft >= 800) {
+                //(1)清除定时器
+                clearInterval(timeID);
+                //(2)元素复位
+                box.style.left = '800px';
+            };
+        }, 50);
+    };
+
+    document.getElementById('move400').onclick = function () {
+        //1.清除以前的定时器,以本次为准
+        clearInterval(timeID);
+        //2. 开始本次移动
+        timeID = setInterval(function () {
+            //1.获取元素的当前位置
+            var currentLeft = box.offsetLeft;
+            //2.开始移动
+            currentLeft += 10;
+            box.style.left = currentLeft + 'px';
+            //3.边界检测
+            if (currentLeft >= 400) {
+                //(1)清除定时器
+                clearInterval(timeID);
+                //(2)元素复位
+                box.style.left = '400px';
+            };
+        }, 50);
+    };
+</script>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #0094ff;
+            position: absolute;
+            left: 10px;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="缓动到400" id="move400" />
+    <input type="button" value="缓动到800" id="move800" />
+
+    <div id="box" style="opacity: 1;"></div>
+
+</body>
+
+<script>
+    /*
+    1.物体运动的两种速度
+        匀速：速度一样
+        变速：速度不一样
+              缓动 ： 速度越来越小（刹车时，也是慢慢减速，而不是一脚急刹）
+    
+    2. 【 缓动动画核心公式：  步长 = （目标位置 - 当前位置）/10 】
+
+    3.分析0-400 缓动的过程原理
+
+    4. 缓动动画特点
+        a. 需要取整 ： 因为核心公式是除法计算，可能会有小数。而像素一般是整数，所以需要取整
+        b. 缓动动画没有误差：因为动画到了后期 都是1px的移动，所以没有误差
+     */
+
+    /*缓动动画*/
+
+    //缓动到400
+    document.getElementById('move400').onclick = function () {
+        // 获取目标 元素节点
+        var boxNode = document.getElementById('box');
+        clearInterval(boxNode.timer); // 停止上一次 的计时器(有就停止，没有就什么也不做)
+
+        // 设置 目标位置
+        var targetPosition = 400;
+        // 启动 计时器
+        boxNode.timer = setInterval(function () {
+            // 获取当前 元素的位置
+            var curPos = boxNode.offsetLeft;
+
+            // 计算缓动步长
+            var step = (targetPosition - curPos) / 10; // 步长 根据 缓动公式 运算
+            step = Math.ceil(step); // 使用 向上 取整
+
+            curPos += step; //累加步长
+
+            // 5.修改 元素节点 位置
+            boxNode.style.left = curPos + 'px';
+
+            // 边界检查
+            if (curPos == targetPosition) {
+                clearInterval(boxNode.timer); // 关闭计时器
+            }
+        }, 20);
+    };
+
+    //缓动到800
+    document.getElementById('move800').onclick = function () {
+        // 获取目标 元素节点
+        var boxNode = document.getElementById('box');
+        clearInterval(boxNode.timer); // 停止上一次 的计时器(有就停止，没有就什么也不做)
+
+        // 设置 目标位置
+        var targetPosition = 800;
+        // 启动 计时器
+        boxNode.timer = setInterval(function () {
+            // 获取当前 元素的位置
+            var curPos = boxNode.offsetLeft;
+
+            // 计算缓动步长
+            var step = (targetPosition - curPos) / 10; // 步长 根据 缓动公式 运算
+            step = Math.ceil(step); // 使用 向上 取整
+
+            curPos += step; //累加步长
+
+            // 5.修改 元素节点 位置
+            boxNode.style.left = curPos + 'px';
+
+            // 边界检查
+            if (curPos == targetPosition) {
+                clearInterval(boxNode.timer); // 关闭计时器
+            }
+        }, 20);
+    };
+
+
+
+</script>
+
+</html>

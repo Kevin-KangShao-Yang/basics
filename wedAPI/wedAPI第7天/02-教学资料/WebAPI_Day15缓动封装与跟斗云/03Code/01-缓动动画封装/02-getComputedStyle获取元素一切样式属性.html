@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 130px;
+            background-color: #0094ff;
+            border: 10px solid #000;
+            padding: 10px;
+            margin: 0 auto;
+            position: relative;
+            left: 0px;
+            top: 50px;
+        }
+
+        .one::after {
+            content: "哈哈哈";
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one" id="box" style="height: 120px"></div>
+
+    <script>
+        var box = document.getElementById('box');
+        /* 重点：getComputedStyle : 获取一切样式属性 
+           1. 浏览器　会　将　行内 样式 和 行外样式 合编成 一个 样式表对象！
+           2. window.getComputedStyle(dom对象) 获取 dom对象的 合编样式表对象！
+           3. 获取的内容 都是 字符串 ，并且都带了单位！！
+           4. 只读属性，不能修改！！
+           重点:当行内跟内嵌同时有相同属性时,最后获得的是行内的属性值,因为行内的优先级大于内嵌,内嵌的优先级大于外链式
+         */
+
+        // 1. 通过 dom对象.style.属性
+        console.log(box.style.height); // 可以获取 行内样式表的属性
+        console.log(box.style.width); // '' 无法 获取 行外样式表 的属性
+
+        // 2. 通过 window.getComputedStyle 获取 行外样式 
+        var styleObj = window.getComputedStyle(box);
+        console.log(styleObj);
+
+        console.log(styleObj.width);
+        console.log(styleObj.height);
+        console.log(styleObj.padding);
+        console.log(styleObj.backgroundColor);
+
+
+        //  styleObj.height = '400px'; // 报错
+
+        // -------------------------------------------------
+        // 二、编写 自定义函数，方便获取样式值
+        var boxWidth = getComputed(box, 'margin');
+        var boxWidth = getComputed(box, 'width');
+        var boxWidth = getComputed(box, 'height');
+        var boxWidth = getComputed(box, 'padding');
+        var boxWidth = getComputed(box, 'backgroundColor');
+
+        console.log('通过自定义方法获取：' + boxWidth);
+
+        /**
+         * @description:  getComputed - 获取 指定元素的 某个属性值
+         * @param {Node} eleObj - 元素节点对象 
+         * @param {String} proName - 要获取的 样式属性名称 
+         * @return: {String} - 样式属性值
+         */
+        function getComputed(eleObj, proName) {
+            // eleObj.currentStyle // IE8 的拿法,面试会问
+            
+            // 1. 获取 元素对象的 合编样式表对象
+            var styleObj = window.getComputedStyle(eleObj);
+            // 2. 获取 对应的属性值
+            // return styleObj.width;
+            // return styleObj['width'];
+            return styleObj[proName]
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //4. IE8兼容
+    // console.log(box.currentStyle);
+
+
+
+    </script>
+</body>
+
+</html>

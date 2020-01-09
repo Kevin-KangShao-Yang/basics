@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //逗号表达式,就是用逗号链接的式子
+        var num1 = 10,num2 = 20;
+        //var res = (num1+10,num2-10,num1 + num2);
+        //console.log(res);
+        //逗号表达式的最终结果,是最后一个式子的结果
+        //逗号表达式中的所有的式子,都是会运算的,只是最终结果是最后一个式子
+
+        var res = (num1++,++num2,num1 + num2);
+        console.log(res);//32
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #small {
+            width: 50px;
+            height: 50px;
+            background: url("images/bgs.png") no-repeat -159px -51px;
+
+            position: fixed;
+            top: 30%;
+            right: 10px;
+        }
+
+        #big {
+
+            width: 210px;
+            height: 210px;
+            position: absolute;
+            right: 50px;
+            display: none;
+            /* 隐藏元素 */
+        }
+
+        #big img {
+
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="small">
+        <div id="big">
+            <img src="images/hmewm.jpg" alt="" />
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    //1. 鼠标移入  onmouseover   -- 当鼠标 在 dom 对象的 边界之中
+    //   移出事件  onmouseout    -- 当鼠标 移出 dom对象的 边界
+
+    // 目标：鼠标 移入 小图片 就 显示 大图片
+    //           移出           隐藏 
+    // 实现思路：为 小图片 设置 onmouseover 事件 ，显示 大图片
+    //                        onmouseout 事件，  隐藏 大图片
+
+
+    document.getElementById('small').onmouseover = function () {
+        document.getElementById('big').style.display = 'block';
+    };
+
+    document.getElementById('small').onmouseout = function () {
+        document.getElementById('big').style.display = 'none';
+    };
+</script>
+
+</html>

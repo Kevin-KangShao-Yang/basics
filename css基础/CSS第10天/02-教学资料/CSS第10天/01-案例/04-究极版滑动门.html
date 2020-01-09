@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            float: left;
+        }
+
+        .left {
+            height: 33px;
+            padding-left: 15px;
+            background: url("./weixin.png");
+        }
+
+        .right {
+            /* width: 15px; */
+            /* 有内容的盒子宽度不能写死 */
+            height: 33px;
+            background: url("./weixin.png") right 0;
+            padding-right: 15px;
+            /* 将内容像左边平移15px */
+            line-height: 33px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <div class="right">班长夜撬群主门</div>
+    </div>
+
+</body>
+
+</html>

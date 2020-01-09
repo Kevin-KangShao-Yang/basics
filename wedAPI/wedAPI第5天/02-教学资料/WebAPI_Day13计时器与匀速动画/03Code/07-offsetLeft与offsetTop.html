@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .father {
+            top: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            background: #0094ff;
+            border: 0px solid #000;
+            margin: 0px;
+            position: absolute;
+        }
+
+        .son {
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background:gray;
+            /* border: 20px solid purple; */
+            /* padding: 10px; */
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father" id='james' style="left:50px">
+        <div class="son" id="box">1</div>
+    </div>
+
+    <script>
+        /* offsetLeft/Top:  获取元素 真实的位置
+            元素自身  左/上 外边框  距离定位父级  左/上  内边框的距离
+         */
+        var fatherDiv = document.getElementById('james');
+        var boxDiv = document.getElementById('box');
+
+        console.log(fatherDiv.style.top);
+        console.log(fatherDiv.style.left);
+
+
+        //2. 获取 元素 真实 位置 
+        console.log(fatherDiv.offsetTop);
+        console.log(fatherDiv.offsetLeft);
+
+
+        // -------------------------------------
+        
+        console.log(boxDiv.style.top);
+        console.log(boxDiv.style.left);
+
+        console.log(boxDiv.offsetTop);
+        console.log(boxDiv.offsetLeft);
+        
+
+
+
+    </script>
+</body>
+
+</html>

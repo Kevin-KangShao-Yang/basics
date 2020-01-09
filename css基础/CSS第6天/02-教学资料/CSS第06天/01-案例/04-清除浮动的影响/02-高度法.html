@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            background-color: red;
+            height: 300px;
+            /* 高度法,直接给父元素设置高度 */
+            /* 适合固定高度的盒子 */
+            /* 不适合动态高度盒子 */
+            /* 没有那么完美 */
+        }
+        .son {
+            width: 200px;
+            height: 50px;
+            background-color: pink;
+            border: 2px solid green;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+</body>
+</html>

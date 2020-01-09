@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">存储据</button>
+    <button id="btn2">取储据</button>
+    <button id="btn3">删储据</button>
+    <button id="btn4">清空储据</button>
+
+    <script>
+        /*1.sessionStorage ： 将 数据 存在缓存中 
+            * a.两者语法完全一样，只是存储时间不同
+            * b.sessionStorage存储的数据只要页面一关闭就没有了
+
+          2.语法 ： 
+            添加数据 ：  sessionStorage.setItem('属性名',属性值)
+            获取数据：   sessionStorage.getItem('属性名')
+            删除数据：   sessionStorage.removeItem('属性名')
+            清除数据： 全部删除 sessionStorage.clear()
+
+          3.两者区别  ： 相同点：都是存储数据  不同点：存储时间不同
+            a.localStorage : 永久存储 （存储在硬盘，HP值无限，除非你电脑硬盘损坏或者卸载浏览器）
+            b.sessionStorage:临时存储 （存储在内存，HP值一条命）
+        
+         */
+
+         document.getElementById('btn1').onclick=function(){
+          //  localStorage
+          sessionStorage.setItem('gfName','Linda'); 
+         }
+
+         
+         document.getElementById('btn2').onclick=function(){
+          //  localStorage
+          var v = sessionStorage.getItem('gfName'); // 如果没有数据，返回 null
+          console.log(v);
+         }
+
+          // 2.1 存对象数据----------------------------------------------------
+    document.getElementById('btnSaveObj').onclick = function () {
+      //思考：localStorage 只能存字符串，如果有 对象 或 数组 要保存咋办？
+
+      var myDog = { name: 'ruikey', age: 1, gender: false };
+
+      // 将 对象 转成 JSON 字符串 ，方便保存  JSON.stringify 将 对象 转成 JSON 格式的 字符串
+      var jsonStr = JSON.stringify(myDog); // '{"name":"ruikey","age":1,"gender":false}'
+
+      // 将 JSON 字符串 存入 localStorage
+      sessionStorage.setItem('dog', jsonStr);
+    }
+
+    // 2.2 取 对象数据----------------------------------------------------
+    document.getElementById('btnReadObj').onclick = function () {
+      // 先 获取 存在 localStorage 的 json字符串
+      var strDog = sessionStorage.getItem('dog');
+      
+      // 将 json字符串 还原成  对象  JSON.parse 可以 将 json字符串 转成 对象
+      var dogObj = JSON.parse(strDog);
+
+      // 访问 对象 中的 3个 属性
+      console.log(dogObj.name);
+      console.log(dogObj.age);
+      console.log(dogObj.gender);
+    }
+
+
+
+
+         document.getElementById('btn3').onclick=function(){
+          sessionStorage.removeItem('gfName'); 
+         }
+
+
+         document.getElementById('btn4').onclick=function(){
+          sessionStorage.clear();
+         }
+         
+    </script>
+</body>
+</html>
