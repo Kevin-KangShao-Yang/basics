@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <script>
+       /*
+       1.响应式布局：一个HTML页面同时适配多个终端（移动端，PC端）
+       2.核心思路
+        （1）先给页面注册大小变化事件
+        （2）获取当前页面可视区域大小（视口），根据不同的尺寸加载不同的样式
+       
+        */     
+
+        //需求： （1）>=1000 body红色  (2)600-1000 body黄色  (3)<=600, 蓝色
+        window.onresize = function () {
+            var widthX = document.documentElement.clientWidth;
+            if(widthX >= 1000){
+                document.getElementsByTagName('body')[0].style.backgroundColor = 'red';
+            }else if(widthX > 600){
+                document.getElementsByTagName('body')[0].style.backgroundColor = 'yellow';
+            }else{
+                document.getElementsByTagName('body')[0].style.backgroundColor = '#0094ff';
+            }
+            // document.documentElement.clientHeight
+        }
+    </script>
+</body>
+</html>

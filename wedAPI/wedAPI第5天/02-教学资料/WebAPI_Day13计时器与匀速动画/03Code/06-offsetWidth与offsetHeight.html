@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .one{
+            width: 100px;
+            height: 100px;
+            background-color: #0094ff;
+            padding: 5px;
+            border: 10px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="one" style="width:150px;height: 170px;"></div>
+
+<script>
+    /* offset家族 : 获取元素真实的宽高与位置
+    offsetWidth / offsetHeight :  获取元素的宽跟高
+    offsetParent : 获取最近的定位父元素 （自己定位参照的父元素）
+    offsetLeft / offsetTop :   获取元素的Left跟Top
+     */
+
+    //不管 是 哪套 演示表 设置了 元素的 样式（宽高、top、left ....） ，都可以 通过 offset 家族的 属性 获取
+    // 1. 获取 真实宽度 dom.offsetWidth
+     var box = document.getElementById('box');
+
+     /*1.复习点语法获取元素宽高的特点 
+     a. 只能获取行内，无法获取行外
+     b. 获取的是string类型，带单位
+     c. 获取的是 行内样式的 width/height  - 不包含 padding 和 border
+     d. 可以获取，也可以修改
+      */
+     console.log(box.style.width);
+     console.log(box.style.height);
+
+     box.style.width = '270px'; // 行内样式 可以 读写
+    
+
+      /*2. offsetWidth/height 特点 
+      a. 可以获取行内和行外 宽高
+      b. 获取的是number，不带单位
+      c. 获取的是真实宽高  （width+padding+border）
+      d. 只能获取，无法修改 -- 只读属性
+       */
+     console.log(box.offsetWidth);
+     console.log(box.offsetHeight); // 获取 真实 高度
+    // box.offsetHeight = 200; // 只能 获取，不能设置 -- 是 只读属性
+     
+
+</script>
+</body>
+</html>

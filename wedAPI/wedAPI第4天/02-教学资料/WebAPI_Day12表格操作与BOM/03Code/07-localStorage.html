@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn1">存储据</button>
+  <button id="btn2">取储据</button>
+  <button id="btnSaveObj">存储"对象"</button>
+  <button id="btnReadObj">读取"对象"</button>
+  <button id="btn3">删储据</button>
+  <button id="btn4">清空储据</button>
+
+  <script>
+    /*1.localStorage对象 ： 本地存储 将数据存储到浏览器
+      2.语法 ： 
+        添加数据 ：  localStorage.setItem('属性名',属性值)
+        获取数据：    localStorage.getItem('属性名')
+        删除数据：     localStorage.removeItem('属性名')
+        清除数据： 全部删除 localStorage.clear()
+
+      3.注意点  
+        a.如果 setItem时 ，key 已经 存过了，那就 用新值 覆盖 老值
+
+        b. 只能存储字符串类型，如果是其他类型自动转成字符串
+        b. 存储的数据是永久存储 （只要你的电脑还在，浏览器没有卸载，一直存在）
+    
+*/
+    // 1.1 存 字符串数据----------------------------------------------------
+    document.getElementById('btn1').onclick = function () {
+      localStorage.setItem('gfName', '如花1');
+      localStorage.setItem('bfName', 'Skr Skr Skr');
+      alert('保存数据成功~~！');
+    }
+
+    // 1.2 取 字符串数据----------------------------------------------------
+    document.getElementById('btn2').onclick = function () {
+      var v = localStorage.getItem('gfName');
+      alert('您获取的女朋友的名字为：' + v);
+    }
+
+    // 2.1 存对象数据----------------------------------------------------
+    document.getElementById('btnSaveObj').onclick = function () {
+      //思考：localStorage 只能存字符串，如果有 对象 或 数组 要保存咋办？
+
+      var myDog = { name: 'ruikey', age: 1, gender: false };
+
+      // 将 对象 转成 JSON 字符串 ，方便保存  JSON.stringify 将 对象 转成 JSON 格式的 字符串
+      var jsonStr = JSON.stringify(myDog); // '{"name":"ruikey","age":1,"gender":false}'
+
+      // 将 JSON 字符串 存入 localStorage
+      localStorage.setItem('dog', jsonStr);
+    }
+
+    // 2.2 取 对象数据----------------------------------------------------
+    document.getElementById('btnReadObj').onclick = function () {
+      // 先 获取 存在 localStorage 的 json字符串
+      var strDog = localStorage.getItem('dog');
+      
+      // 将 json字符串 还原成  对象  JSON.parse 可以 将 json字符串 转成 对象
+      var dogObj = JSON.parse(strDog);
+
+      // 访问 对象 中的 3个 属性
+      console.log(dogObj.name);
+      console.log(dogObj.age);
+      console.log(dogObj.gender);
+    }
+
+    // 3.1 删除 数据 -----------------------------------------------------
+    document.getElementById('btn3').onclick = function () {
+      localStorage.removeItem('gfName');
+      alert('删除数据成功~~！');
+    }
+
+    // 3.2 清空 数据 ------------------------------------------------------
+    document.getElementById('btn4').onclick = function () {
+      localStorage.clear();
+      alert('清空数据成功~~！');
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <input type="button" value="讨厌1">
+    <input type="button" value="讨厌2">
+    <input type="button" value="讨厌3">
+    <input type="button" value="讨厌4">
+    <input type="button" value="讨厌5">
+</body>
+
+<script>
+    var btnList = document.getElementsByTagName('input');
+    // 目标： 点击按钮 获取 按钮 在 类数组中的下标
+    // 1.遍历 按钮数组，并 为 每个 按钮添加 onclick 事件方法
+
+    for (var i = 0; i < btnList.length; i++) {
+        // 2.1 将 当前 i 的值，存入 当前遍历的 按钮对象的 自定义属性中 btnIndex = i
+        btnList[i].setAttribute('btnIndex',i);
+
+        // 2.2 为按钮 添加 点击事件 处理函数
+        btnList[i].onclick = function () {
+
+            // 3. 从 对象中 取出 标签属性 btnIndex 的值 ，从而获取 下标值
+            var iValue = this.getAttribute('btnIndex');
+            // 打印
+            alert(iValue);
+        }
+
+    }
+
+    // 当 循环 结束时，i = 5
+
+    // 用户点击按钮 肯定是 在 循环结束之后！ 变量 i 已经 等于 5 了！！！
+</script>
+
+</html>

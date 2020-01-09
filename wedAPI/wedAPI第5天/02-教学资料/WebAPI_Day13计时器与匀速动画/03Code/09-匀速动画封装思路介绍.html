@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="移动到400" id="move400" />
+    <input type="button" value="移动到800" id="move800" />
+
+    <div class="one" id="box" style='left:10px;'></div>
+
+</body>
+
+<script>
+    //需求： 点击按钮移动盒子到800px
+
+    /* 目前代码存在的问题
+
+    1.代码冗余     ： 函数：代码存入变量中可以实现代码的复用
+    2.移动距离不限 ：  函数参数
+    3.移动元素不限 ：  函数参数
+    4.移动方向不限：
+     */
+
+
+
+    // 移动到 400px
+    document.getElementById('move400').onclick = function () {
+        // 1. 目标：移动到 400px 的位置   ： left = 400px
+        // 2. 思路：
+        //    a. 设置 一个 计时器  -- setInterval(代码，间隔时间);
+        //    b. 每过一段时间 ，就需要 获取  目标元素的 left 值，在此基础上 进行"位移"(left + '5px')
+        //    c. 一旦 目标元素的 left >= 目标位置，就要 停止计时器
+
+        var boxNode = document.getElementById('box');
+
+        var timer = setInterval(function () {
+            // 1.获取 目标元素的 Left 值
+            var curPos = parseInt(boxNode.style.left); // parseInt('10px') - > 10
+            // 2.进行"位移" ，curPos += 3;
+            curPos += 7;
+            // 3.将 修改后的 位置 重新设置给 目标元素的 left 属性
+            boxNode.style.left = curPos +'px';
+
+            // 4. 判断 ： 如果 到了 目标位置 400px ，要停止移动，清空 计时器
+            if(curPos >= 400){
+                // 4.1 关闭 计时器
+                clearInterval(timer);
+                // 4.2 元素复位
+                boxNode.style.left = '400px';
+            }
+        }, 20);
+
+    }
+
+
+    // 移动到 800px
+    document.getElementById('move800').onclick = function () {
+
+        var boxNode = document.getElementById('box');
+
+        var timer = setInterval(function () {
+            // 1.获取 目标元素的 Left 值
+            var curPos = parseInt(boxNode.style.left); // parseInt('10px') - > 10
+            // 2.进行"位移" ，curPos += 3;
+            curPos += 7;
+            // 3.将 修改后的 位置 重新设置给 目标元素的 left 属性
+            boxNode.style.left = curPos +'px';
+
+            // 4. 判断 ： 如果 到了 目标位置 400px ，要停止移动，清空 计时器
+            if(curPos >= 800){
+                // 4.1 关闭 计时器
+                clearInterval(timer);
+                // 4.2 元素复位
+                boxNode.style.left = '800px';
+            }
+        }, 20);
+    }
+    
+
+</script>
+
+</html>

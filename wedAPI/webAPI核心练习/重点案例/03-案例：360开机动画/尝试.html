@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>静态文件</title>
+    <style>
+        .box {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        .box #closeButton {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .box #closeButton1 {
+            position: absolute;
+            top: 244;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box" id="box">
+        <span id="closeButton"></span>
+        <div class="hd" id="headPart">
+            <img src="images/t.jpg" alt="" />
+        </div>
+        <span id="closeButton1"></span>
+        <div id="bottomPart" class="bd">
+            <img src="images/b.jpg" alt="" />
+        </div>
+    </div>
+
+    <script src="./animation.js"></script>
+
+    <script>
+        var closeButton = document.getElementById('closeButton');
+        var closeButton1 = document.getElementById('closeButton1');
+        var bottomPart = document.getElementById('bottomPart');
+        var box = document.getElementById('box');
+       
+        closeButton.onclick=function(){
+            moveSlowly(bottomPart,{height:0},function () {
+                moveSlowly(box,{width:0},function () {
+                    box.style.display='none'; 
+                })
+            })
+        }
+        closeButton1.onclick =function () {
+            moveSlowly(bottomPart,{height:0},function () {
+                bottomPart.style.display='none';
+            })
+        }
+
+    </script>
+</body>
+
+</html>

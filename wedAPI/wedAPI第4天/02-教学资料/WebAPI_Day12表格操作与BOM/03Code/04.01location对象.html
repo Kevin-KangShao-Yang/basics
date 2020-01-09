@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <button id="assign">跳转网页assign</button>
+    <button id="replace">替换网页replace</button>
+    <button id="reload">刷新网页F5</button>
+    <script>
+        /*location : 网页地址栏 
+
+            URL: 全球统一资源定位符   ht        url = 协议名（http） + ip地址（域名） + 端口号 + 资源路径
+            protocol : 协议  HTTP  HTTPS  File本地文件
+            host主机 =  hostname:主机名ip + port : 端口号
+            pathname: 资源路径
+            search: 网址中  ?号后面的 数据 -- url参数
+            hash : 资源定位符（锚点定位）  #元素id ：滚动到指定id的元素位置
+            search: url请求的参数
+         */
+
+         console.log(window.location);
+         console.log(window.location.search);
+
+
+        /* location 对象：三个方法 
+            1.location.assgin()：跳转网页。可以回退
+            2.location.replace():替换网页，不能回退
+            3.location.reload() : 刷新网页  F5
+         */
+
+        // 1. 跳转页面：命令浏览器 去访问 另一个 页面 上一个页面
+        //    会 留下 访问 记录，未来 可以 退回
+        document.getElementById('assign').onclick=function(){
+            // window.location.assign('http://www.baidu.com');
+            // window.location.href = 'http://www.baidu.com';
+            window.location = 'http://www.baidu.com';
+        }
+
+        // 2. 替换页面：
+        //    不会留下 访问 记录，未来 不可以 退回 上一个页面
+        document.getElementById('replace').onclick=function(){
+            window.location.replace('http://www.baidu.com');
+        }
+
+
+        // 3. 刷新页面（f5）
+        document.getElementById('reload').onclick=function(){
+            window.location.reload();
+        }
+
+    </script>
+</body>
+
+</html>

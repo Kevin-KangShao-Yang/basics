@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="高度改成500" id="move400" />
+    <input type="button" value="宽度改成500" id="move800" />
+
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById('box');
+
+        document.getElementById('move400').onclick = function () {
+            moveSlowly(box, 'height', 500);
+        };
+
+
+        document.getElementById('move800').onclick = function () {
+            moveSlowly(box, 'width', 500);
+        };
+
+
+        /**
+         * @description: moveSlowly - 缓动函数
+         * @param {Node} - eleDom 要进行动画操作的 元素对象 
+         * @param {String} - cssProName  要进行 缓动 的 元素 属性名 (left ,height , width , top...)
+         * @param {Node} - target 属性目标值
+         * @return: 
+         */
+        function moveSlowly(eleDom, cssProName, target) {
+
+            eleDom.timerId = setInterval(function () {
+                // 2. 获取 目标元素 要修改 的 样式 的 当前属性值
+                var current = parseInt(getComputed(eleDom, cssProName)); //  parseInt('100px') -> 100
+
+                // 3. 计算 缓动的 步长：计算每次要修改 多少值
+                var step = target > current ? Math.ceil((target - current) / 10) : Math.floor((target - current) / 10);
+                
+                // 4. 计算和移动元素
+                current += step;
+                // 5. 通过 对象 中括号 访问法 重新设置 样式属性的值
+                // eleDom.style.width = current + 'px';
+                // eleDom.style['width'] = current + 'px';
+                eleDom.style[cssProName] = current + 'px';
+
+                // 6. 边界检测：判断 是否 到 了目标位置
+                if (current == target) {
+                    clearInterval(eleDom.timerId);
+                }
+            }, 20);
+        }
+
+
+        /**
+         * @description:  getComputed - 获取 指定元素的 某个属性值
+         * @param {Node} eleObj - 元素节点对象 
+         * @param {String} proName - 要获取的 样式属性名称 
+         * @return: {String} - 样式属性值
+         */
+        function getComputed(eleObj, proName) {
+            // eleObj.currentStyle // IE8 的拿法
+
+            // 1. 获取 元素对象的 合编样式表对象
+            var styleObj = window.getComputedStyle(eleObj);
+            // 2. 获取 对应的属性值
+            // return styleObj.width;
+            // return styleObj['width'];
+            return styleObj[proName]
+        }
+    </script>
+</body>
+
+</html>

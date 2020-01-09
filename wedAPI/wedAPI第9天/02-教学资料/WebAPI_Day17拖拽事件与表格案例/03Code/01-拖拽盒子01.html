@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #father {
+            width: 200px;
+            height: 400px;
+            background-color: skyblue;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* margin: 50px; */
+        }
+
+        #son {
+            width: 200px;
+            height: 100px;
+            background-color: hotpink;
+            cursor: move;
+             /* css3中样式鼠标变成拖动样式 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="father">
+        <div id="son"></div>
+    </div>
+
+    <script>
+        //1. 要移动，就必须 脱离标准文档流
+        //2. 位置移动：参考点 为 页面的 左上角，目标点为 div 左上角
+        //             目标点 要移动 到 鼠标的位置
+        //3. 时间点：
+        //   3.1 点击鼠标 开始移动
+        //   3.2 拖拽鼠标 不断修改 div 的位置
+        //   3.3 松开鼠标 确定修改 div 的位置
+
+
+        var fatherNode = document.getElementById('father');
+        var sonNode = document.getElementById('son');
+
+        //sonNode.onclick
+        // 1. 鼠标 点下去 事件
+        sonNode.onmousedown = function (e) {
+            e = e || window.event;
+            // 1.1 为 dom 对象 添加 鼠标 移动事件
+            console.log('鼠标点我啦~~~~');
+            var clickX = e.pageX - fatherNode.offsetLeft;
+            console.log(clickX);
+            
+            var clickY = e.pageY - fatherNode.offsetTop;
+            console.log(clickY);
+            
+
+                // 2. 鼠标 移动 事件 - 注意 要添加到 document 上
+                //document指的是页面，document.onmousemove指页面移动事件
+                document.onmousemove = function (e) {
+                    console.log('鼠标带我私奔啦~~~~');
+                    e = e || window.event;
+                    // 2.1 不断 获取 鼠标 的位置，设置给 div
+                    fatherNode.style.left = e.pageX - clickX + 'px';
+                    fatherNode.style.top = e.pageY - clickY + 'px';
+                }
+        }
+
+        // 3. 鼠标 松开 事件
+        sonNode.onmouseup = function () {
+            console.log('鼠标 离开我了~~~~');
+            // 3.1 松开鼠标时，关闭 鼠标移动事件
+            document.onmousemove = null;
+        }
+    </script>
+
+</body>
+
+</html>

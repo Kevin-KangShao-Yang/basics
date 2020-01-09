@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 200px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="移动到400" id="move400" />
+    <input type="button" value="移动到800" id="move800" />
+    <div class="one" id="box"></div>
+
+
+</body>
+
+<script>
+
+    /* 本小节封装目标：解决移动方向不限
+    1.发现问题：从左往右有动画，从右往左没有动画
+    2.分析问题：
+        从左往右： 当前位置 < 目标位置   (1)currentLeft+=10  (2) if(currentLeft>=target){}
+        从右往左： 当前位置 >  目标位置  (1)currentLeft -= 10 (2)if(currentLeft <= target){}
+    3.解决问题
+     */
+
+
+
+    var box = document.getElementById('box');
+
+
+    //需求:绿色盒子移动到800
+    document.getElementById('move800').onclick = function () {
+        animationMove(box, 800);
+    };
+
+    //需求：红色盒子移动到400
+    document.getElementById('move400').onclick = function () {
+        animationMove(box, 400);
+    };
+
+
+
+
+
+
+    /**
+     * @description: 匀速动画封装
+     * @param {object} ele :要移动的元素
+     * @param {number} target :要移动的目标距离
+     * @return: 
+     */
+    function animationMove(ele, target) {
+
+        //1.清除以前的定时器,以本次为准
+        clearInterval(ele.timeID);
+        //2.开始本次动画
+        ele.timeID = setInterval(function () {
+            //2.1 获取当前位置
+            var currentLeft = ele.offsetLeft;
+            //2.2 开始移动 isLeft true:从左往右 false从右往左
+            // if (currentLeft < target) {
+            //     var isLeft = true;
+            // } else {
+            //     var isLeft = false;
+            // };
+
+            var isLeft = currentLeft < target ? true : false;
+
+
+            // if (isLeft) {
+            //     currentLeft += 10;
+            // } else {
+            //     currentLeft -= 10;
+            // };
+
+            isLeft ? currentLeft += 10 : currentLeft -= 10;
+
+            ele.style.left = currentLeft + 'px';
+            //2.3 边界检测
+
+            if ( isLeft?currentLeft >= target:currentLeft <= target) {
+                //清除定时器
+                clearInterval(ele.timeID);
+                //元素复位
+                ele.style.left = target + 'px';
+            };
+
+            // if (isLeft) {
+            //     if (currentLeft >= target) {
+            //         //清除定时器
+            //         clearInterval(ele.timeID);
+            //         //元素复位
+            //         ele.style.left = target + 'px';
+            //     };
+            // } else {
+            //     if (currentLeft <= target) {
+            //         //清除定时器
+            //         clearInterval(ele.timeID);
+            //         //元素复位
+            //         ele.style.left = target + 'px';
+            //     };
+            // }
+
+        }, 50);
+    };
+
+
+
+</script>
+
+</html>

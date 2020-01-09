@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+</head>
+
+<body>
+  <a href="#" id='aBtn1'>再点我就亲你</a>
+
+  <a href="#" onclick="clickYou()" id='aBtn2'>再点我试试看</a>
+  <!--<a href="#" onclick="funtion(){ clickYou }">再点我试试看</a>   -->
+
+</body>
+
+<script>
+  // 1. 标签中直接 为 onclick 属性 设置代码，本质上 是 添加了一个 匿名函数，将 标签中写的代码 封装到 了 匿名函数中之后，将匿名函数 设置给了 onclick 属性
+  // 2.     注意：onclick = '自定义函数名'   -> onclick = function(){ 自定义函数名 }
+  //              onclick = '自定义函数名()' -> onclick = function(){ 自定义函数名() }
+
+  document.getElementById('aBtn1').onclick = function () {
+    console.log(this);
+    alert('死鬼~~~~');
+  };
+
+  // 注意1：浏览器 发现有人点击  1号按钮时，就会 相当于 执行 如下代码：
+  // document.getElementById('aBtn1').onclick(); // 方法中的this口诀：谁. 出 这个方法，方法里的this就是谁
+
+
+  // 注意2： <a href="#" onclick="clickYou()" id='aBtn2'>再点我试试看</a>
+  //         onclick = "clickYou()"   -> onclick = function(){ clickYou() }
+
+  // 思考： 2号按钮被点击时，会执行 clickYou 方法，问，此时 clickYou 中的 this 是谁
+  // 回答：  window
+  // 原因：
+  //  document.getElementById('aBtn2').onclick = funtion(){  window.clickYou()  };
+  //  document.getElementById('aBtn2').onclick(); // 
+
+  function clickYou() {
+    alert('死鬼~~~');
+    console.log(this); // window
+  }
+</script>
+
+</html>

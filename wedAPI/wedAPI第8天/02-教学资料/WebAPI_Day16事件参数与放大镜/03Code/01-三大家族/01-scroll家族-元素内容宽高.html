@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            /*设置auto可以添加滚动条，如果此时div没有设置宽高，就会变成和内容一样大小*/
+            overflow: auto; 
+            /* 盒子内容超出盒子,就会出现一个滚动条 */
+        }
+
+        img {
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="one" id="box">
+        <img src="1.jpg" alt="" />
+    </div>
+
+
+    <script>
+
+        /*1.offset家族： 获取【元素自身】的真实宽高和位置 (width+padding+border)
+            offsetWidth / offsetHeight: 获取 元素的 实际 宽 和 高
+            offsetLeft/offsetTop : 获取 元素的 实际 的 距离 父容器的 左边距 和 上边距 的距离
+            offsetParent: 定位父元素 -- 比如：在 浮动流 里的 父元素
+         */
+
+        /* 2.scroll 家族： 获取【元素中的内容】的真实宽高与位置
+            scrollWidth / scrollHeight:【元素中的内容】的真实宽高，元素内容 包含 所有的 内容
+            scrollLeft / scrollTop : 元素中的内容在滚动时超出内容区域的部分的真实位置
+            scrollLeft ： 左边滚动出去的距离
+            scrollTop ：  上边滚动出去的距离
+            onscroll:元素的滚动条事件，只要滚动就会触发
+         */
+
+
+
+        var box = document.getElementById('box');
+        //  console.log(box.scrollWidth); // 200 的 原因 是 图片 还没有加载出来
+
+        // onload 事件 ： 等 页面 所有的 资源 都加载完毕后，才 自动执行
+        window.onload = function () {
+            console.log(box.scrollWidth); // 1280 的原因，图片 已经 加载完毕，返回的 是 div 中内容图片的 宽度
+            console.log(box.scrollHeight); // 800 的原因，图片 已经 加载完毕，返回的 是 div 中内容图片的 高度
+
+            console.log(box.scrollTop); // 0  // div 标签中的内容 超出  div标签 上边距 的 距离
+            console.log(box.scrollLeft); // 0 // div 标签中的内容 超出 div标签 左边距 的距离
+        }
+
+        /* 3.滚动条事件： onscroll */
+        box.onscroll = function () {
+
+            console.log(box.scrollTop);  // div标签中的内容 超出  div标签 上边距 的 距离
+            console.log(box.scrollLeft); // div标签中的内容 超出 div标签 左边距 的距离
+        }
+
+
+
+    </script>
+</body>
+
+</html>

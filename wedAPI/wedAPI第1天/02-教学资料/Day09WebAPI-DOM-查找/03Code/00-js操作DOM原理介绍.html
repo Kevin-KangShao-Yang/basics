@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <script>
+        // 1.模拟 window对象 的 构造函数 -----------------------------------
+        function Window() {
+            this.history = {};
+            this.navigator = {};
+            this.location = {};
+            this.document = {};
+
+            this.onclick = null;
+        }
+
+        // 变量名  = Window对象，里面包含了 很多属性 和 方法 以及 事件
+        var window1 = new Window();
+        console.log(window1);
+
+
+        /* dom 对象 和 dom 树 */
+        var aaa = 'webapi 好激动啊~~~~';
+        console.log(window);
+
+        var count = 0;
+        for (var k in window) {
+            count++;
+        }
+        console.log(count);
+
+        // 2.模拟 DOM对象  -------------------------------------------------
+        //   浏览器 内置了 “DOM构造函数”
+        //   浏览器 在 解析 html 标签时，会 为 每个 标签 new 一个 DOM 对象  -- new DOM();
+        //   并且 按照 层级 关系，将 子对象 添加到 父亲对象 的 children 属性中 ,进而 形成 了 所谓的 "DOM树"
+        function DOM(id, name) {
+            this.id = id;
+            this.name = name;
+            this.children = []; // 类数组
+        }
+
+        var htmlDom = new DOM();
+
+        var headDom = new DOM();
+        htmlDom.children.push(headDom);
+
+        var metaDom = new DOM();
+        headDom.children.push(metaDom);
+
+        var bodyDom = new DOM();
+        htmlDom.children.push(bodyDom);
+
+        var divDom = new DOM('divMsg', 'divMsgName');
+        bodyDom.children.push(divDom);
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id='divMsg' name='divMsgName'>123123</div>
+</body>
+
+<script>
+
+    // 3. 感受 真正的 DOM 对象 --------------------------------------------
+    var divDom = document.getElementById('divMsg');
+    console.log(divDom.style);
+    var countDiv = 0;
+    for(var k in divDom){
+        countDiv++;
+    }
+
+
+    console.log(divDom);
+    console.log(divDom.getAttribute('name'));
+    console.log(countDiv);
+
+
+    var domDiv = document.getElementById('div');
+    
+    domDiv.onclick=function(){
+                        alert('谢谢你点我去修改背景色哦~~~~');
+                    }
+</script>
+
+</html>

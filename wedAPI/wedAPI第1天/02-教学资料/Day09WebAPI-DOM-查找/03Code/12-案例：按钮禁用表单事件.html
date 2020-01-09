@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+    <!--1.HTML中的表单元素有一些特殊的属性，表示的是表单元素的两种状态 true与false
+            例如：  disabled  checked(radio checkbox)  selected(option)
+      2.在html中，这些属性写了，值就是true.不写，值就是false
+      3.在js中，可以可以通过设置这些属性的值为true或false修改状态
+    -->
+    <input type="text" disabled="false" >
+    <br>
+    <input type="password">
+    <br>
+    <input type="radio">
+    <br>
+    <input type="checkbox">
+    <br>
+    <input type="button" value="点我试试">
+    <hr>
+
+    <button id="btnQY">启用</button>
+    <button id="btnJY">禁用</button>
+</body>
+
+<script>
+    // 目标：点击 禁用按钮，就 将 所有的 input 都设置为 禁用 disabled=true
+    //           启用按钮，                          启用 disabled=false
+    // 思路：
+    // a.获取 两个 按钮，各自添加一个 点击事件方法
+    // b.在 启用按钮 的点击事件方法中，遍历 所有的 input ，并为每个 input 的 disabled 属性 设置 false
+    // c.在 禁用按钮 的点击事件方法中，遍历 所有的 input ，并为每个 input 的 disabled 属性 设置 true
+
+    // 补充强调： --------------------------------------------------------------------------------
+    // 在html标签中，如果 设置 input 标签 中 的 disabled = "123123123"，那么 相当于 disabled = true
+    // 在html标签中，如果 设置 input 标签 中 的 disabled = "false"，那么 相当于 disabled = true
+
+    // 在 JS 代码中，如果 设置 input dom对象 的 disabled = true ，那么 相当于 disabled = true
+    // 在 JS 代码中，如果 设置 input dom对象 的 disabled = false ，那么 相当于 disabled = false
+
+    var arrInputs = document.getElementsByTagName('input');
+    console.log(arrInputs);
+
+    // 在 启用按钮 的点击事件方法中，遍历 所有的 input ，并为每个 input 的 disabled 属性 设置 false
+    document.getElementById('btnQY').onclick = function () {
+        // 遍历所有的 input dom对象
+        for(var i = 0;i<arrInputs.length;i++){
+            arrInputs[i].disabled = false; // 启用
+        }
+    }
+
+    
+    document.getElementById('btnJY').onclick = function () {
+        // 遍历所有的 input dom对象
+        for(var i = 0;i<arrInputs.length;i++){
+            arrInputs[i].disabled = true; // 禁用
+        }
+    }
+</script>
+
+</html>

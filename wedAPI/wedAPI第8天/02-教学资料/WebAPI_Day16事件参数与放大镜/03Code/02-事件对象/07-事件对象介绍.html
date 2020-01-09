@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width: 100px;height: 100px;background-color:#0094ff"></div>
+
+    <script>
+        /* 
+        1.事件对象 ：存储与事件相关信息的对象
+            当用户触发事件的时候，浏览器会自动捕捉与事件相关的信息（鼠标信息，键盘信息），存入一个对象中
+            这个对象称之为事件对象
+        
+        2.如何获取事件对象？
+            谷歌火狐： 给事件处理函数添加形参 event ev  e
+            IE8 : 全局属性 window.event
+        */
+
+        var box = document.getElementById('box');
+        
+        box.onclick = function(e){
+            // 事件参数 兼容 语法
+            var event = e || window.event;
+             console.log(event);
+             
+ 
+            // console.log(arguments);
+            // console.log('死鬼~~~~');
+        };
+    </script>
+</body>
+</html>

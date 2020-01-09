@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        div {
+            border: 1px solid #0094ff;
+            padding: 10px;
+            margin: 10px;
+        }
+        span{
+            border: 1px solid #000;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>span outside </span>
+    <div id='d1'>
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+    </div>
+    <div id='d2'>div2</div>
+</body>
+
+<script>
+    // 0. 标签 -> dom对象 -> 元素 ， 根据标签 生成的 【dom对象】 也叫做 【元素】
+
+    // api :就是 别人写好的 方法 （函数）
+
+    // 1. getElementsByTagName ---------------------------------
+    //    根据 标签名 查找 dom树中的 dom对象，将 找到的 dom对象 装入 一个 类数组，并返回
+    //    返回 类数组(伪数组)，拥有 数组三要素：元素、下标、length ---- 无数组 api
+
+    // 1.1 获取 页面上所有的 div
+    var arrDom = document.getElementsByTagName('div');
+    // arrDom.push(''); // arrDom.push is not a function -- 因为 是 类数组，并没有 数组的 api
+    console.log(arrDom);
+
+    // 1.2 获取页面上 所有的 span
+    var arrSpanDom = document.getElementsByTagName('span');
+    console.log(arrSpanDom);
+
+    //2.如果标签名不存在 : 则返回空 类数组 --------------------------
+    var arrDom2 = document.getElementsByTagName('input');
+    console.log(arrDom2); // 空 类数组
+
+
+    //3. 如果只希望获取某一个父标签 中的 指定名称的 子标签 dom 对象----
+    //   可以先获取父元素，然后用父元素来调用 getElementsByTagName()
+    // 3.1 直接 获取 div 对象后 再查找 其中的 span
+    var arrDivSpan = document.getElementById('d1').getElementsByTagName('span');
+    console.log(arrDivSpan);
+
+    // 3.2 先获取 div对象，然后再 另起一行 通过 div对象 查找其中的 span
+    var div1Obj = document.getElementById('d1');
+    var arrDivSpan2 = div1Obj.getElementsByTagName('span');
+    console.log(arrDivSpan2);
+
+
+
+
+    /* 总结
+    1. 如果是 document来调用getElementsByTagName ，根据 标签名字 获取 页面上的 dom对象
+    2. 如果是 父元素来调用getElementsByTagName ，则获取父元素中的  所有的标签名元素
+
+    3. 如果Element后面有s，返回值一定是伪数组。 如果没有s，返回值就是单个对象
+    4. ID具有唯一性，只能由document来调用
+     */
+</script>
+
+</html>

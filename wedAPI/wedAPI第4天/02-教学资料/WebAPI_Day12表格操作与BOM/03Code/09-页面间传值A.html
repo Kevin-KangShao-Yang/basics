@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入账号" id="txtName">
+    <input type="button" value="登录" id='btnLogin'>
+
+    
+    <script>
+        document.getElementById('btnLogin').onclick = function(){
+            var usrName = document.getElementById('txtName').value;
+            // 存入 sessionStorage ，临时保存
+            sessionStorage.setItem('uName',usrName);
+            // window.location.assign('');
+            location = './10-页面间传值B.html'
+        };
+    
+    </script>
+</body>
+</html>

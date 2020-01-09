@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .content {
+            height: 120px;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        .commens {
+            padding: 10px;
+            border: 1px solid green;
+        }
+
+        .commens div {
+            padding: 5px 8px;
+            border-bottom: 1px dashed #666;
+        }
+
+        .commens span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .add {
+            width: 780px;
+            margin: 0 auto;
+            margin-top: 10px;
+            border: 1px solid blue;
+            padding: 10px;
+            padding-bottom: 60px;
+        }
+
+        textarea {
+            display: block;
+            width: 760px;
+            margin: 0 auto;
+            height: 120px;
+            resize: none;
+        }
+
+        input[type="button"] {
+            float: right;
+            padding: 10px 14px;
+            margin-top: 10px;
+            margin-right: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="father">
+        <div class="content">
+            今天去了一个很神奇的地方，看照片能猜出来是哪里吗？<br />
+            今天去了一个很神奇的地方，看照片能猜出来是哪里吗？
+        </div>
+        <div class="commens" id="commens">
+            <div>评论：</div>
+        </div>
+    </div>
+    <div class="add">
+        <textarea name="" id="txt"></textarea>
+        <input type="button" value="发表" id="btn" />
+    </div>
+    <script>
+        var btn = document.getElementById('btn');
+        var commens = document.getElementById('commens');
+
+
+        var edit = document.getElementById('txt');
+        btn.onclick = publish;
+
+        function publish() {
+            // 创建标签
+            var divNode = document.createElement('div');
+            var spanNode = document.createElement('span');
+            // 添加内容
+            divNode.innerText = edit.value.trim();
+            spanNode.innerText = 'X';
+            // 节点添加到上面
+            if (divNode.innerText) {
+                commens.appendChild(divNode);
+                commens.appendChild(divNode).appendChild(spanNode);
+            } else {
+                alert('请检查是否填写内容了呢~');
+            }
+            // 清空文本框
+            edit.value = '';
+            // 删除 事件
+            spanNode.onclick = function () {
+                if (confirm('你确定要删除此评论吗?')) {
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

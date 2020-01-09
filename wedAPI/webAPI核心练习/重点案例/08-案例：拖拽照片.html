@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 350px;
+            height: 550px;
+            border: 1px solid #000;
+            position: absolute;
+            top: 50px;
+        }
+
+        .right {
+            right: 20px;
+        }
+
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/5.jpg" alt="">
+    </div>
+    <input type="button" value="托我啊" draggable="true">
+    <div class="right"></div>
+
+    <script>
+        // 保存 当前 被拖拽的 图片元素对象
+        var dragImgNow;
+
+        // 1. 为 每个 图片 都添加 draggable 属性------------------------------
+        var imgList = document.querySelectorAll('.left>img');
+
+        for (var i = 0; i < imgList.length; i++) {
+            // imgList[i].ondraggable = true;
+            imgList[i].ondragstart = function () {
+                // 将 被退拽的 图片 存入 全局变量 ，方便 在 容器中投放时， 获取 被拖拽的元素
+                dragImgNow = this;
+            }
+        }
+
+        // 2. 为 右侧 容器 添加 ondragover , ondrop 事件-----------------------
+        var rightDiv = document.querySelector('.right');
+        // 2.1 右侧容器 的 拖拽元素 事件 中，
+        rightDiv.ondragover = function (e) {
+            e = e || window.event;
+            e.preventDefault();
+        }
+
+        rightDiv.ondrop = function () {
+            if (dragImgNow != null) {
+                rightDiv.appendChild(dragImgNow);
+            }
+        }
+
+
+        // 3. 为 左边 容器 添加 ondragover , ondrop 事件  ---------------------------
+        var leftDiv = document.querySelector('.left');
+        leftDiv.ondragover = function (e) {
+            e = e || window.event;
+            e.preventDefault();
+        }
+
+        leftDiv.ondrop = function () {
+            if (dragImgNow != null) {
+                leftDiv.appendChild(dragImgNow);
+            }
+        }
+    </script>
+</body>
+
+</html>

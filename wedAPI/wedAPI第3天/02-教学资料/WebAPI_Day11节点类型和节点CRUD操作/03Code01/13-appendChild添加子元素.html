@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul {
+            border: 1px solid #0094ff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ulList1">
+        <li id='webFront' lover='linda'>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li>Python技术栈</li>
+        <li>.Net技术栈</li>
+    </ul>
+
+    <ul id="ulList2">
+        <li>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li id='liOther'>Python技术栈 - 我是第3个 里元素</li>
+        <li>.Net技术栈</li>
+    </ul>
+
+    <input type="button" value="偷 别人家的 li" id='btnStole'>
+    <input type="button" value="偷 别人一家" id='btnStoleAll'>
+    <script>
+        /**
+         * @description:  添加子元素： 父元素.appendChild(子元素)
+            1.新创建元素     : 添加到最后面
+            2.已经存在的元素 : 将 要移动的 元素 追加到 目标父元素的 所有子元素的 后面
+            3.元素有子元素   : 元素和子元素一起移动到最后面
+         */
+
+        // 1. 向  ul 中 添加 新的 li 
+        var ulNode = document.getElementById('ulList1');
+        var liNodeNew = document.createElement('li'); // 创建 一个 新的 li 元素
+        liNodeNew.innerText = '我是新来的，不要欺负我哦~~~'; // 设置 内容文本
+        ulNode.appendChild(liNodeNew); // 追加到 ul 中
+
+        // 2. 向 ulList1 中 添加 ulList2 中的 第3个 li 元素
+        document.getElementById('btnStole').onclick = function () {
+            var ulNode = document.getElementById('ulList1');
+            var otherNode = document.getElementById('liOther');
+
+            ulNode.appendChild(otherNode);
+        }
+
+        // 3.目标：将 ulList2 整个 添加到 ulList1 中
+        // 思路：a.新建 li 元素
+        //      b. 将 ulList2 添加到 新建的 li元素中
+        //      c.将 新建的 li元素 添加到 ulList1
+        document.getElementById('btnStoleAll').onclick = function () {
+            var newLi = document.createElement('li');
+            newLi.appendChild(document.getElementById('ulList2'));
+            document.getElementById('ulList1').appendChild(newLi);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

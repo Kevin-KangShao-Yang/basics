@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+  <div id='divMsg'>点我啊</div>
+</body>
+
+<script>
+
+    /*
+    1.交互 ： 当 用户 做了 什么操作时，浏览器就做什么 对应的 响应事情
+
+    2.事件 ： js处理用户交互的一种机制，比如：点按钮要 执行一个方法，点击按钮的时候 就叫做 触发事件
+
+    3.事件三要素
+        事件源：             谁 - dom对象
+        事件名(事件类型)：    什么时候 - onclick
+        事件处理函数：        做什么 - funciton
+
+    4.如何注册事件 :  对象属性赋值的过程
+      事件源.事件名 = 函数
+
+
+     5.注意：
+       a. 注册事件的时候，事件处理代码不会执行 （函数在声明的时候不会执行）
+       b. 当用户触发这个事件的时候，浏览器来调用对应事件处理函数
+     */
+
+     // a.获取 div对象
+     var divDom = document.getElementById('divMsg');
+    //  b.为 div 注册一个 点击 事件
+    divDom.onclick = function () {
+      alert('点你就点你额~~！！！');
+    }
+</script>
+
+</html>

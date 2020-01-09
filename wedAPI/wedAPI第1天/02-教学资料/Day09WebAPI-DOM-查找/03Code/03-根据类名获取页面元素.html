@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+
+    <style>
+        .blueDiv {
+            border: 1px solid #0094ff;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .blackSpan {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <span class="blackSpan">span outside </span>
+    <div id='d1' class='blueDiv'>
+        <span class="blackSpan">span1</span>
+        <span class="blackSpan">span2</span>
+        <span class="blackSpan">span3</span>
+    </div>
+    <div id='d2' class='blueDiv'>div2</div>
+    <div class="blackSpan">div3</div>
+</body>
+
+<script>
+    //1. getElementsByClassName - 根据 标签的 class 属性值 获取 dom对象 - 新增，<=IE8不支持
+    // 强调：如果 返回时 类数组的，万一 没有找到 合适的 dom 对象，就会返回一个 空类数组
+    // 注意：根据 class 获取时，和 标签名称无关！！！
+
+    var arrDom = document.getElementsByClassName('blackSpan'); // 获取页面上 所有 class='blackSpan' 的 dom 对象
+    console.log(arrDom); // [span.blackSpan, span.blackSpan, span.blackSpan, span.blackSpan, div.blackSpan]
+</script>
+
+</html>

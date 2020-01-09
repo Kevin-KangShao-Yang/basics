@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        ul {
+            width: 30%;
+            margin: 20px auto;
+            list-style: none;
+        }
+
+        ul li {
+            border: 1px solid #0094ff;
+            margin: 2px;
+            padding: 3px;
+            text-align: center;
+        }
+
+        .blueLi {
+            background-color: #0094ff;
+            color: #fff;
+        }
+
+        .whiteLi {
+            background-color: #fff;
+            color: #0094ff;
+        }
+
+        .pinkLi {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>.NET技术</li>
+        <li>编程语言</li>
+        <li>软件设计</li>
+        <li>Web前端</li>
+        <li>企业信息化</li>
+        <li>手机开发</li>
+        <li>数据库技术</li>
+    </ul>
+</body>
+<script>
+    // 0. 获取 页面上所有的li标签 对象，存入 类数组
+    var liList = document.getElementsByTagName('li');
+
+    //1. 设置 各行 颜色 不一样
+    for (var i = 0; i < liList.length; i++) {
+        if (i % 2 == 0) {
+            liList[i].className = 'blueLi';
+        } else {
+            liList[i].className = 'whiteLi';
+        }
+    }
+
+    //2.为 li 标签 添加 鼠标 移入 移出事件
+
+    for (var i = 0; i < liList.length; i++) {
+
+        // 2.1 设置 各行 鼠标移入 时  变成  pink 色-----------
+        // onmouseover 事件：鼠标移入事件
+        liList[i].onmouseover = function () {
+            // console.log(i); // 7
+            
+            // 将 修改 之前的 className 的值 存入 li 标签 自定义属性中
+            this.setAttribute('oriClassName', this.className);
+            // 修改 当前 li标签的 className
+            this.className = 'pinkLi';
+        }
+
+        // 当 鼠标移入 时 浏览器 会自动执行 类似如下的代码！
+        // liList[i].onmouseover();
+
+        // 2.2 将 li标签 原来 的样式表 设置回去 -----------------
+        // onmouseout 事件：鼠标移出事件
+        liList[i].onmouseout = function () {
+            // 取出 自定义属性 oriClassName 的值
+            var oriCN = this.getAttribute('oriclassname');
+            // 重新 设置给 当前 li标签的 className
+            this.className = oriCN;
+        }
+    }
+
+
+</script>
+
+</html>

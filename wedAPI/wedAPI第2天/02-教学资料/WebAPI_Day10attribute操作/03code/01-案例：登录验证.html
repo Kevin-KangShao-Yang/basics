@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        table {
+            border: 1px solid #0094ff;
+            margin: 200px auto;
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid #0094ff;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table id='tb' class='bigTd'>
+        <tr>
+            <td class='bigTd' colspan="2">欢迎登陆~~~</td>
+        </tr>
+        <tr>
+            <td class='bigTd'>用户名：</td>
+            <td>
+                <input type="text" name="txtName" id="txtName" value=''></td>
+        </tr>
+        <tr>
+            <td>密 码：</td>
+            <td><input type="password" name="txtPwd" id="txtPwd"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class='bigTd'>
+                <input type="button" value="登录" id='btnLogin'>
+                <input type="button" value="注册">
+            </td>
+        </tr>
+    </table>
+    <div></div>
+</body>
+
+
+<script>
+    // 目标：点击 登录 按钮
+    //           判断 两个 input 内容长度是否 >=6 ，如果false，则提示
+    //                                            如果true，则显示登录成功
+
+    // 思路：
+    // a.为登录按钮 设置 onclick 事件方法
+    // b.在点击时，获取 用户名 和 密码 框 的 内容，进行判断
+
+
+
+    //0. 获取 两个文本框 对象
+    var txtNameDom = document.getElementById('txtName');
+    var txtPwdDom = document.getElementById('txtPwd');
+
+    //1.获取 登录按钮，设置 onclick 属性
+    document.getElementById('btnLogin').onclick = function () {
+
+        //2.判断 两个 输入 的字符串 长度是否 >= 6
+        if (txtNameDom.value.trim().length >= 6 && txtPwdDom.value.trim().length >= 6) {
+            alert('登录成功~~~');
+        } else {
+            alert('登录失败~~~');
+        }
+    }
+
+
+
+</script>
+
+</html>

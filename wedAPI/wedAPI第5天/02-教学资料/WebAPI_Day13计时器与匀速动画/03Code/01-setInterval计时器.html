@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btnStart">开始</button>
+    <button id="btnEnd">结束</button>
+
+    <div id='divShow'>0</div>
+    <input type="text" name="" id="" value="" />
+    <!-- asdfasdf -->
+
+    <script>
+        // document.getElementById('btnStart').onclick=function(){
+        //     var divNode = document.getElementById('divShow');
+        //     var num = parseInt(divNode.innerText);
+        //     num++;
+        //     divNode.innerHTML = num;
+        // }
+
+        //1.计时器 setInterval  告诉 浏览器 每隔  n毫秒，就执行 一遍 代码 ， 有间隔的无限循环 (死循环)
+        //  同时 返回 一个值： 就是 计时器的 ID（句柄）
+        var timer;
+        document.getElementById('btnStart').onclick = function () {
+            //1.目的：每隔 1000 毫秒，div中的　数字 + 1
+            // setInterval(function(){ } , 1000);
+            timer = setInterval(function () {
+                var divNode = document.getElementById('divShow');
+                var num = parseInt(divNode.innerText);
+                num++;
+                divNode.innerHTML = num;
+            }, 1000);
+
+            console.log(timer);
+        }
+
+        // 2.清除(关闭)指定的 计时器 ： clearInterval(计时器句柄)
+        // var 计时器句柄(ID) = setInterval( 要执行的代码 , 间隔毫秒数 );
+        // clearInterval( 计时器句柄(ID) ) 停止 计时器
+        document.getElementById('btnEnd').onclick = function () {
+            if(confirm('你确定要停止计时吗？')){
+                clearInterval(timer);
+                console.log('已停止计时：' + timer);
+            }
+        };
+
+
+    </script>
+</body>
+
+</html>

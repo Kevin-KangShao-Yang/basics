@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: #0094ff;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="开始" id="start" />
+    <div class="one" style="left: 50px;" id="box"></div>
+</body>
+
+<script>
+    // 1. 目标： 每 100毫秒 向右边移动 5px
+    //           结束条件： 位置 到 到 777 px 时 结束 left = 777
+
+    // 2. 思路：
+    //    a.启动 计时器
+    //    b.每次 移动： 获取 div节点对象的 left 值， + 5，重新设置给 div节点对象的 left属性
+    //    c.当 div节点 left 值 >= 777 时，结束 计时器 clearInterval();
+    //    d.隐藏步骤：由于 每次 移动的单位 不一定 和 目标 结果 一致，所以 需要 复位到 目标位置
+
+    var timer; // 计时器id(句柄)
+    var endLeft = 222; // 停止的目标位置
+
+    // 1. 给 按钮添加点击事件
+    document.getElementById('start').onclick = function () {
+        // 1.1 启动 计时器，执行 移动方法
+        timer = setInterval(move, 100);
+    }
+
+    // 2. 移动 div 的 方法
+    // 2.1 先获取 要移动的 dom节点对象
+    var divNode = document.getElementById('box');
+
+    // 2.2 方法内部  负责 修改 dom节点对象 的 left 值
+    function move() {
+        // a. 获取 left 值
+        var leftV = divNode.style.left; // '50px'
+        // console.log(leftV);
+        // b. 修改 left 值 + 5
+        leftV = parseInt(leftV);
+        leftV += 5;
+        // c. 将修改后的 位置 重新设置 给  left
+        divNode.style.left = leftV + 'px'
+
+        // d. 停止计时器 从而 停止 移动
+        if (leftV >= endLeft) {
+            // e. 清除 计时器
+            clearInterval(timer);
+            
+            // 5.偷偷的 操作：元素位置 复位 到 目标 位置
+            divNode.style.left = endLeft + 'px';
+        }
+    }
+</script>
+
+</html>

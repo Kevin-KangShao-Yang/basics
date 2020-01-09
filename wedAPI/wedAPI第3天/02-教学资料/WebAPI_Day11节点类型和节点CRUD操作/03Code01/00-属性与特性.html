@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+</head>
+
+<body>
+  <input type="text" name="txtIn" id="txtName" value="abc" lover='Linda'>
+</body>
+
+<script>
+  var dom = document.getElementById('txtName');
+
+  //1.行内标准属性（标签自带属性），两种方式都可以访问
+  console.log(dom.name); // txtIn
+  console.log(dom.getAttribute('name')); // txtIn
+
+  //2.行内自定义特性
+  console.log(dom.lover); // undefined
+  console.log(dom.getAttribute('lover')); // Linda
+
+  //3.通过.语法动态添加的属性，只能通过.语法获取
+  dom.lover = 'Linda';
+  console.log(dom.lover); // Linda
+  console.log(dom.getAttribute('lover')); // null
+
+  //4.通过 setAttribute 方法 动态添加的 自定义属性
+  //  只能 通过 getAttribute方法获取
+  dom.setAttribute('dog', 'ruiky');
+  console.log(dom.getAttribute('dog')); // ruiky
+  console.log(dom.dog); // undefined
+
+
+</script>
+
+</html>

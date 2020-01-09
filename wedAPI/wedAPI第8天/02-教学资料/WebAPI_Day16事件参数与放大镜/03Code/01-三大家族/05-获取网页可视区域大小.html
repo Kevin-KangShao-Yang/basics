@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //获取页面可视区域大小
+        /* 
+        1.网页大小变化事件： window.onrezie
+           
+        2.获取网页可视区域大小：  
+          2.1 推荐：（兼容谷歌火狐IE）document.documentElement.clientWidth, document.documentElement.clientHeight
+          2.2 谷歌火狐 ： window.innerWidth, window.innerHeight
+          2.3 其他浏览器： document.body.clientWidth, document.body.clientHeight
+        */
+
+        // onresize：大小 改变事件 ：一旦 元素的 大小(宽高) 发生改变，就会 自动调用
+        window.onresize = function () {
+            // console.log('我被改动啦~~~~');
+            console.log(document.documentElement.clientWidth, document.documentElement.clientHeight);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

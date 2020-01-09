@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding-top: 15px;
+        }
+
+        .box {
+            width: 350px;
+            height: 420px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        li {
+            float: left;
+            width: 20%;
+            text-align: center;
+        }
+
+        img:hover {
+            outline: 3px solid #0094ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>
+            <img id="bigImg" src="images1/b1.jpg" alt="" />
+        </div>
+        <div>
+            <ul id="ulImg">
+                <li><img src="images1/s1.jpg" data-bigsrc="images1/b1.jpg" alt="" /></li>
+                <li><img src="images1/s2.jpg" data-bigsrc="images1/b2.jpg" alt="" /></li>
+                <li><img src="images1/s3.jpg" data-bigsrc="images1/b3.jpg" alt="" /></li>
+                <li><img src="images1/s4.jpg" data-bigsrc="images1/b4.jpg" alt="" /></li>
+                <li><img src="images1/s5.jpg" data-bigsrc="images1/b5.jpg" alt="" /></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        //0. 获取 大图片节点
+        var bigImgNode = document.getElementById('bigImg');
+
+
+        //1.为每个 小图片设置 点击事件
+        //1.1 获取 所有的 小图片 -> 类数组
+        var imgList = document.getElementById('ulImg').getElementsByTagName('img');
+
+        //1.2 为每个 小图片 都添加一个 onclick 事件
+        for (var i = 0; i < imgList.length; i++) {
+            imgList[i].onclick = function () {
+                //a.获取 被点击 图片的 自定义特性 data-bigsrc 的值 (大图路径)
+                var bigSrc = this.dataset.bigsrc; // 相当于 var bigSrc = this.getAttribute('data-bigsrc');
+                //b.设置给大图
+                bigImgNode.src = bigSrc;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

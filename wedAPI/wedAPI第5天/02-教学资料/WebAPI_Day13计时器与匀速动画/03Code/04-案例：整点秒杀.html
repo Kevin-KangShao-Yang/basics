@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <span id="currentTime"></span>
+    <br>
+    <br>
+    <br>
+    <span id='endTime'> 11 : 08 : 00 </span> 结束
+
+    <script>
+        // 1. 目的：每秒钟 获取 当前时间 的 时分秒，并 显示到 页面的 span 中
+        //                如果 当前时间  和 结束 时间 相等，停止 显示
+        // 2. 思路：a.开启 计时器
+        //         b.通过 Date 对象 获取 当前 时分秒
+        //         c.显示到 span 中
+        //         d.如果 时间到了，就要 停止 计时器
+
+        // 设置 目标结束时间
+        var strEndTime = '11 : 12 : 00';
+    //重点注意: 如果用var strEndTime =document.getElementById('endTime').innerText,获取里面的字符串的话,那span里面的时间不能有任何空格,因为有空格也会导致空字符串,在最下面判等的时候,空字符串也会被算进去
+        document.getElementById('endTime').innerText = strEndTime;
+
+
+        // 获取 显示span 节点对象
+        var spanNode = document.getElementById('currentTime');
+
+
+        // a.开启 计时器
+        var timer = setInterval(function () {
+
+            // 准备 Date 对象,获取时间跟对象必须要放在计时器内,这样才能每秒获取到当前的时间
+            var timeObj = new Date();
+
+            //b. 通过 Date 对象 获取 当前 时分秒,放在计时器外面的话只能获取到一次,因为计时器内没有获取当前时间的代码,无法进行刷新
+            var hour = timeObj.getHours();
+            var min = timeObj.getMinutes();
+            var sec = timeObj.getSeconds();
+
+
+            // c.如果 数字 <10 ，则 补上 一个 '0'
+            if (hour < 10) {
+                hour = '0' + hour;
+            }
+            if (min < 10) {
+                min = '0' + min;
+            }
+            if (sec < 10) {
+                sec = '0' + sec;
+            }
+
+            
+
+            spanNode.innerText = hour + ' : ' + min + ' : ' + sec;
+
+
+            // d. 判断 是否 到时，如果到了，就 停止 计时器
+            if(strEndTime == spanNode.innerText){
+                clearInterval(timer);
+                alert('停止计时~~~');
+            }
+            // if(hour == '11' && min == '09' && sec == '00'){
+            //     clearInterval(timer);
+            //     alert('停止计时~~~');
+            // }
+        }, 1000);
+    </script>
+</body>
+
+</html>

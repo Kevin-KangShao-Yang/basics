@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="移动到400" id="move400" />
+    <input type="button" value="移动到800" id="move800" />
+    <div class="one" id="box" style="left:10px;"></div>
+
+</body>
+
+<script>
+
+    /* 本小节封装目标
+    1.解决代码冗余   -函数
+    2.移动距离不限  -- 函数参数
+     */
+    // 移动到 400px
+    document.getElementById('move400').onclick = function () {
+        move(400);
+    }
+
+
+    // 移动到 800px
+    document.getElementById('move800').onclick = function () {
+        move(800);
+    }
+
+    /**
+     * @description: move 用来 移动 id='box'的元素
+     * @param {number} targetLeft 目标位置(数值) 
+     */
+    function move(targetLeft) {
+        var boxNode = document.getElementById('box');
+
+        var timer = setInterval(function () {
+            // 1.获取 目标元素的 Left 值
+            var curPos = parseInt(boxNode.style.left); // parseInt('10px') - > 10
+            // 2.进行"位移" ，curPos += 3;
+            curPos += 7;
+            // 3.将 修改后的 位置 重新设置给 目标元素的 left 属性
+            boxNode.style.left = curPos + 'px';
+
+            // 4. 判断 ： 如果 到了 目标位置 400px ，要停止移动，清空 计时器
+            if (curPos >= targetLeft) {
+                // 4.1 关闭 计时器
+                clearInterval(timer);
+                // 4.2 元素复位
+                boxNode.style.left = targetLeft + 'px';
+            }
+        }, 20);
+    }
+</script>
+
+</html>

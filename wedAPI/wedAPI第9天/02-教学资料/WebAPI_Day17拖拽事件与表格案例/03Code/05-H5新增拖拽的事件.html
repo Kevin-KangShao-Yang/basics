@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 要想修改元素的left和top，前提是元素要有定位！！！ */
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div id="box" draggable="true"></div>
+
+    <script>
+        /*H5新增的 被拖拽的元素 上的 3个 事件
+            1.ondragstart  : 开始拖拽 （鼠标按下并第一次移动会触发）
+            2.ondrag： 拖拽中 （鼠标移动，不断触发）
+            3.ondragend : 结束拖拽 （鼠标松开就会触发）
+         */
+
+         var boxNode = document.getElementById('box');
+         boxNode.ondragstart = function () {
+             console.log('呀，你是谁，为什么要 拽着的裤腿~~~ 皮带都快松了~~~');
+         }
+
+         boxNode.ondrag = function () {
+             console.log('不要再拉着我了，我要报警啦~~！！！');
+         }
+
+         boxNode.ondragend = function () {
+             console.log('总算 放过我了~~~'); 
+         }
+        
+    </script>
+</body>
+</html>

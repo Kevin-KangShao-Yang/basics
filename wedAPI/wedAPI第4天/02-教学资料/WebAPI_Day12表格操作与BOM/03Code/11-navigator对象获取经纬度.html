@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <script>
+        //参数：是一个回调函数：如果一个函数的参数是一个函数，这个参数函数称之为回调函数
+
+        /* 
+        细节：获取经纬度的原理其实是给谷歌服务器发送我们电脑当前所在的ip，谷歌服务器根据你的
+        电脑IP来查询位置  （电脑一般是没有GPS的，主要通过IP定位）
+        但是谷歌服务器在中国被和谐了，所以无法访问。 火狐可以
+         */
+        navigator.geolocation.getCurrentPosition(function (location) {
+            console.log(location);
+
+            console.log(location.coords.latitude);//纬度
+            console.log(location.coords.longitude);//经度
+
+
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

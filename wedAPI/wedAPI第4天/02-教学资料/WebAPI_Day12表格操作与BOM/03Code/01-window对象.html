@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <script>
+
+        /* window:浏览器窗口 
+            1. 是js中的顶级对象 （全局变量、全局函数、DOM）都是window的属性
+            2. 只要是window对象的属性，使用的时候一律可以省略前面的window
+            3. window对象有一个非常特殊的默认属性name，它的值一定是字符串类型
+         */
+
+        //1.是js中的顶级对象 （全局变量、全局函数、DOM）都是window的属性
+        var lover = 'Linda';
+        console.log(lover);
+        console.log(window.lover);
+        // 3. window对象有一个非常特殊的默认属性name，它的值一定是字符串类型
+        console.log(window.name);
+        console.log(window.name.length);
+        console.log(typeof window.name);
+
+        // var name; // 因为 浏览器window 自带一个 name 属性，所以 我们就不要 再使用 name 来命名变量！！！
+        // 不提倡 使用 window.name ----没啥用
+
+
+
+
+        // window.open()
+
+        //就算你重新声明一个全新的变量name,也无法覆盖
+
+        //top : 的值无法被修改，就是window本身
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

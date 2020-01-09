@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ulList">
+        <!-- 偷偷躲在这的注释 -->
+        强势矗立在此的文本
+        <li id='webFront' lover='linda'>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li>Python技术栈</li>
+        <li>.Net技术栈</li>
+    </ul>
+
+    <script>
+        
+        /**
+         * @description: 获取 第一个和最后一个 子节点子元素
+            1.获取第一个字节点
+                获取上一个兄弟节点： 元素.firstChild
+                获取下一个兄弟节点： 元素.firstElementChild
+            2.获取第一个字元素
+                获取上一个兄弟元素:  元素.lastChild
+                获取下一个兄弟元素:  元素.lastElementChild
+         */
+
+        var ulNode = document.getElementById('ulList');
+
+        // 获取 第一个 子节点
+        console.log(ulNode.firstChild);
+
+        // 获取 第一个 子元素
+        console.log(ulNode.firstElementChild);
+
+
+
+
+        // 获取  最后一个 子节点
+        console.log(ulNode.lastChild);
+        // 获取  最后一个 子元素
+        console.log(ulNode.lastElementChild);
+    </script>
+</body>
+
+</html>

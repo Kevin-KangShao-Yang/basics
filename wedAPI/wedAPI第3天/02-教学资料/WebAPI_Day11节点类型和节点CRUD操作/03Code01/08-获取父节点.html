@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body id='bigBody'>
+        <ul id="ulList"><!-- 偷偷躲在这的注释 -->
+            强势矗立在此的文本
+            <li>Java技术栈</li>
+            <li id='webFront' lover='linda'>大前端技术栈</li>
+            <li>Python技术栈</li>
+            <li>.Net技术栈</li>
+        </ul>
+
+    <p>我是pp</p>
+
+    <script>
+
+        
+        /**
+         * @description: 获取 父节点 与 父元素
+            1.获取 父节点 与 父元素
+                获取上一个 父节点： 元素.parentNode
+                获取下一个 父元素： 元素.parentElement
+         */
+
+        var liNode = document.getElementById('webFront');
+
+        // 小节点 找爸爸
+        console.log(liNode.parentNode);
+        console.log(liNode.parentElement);
+
+        // 练习：要求 根据 id='webFront' 元素节点，找到 body，然后 打印 body 的 id 值
+        var liNode = document.getElementById('webFront');
+        console.log(liNode.parentNode.parentNode.id);
+
+        // 找祖辈节点 
+        console.log(liNode.parentNode.parentNode.parentNode); // html
+        console.log(liNode.parentNode.parentNode.parentNode.parentNode); // #document
+        console.log(liNode.parentNode.parentNode.parentNode.parentNode.parentNode); // null
+
+
+        
+    </script>
+</body>
+</html>

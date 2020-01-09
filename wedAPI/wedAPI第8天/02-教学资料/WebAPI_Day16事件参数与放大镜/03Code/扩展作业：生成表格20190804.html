@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>表格增删改查</title>
+  <style>
+    #tbAdd {
+      width: 40%;
+    }
+
+    table {
+      margin: 20px auto;
+      border: 1px solid #000;
+      width: 60%;
+      cursor: pointer;
+      border-collapse: collapse;
+    }
+
+    table td {
+      text-align: center;
+      padding: 3px 5px;
+      border: 1px solid #000;
+    }
+
+    table th {
+      background-color: #0094ff;
+      color: #fff;
+    }
+  </style>
+
+</head>
+
+<body>
+  <table id='tbAdd'>
+    <tr>
+      <td>请输入姓名</td>
+      <td><input type="text" value="" id="txtName" /></td>
+    </tr>
+    <tr>
+      <td>请输入邮箱</td>
+      <td><input type="text" value="" id="txtEmail" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="button" value="添加" id="btnAdd" /></td>
+    </tr>
+  </table>
+
+
+  <table border="1" cellpadding="0" cellspacing="0" id="tbUsrs">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tbd">
+      <tr>
+        <td colspan="4">暂无数据</td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+
+    // 数据操作类 - 负责 localStorage 操作 ------------------------------------------
+    class DataHelper {
+      /**
+       * @description: DataHelper 构造函数
+       * @param {string}  localStorageKey - localStorage 的 键
+       * @param {string}  primaryKey - 数据对象的 主键名称 (默认为 id)
+       * @return: 
+       */
+      constructor(localStorageKey, primaryKey = 'id') {
+        // 保存 存在本地的数据 的 键(Key)
+        this.dataKey = localStorageKey;
+
+        // 保存 数据对象的 主键名称（默认为 id）
+        this.primaryKey = primaryKey;
+      }
+
+      // 0.1 读取本地数据，返回字符串
+      saveData(dataArray) {
+        // 保存到 localStrorage 中
+        var dataStr = JSON.stringify(dataArray);
+        localStorage.setItem(this.dataKey, dataStr);
+      }
+
+      // 0.2 读取全部数据，返回数组
+      readData() {
+        var dataStr = localStorage.getItem(this.dataKey); // 读取出来的 数据字符串
+        var data = null; // 数据对象
+
+        if (dataStr != null) {
+          data = JSON.parse(dataStr); // 将字符串转成 对象/数组
+        }
+
+        return data; // 返回 对象/ 数组
+      }
+
+      // 1.新增数据
+      addData(newDataObj) {
+        var dataArray = this.readData();
+        if (dataArray == null) {
+          dataArray = [];
+        }
+
+        // 自动生成 主键值 (id 值)
+        newDataObj[this.primaryKey] = dataArray.length + 1;
+
+        // 将添加了 主键值 的 对象 追加到数组
+        dataArray.push(newDataObj);
+
+        // 将数组 保存到 localStrorage 中
+        this.saveData(dataArray);
+
+        // 返回添加了 id 的数据对象
+        return newDataObj;
+      }
+
+      // 2.删除数据
+      removeDataById(id) {
+        var dataArray = this.readData();
+        for (var i = 0; i < dataArray.length; i++) {
+
+          // 判断 数组中元素的id 是否 等于 要删除的 id，如果是，则删除此元素
+          if (dataArray[i][this.primaryKey] == id) {
+            // 删除
+            dataArray.splice(i, 1);
+            // 将删除元素后的 数组 重新 保存到 localStrorage 中
+            this.saveData(dataArray);
+
+            return true; // 删除了目标元素，返回 true
+          }
+        }
+        return false; // 未找到要删除的元素，返回 false
+      }
+    }
+
+    // 0. 创建 数据操作类 对象，并设置 localStorage的键  和  数据对象的 主键名称 (默认为 id)
+    var dataHelper = new DataHelper('StuInfoData', 'id');
+
+
+    // 0.1 初始化 表格
+    function initTable() {
+      //a. 获取 localStorage 数据
+      var data = dataHelper.readData();
+
+      //b. 如果 数据存在
+      if (data != null) {
+        // 删除表格 默认行 （ '暂无数据' 行）
+        var tbdObj = document.getElementById('tbd');
+        tbdObj.removeChild(tbdObj.children[0]); // tbody.removeChild( 第一行 )
+
+        // 遍历生成表格
+        for (var i = 0; i < data.length; i++) {
+          //c. 追加行
+          appendTr1(data[i]);
+        }
+      }
+    }
+
+    // 调用 初始化 表格
+    initTable();
+
+    //1.新增按钮 事件 绑定 方法
+    document.getElementById('btnAdd').onclick = function () {
+      // 1.1 获取 用户名 和 emai 数据
+      var usrName = document.getElementById('txtName').value;
+      var usrEmail = document.getElementById('txtEmail').value;
+      // 1.2 加入到 localStorage
+      var dataObj = dataHelper.addData({ uName: usrName, uEmail: usrEmail });
+      // 1.3 加入到 页面
+      appendTr1(dataObj);
+    };
+
+
+    // 方式一：使用 createElement 添加行
+    function appendTr1(dataObj) {
+
+      // 1.2 获取 表格 对象
+      var tbNode = document.getElementById('tbUsrs');
+
+      // 1.3 通过 表格 创建 行 ，添加到 最后，并返回 行节点对象
+      var trNode = document.createElement('tr');
+      tbNode.appendChild(trNode);
+      trNode.setAttribute('data-stuId', dataObj.id);
+
+      // 1.3 通过 行 创建 单元格 1 ，添加到 最后，并返回 单元格节点对象
+      var td1 = document.createElement('td');
+      td1.innerText = dataObj.id;
+      trNode.appendChild(td1);
+
+
+      // 1.3 通过 行 创建 单元格 1 ，添加到 最后，并返回 单元格节点对象
+      var td2 = document.createElement('td');
+      td2.innerText = dataObj.uName;
+      trNode.appendChild(td2);
+
+      // 1.4 通过 行 创建 单元格 2 ，添加到 最后，并返回 单元格节点对象
+      var td3 = document.createElement('td');
+      td3.innerText = dataObj.uEmail;
+      trNode.appendChild(td3);
+
+      // 1.5 通过 行 创建 单元格 3 ，添加到 最后，并返回 单元格节点对象
+      var td4 = document.createElement('td');
+      trNode.appendChild(td4);
+
+      // 1.5.1 创建一个 超链接 节点对象
+      var aObj = document.createElement('a');
+
+      // 1.5.2 设置 超链接 的 2个属性
+      aObj.href = '#'; // 不跳转
+      aObj.innerText = '删'; // 文本
+      // 1.5.3 设置 超链接 的 点击事件
+      aObj.onclick = removeTr;
+
+      // 1.5.4 将 超链接 添加到 单元格 3 中
+      td4.appendChild(aObj);
+    }
+
+    // 三、删除 方法 ---------------------------------------------------
+    function removeTr() {
+
+      if (confirm('你确认要删除此行吗？')) {
+        // 超链接.td.tr.tbody.removeChild(超链接.td.tr)
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+        // 获取要删除元素的 id
+        var sId = parseInt(this.parentNode.parentNode.getAttribute('data-stuId'));
+        dataHelper.removeDataById(sId);
+      }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 另外两种 创建行的方式 --------------------------------------------
+
+
+    // 方式二： 使用 innerHTML 向 tbody 中 追加  行 标签---------------
+    function appendTr2(usrName, usrEmail) {
+
+      // 1.2 准备 行列 html 标签 字符串
+      var str = '<tr> <td> ' + usrName + ' </td> <td> ' + usrEmail + ' </td> <td> <a href="javascript:void(0)">删</a> </td> </tr>';
+
+      // 1.3 将 html 字符串 追加到 tbody 中
+      var tbodyNode = document.getElementById('tbd');
+      tbodyNode.innerHTML += str;
+    }
+
+    // 方式三： 使用 dom 语法动态创建 行列  ----------------------------
+    function appendTr3(usrName, usrEmail) {
+
+      // 1.2 获取 表格 对象
+      var tbNode = document.getElementById('tbUsrs');
+
+      // 1.3 通过 表格 创建 行 ，添加到 最后，并返回 行节点对象
+      var trNode = tbNode.insertRow(-1);
+
+      // 1.3 通过 行 创建 单元格 1 ，添加到 最后，并返回 单元格节点对象
+      var td1 = trNode.insertCell(-1);
+      td1.innerText = usrName;
+
+      // 1.4 通过 行 创建 单元格 2 ，添加到 最后，并返回 单元格节点对象
+      var td2 = trNode.insertCell(-1);
+      td2.innerText = usrEmail;
+
+      // 1.5 通过 行 创建 单元格 3 ，添加到 最后，并返回 单元格节点对象
+      var td3 = trNode.insertCell(-1);
+
+      // 1.5.1 创建一个 超链接 节点对象
+      var aObj = document.createElement('a');
+
+      // 1.5.2 设置 超链接 的 2个属性
+      aObj.href = '#'; // 不跳转
+      aObj.innerText = '删'; // 文本
+      // 1.5.3 设置 超链接 的 点击事件
+      aObj.onclick = removeTr;
+
+      // 1.5.4 将 超链接 添加到 单元格 3 中
+      td3.appendChild(aObj);
+    }
+
+
+  </script>
+
+</body>
+
+</html>

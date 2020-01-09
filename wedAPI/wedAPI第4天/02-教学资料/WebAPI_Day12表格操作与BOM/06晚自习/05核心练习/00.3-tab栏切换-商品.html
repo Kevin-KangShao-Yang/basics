@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 1000px;
+            height: 475px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .tab {
+            border: 1px solid #ddd;
+            border-bottom: 0;
+            height: 36px;
+            width: 320px;
+        }
+
+        .tab li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            cursor: pointer;
+            border-top: 4px solid #fff;
+        }
+
+        .tab span {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background: #ddd;
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .products {
+            width: 1002px;
+            border: 1px solid #ddd;
+            height: 476px;
+        }
+
+        .products .main {
+            float: left;
+            display: none;
+        }
+
+        .products .main.selected {
+            display: block;
+        }
+
+        .tab li.active {
+            border-color: red;
+            border-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="tab" id='tab'>
+            <li class="tab-item active">国际大牌<span>◆</span></li>
+            <li class="tab-item">国妆名牌<span>◆</span></li>
+            <li class="tab-item">清洁用品<span>◆</span></li>
+            <li class="tab-item">男士精品</li>
+        </ul>
+        <div class="products" id='products'>
+            <div class="main selected">
+                <a href="###"><img src="images1/guojidapai.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images1/guozhuangmingpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images1/qingjieyongpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images1/nanshijingpin.jpg" alt="" /></a>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        // 目标：点击 某个 li
+        //      1.设置 被点击 li 的 class = 'current' ，其他的 li 的 class = ''
+        //      2.设置 对应下标的 div class = 'current' ， 其他的 div   的 class = ''
+
+        //1.获取 两个 数组 -----------------------------------------
+        var liList = document.getElementById('tab').getElementsByTagName('li');
+        var divList = document.getElementById('products').getElementsByTagName('div');
+
+        //2.为 每个 li 添加 点击事件-------------------------------
+        for (var i = 0; i < liList.length; i++) {
+            // 为 li 添加 点击事件
+            liList[i].onclick = function () {
+
+                // 2.1 切换 li 的 className ------------------------
+                // 2.2 遍历所有 li
+                for (var j = 0; j < liList.length; j++) {
+                    // 如果 遍历的 li 等于 当前被点击 li ，同时 设置 li 与 相同下标 div 的 class
+                    if (liList[j] == this) {
+                        liList[j].className = 'tab-item active';
+                        divList[j].className = 'main selected';
+                    } else {
+                        liList[j].className = 'tab-item';
+                        divList[j].className = 'main';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

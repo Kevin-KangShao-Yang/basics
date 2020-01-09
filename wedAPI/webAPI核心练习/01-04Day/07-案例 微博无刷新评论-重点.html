@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .father {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .content {
+            height: 120px;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        .commens {
+            padding: 10px;
+            border: 1px solid green;
+        }
+
+        .commens div {
+            padding: 5px 8px;
+            border-bottom: 1px dashed #666;
+        }
+
+        .commens div span {
+            /* border: 1px solid #0094ff; */
+            cursor: pointer;
+            float: right;
+            font-weight: bolder;
+        }
+
+        .add {
+            width: 780px;
+            margin: 0 auto;
+            margin-top: 10px;
+            border: 1px solid blue;
+            padding: 10px;
+            padding-bottom: 60px;
+        }
+
+        textarea {
+            display: block;
+            width: 760px;
+            margin: 0 auto;
+            height: 120px;
+            resize: none;
+        }
+
+        input[type="button"] {
+            float: right;
+            padding: 10px 14px;
+            margin-top: 10px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="content">
+            今天去了一个很神奇的地方，看照片能猜出来是哪里吗？<br />
+            今天去了一个很神奇的地方，看照片能猜出来是哪里吗？
+        </div>
+        <div class="commens" id="commens">
+            <div>评论：</div>
+            <div>今天的3个肉包子 好好吃呀~~~~</div>
+        </div>
+    </div>
+    <div class="add">
+        <textarea name="" id="txtComment"></textarea>
+        <input type="button" value="发表" id="btnOk" />
+    </div>
+
+    <script>
+        //1.思路：
+        //   a. 为 按钮 添加 点击事件方法
+        //   b. 在点击时 获取 文本框 的 内容 (value) 
+        //   c. 使用 document.createElement('div')
+        //   d. 将 文本框的 内容 设置给 新 div 的 innerText
+        //   e. 将 新 div 追加到 commens div 的 子元素集合中
+
+        document.getElementById('btnOk').onclick = function () {
+
+            // a.创建一个 新的 div
+            var newDiv = document.createElement('div');
+
+            // b.获取 文本框 的 内容 (value) 
+            var commentStr = document.getElementById('txtComment').value;
+            //   创建 一个 文本节点 ，将 评论内容 设置进去 *****************
+            var txtNode = document.createTextNode(commentStr);
+
+            // c.创建一个 新的 span
+            var newSpan = document.createElement('span');
+            newSpan.innerText = 'X';
+            newSpan.onclick = function () {
+                if (confirm('哥们，你确定要删除这条评论吗？')) {
+
+                    // 被点击后，要把 span 所在的 div 删除
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                }
+            }
+
+            // d.设置 评论文本 和 span 给 新 div
+            newDiv.appendChild(txtNode);
+            newDiv.appendChild(newSpan);
+
+
+            // c.设置 评论内容 给 div
+            // newDiv.innerText = commentStr;
+            // newDiv.innerHTML = commentStr;
+
+            // d.将 新 div　追加到　评论区中
+            document.getElementById('commens').appendChild(newDiv);
+            // e.清空 文本框
+            document.getElementById('txtComment').value = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>静态文件</title>
+  <style>
+    .box {
+      /*width: 322px;*/
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 20px;
+      /*background-color: red;*/
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="box" id="box">
+    <span id="closeButton"></span>
+    <div class="hd" id="headPart">
+      <img src="images/t.jpg" alt="" />
+    </div>
+    <div id="bottomPart" class="bd">
+      <img src="images/b.jpg" alt="" />
+    </div>
+  </div>
+
+  <script src="./animation.js"></script>
+
+  <script>
+    var boxNode = document.getElementById('box');
+    var bottomPartNode = document.getElementById('bottomPart');
+
+    //需求： 点击关闭按钮： 底部盒子高度为0，结束之后整个盒子box宽度0
+    //1. 为 关闭按钮 添加点击事件
+    document.getElementById('closeButton').onclick = function () {
+      // 1.1 先 下降（将 下面的盒子 高度 设置为 0）
+      moveSlowly(bottomPart, { height: 0 }, function () {
+        // 1.2 在关闭整个盒子（将 整个大盒子 宽度 设置为 0）
+        moveSlowly(boxNode, { width: 0 }, function () {
+          // 1.3 将整个 大盒子 的display 设置为 none
+          boxNode.style.display = 'none';
+        });
+      })
+    }
+
+  </script>
+</body>
+
+</html>

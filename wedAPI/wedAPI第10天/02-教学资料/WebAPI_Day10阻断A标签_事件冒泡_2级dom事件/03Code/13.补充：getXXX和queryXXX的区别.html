@@ -1,0 +1,59 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset='UTF-8' />
+</head>
+
+<body>
+  <ul id='ulList'>
+    <li>讨厌1</li>
+    <li>讨厌2</li>
+    <li>讨厌3</li>
+  </ul>
+
+  <input type="button" value="新增li" id='btnAdd'> <input type="text" id="txtWord"><br /><br />
+
+  <input type="button" value="遍历li- getXXX" id='btnFor1'>
+  <input type="button" value="遍历li- queryXXX" id='btnFor2'>
+</body>
+
+<script>
+
+  var ulNode = gel('ulList');
+
+  gel('btnAdd').onclick = function () {
+    var strContent = gel('txtWord').value;
+    var liObj = document.createElement('li');
+    liObj.innerText = strContent;
+    ulNode.appendChild(liObj);
+  }
+
+  // 1. 重点：getXXX 系列的 方法，返回的 是 动态 数组 ，哪怕 获取 数组后，再向 ul 中 添加 li 标签，也会 加入 动态数组中
+  var liList = ulNode.getElementsByTagName('li');
+
+  gel('btnFor1').onclick = function () {
+    console.log('-----------遍历动态li数组------------');
+    for (var i = 0; i < liList.length; i++) {
+      console.log(liList[i]);
+    }
+  }
+
+
+  // 2. 重点：queryXXX 系列的 方法，返回的 是 静态 数组 ，获取 数组后，再向 ul 中 添加 li 标签，不会 加入 惊天数组中
+  var liListStatic = ulNode.querySelectorAll('li');
+  
+  gel('btnFor2').onclick = function () {
+    console.log('-----------遍历静态li数组------------');
+    for (var i = 0; i < liListStatic.length; i++) {
+      console.log(liListStatic[i]);
+    }
+  }
+
+
+  function gel(eId) {
+    return document.getElementById(eId);
+  }
+</script>
+
+</html>

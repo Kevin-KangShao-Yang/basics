@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        /* 
+        1.键盘事件
+            键盘按下触发： onkeydown
+           键盘按下并弹起会触发（用的比较多）： onkeypress
+            键盘松开弹起触发： onkeyup
+        
+        2.获取键盘按键
+            e.keyCode （IE8浏览器及之前） || e.which || e.charCode
+            a. 获取的是ASCII码 （键盘上每一个按键对应一个数字编码，这个数字叫做ASCII码）
+            b. 将ASCII码转成字符串：  String.fromCharCode(ascii码)
+
+        3. onkeydown与onkeypress区别
+            onkeydown： （1）不区分大小写，一定是大写  （2）不可以过滤掉特殊的功能键例如删除、F1-F12,shift,alt键等等
+            onkeypress： （1）区分大小写  （2）可以过滤掉特殊的功能键例如删除、F1-F12,shift,alt键等等
+         */
+
+        // document.onkeydown = function (e) {
+        //     e = e || window.event;
+
+        //     console.log(e.keyCode); // 返回 被按 按钮的 ascII 码
+        //     console.log(String.fromCharCode(e.keyCode));
+        // }
+
+
+        // document.onkeypress = function (e) {
+        //     e = e || window.event;
+
+        //     console.log(e.keyCode); // 返回 被按 按钮的 ascII 码
+        //     console.log(String.fromCharCode(e.keyCode));  // 返回 ascII码  的 对应的 字符 ，但是 遇到 功能按键 就返回一个 方块，因为 AscII 中 不存在这些字符
+        // }
+
+        document.onkeyup = function (e) {
+            e= e|| window.event;
+            console.log('按键松开了~~~ ASCII码' + e.keyCode);
+            console.log(String.fromCharCode(e.keyCode));
+        }
+    </script>
+</body>
+</html>

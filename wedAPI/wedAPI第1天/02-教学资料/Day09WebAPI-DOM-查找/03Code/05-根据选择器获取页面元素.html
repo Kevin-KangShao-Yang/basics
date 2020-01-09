@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+
+
+    <style>
+        .blueDiv {
+            border: 1px solid #0094ff;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .blackSpan {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <span class="blackSpan">span outside1 </span>
+    <span class="blackSpan">span outside2 </span>
+
+
+    <div id='d2' class='blueDiv'>div2</div>
+    <div id='d3' class='blueDiv'>div3</div>
+
+    <div id='d1' class='blueDiv'>
+        <input type="radio" name='gender' id='rdoMale'> <label for="rdoMale">男</label>
+        <input type="radio" name='gender' id='rdoFemale'> <label for="rdoFemale">女</label>
+    </div>
+
+
+
+    <script>
+        // 选择器：css - id选择器/class选择/标签选择器
+
+        // 1. querySelector 根据 选择器 查询 dom对象  ，注意：只返回 找到的 第一个 匹配的 dom对象
+        //                                                  如果找不到 ，就返回 null
+        var dom1 = document.querySelector('div');
+        console.log(dom1);
+
+        var dom2 = document.querySelector('.blackSpan');
+        console.log(dom2);
+
+        var dom3 = document.querySelector('#d1');
+        console.log(dom3);
+
+
+        console.log('---------------------------------');
+        // 2.querySelectorAll - 根据 选择器 查询 dom对象，注意：会返回 所有 符合要求的 dom对象 ，返回 类数组
+        //                                                    如果找不到 ，就返回 空数组
+
+        var arrDom1 = document.querySelectorAll('div'); // 类似：documnet.getElementsByTagName('div')
+        console.log(arrDom1);
+
+
+        var arrDom2 = document.querySelectorAll('.blackSpan'); // 类似：documnet.getElementsByClassName('.blackSpan');
+        console.log(arrDom2);
+
+        
+
+    </script>
+</body>
+
+</html>

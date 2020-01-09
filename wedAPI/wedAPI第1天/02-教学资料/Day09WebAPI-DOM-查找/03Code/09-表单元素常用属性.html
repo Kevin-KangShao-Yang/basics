@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <!-- 表单元素有一些特殊的独有属性，表示表单元素的两种状态  （布尔类型）
+        disabled : 禁用   checked : 选中   （radio checkbox）
+
+        checked : 选中 (单选和复选按钮)
+        selected : 选中 （option）
+
+    1. 在html中 ，只要写了  就是true   没写 就是false
+    2. 在js中，通过设置布尔类型的值来修改这两种状态
+    -->
+
+    <select name="selCitys" id="selCitys">
+        <option value="长沙">长沙真好啊~~ 一天四季</option>
+        <option value="武汉">武汉真好啊~~ 一小时四季</option>
+        <option value="深圳" selected='selected'>深圳真好啊~~ 一年一季</option>
+    </select>
+
+ 
+
+    <input type="text" name="txtName" class="txtName"> <br />
+    <input type="text" name="txtPwd" class="txtName"><br />
+    <input type="radio" name="gender" class="txtName">男 <input type="radio" checked='checked' name="gender"
+        class="txtName">女<br />
+    <input type="button" value="点我禁用你们" id='btnFob'>
+
+
+
+</body>
+
+<script>
+
+    // 目的：禁用 页面上 所有的 input ，不包括按钮本身
+    // 思路：
+    //  a.获取页面上 所有的 input 对象
+    //  b.遍历 input 对象，设置 disabled 属性 
+    var dom = document.getElementById('btnFob');
+
+dom.onclick = function () {
+    // 点击事件,点击dom,便执行下面的代码
+    var dom1 = document.getElementsByClassName('txtName');
+    //遍历遍历 input 对象 ,遍历对象必须要是类数组,不然没办法遍历,即只能用getElementsByClassName和getElementsByName以及getElementsByTagName
+    for (var i = 0; i < dom1.length; i++) {
+        dom1[i].disabled = 'd'; 
+        // 每循环一次,就给一个input对象添加disabled属性,并赋值
+    }
+}
+    // 注意点
+    // 双标签文本 ： innerText
+    // 单标签文本： value
+</script>
+
+</html>

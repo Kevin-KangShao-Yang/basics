@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8' />
+    <style>
+        table {
+            border: 1px solid #0094ff;
+            margin: 10px auto;
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid #0094ff;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="2">欢迎登陆~~~</td>
+        </tr>
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="txtName" id="txtName"></td>
+        </tr>
+        <tr>
+            <td>密 码：</td>
+            <td><input type="password" name="txtPwd" id="txtPwd"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="登录" id='btnLogin'>
+                <input type="button" value="注册">
+            </td>
+        </tr>
+    </table>
+</body>
+
+<script>
+    // 目标：点击 登录 按钮，判断 两个 input 内容是否为空，如果为空，则提示
+    //                                                 如果都不为空，则显示登录成功
+
+    // 思路：
+    //   a.为 登录按钮 添加 点击事件 onclick
+    //   b.在函数中 获取 用户名 和 密码 的 value 值
+
+    document.getElementById('btnLogin').onclick = function () {
+        // 1. 获取 两个 input 对象
+        var domName = document.getElementById('txtName');
+        var domPwd = document.getElementById('txtPwd');
+
+
+        // console.log(domName.value);
+        // console.log(domName.value.length);
+
+        // console.log(domName.value.trim()); // 字符串的 trim  方法 会 将字符串 两边的 空格 自动删除
+        // console.log(domName.value.trim().length);
+
+
+        // 2. 获取 并 判断 用户名 是否为空
+        if (domName.value.trim() == '') {
+            alert('用户名 不能为空~~~~');
+        } else if (domPwd.value == '') {
+            alert('用户密码 不能为空~~~~');
+        } else {
+            alert('恭喜您，登录成功啦~~！！');
+
+            window.location = 'http://www.baidu.com';
+        }
+    };
+
+</script>
+
+</html>

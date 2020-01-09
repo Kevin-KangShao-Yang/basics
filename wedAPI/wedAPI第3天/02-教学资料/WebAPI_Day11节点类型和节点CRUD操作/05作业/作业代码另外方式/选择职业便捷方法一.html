@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        select {
+            width: 100px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="" id="left" multiple>
+        <option value="">web工程师</option>
+        <option value="">android工程师</option>
+        <option value="">ios工程师</option>
+        <option value="">php工程师</option>
+        <option value="">nodejs工程师</option>
+        <option value="">脱口秀</option>
+        <option value="">正经足疗爱好者</option>
+    </select>
+
+    <button id="btnAll">&gt;&gt;</button>
+    <button id="btnAll2">&lt;&lt;</button>
+    <button id="btnLeft">&gt;</button>
+    <button id="btn4">&lt;</button>
+
+    <select name="" id="right" multiple></select>
+    <script>
+        /*
+        1.分析需求(交互)：
+            点击全部右移 ：  遍历左边left的子元素，添加到右边
+            点击全部左移 ：  遍历右边right的子元素，添加到左边
+            点击选中右移 ：  遍历左边left选中的子元素，添加到右边
+            点击选中左移 ：  遍历右边right选中的子元素，添加到左边
+        */
+        var selLeftList = document.getElementById('left');
+        var selRightList = document.getElementById('right');
+        var btnList = document.getElementsByTagName('button');
+        var optNodes = document.querySelectorAll('option');
+        btnList[0].onclick = moveRightAll;
+        btnList[1].onclick = moveLeftAll;
+        btnList[2].onclick = moveRight;
+        btnList[3].onclick = moveLeft;
+
+        function moveRightAll() {
+            for (var optNode of optNodes) {
+                selRightList.appendChild(optNode);
+            }
+        }
+
+        function moveLeftAll() {
+            for (var optNode of optNodes) {
+                selLeftList.appendChild(optNode);
+            }
+        }
+
+        function moveRight() {
+            for (var optNode of optNodes) {
+                if (optNode.selected == true) {
+                    selRightList.appendChild(optNode);
+                }
+            }
+        }
+
+        function moveLeft() {
+            for (var optNode of optNodes) {
+                if (optNode.selected == true) {
+                    selLeftList.appendChild(optNode);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

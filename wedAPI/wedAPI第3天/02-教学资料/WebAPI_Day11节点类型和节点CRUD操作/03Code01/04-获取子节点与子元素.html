@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ulList"><!--偷偷躲在这的注释-->
+        强势矗立在此的文本
+        <li id='webFront' lover='linda'>大前端技术栈</li>
+        <li>Java技术栈</li>
+        <li>Python技术栈</li>
+        <li>.Net技术栈</li>
+    </ul>
+
+    <script>
+        /**
+         * @description: 获取 子节点 （下级节点）
+         */
+ 
+         // 1.获取子节点 集合 childNodes  -------------------------------------------
+         //   注意：childNodes 会 获取 所有的 子节点，包括：元素、注释、文本..
+         var ulNode = document.getElementById('ulList');
+         console.log(ulNode.childNodes);
+
+         // 1.1 获取 ul 中的 第一个 子节点  -- 注释节点
+         var commentNode = ulNode.childNodes[0];
+         console.log(commentNode.nodeType); // 8
+         console.log(commentNode.nodeName); // #comment
+         console.log(commentNode.nodeValue); //注释的内容： 偷偷躲在这的注释
+
+        console.log('-------------练习：打印 ul 子节点 中的 li 标签节点 的内容-----------');
+         // 2. 练习：打印 ul 子节点 中的 li 标签节点 的内容
+         // 2.1 常规写法
+        //  var liNodes = document.getElementById('ulList').getElementsByTagName('li');
+        // 2.2 通过 childNodes 属性 获取 所有的 子节点
+        var sonNodes = document.getElementById('ulList').childNodes;
+        // 2.3 遍历 ul 中 所有的 子节点，判断 节点的 nodeType == 1 ,如果成立，说明是 元素节点，通过 innerText 打印内容
+        for(var i =0;i<sonNodes.length;i++){
+            // 判断 节点类型 是否为1 ，如果是 ，说明是 根据 li 标签生成 的 元素节点
+            if(sonNodes[i].nodeType == 1){
+                console.log(sonNodes[i].innerText);
+            }
+        }
+
+
+        console.log('---2. 获取 子元素节点 集合 children-------------');
+        // 2. 获取 子元素节点(标签) 集合 children ---------------------------------------
+        var ulNode = document.getElementById('ulList');
+        console.log(ulNode.children);
+
+        // 2.1 遍历 子元素节点 ，并打印 元素内容
+        for(var i =0;i< ulNode.children.length;i++){
+            console.log(ulNode.children[i]);
+        }
+        
+    </script>
+</body>
+</html>
