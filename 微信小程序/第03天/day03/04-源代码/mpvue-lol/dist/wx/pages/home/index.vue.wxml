@@ -1,0 +1,7 @@
+<template name="307878fa">
+  <view class="_ul data-v-90a7ed94">
+    <view wx:key="item.id" key="{{item.id}}" bindtap="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" wx:for="{{heroList}}" wx:for-index="index" wx:for-item="item" class="_li data-v-90a7ed94">
+      <image src="{{item.iconUrl}}" alt class="_img data-v-90a7ed94"></image> <label class="_span data-v-90a7ed94">{{item.name}}</label>
+    </view>
+  </view>
+</template>

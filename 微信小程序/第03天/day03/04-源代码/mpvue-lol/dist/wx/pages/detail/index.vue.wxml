@@ -1,0 +1,25 @@
+<template name="1c0d56ac">
+  <view class="_div data-v-0deef728">
+    <swiper circular autoplay indicator-dots interval="1000" class="_swiper data-v-0deef728">
+      <swiper-item wx:key="item" key="{{item}}" wx:for="{{hero.bgs}}" wx:for-index="index" wx:for-item="item" class="_swiper-item data-v-0deef728">
+        <image src="{{item}}" class="_image data-v-0deef728"></image>
+      </swiper-item>
+    </swiper>
+    <view class="_view data-v-0deef728 content">
+      <view class="_view data-v-0deef728 left">
+        <view class="_view data-v-0deef728 title">{{ hero.title }}</view>
+        <view class="_view data-v-0deef728 name">{{ hero.name }}</view>
+        <view class="_view data-v-0deef728 tags"><text wx:key="item" key="{{item}}" wx:for="{{hero.tags}}" wx:for-index="index" wx:for-item="item" class="_text data-v-0deef728">{{ item }}</text></view>
+        <view class="_view data-v-0deef728 ability">
+          <view class="_view data-v-0deef728 item"><text class="_text data-v-0deef728">生存能力</text> <progress percent="{{hero.Ability.life}}" activeColor="#1ec76b" active stroke-width="12" backgroundColor="#363636" class="_progress data-v-0deef728" /></view>
+          <view class="_view data-v-0deef728 item"><text class="_text data-v-0deef728">物理攻击</text> <progress percent="{{hero.Ability.physical}}" activeColor="#f2c40c" active stroke-width="12" backgroundColor="#363636" class="_progress data-v-0deef728" /></view>
+          <view class="_view data-v-0deef728 item"><text class="_text data-v-0deef728">魔法攻击</text> <progress percent="{{hero.Ability.magic}}" activeColor="#f2a709" active stroke-width="12" backgroundColor="#363636" class="_progress data-v-0deef728" /></view>
+          <view class="_view data-v-0deef728 item"><text class="_text data-v-0deef728">操作难度</text> <progress percent="{{hero.Ability.difficulty}}" activeColor="#cb8eff" active stroke-width="12" backgroundColor="#363636" class="_progress data-v-0deef728" /></view>
+        </view>
+      </view>
+      <view class="_view data-v-0deef728 right">
+        {{ hero.story }}
+      </view>
+    </view>
+  </view>
+</template>

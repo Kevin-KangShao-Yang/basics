@@ -1,0 +1,18 @@
+<template name="6c249f71">
+  <view class="_div data-v-2a0115e0">
+    <view class="_h2 data-v-2a0115e0">{{ msg }}</view> <input type="text" value="{{msg}}" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_input data-v-2a0115e0" />
+    <view class="_ul data-v-2a0115e0">
+      <view wx:key="index" key="{{index}}" wx:for="{{movieList}}" wx:for-index="index" wx:for-item="item" class="_li data-v-2a0115e0">
+        {{item}}--{{index}}
+      </view>
+    </view>
+    <view class="_div data-v-2a0115e0 box {{[isRed ? 'red' : '']}}" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></view> <button bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_button data-v-2a0115e0">点我呀</button>
+    <swiper indicator-dots autoplay circular class="_swiper data-v-2a0115e0">
+      <block wx:key="index" key="{{index}}" wx:for="{{10}}" wx:for-index="index" wx:for-item="item">
+        <swiper-item class="_swiper-item data-v-2a0115e0">
+          <image src="https://img14.360buyimg.com/babel/s590x470_jfs/t1/67604/35/15331/96160/5dcd16e2E1da3c629/86b664493b17a502.jpg.webp" alt class="_img data-v-2a0115e0"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>

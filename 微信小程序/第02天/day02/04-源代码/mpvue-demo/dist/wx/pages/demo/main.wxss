@@ -1,0 +1,10 @@
+
+.box {
+  width: 200rpx;
+  height: 200rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 50%;
+}
+.red {
+  background-color: red;
+}

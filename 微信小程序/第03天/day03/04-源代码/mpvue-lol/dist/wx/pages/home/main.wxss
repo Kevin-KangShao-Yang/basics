@@ -1,0 +1,19 @@
+
+page {
+  background-color: #566a78;
+}
+._ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+._ul ._li {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;
+}
+._ul ._li ._img {
+  width: 176rpx;
+  height: 176rpx;
+}

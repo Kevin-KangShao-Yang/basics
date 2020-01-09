@@ -1,0 +1,46 @@
+
+page {
+  background-color: #363636;
+}
+image {
+  width: 100%;
+}
+.content {
+  display: flex;
+  padding: 24rpx 20rpx 0;
+  color: #fff;
+  font-size: 24rpx;
+}
+.left {
+  width: 382rpx;
+}
+.right {
+  flex: 1;
+}
+.tags text {
+  width: 60rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  background-color: #029b7f;
+  display: inline-block;
+  border-radius: 8rpx;
+  margin-right: 8rpx;
+}
+.title {
+  font-size: 28rpx;
+}
+.name {
+  font-size: 40rpx;
+  margin-bottom: 24rpx;
+}
+.ability {
+  margin-top: 36rpx;
+}
+.ability .item {
+  display: flex;
+}
+.ability .item ._progress {
+  width: 200rpx;
+  margin-left: 12rpx;
+}
